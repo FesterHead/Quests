@@ -43,9 +43,11 @@ public final class CraftingCertainTaskType extends TaskType {
 
         for (Quest quest : super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("Quest = " + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("  Task = " + task.getId());
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
 
                     if (taskProgress.isCompleted()) {
@@ -55,14 +57,23 @@ public final class CraftingCertainTaskType extends TaskType {
                     Material targetMaterial = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
                     Material sourceMaterial = event.getRecipe().getResult().getType();
 
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("    Target material = " + targetMaterial.toString());
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("    Source material = " + sourceMaterial.toString());
+
                     if (sourceMaterial.equals(targetMaterial)) {
+                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    Match!");
                         int incrementProgress = (taskProgress.getProgress() == null) ? 0
                                 : (int) taskProgress.getProgress();
 
                         taskProgress.setProgress(incrementProgress + getAmountCraftItem(sourceMaterial, event));
+                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                                .debug("    Progress = " + taskProgress.getProgress().toString());
 
                         if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
                             taskProgress.setCompleted(true);
+                            QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    Completed!");
                         }
                     }
                 }

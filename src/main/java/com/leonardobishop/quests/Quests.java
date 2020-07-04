@@ -144,6 +144,7 @@ public class Quests extends JavaPlugin {
             taskTypeManager.registerTaskType(new BrewingTaskType());
             taskTypeManager.registerTaskType(new ExpEarnTaskType());
             taskTypeManager.registerTaskType(new BreedingTaskType());
+            taskTypeManager.registerTaskType(new BreedingCertainTaskType());
             taskTypeManager.registerTaskType(new EnchantingTaskType());
             taskTypeManager.registerTaskType(new DealDamageTaskType());
             taskTypeManager.registerTaskType(new PermissionTaskType());

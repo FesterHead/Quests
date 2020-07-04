@@ -85,13 +85,12 @@ public class Quests extends JavaPlugin {
         return questsConfigLoader;
     }
 
-    public String convertToFormat(long m) { //seconds please
+    public String convertToFormat(long m) { // seconds please
         long hours = m / 3600;
         long minutes = (m % 3600) / 60;
         long seconds = ((m % 3600) % 60) % 60;
 
-        return Messages.TIME_FORMAT.getMessage()
-                .replace("{hours}", String.format("%02d", hours))
+        return Messages.TIME_FORMAT.getMessage().replace("{hours}", String.format("%02d", hours))
                 .replace("{minutes}", String.format("%02d", minutes))
                 .replace("{seconds}", String.format("%02d", seconds));
     }
@@ -133,6 +132,7 @@ public class Quests extends JavaPlugin {
             taskTypeManager.registerTaskType(new MobkillingCertainTaskType());
             taskTypeManager.registerTaskType(new PlayerkillingTaskType());
             taskTypeManager.registerTaskType(new FishingTaskType());
+            taskTypeManager.registerTaskType(new FishingCertainTaskType());
             taskTypeManager.registerTaskType(new InventoryTaskType());
             taskTypeManager.registerTaskType(new WalkingTaskType());
             taskTypeManager.registerTaskType(new TamingTaskType());
@@ -176,7 +176,8 @@ public class Quests extends JavaPlugin {
             reloadQuests();
             if (!questsConfigLoader.getBrokenFiles().isEmpty()) {
                 this.getQuestsLogger().severe("Quests has failed to load the following files:");
-                for (Map.Entry<String, QuestsConfigLoader.ConfigLoadError> entry : questsConfigLoader.getBrokenFiles().entrySet()) {
+                for (Map.Entry<String, QuestsConfigLoader.ConfigLoadError> entry : questsConfigLoader.getBrokenFiles()
+                        .entrySet()) {
                     this.getQuestsLogger().severe(" - " + entry.getKey() + ": " + entry.getValue().getMessage());
                 }
             }
@@ -190,7 +191,8 @@ public class Quests extends JavaPlugin {
         boolean ignoreUpdates = false;
         try {
             ignoreUpdates = new File(this.getDataFolder() + File.separator + "stfuQuestsUpdate").exists();
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         updater = new Updater(this);
         if (!ignoreUpdates) {
@@ -205,7 +207,8 @@ public class Quests extends JavaPlugin {
         for (TaskType taskType : getTaskTypeManager().getTaskTypes()) {
             try {
                 taskType.onDisable();
-            } catch (Exception ignored) { }
+            } catch (Exception ignored) {
+            }
         }
         for (QPlayer qPlayer : qPlayerManager.getQPlayers()) {
             if (qPlayer.isOnlyDataLoaded()) {
@@ -225,13 +228,16 @@ public class Quests extends JavaPlugin {
         long autocompleteInterval = 12000;
         long completerPollInterval = 100;
         if (!isBrokenConfig()) {
-            autocompleteInterval = this.getConfig().getLong("options.performance-tweaking.quest-autocomplete-interval", 12000);
-            completerPollInterval = this.getConfig().getLong("options.performance-tweaking.quest-completer-poll-interval", 100);
+            autocompleteInterval = this.getConfig().getLong("options.performance-tweaking.quest-autocomplete-interval",
+                    12000);
+            completerPollInterval = this.getConfig()
+                    .getLong("options.performance-tweaking.quest-completer-poll-interval", 100);
         }
         if (questAutosaveTask != null) {
             try {
                 questAutosaveTask.cancel();
-            } catch (Exception ignored) { }
+            } catch (Exception ignored) {
+            }
         }
         questAutosaveTask = Bukkit.getScheduler().runTaskTimer(this, () -> {
             for (QPlayer qPlayer : qPlayerManager.getQPlayers()) {
@@ -244,9 +250,11 @@ public class Quests extends JavaPlugin {
         if (questCompleterTask != null) {
             try {
                 questCompleterTask.cancel();
-            } catch (Exception ignored) { }
+            } catch (Exception ignored) {
+            }
         }
-        questCompleterTask = Bukkit.getScheduler().runTaskTimer(this, new QuestCompleter(this), 20, completerPollInterval);
+        questCompleterTask = Bukkit.getScheduler().runTaskTimer(this, new QuestCompleter(this), 20,
+                completerPollInterval);
     }
 
     public ItemStack getItemStack(String path, ConfigurationSection config, ItemGetter.Filter... excludes) {
@@ -302,7 +310,8 @@ public class Quests extends JavaPlugin {
         if (!config.exists()) {
             try {
                 config.createNewFile();
-                //try (InputStream in = Quests.class.getClassLoader().getResourceAsStream("config.yml")) {
+                // try (InputStream in =
+                // Quests.class.getClassLoader().getResourceAsStream("config.yml")) {
                 try (InputStream in = this.getResource("config.yml")) {
                     OutputStream out = new FileOutputStream(config);
                     byte[] buffer = new byte[1024];
@@ -311,7 +320,7 @@ public class Quests extends JavaPlugin {
                         out.write(buffer, 0, lenght);
                         lenght = in.read(buffer);
                     }
-                    //ByteStreams.copy(in, out); BETA method, data losses ahead
+                    // ByteStreams.copy(in, out); BETA method, data losses ahead
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -337,7 +346,8 @@ public class Quests extends JavaPlugin {
                 File file = new File(this.getDataFolder() + File.separator + "quests" + File.separator + name);
                 try {
                     file.createNewFile();
-                    //try (InputStream in = Quests.class.getClassLoader().getResourceAsStream("quests/" + name)) {
+                    // try (InputStream in =
+                    // Quests.class.getClassLoader().getResourceAsStream("quests/" + name)) {
                     try (InputStream in = this.getResource("quests/" + name)) {
                         OutputStream out = new FileOutputStream(file);
                         byte[] buffer = new byte[1024];
@@ -346,7 +356,7 @@ public class Quests extends JavaPlugin {
                             out.write(buffer, 0, lenght);
                             lenght = in.read(buffer);
                         }
-                        //ByteStreams.copy(in, out); BETA method, data losses ahead
+                        // ByteStreams.copy(in, out); BETA method, data losses ahead
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

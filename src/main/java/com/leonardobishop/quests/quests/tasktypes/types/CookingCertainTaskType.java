@@ -79,7 +79,7 @@ public final class CookingCertainTaskType extends TaskType {
                     }
 
                     if (incomingObject.equals(expectedObject)) {
-                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    §aMatch!");
+                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("               §aMatch!");
 
                         int progressIncrement = event.getItemAmount();
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()

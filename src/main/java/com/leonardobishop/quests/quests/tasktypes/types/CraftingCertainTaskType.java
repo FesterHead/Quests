@@ -78,7 +78,7 @@ public final class CraftingCertainTaskType extends TaskType {
                     }
 
                     if (incomingObject.equals(expectedObject)) {
-                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    §aMatch!");
+                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("               §aMatch!");
 
                         int progressIncrement = getAmountCraftItem(incomingObject, event);
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()

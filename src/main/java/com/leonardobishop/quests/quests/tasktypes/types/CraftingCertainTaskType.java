@@ -53,12 +53,15 @@ public final class CraftingCertainTaskType extends TaskType {
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();
 
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("");
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("      Checking task: " + task.getId());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("               Type: " + task.getType());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("           Progress: " + taskProgressCounter);
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("               Need: " + (int) task.getConfigValue(AMOUNT_KEY));
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("          Completed: " + taskProgress.isCompleted());
 
@@ -79,15 +82,15 @@ public final class CraftingCertainTaskType extends TaskType {
 
                         int progressIncrement = getAmountCraftItem(sourceMaterial, event);
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                                .debug("    Increment: " + progressIncrement);
+                                .debug("          Increment: " + progressIncrement);
 
                         taskProgress.setProgress(taskProgressCounter + progressIncrement);
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                                .debug("    New progress: " + taskProgress.getProgress().toString());
+                                .debug("       New progress: " + taskProgress.getProgress().toString());
 
                         if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
                             taskProgress.setCompleted(true);
-                            QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    Completed!");
+                            QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("           Completed!");
                         }
                     }
 

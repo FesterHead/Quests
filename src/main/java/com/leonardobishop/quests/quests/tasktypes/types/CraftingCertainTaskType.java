@@ -48,11 +48,13 @@ public final class CraftingCertainTaskType extends TaskType {
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+                    int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
+                            : (int) taskProgress.getProgress();
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("  Checking task: " + task.getId());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("           Type: " + task.getType());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("       Progress: " + taskProgress.getProgress().toString());
+                            .debug("       Progress: " + taskProgressCounter);
 
                     if (taskProgress.isCompleted()) {
                         continue;
@@ -68,10 +70,12 @@ public final class CraftingCertainTaskType extends TaskType {
 
                     if (sourceMaterial.equals(targetMaterial)) {
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    Match!");
-                        int incrementProgress = (taskProgress.getProgress() == null) ? 0
-                                : (int) taskProgress.getProgress();
 
-                        taskProgress.setProgress(incrementProgress + getAmountCraftItem(sourceMaterial, event));
+                        int progressIncrement = getAmountCraftItem(sourceMaterial, event);
+                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                                .debug("    Increment: " + progressIncrement);
+
+                        taskProgress.setProgress(taskProgressCounter + progressIncrement);
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                                 .debug("    New progress: " + taskProgress.getProgress().toString());
 

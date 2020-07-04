@@ -1,0 +1,39 @@
+tasks:
+  task1:
+    type: "harvestcertain"
+    crop: WHEAT
+    amount: 3
+  task2:
+    type: "harvestcertain"
+    crop: CLAY_BALL
+    amount: 3
+  task3:
+    type: "harvestcertain"
+    crop: TORCH
+    amount: 3
+  task4:
+    type: "harvestcertain"
+    crop: PUMPKIN
+    amount: 3
+display:
+  name: "Harvest"
+  lore-normal:
+    - ""
+    - "&7This quest requires you to harvest."
+  lore-started:
+    - ""
+    - "&7Your current progression:"
+    - "&7 - {task1:progress}/3 wheat."
+    - "&7 - {task2:progress}/3 clay ball."
+    - "&7 - {task3:progress}/3 torch."
+    - "&7 - {task4:progress}/3 pumpkin."
+  type: "IRON_HOE"
+rewards:
+  - ""
+options:
+  category: ""
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 10

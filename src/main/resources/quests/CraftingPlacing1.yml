@@ -1,0 +1,44 @@
+tasks:
+  task1:
+    type: "craftingcertain"
+    item: OAK_PLANKS
+    amount: 10
+  task2:
+    type: "craftingcertain"
+    item: OAK_STAIRS
+    amount: 10
+  task3:
+    type: "craftingcertain"
+    item: CRAFTING_TABLE
+    amount: 1
+  task4:
+    type: "blockplacecertain"
+    block: CRAFTING_TABLE
+    amount: 1
+  task5:
+    type: "blockplacecertain"
+    block: OAK_STAIRS
+    amount: 1
+display:
+  name: "Crafting and Placing"
+  lore-normal:
+    - ""
+    - "&7This quest requires you to craft and place."
+  lore-started:
+    - ""
+    - "&7Your current progression:"
+    - "&7 - {task1:progress}/10 oak planks crafted."
+    - "&7 - {task2:progress}/10 oak stairs crafted."
+    - "&7 - {task3:progress}/01 crafting table crafted."
+    - "&7 - {task4:progress}/01 crafting table placed."
+    - "&7 - {task5:progress}/01 oak stairs placed."
+  type: "CRAFTING_TABLE"
+rewards:
+  - ""
+options:
+  category: ""
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 1

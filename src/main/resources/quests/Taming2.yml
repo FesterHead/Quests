@@ -1,0 +1,23 @@
+tasks:
+  task1:
+    type: "taming"
+    amount: 2
+display:
+  name: "Taming 2"
+  lore-normal:
+    - ""
+    - "&7This quest requires you to tame."
+  lore-started:
+    - ""
+    - "&7Your current progression:"
+    - "&7 - {task1:progress}/2 animals tamed."
+  type: "APPLE"
+rewards:
+  - ""
+options:
+  category: ""
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 5

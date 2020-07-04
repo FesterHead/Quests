@@ -1,0 +1,23 @@
+tasks:
+  task1:
+    type: "harvest"
+    amount: 32
+display:
+  name: "Harvest 2"
+  lore-normal:
+    - ""
+    - "&7This quest requires you to harvest."
+  lore-started:
+    - ""
+    - "&7Your current progression:"
+    - "&7 - {task1:progress}/32 items."
+  type: "IRON_HOE"
+rewards:
+  - ""
+options:
+  category: ""
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 11

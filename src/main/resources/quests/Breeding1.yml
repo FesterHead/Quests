@@ -1,0 +1,29 @@
+tasks:
+  task1:
+    type: "breedingcertain"
+    animal: CHICKEN
+    amount: 3
+  task2:
+    type: "breedingcertain"
+    animal: COW
+    amount: 3
+display:
+  name: "Breeding"
+  lore-normal:
+    - ""
+    - "&7This quest requires you to breed."
+  lore-started:
+    - ""
+    - "&7Your current progression:"
+    - "&7 - {task1:progress}/3 chickens bred."
+    - "&7 - {task2:progress}/3 cows bred."
+  type: "WHEAT"
+rewards:
+  - ""
+options:
+  category: ""
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 6

@@ -1,0 +1,23 @@
+tasks:
+  task1:
+    type: "cooking"
+    amount: 8
+display:
+  name: "Cooking 2"
+  lore-normal:
+    - ""
+    - "&7This quest requires you to cook."
+  lore-started:
+    - ""
+    - "&7Your current progression:"
+    - "&7 - {task1:progress}/8 items cooked."
+  type: "COOKED_BEEF"
+rewards:
+  - ""
+options:
+  category: ""
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 9

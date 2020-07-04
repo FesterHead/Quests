@@ -1,0 +1,39 @@
+tasks:
+  task1:
+    type: "cookingcertain"
+    item: COOKED_COD
+    amount: 3
+  task2:
+    type: "cookingcertain"
+    item: COOKED_CHICKEN
+    amount: 3
+  task3:
+    type: "cookingcertain"
+    item: IRON_INGOT
+    amount: 3
+  task4:
+    type: "cookingcertain"
+    item: GOLD_NUGGET
+    amount: 3
+display:
+  name: "Cooking"
+  lore-normal:
+    - ""
+    - "&7This quest requires you to cook."
+  lore-started:
+    - ""
+    - "&7Your current progression:"
+    - "&7 - {task1:progress}/3 cooked cod."
+    - "&7 - {task2:progress}/3 cooked chicken."
+    - "&7 - {task3:progress}/3 iron ingot."
+    - "&7 - {task4:progress}/3 gold nugget."
+  type: "COOKED_BEEF"
+rewards:
+  - ""
+options:
+  category: ""
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 8

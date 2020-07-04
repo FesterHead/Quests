@@ -31,9 +31,9 @@ display:
 rewards:
   - ""
 options:
-  category: ""
+  category: "examples"
   repeatable: true
   cooldown:
     enabled: false
     time: 1440
-  sort-order: 8
+  sort-order: 9

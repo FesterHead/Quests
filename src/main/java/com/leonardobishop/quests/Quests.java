@@ -347,6 +347,17 @@ public class Quests extends JavaPlugin {
             examples.add("example4.yml");
             examples.add("example5.yml");
             examples.add("example6.yml");
+            examples.add("Breeding1.yml");
+            examples.add("Breeding2.yml");
+            examples.add("Cooking1.yml");
+            examples.add("Cooking2.yml");
+            examples.add("CraftingPlacing1.yml");
+            examples.add("Fishing1.yml");
+            examples.add("Fishing2.yml");
+            examples.add("Harvest1.yml");
+            examples.add("Harvest2.yml");
+            examples.add("Taming1.yml");
+            examples.add("Taming2.yml");
             examples.add("README.txt");
 
             for (String name : examples) {

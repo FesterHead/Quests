@@ -43,8 +43,9 @@ public final class CraftingCertainTaskType extends TaskType {
 
         for (Quest quest : super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
-                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("------" + quest.getId());
-                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("Quest: " + quest.getId());
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("--------------------");
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                        .debug("              Quest: " + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
@@ -52,8 +53,6 @@ public final class CraftingCertainTaskType extends TaskType {
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();
 
-                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("--------------------" + task.getId());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("      Checking task: " + task.getId());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()

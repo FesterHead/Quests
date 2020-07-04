@@ -41,9 +41,9 @@ public final class CraftingTaskType extends TaskType {
 
         for (Quest quest : super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
-                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("--------------------");
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("§4--------------------");
                 QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                        .debug("              Quest: " + quest.getId());
+                        .debug("              Quest: §6" + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
@@ -53,15 +53,15 @@ public final class CraftingTaskType extends TaskType {
 
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("");
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("      Checking task: " + task.getId());
+                            .debug("      Checking task: §8" + task.getId());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("               Type: " + task.getType());
+                            .debug("               Type: §8" + task.getType());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("           Progress: " + taskProgressCounter);
+                            .debug("           Progress: §d" + taskProgressCounter);
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("               Need: " + (int) task.getConfigValue(AMOUNT_KEY));
+                            .debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("          Completed: " + taskProgress.isCompleted());
+                            .debug("          Completed: §6" + taskProgress.isCompleted());
 
                     if (taskProgress.isCompleted()) {
                         continue;
@@ -69,19 +69,19 @@ public final class CraftingTaskType extends TaskType {
 
                     Material sourceMaterial = event.getRecipe().getResult().getType();
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("    Source material: " + sourceMaterial.toString());
+                            .debug("    Source material: §b" + sourceMaterial.toString());
 
                     int progressIncrement = getAmountCraftItem(sourceMaterial, event);
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("          Increment: " + progressIncrement);
+                            .debug("          Increment: §2" + progressIncrement);
 
                     taskProgress.setProgress(taskProgressCounter + progressIncrement);
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("       New progress: " + taskProgress.getProgress().toString());
+                            .debug("       New progress: §e" + taskProgress.getProgress().toString());
 
                     if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
                         taskProgress.setCompleted(true);
-                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("           Completed!");
+                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("          §6Completed!");
                     }
 
                     return;

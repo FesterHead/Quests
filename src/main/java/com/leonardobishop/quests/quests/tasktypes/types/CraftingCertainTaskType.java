@@ -43,54 +43,53 @@ public final class CraftingCertainTaskType extends TaskType {
 
         for (Quest quest : super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
-                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("--------------------");
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("§4--------------------");
                 QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                        .debug("              Quest: " + quest.getId());
+                        .debug("              Quest: §6" + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
+                Material sourceMaterial = ((Item) event.getCaught()).getItemStack().getType();
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                        .debug("    Source material: §b" + sourceMaterial.toString());
+
                 for (Task task : quest.getTasksOfType(super.getType())) {
+                    Material targetMaterial = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();
 
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("");
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("      Checking task: " + task.getId());
+                            .debug("      Checking task: §8" + task.getId());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("               Type: " + task.getType());
+                            .debug("               Type: §8" + task.getType());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("           Progress: " + taskProgressCounter);
+                            .debug("    Target material: §3" + targetMaterial.toString());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("               Need: " + (int) task.getConfigValue(AMOUNT_KEY));
+                            .debug("           Progress: §d" + taskProgressCounter);
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("          Completed: " + taskProgress.isCompleted());
+                            .debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("          Completed: §6" + taskProgress.isCompleted());
 
                     if (taskProgress.isCompleted()) {
                         continue;
                     }
 
-                    Material targetMaterial = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
-                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("    Target material: " + targetMaterial.toString());
-
-                    Material sourceMaterial = event.getRecipe().getResult().getType();
-                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("    Source material: " + sourceMaterial.toString());
-
                     if (sourceMaterial.equals(targetMaterial)) {
-                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    Match!");
+                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    §aMatch!");
 
                         int progressIncrement = getAmountCraftItem(sourceMaterial, event);
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                                .debug("          Increment: " + progressIncrement);
+                                .debug("          Increment: §2" + progressIncrement);
 
                         taskProgress.setProgress(taskProgressCounter + progressIncrement);
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                                .debug("       New progress: " + taskProgress.getProgress().toString());
+                                .debug("       New progress: §e" + taskProgress.getProgress().toString());
 
                         if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
                             taskProgress.setCompleted(true);
-                            QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("           Completed!");
+                            QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("         §6Completed!");
                         }
                     }
 

@@ -43,24 +43,28 @@ public final class CraftingCertainTaskType extends TaskType {
 
         for (Quest quest : super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
-                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("Quest = " + quest.getId());
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("Quest: " + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
-                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("  Task = " + task.getId());
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("  Checking task: " + task.getId());
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("           Type: " + task.getType());
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("       Progress: " + taskProgress.getProgress().toString());
 
                     if (taskProgress.isCompleted()) {
                         continue;
                     }
 
                     Material targetMaterial = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
-                    Material sourceMaterial = event.getRecipe().getResult().getType();
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("    Target material: " + targetMaterial.toString());
 
+                    Material sourceMaterial = event.getRecipe().getResult().getType();
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("    Target material = " + targetMaterial.toString());
-                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("    Source material = " + sourceMaterial.toString());
+                            .debug("    Source material: " + sourceMaterial.toString());
 
                     if (sourceMaterial.equals(targetMaterial)) {
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    Match!");
@@ -69,7 +73,7 @@ public final class CraftingCertainTaskType extends TaskType {
 
                         taskProgress.setProgress(incrementProgress + getAmountCraftItem(sourceMaterial, event));
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                                .debug("    Progress = " + taskProgress.getProgress().toString());
+                                .debug("    New progress: " + taskProgress.getProgress().toString());
 
                         if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
                             taskProgress.setCompleted(true);

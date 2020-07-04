@@ -55,6 +55,8 @@ public final class CraftingCertainTaskType extends TaskType {
                             .debug("               Type: " + task.getType());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("           Progress: " + taskProgressCounter);
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("          Completed: " + taskProgress.isCompleted());
 
                     if (taskProgress.isCompleted()) {
                         continue;

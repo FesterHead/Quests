@@ -48,7 +48,8 @@ public final class CraftingCertainTaskType extends TaskType {
                         .debug("              Quest: §6" + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-                Material sourceMaterial = ((Item) event.getCaught()).getItemStack().getType();
+                // Special code to get the source material for this task
+                Material sourceMaterial = event.getRecipe().getResult().getType();
                 QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                         .debug("    Source material: §b" + sourceMaterial.toString());
 

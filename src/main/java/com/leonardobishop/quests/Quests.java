@@ -152,6 +152,8 @@ public class Quests extends JavaPlugin {
             taskTypeManager.registerTaskType(new CraftingCertainTaskType());
             taskTypeManager.registerTaskType(new CookingTaskType());
             taskTypeManager.registerTaskType(new CookingCertainTaskType());
+            taskTypeManager.registerTaskType(new HarvestTaskType());
+            taskTypeManager.registerTaskType(new HarvestCertainTaskType());
             // TODO: FIX
             // taskTypeManager.registerTaskType(new BrewingCertainTaskType());
             if (Bukkit.getPluginManager().isPluginEnabled("ASkyBlock")) {

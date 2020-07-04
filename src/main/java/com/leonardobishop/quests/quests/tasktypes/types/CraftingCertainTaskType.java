@@ -14,7 +14,6 @@ import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.inventory.CraftItemEvent;
@@ -41,20 +40,27 @@ public final class CraftingCertainTaskType extends TaskType {
     public void onCraftItem(CraftItemEvent event) {
         QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getWhoClicked().getUniqueId(), true);
         QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+
         for (Quest quest : super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
                 for (Task task : quest.getTasksOfType(super.getType())) {
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
                     if (taskProgress.isCompleted()) {
                         continue;
                     }
+
                     Material targetMaterial = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
                     Material sourceMaterial = event.getRecipe().getResult().getType();
+
                     if (sourceMaterial.equals(targetMaterial)) {
                         int progressCrafted = (taskProgress.getProgress() == null) ? 0
                                 : (int) taskProgress.getProgress();
+
                         taskProgress.setProgress(progressCrafted + getAmountCraftItem(sourceMaterial, event));
+
                         if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
                             taskProgress.setCompleted(true);
                         }

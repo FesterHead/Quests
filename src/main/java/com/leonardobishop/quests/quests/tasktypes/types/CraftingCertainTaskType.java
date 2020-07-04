@@ -52,9 +52,9 @@ public final class CraftingCertainTaskType extends TaskType {
                             : (int) taskProgress.getProgress();
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("  Checking task: " + task.getId());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("           Type: " + task.getType());
+                            .debug("               Type: " + task.getType());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("       Progress: " + taskProgressCounter);
+                            .debug("           Progress: " + taskProgressCounter);
 
                     if (taskProgress.isCompleted()) {
                         continue;
@@ -84,6 +84,8 @@ public final class CraftingCertainTaskType extends TaskType {
                             QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    Completed!");
                         }
                     }
+
+                    return;
                 }
             }
         }

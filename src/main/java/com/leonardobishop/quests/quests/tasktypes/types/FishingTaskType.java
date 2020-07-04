@@ -50,6 +50,11 @@ public final class FishingTaskType extends TaskType {
                         .debug("              Quest: §6" + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
+                // Special code to get the incoming object for this task
+                Material incomingObject = ((Item) event.getCaught()).getItemStack().getType();
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                        .debug("    Incoming object: §b" + incomingObject.toString());
+
                 for (Task task : quest.getTasksOfType(super.getType())) {
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
@@ -70,10 +75,6 @@ public final class FishingTaskType extends TaskType {
                     if (taskProgress.isCompleted()) {
                         continue;
                     }
-
-                    Material sourceMaterial = ((Item) event.getCaught()).getItemStack().getType();
-                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("    Source material: §b" + sourceMaterial.toString());
 
                     int progressIncrement = ((Item) event.getCaught()).getItemStack().getAmount();
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()

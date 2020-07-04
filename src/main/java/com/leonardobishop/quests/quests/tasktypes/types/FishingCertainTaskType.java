@@ -52,12 +52,13 @@ public final class FishingCertainTaskType extends TaskType {
                         .debug("              Quest: §6" + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-                Material sourceMaterial = ((Item) event.getCaught()).getItemStack().getType();
+                // Special code to get the incoming object for this task
+                Material incomingObject = ((Item) event.getCaught()).getItemStack().getType();
                 QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                        .debug("    Source material: §b" + sourceMaterial.toString());
+                        .debug("    Incoming object: §b" + incomingObject.toString());
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
-                    Material targetMaterial = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
+                    Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();
@@ -68,7 +69,7 @@ public final class FishingCertainTaskType extends TaskType {
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("               Type: §8" + task.getType());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("    Target material: §3" + targetMaterial.toString());
+                            .debug("    Expected object: §3" + expectedObject.toString());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("           Progress: §d" + taskProgressCounter);
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
@@ -80,7 +81,7 @@ public final class FishingCertainTaskType extends TaskType {
                         continue;
                     }
 
-                    if (sourceMaterial.equals(targetMaterial)) {
+                    if (incomingObject.equals(expectedObject)) {
                         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("               §aMatch!");
 
                         int progressIncrement = ((Item) event.getCaught()).getItemStack().getAmount();

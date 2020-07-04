@@ -46,6 +46,11 @@ public final class CraftingTaskType extends TaskType {
                         .debug("              Quest: §6" + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
+                // Special code to get the incoming object for this task
+                Material incomingObject = event.getRecipe().getResult().getType();
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                        .debug("    Incoming object: §b" + incomingObject.toString());
+
                 for (Task task : quest.getTasksOfType(super.getType())) {
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
@@ -67,11 +72,7 @@ public final class CraftingTaskType extends TaskType {
                         continue;
                     }
 
-                    Material sourceMaterial = event.getRecipe().getResult().getType();
-                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("    Source material: §b" + sourceMaterial.toString());
-
-                    int progressIncrement = getAmountCraftItem(sourceMaterial, event);
+                    int progressIncrement = getAmountCraftItem(incomingObject, event);
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("          Increment: §2" + progressIncrement);
 

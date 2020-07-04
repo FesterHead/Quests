@@ -50,9 +50,10 @@ public final class TamingTaskType extends TaskType {
                         .debug("              Quest: §6" + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-                EntityType sourceMaterial = event.getEntity().getType();
+                // Special code to get the incoming object for this task
+                EntityType incomingObject = event.getEntity().getType();
                 QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                        .debug("    Source material: §b" + sourceMaterial.toString());
+                        .debug("    Incoming object: §b" + incomingObject.toString());
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());

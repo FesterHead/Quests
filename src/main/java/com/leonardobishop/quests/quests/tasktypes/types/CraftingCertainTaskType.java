@@ -56,10 +56,10 @@ public final class CraftingCertainTaskType extends TaskType {
                     Material sourceMaterial = event.getRecipe().getResult().getType();
 
                     if (sourceMaterial.equals(targetMaterial)) {
-                        int progressCrafted = (taskProgress.getProgress() == null) ? 0
+                        int incrementProgress = (taskProgress.getProgress() == null) ? 0
                                 : (int) taskProgress.getProgress();
 
-                        taskProgress.setProgress(progressCrafted + getAmountCraftItem(sourceMaterial, event));
+                        taskProgress.setProgress(incrementProgress + getAmountCraftItem(sourceMaterial, event));
 
                         if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
                             taskProgress.setCompleted(true);

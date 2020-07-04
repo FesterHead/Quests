@@ -1,5 +1,8 @@
 package com.leonardobishop.quests.quests.tasktypes.types;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
 import com.leonardobishop.quests.player.questprogressfile.QuestProgress;
@@ -9,21 +12,21 @@ import com.leonardobishop.quests.quests.Quest;
 import com.leonardobishop.quests.quests.Task;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
-import org.bukkit.entity.Player;
+
+import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerFishEvent;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public final class FishingTaskType extends TaskType {
 
     private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+    private static final String AMOUNT_KEY = "amount";
 
     public FishingTaskType() {
-        super("fishing", "LMBishop", "Catch a set amount of items from the sea.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of fish to be caught."));
+        super("fishing", "LMBishop", "Catch a set amount of fish/items from the sea.");
+        this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of fish/items to catch."));
     }
 
     @Override
@@ -37,41 +40,53 @@ public final class FishingTaskType extends TaskType {
             return;
         }
 
-//        Location hookLocation = event.getHook().getLocation().add(0, -1, 0);
-//        if (!(hookLocation.getBlock().getType() == Material.WATER)) {
-//            return;
-//        }
-        
-        Player player = event.getPlayer();
-
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
+        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
         QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
         for (Quest quest : super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("--------------------");
+                QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                        .debug("              Quest: " + quest.getId());
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+                    int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
+                            : (int) taskProgress.getProgress();
+
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("      Checking task: " + task.getId());
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("               Type: " + task.getType());
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("           Progress: " + taskProgressCounter);
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("          Completed: " + taskProgress.isCompleted());
 
                     if (taskProgress.isCompleted()) {
                         continue;
                     }
 
-                    int catchesNeeded = (int) task.getConfigValue("amount");
+                    Material sourceMaterial = ((Item) event.getCaught()).getItemStack().getType();
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("    Source material: " + sourceMaterial.toString());
 
-                    int progressCatches;
-                    if (taskProgress.getProgress() == null) {
-                        progressCatches = 0;
-                    } else {
-                        progressCatches = (int) taskProgress.getProgress();
-                    }
+                    int progressIncrement = ((Item) event.getCaught()).getItemStack().getAmount();
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("    Increment: " + progressIncrement);
 
-                    taskProgress.setProgress(progressCatches + 1);
+                    taskProgress.setProgress(taskProgressCounter + progressIncrement);
+                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                            .debug("    New progress: " + taskProgress.getProgress().toString());
 
-                    if (((int) taskProgress.getProgress()) >= catchesNeeded) {
+                    if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
                         taskProgress.setCompleted(true);
+                        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("    Completed!");
                     }
+
+                    return;
+
                 }
             }
         }

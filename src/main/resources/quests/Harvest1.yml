@@ -1,51 +1,51 @@
 tasks:
-    task1:
-        type: "harvestcertain"
-        item: WHEAT
-        amount: 3
-        present: "harvest"
-        past: "harvested"
-    task2:
-        type: "harvestcertain"
-        item: CLAY_BALL
-        amount: 3
-        present: "gather"
-        past: "gather"
-    task3:
-        type: "harvestcertain"
-        item: TORCH
-        amount: 3
-        present: "collect"
-        past: "collect"
-    task4:
-        type: "harvestcertain"
-        item: PUMPKIN
-        amount: 3
-        present: "harvest"
-        past: "harvested"
+  task1:
+    type: harvestcertain
+    item: wheat
+    amount: 3
+    present: "harvest"
+    past: "harvested"
+  task2:
+    type: harvestcertain
+    item: clay_ball
+    amount: 3
+    present: "gather"
+    past: "gather"
+  task3:
+    type: harvestcertain
+    item: torch
+    amount: 3
+    present: "collect"
+    past: "collect"
+  task4:
+    type: harvestcertain
+    item: pumpkin
+    amount: 3
+    present: "harvest"
+    past: "harvested"
 display:
-    name: "Harvest"
-    lore-normal:
-        - ""
-        - "&7This quest requires you to:"
-        - "&7 - {task1:present} {task1:item}s"
-        - "&7 - {task2:present} {task2:item}s"
-        - "&7 - {task3:present} {task3:item}s"
-        - "&7 - {task4:present} {task4:item}s"
-    lore-started:
-        - ""
-        - "&7Status:"
-        - "&7 - {task1:progress}/{task1:amount} {task1:item}s {task1:past}."
-        - "&7 - {task2:progress}/{task2:amount} {task2:item}s {task2:past}."
-        - "&7 - {task3:progress}/{task3:amount} {task3:item}s {task3:past}."
-        - "&7 - {task4:progress}/{task4:amount} {task4:item}s {task4:past}."
-    type: "IRON_HOE"
-rewards:
+  name: "Harvest"
+  lore-normal:
     - ""
+    - "&7This quest requires you to:"
+    - "&7 - {task1:present} {task1:item}s"
+    - "&7 - {task2:present} {task2:item}s"
+    - "&7 - {task3:present} {task3:item}s"
+    - "&7 - {task4:present} {task4:item}s"
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "&7 - {task1:progress}/{task1:amount} {task1:item}s {task1:past}."
+    - "&7 - {task2:progress}/{task2:amount} {task2:item}s {task2:past}."
+    - "&7 - {task3:progress}/{task3:amount} {task3:item}s {task3:past}."
+    - "&7 - {task4:progress}/{task4:amount} {task4:item}s {task4:past}."
+  type: IRON_HOE
+rewards:
+  - ""
 options:
-    category: "examples"
-    repeatable: true
-    cooldown:
-        enabled: false
-        time: 1440
-    sort-order: 13
+  category: "examples"
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 13

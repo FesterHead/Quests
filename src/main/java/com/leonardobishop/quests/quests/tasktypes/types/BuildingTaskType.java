@@ -18,53 +18,53 @@ import java.util.List;
 
 public final class BuildingTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public BuildingTaskType() {
-        super("blockplace", "LMBishop", "Place a set amount of blocks.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of blocks to be placed."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
-    }
+  public BuildingTaskType() {
+    super("blockplace", "LMBishop", "Place a set amount of blocks.");
+    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of blocks to be placed."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onBlockPlace(BlockPlaceEvent event) {
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onBlockPlace(BlockPlaceEvent event) {
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
 
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
 
-                    int brokenBlocksNeeded = (int) task.getConfigValue("amount");
+          int brokenBlocksNeeded = (int) task.getConfigValue("amount");
 
-                    int progressBlocksBroken;
-                    if (taskProgress.getProgress() == null) {
-                        progressBlocksBroken = 0;
-                    } else {
-                        progressBlocksBroken = (int) taskProgress.getProgress();
-                    }
+          int progressBlocksBroken;
+          if (taskProgress.getProgress() == null) {
+            progressBlocksBroken = 0;
+          } else {
+            progressBlocksBroken = (int) taskProgress.getProgress();
+          }
 
-                    taskProgress.setProgress(progressBlocksBroken + 1);
+          taskProgress.setProgress(progressBlocksBroken + 1);
 
-                    if (((int) taskProgress.getProgress()) >= brokenBlocksNeeded) {
-                        taskProgress.setCompleted(true);
-                    }
-                }
-            }
+          if (((int) taskProgress.getProgress()) >= brokenBlocksNeeded) {
+            taskProgress.setCompleted(true);
+          }
         }
+      }
     }
+  }
 
 }

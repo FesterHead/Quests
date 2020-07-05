@@ -20,18 +20,11 @@ import java.util.*;
 public class ItemGetterLatest implements ItemGetter {
 
     /*
-     supporting:
-      - name
-      - material
-      - lore
-      - enchantments (NamespacedKey)
-      - itemflags
-      - unbreakable
-      - attribute modifier
-      - custom model data
-
-      requires at least API version 1.14
-      */
+     * supporting: - name - material - lore - enchantments (NamespacedKey) -
+     * itemflags - unbreakable - attribute modifier - custom model data
+     * 
+     * requires at least API version 1.14
+     */
     @Override
     public ItemStack getItem(String path, ConfigurationSection config, Quests plugin, ItemGetter.Filter... excludes) {
         if (path != null && !path.equals("")) {
@@ -87,7 +80,8 @@ public class ItemGetterLatest implements ItemGetter {
                         }
                     }
 
-                    if (attribute == null) continue;
+                    if (attribute == null)
+                        continue;
 
                     Map<?, ?> configurationSection = (Map<?, ?>) attr.get("modifier");
 
@@ -176,7 +170,8 @@ public class ItemGetterLatest implements ItemGetter {
                 for (String key : config.getStringList(path + "enchantments")) {
                     String[] split = key.split(":");
                     if (split.length < 2) {
-                        plugin.getQuestsLogger().debug("Enchantment does not follow format {namespace}:{name}:{level} : " + key);
+                        plugin.getQuestsLogger()
+                                .debug("Enchantment does not follow format {namespace}:{name}:{level} : " + key);
                         continue;
                     }
                     String namespace = split[0];
@@ -221,7 +216,7 @@ public class ItemGetterLatest implements ItemGetter {
     public ItemStack getItemStack(String material, Quests plugin) {
         Material type;
         try {
-            type = Material.valueOf(material);
+            type = Material.valueOf(material.toUpperCase());
         } catch (Exception e) {
             plugin.getQuestsLogger().debug("Unrecognised material: " + material);
             type = Material.STONE;

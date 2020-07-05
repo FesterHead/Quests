@@ -1,35 +1,35 @@
 tasks:
-    task1:
-        type: "breedingcertain"
-        item: CHICKEN
-        amount: 3
-        present: "breed"
-        past: "bred"
-    task2:
-        type: "breedingcertain"
-        item: COW
-        amount: 3
-        present: "breed"
-        past: "bred"
+  task1:
+    type: breedingcertain
+    item: chicken
+    amount: 3
+    present: "breed"
+    past: "bred"
+  task2:
+    type: breedingcertain
+    item: cow
+    amount: 3
+    present: "breed"
+    past: "bred"
 display:
-    name: "Breeding"
-    lore-normal:
-        - ""
-        - "&7This quest requires you to:"
-        - "&7 - {task1:present} {task1:item}s"
-        - "&7 - {task2:present} {task2:item}s"
-    lore-started:
-        - ""
-        - "&7Status:"
-        - "&7 - {task1:progress}/{task1:amount} {task1:item}s {task1:past}."
-        - "&7 - {task2:progress}/{task2:amount} {task2:item}s {task2:past}."
-    type: "WHEAT"
-rewards:
+  name: "Breeding"
+  lore-normal:
     - ""
+    - "&7This quest requires you to:"
+    - "&7 - {task1:present} {task1:item}s"
+    - "&7 - {task2:present} {task2:item}s"
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "&7 - {task1:progress}/{task1:amount} {task1:item}s {task1:past}."
+    - "&7 - {task2:progress}/{task2:amount} {task2:item}s {task2:past}."
+  type: wheat
+rewards:
+  - ""
 options:
-    category: "examples"
-    repeatable: true
-    cooldown:
-        enabled: false
-        time: 1440
-    sort-order: 7
+  category: "examples"
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 7

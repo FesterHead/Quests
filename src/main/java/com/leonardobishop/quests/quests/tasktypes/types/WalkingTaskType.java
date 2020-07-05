@@ -19,60 +19,60 @@ import java.util.List;
 
 public final class WalkingTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public WalkingTaskType() {
-        super("walking", "LMBishop", "Walk a set distance.");
-        this.creatorConfigValues.add(new ConfigValue("distance", true, "Amount of meters (blocks) to be travelled."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public WalkingTaskType() {
+    super("walking", "LMBishop", "Walk a set distance.");
+    this.creatorConfigValues.add(new ConfigValue("distance", true, "Amount of meters (blocks) to be travelled."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onMove(PlayerMoveEvent event) {
+    if (event.getFrom().getBlockX() == event.getTo().getBlockX()
+        && event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
+      return;
     }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+    Player player = event.getPlayer();
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onMove(PlayerMoveEvent event) {
-        if (event.getFrom().getBlockX() == event.getTo().getBlockX()
-                && event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
-            return;
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
+
+          int distanceNeeded = (int) task.getConfigValue("distance");
+
+          int progressDistance;
+          if (taskProgress.getProgress() == null) {
+            progressDistance = 0;
+          } else {
+            progressDistance = (int) taskProgress.getProgress();
+          }
+
+          taskProgress.setProgress(progressDistance + 1);
+
+          if (((int) taskProgress.getProgress()) >= distanceNeeded) {
+            taskProgress.setCompleted(true);
+          }
         }
-
-        Player player = event.getPlayer();
-
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
-
-                    int distanceNeeded = (int) task.getConfigValue("distance");
-
-                    int progressDistance;
-                    if (taskProgress.getProgress() == null) {
-                        progressDistance = 0;
-                    } else {
-                        progressDistance = (int) taskProgress.getProgress();
-                    }
-
-                    taskProgress.setProgress(progressDistance + 1);
-
-                    if (((int) taskProgress.getProgress()) >= distanceNeeded) {
-                        taskProgress.setCompleted(true);
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 
 }

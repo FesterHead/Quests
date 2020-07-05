@@ -19,51 +19,49 @@ import java.util.List;
 
 public final class CitizensInteractTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public CitizensInteractTaskType() {
-        super("citizens_interact", "LMBishop", "Interact with an NPC to complete the quest.");
-        this.creatorConfigValues.add(new ConfigValue("npc-name", true, "Name of the NPC."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public CitizensInteractTaskType() {
+    super("citizens_interact", "LMBishop", "Interact with an NPC to complete the quest.");
+    this.creatorConfigValues.add(new ConfigValue("npc-name", true, "Name of the NPC."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onNPCClick(NPCRightClickEvent event) {
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getClicker().getUniqueId(), true);
+    if (qPlayer == null) {
+      return;
     }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onNPCClick(NPCRightClickEvent event) {
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getClicker().getUniqueId(), true);
-        if (qPlayer == null) {
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          if (!ChatColor
+              .stripColor(ChatColor.translateAlternateColorCodes('&', String.valueOf(task.getConfigValue("npc-name"))))
+              .equals(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', event.getNPC().getName())))) {
             return;
+          }
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
+
+          taskProgress.setCompleted(true);
         }
-
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    if (!ChatColor
-                            .stripColor(ChatColor.translateAlternateColorCodes('&',
-                                    String.valueOf(task.getConfigValue("npc-name"))))
-                            .equals(ChatColor.stripColor(
-                                    ChatColor.translateAlternateColorCodes('&', event.getNPC().getName())))) {
-                        return;
-                    }
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
-
-                    taskProgress.setCompleted(true);
-                }
-            }
-        }
+      }
     }
+  }
 
 }

@@ -19,60 +19,60 @@ import java.util.List;
 
 public final class DealDamageTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public DealDamageTaskType() {
-        super("dealdamage", "toasted", "Deal a certain amount of damage.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of damage you need to deal"));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public DealDamageTaskType() {
+    super("dealdamage", "toasted", "Deal a certain amount of damage.");
+    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of damage you need to deal"));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onDamage(EntityDamageByEntityEvent e) {
+
+    if (!(e.getDamager() instanceof Player)) {
+      return;
     }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+    Player player = (Player) e.getDamager();
+    double damage = e.getDamage();
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onDamage(EntityDamageByEntityEvent e) {
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
-        if (!(e.getDamager() instanceof Player)) {
-            return;
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
+
+          double progressDamage;
+          int damageNeeded = (int) task.getConfigValue("amount");
+
+          if (taskProgress.getProgress() == null) {
+            progressDamage = 0.0;
+          } else {
+            progressDamage = (double) taskProgress.getProgress();
+          }
+
+          taskProgress.setProgress(progressDamage + damage);
+
+          if (((double) taskProgress.getProgress()) >= (double) damageNeeded) {
+            taskProgress.setCompleted(true);
+          }
         }
-
-        Player player = (Player) e.getDamager();
-        double damage = e.getDamage();
-
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
-
-                    double progressDamage;
-                    int damageNeeded = (int) task.getConfigValue("amount");
-
-                    if (taskProgress.getProgress() == null) {
-                        progressDamage = 0.0;
-                    } else {
-                        progressDamage = (double) taskProgress.getProgress();
-                    }
-
-                    taskProgress.setProgress(progressDamage + damage);
-
-                    if (((double) taskProgress.getProgress()) >= (double) damageNeeded) {
-                        taskProgress.setCompleted(true);
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 }

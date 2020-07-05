@@ -1,26 +1,26 @@
 tasks:
-    task1:
-        type: "fishing"
-        amount: 4
-        present: "catch"
-        past: "caught"
+  task1:
+    type: fishing
+    amount: 4
+    present: "catch"
+    past: "caught"
 display:
-    name: "Fishing 2"
-    lore-normal:
-        - ""
-        - "&7This quest requires you to:"
-        - "&7 - {task1:present} items"
-    lore-started:
-        - ""
-        - "&7Status:"
-        - "&7 - {task1:progress}/{task1:amount} items {task1:past}."
-    type: "FISHING_ROD"
-rewards:
+  name: "Fishing 2"
+  lore-normal:
     - ""
+    - "&7This quest requires you to:"
+    - "&7 - {task1:present} items"
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "&7 - {task1:progress}/{task1:amount} items {task1:past}."
+  type: fishing_rod
+rewards:
+  - ""
 options:
-    category: "examples"
-    repeatable: true
-    cooldown:
-        enabled: false
-        time: 1440
-    sort-order: 12
+  category: "examples"
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 12

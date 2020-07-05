@@ -27,77 +27,77 @@ import java.util.UUID;
 
 public final class BrewingTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private HashMap<Location, UUID> brewingStands = new HashMap<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private HashMap<Location, UUID> brewingStands = new HashMap<>();
 
-    public BrewingTaskType() {
-        super("brewing", "LMBishop", "Brew a potion.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of potions to be brewed."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public BrewingTaskType() {
+    super("brewing", "LMBishop", "Brew a potion.");
+    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of potions to be brewed."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onBlockPlace(PlayerInteractEvent event) {
+    if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+      if (event.getClickedBlock().getType() == Material.BREWING_STAND) {
+        brewingStands.put(event.getClickedBlock().getLocation(), event.getPlayer().getUniqueId());
+      }
     }
+  }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onBlockPlace(BrewEvent event) {
+    UUID uuid;
+    if ((uuid = brewingStands.get(event.getBlock().getLocation())) != null) {
+      Player player = Bukkit.getPlayer(uuid);
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onBlockPlace(PlayerInteractEvent event) {
-        if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (event.getClickedBlock().getType() == Material.BREWING_STAND) {
-                brewingStands.put(event.getClickedBlock().getLocation(), event.getPlayer().getUniqueId());
+      if (player == null) {
+        return;
+      }
+
+      QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
+      QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+
+      for (Quest quest : super.getRegisteredQuests()) {
+        if (questProgressFile.hasStartedQuest(quest)) {
+          QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+          for (Task task : quest.getTasksOfType(super.getType())) {
+            TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
+            if (taskProgress.isCompleted()) {
+              continue;
             }
+
+            int potionsNeeded = (int) task.getConfigValue("amount");
+
+            int progress;
+            if (taskProgress.getProgress() == null) {
+              progress = 0;
+            } else {
+              progress = (int) taskProgress.getProgress();
+            }
+
+            ItemStack potion1 = event.getContents().getItem(0);
+            ItemStack potion2 = event.getContents().getItem(1);
+            ItemStack potion3 = event.getContents().getItem(2);
+
+            taskProgress.setProgress(
+                progress + (potion1 == null ? 0 : 1) + (potion2 == null ? 0 : 1) + (potion3 == null ? 0 : 1));
+
+            if (((int) taskProgress.getProgress()) >= potionsNeeded) {
+              taskProgress.setCompleted(true);
+            }
+          }
         }
+      }
     }
-
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onBlockPlace(BrewEvent event) {
-        UUID uuid;
-        if ((uuid = brewingStands.get(event.getBlock().getLocation())) != null) {
-            Player player = Bukkit.getPlayer(uuid);
-
-            if (player == null) {
-                return;
-            }
-
-            QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
-            QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-
-            for (Quest quest : super.getRegisteredQuests()) {
-                if (questProgressFile.hasStartedQuest(quest)) {
-                    QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-
-                    for (Task task : quest.getTasksOfType(super.getType())) {
-                        TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-
-                        if (taskProgress.isCompleted()) {
-                            continue;
-                        }
-
-                        int potionsNeeded = (int) task.getConfigValue("amount");
-
-                        int progress;
-                        if (taskProgress.getProgress() == null) {
-                            progress = 0;
-                        } else {
-                            progress = (int) taskProgress.getProgress();
-                        }
-
-                        ItemStack potion1 = event.getContents().getItem(0);
-                        ItemStack potion2 = event.getContents().getItem(1);
-                        ItemStack potion3 = event.getContents().getItem(2);
-
-                        taskProgress.setProgress(progress + (potion1 == null ? 0 : 1) + (potion2 == null ? 0 : 1)
-                                + (potion3 == null ? 0 : 1));
-
-                        if (((int) taskProgress.getProgress()) >= potionsNeeded) {
-                            taskProgress.setCompleted(true);
-                        }
-                    }
-                }
-            }
-        }
-    }
+  }
 
 }

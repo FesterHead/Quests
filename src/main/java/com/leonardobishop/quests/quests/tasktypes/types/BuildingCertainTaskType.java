@@ -21,111 +21,111 @@ import java.util.List;
 
 public final class BuildingCertainTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public BuildingCertainTaskType() {
-        super("blockplacecertain", "LMBishop", "Place a set amount of a specific block.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of blocks to be placed."));
-        this.creatorConfigValues.add(new ConfigValue("block", true, "Name or ID of block."));
-        this.creatorConfigValues.add(new ConfigValue("data", false, "Data code for block."));
-        this.creatorConfigValues.add(new ConfigValue("reverse-if-broken", false,
-                "Will reverse progression if block of same type is broken."));
-        this.creatorConfigValues.add(new ConfigValue("use-similar-blocks", false,
-                "(Deprecated) If true, this will ignore orientation of doors, logs etc."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public BuildingCertainTaskType() {
+    super("blockplacecertain", "LMBishop", "Place a set amount of a specific block.");
+    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of blocks to be placed."));
+    this.creatorConfigValues.add(new ConfigValue("block", true, "Name or ID of block."));
+    this.creatorConfigValues.add(new ConfigValue("data", false, "Data code for block."));
+    this.creatorConfigValues
+        .add(new ConfigValue("reverse-if-broken", false, "Will reverse progression if block of same type is broken."));
+    this.creatorConfigValues.add(new ConfigValue("use-similar-blocks", false,
+        "(Deprecated) If true, this will ignore orientation of doors, logs etc."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onBlockPlace(BlockPlaceEvent event) {
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
+
+          if (matchBlock(task, event.getBlock())) {
+            increment(task, taskProgress, 1);
+          }
+        }
+      }
     }
+  }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+  // subtract if enabled
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onBlockBreak(BlockBreakEvent event) {
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onBlockPlace(BlockPlaceEvent event) {
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
 
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
 
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
-
-                    if (matchBlock(task, event.getBlock())) {
-                        increment(task, taskProgress, 1);
-                    }
-                }
+          if (task.getConfigValue("reverse-if-placed") != null
+              && ((boolean) task.getConfigValue("reverse-if-placed"))) {
+            if (matchBlock(task, event.getBlock())) {
+              increment(task, taskProgress, -1);
             }
+          }
         }
+      }
+    }
+  }
+
+  @SuppressWarnings("deprecation")
+  private boolean matchBlock(Task task, Block block) {
+    Material material;
+    Object configBlock = task.getConfigValue("block");
+    Object configData = task.getConfigValue("data");
+    Object configSimilarBlocks = task.getConfigValue("use-similar-blocks");
+
+    material = Material.getMaterial(String.valueOf(configBlock));
+
+    Material blockType = block.getType();
+    short blockData = block.getData();
+
+    if (blockType.equals(material)) {
+      return configData == null || (((int) blockData) == ((int) configData));
+    }
+    return false;
+  }
+
+  private void increment(Task task, TaskProgress taskProgress, int amount) {
+    int brokenBlocksNeeded = (int) task.getConfigValue("amount");
+
+    int progressBlocksBroken;
+    if (taskProgress.getProgress() == null) {
+      progressBlocksBroken = 0;
+    } else {
+      progressBlocksBroken = (int) taskProgress.getProgress();
     }
 
-    // subtract if enabled
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onBlockBreak(BlockBreakEvent event) {
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+    taskProgress.setProgress(progressBlocksBroken + amount);
 
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
-
-                    if (task.getConfigValue("reverse-if-placed") != null
-                            && ((boolean) task.getConfigValue("reverse-if-placed"))) {
-                        if (matchBlock(task, event.getBlock())) {
-                            increment(task, taskProgress, -1);
-                        }
-                    }
-                }
-            }
-        }
+    if (((int) taskProgress.getProgress()) >= brokenBlocksNeeded) {
+      taskProgress.setCompleted(true);
     }
-
-    @SuppressWarnings("deprecation")
-    private boolean matchBlock(Task task, Block block) {
-        Material material;
-        Object configBlock = task.getConfigValue("block");
-        Object configData = task.getConfigValue("data");
-        Object configSimilarBlocks = task.getConfigValue("use-similar-blocks");
-
-        material = Material.getMaterial(String.valueOf(configBlock));
-
-        Material blockType = block.getType();
-        short blockData = block.getData();
-
-        if (blockType.equals(material)) {
-            return configData == null || (((int) blockData) == ((int) configData));
-        }
-        return false;
-    }
-
-    private void increment(Task task, TaskProgress taskProgress, int amount) {
-        int brokenBlocksNeeded = (int) task.getConfigValue("amount");
-
-        int progressBlocksBroken;
-        if (taskProgress.getProgress() == null) {
-            progressBlocksBroken = 0;
-        } else {
-            progressBlocksBroken = (int) taskProgress.getProgress();
-        }
-
-        taskProgress.setProgress(progressBlocksBroken + amount);
-
-        if (((int) taskProgress.getProgress()) >= brokenBlocksNeeded) {
-            taskProgress.setCompleted(true);
-        }
-    }
+  }
 
 }

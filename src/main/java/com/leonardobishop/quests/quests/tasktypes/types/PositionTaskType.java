@@ -22,72 +22,72 @@ import java.util.List;
 
 public final class PositionTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public PositionTaskType() {
-        super("position", "LMBishop", "Reach a set of co-ordinates.");
-        this.creatorConfigValues.add(new ConfigValue("x", true, "X position."));
-        this.creatorConfigValues.add(new ConfigValue("y", true, "Y position."));
-        this.creatorConfigValues.add(new ConfigValue("z", true, "Z position."));
-        this.creatorConfigValues.add(new ConfigValue("world", true, "Name of world."));
-        this.creatorConfigValues.add(
-                new ConfigValue("distance-padding", false, "Padding zone in meters/blocks (default/unspecified = 0)."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public PositionTaskType() {
+    super("position", "LMBishop", "Reach a set of co-ordinates.");
+    this.creatorConfigValues.add(new ConfigValue("x", true, "X position."));
+    this.creatorConfigValues.add(new ConfigValue("y", true, "Y position."));
+    this.creatorConfigValues.add(new ConfigValue("z", true, "Z position."));
+    this.creatorConfigValues.add(new ConfigValue("world", true, "Name of world."));
+    this.creatorConfigValues
+        .add(new ConfigValue("distance-padding", false, "Padding zone in meters/blocks (default/unspecified = 0)."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onMove(PlayerMoveEvent event) {
+    if (event.getFrom().getBlockX() == event.getTo().getBlockX()
+        && event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
+      return;
     }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+    Player player = event.getPlayer();
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onMove(PlayerMoveEvent event) {
-        if (event.getFrom().getBlockX() == event.getTo().getBlockX()
-                && event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
+
+          int x = (int) task.getConfigValue("x");
+          int y = (int) task.getConfigValue("y");
+          int z = (int) task.getConfigValue("z");
+          String worldString = (String) task.getConfigValue("world");
+          int padding = 0;
+          if (task.getConfigValue("distance-padding") != null) {
+            padding = (int) task.getConfigValue("distance-padding");
+          }
+          World world = Bukkit.getWorld(worldString);
+          if (world == null) {
             return;
+          }
+
+          Location location = new Location(world, x, y, z);
+          if (player.getWorld().equals(world) && player.getLocation().getBlockX() == location.getBlockX()
+              && player.getLocation().getBlockY() == location.getBlockY()
+              && player.getLocation().getBlockZ() == location.getBlockZ()) {
+            taskProgress.setCompleted(true);
+          } else if (player.getWorld().equals(world) && player.getLocation().distance(location) < padding) {
+            taskProgress.setCompleted(true);
+          }
         }
-
-        Player player = event.getPlayer();
-
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
-
-                    int x = (int) task.getConfigValue("x");
-                    int y = (int) task.getConfigValue("y");
-                    int z = (int) task.getConfigValue("z");
-                    String worldString = (String) task.getConfigValue("world");
-                    int padding = 0;
-                    if (task.getConfigValue("distance-padding") != null) {
-                        padding = (int) task.getConfigValue("distance-padding");
-                    }
-                    World world = Bukkit.getWorld(worldString);
-                    if (world == null) {
-                        return;
-                    }
-
-                    Location location = new Location(world, x, y, z);
-                    if (player.getWorld().equals(world) && player.getLocation().getBlockX() == location.getBlockX()
-                            && player.getLocation().getBlockY() == location.getBlockY()
-                            && player.getLocation().getBlockZ() == location.getBlockZ()) {
-                        taskProgress.setCompleted(true);
-                    } else if (player.getWorld().equals(world) && player.getLocation().distance(location) < padding) {
-                        taskProgress.setCompleted(true);
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 
 }

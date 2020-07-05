@@ -19,54 +19,54 @@ import java.util.List;
 
 public final class EnchantingTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public EnchantingTaskType() {
-        super("enchanting", "toasted", "Enchant a certain amount of items.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of items you need to enchant."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
-    }
+  public EnchantingTaskType() {
+    super("enchanting", "toasted", "Enchant a certain amount of items.");
+    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of items you need to enchant."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onEnchant(EnchantItemEvent e) {
-        Player player = e.getEnchanter();
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onEnchant(EnchantItemEvent e) {
+    Player player = e.getEnchanter();
 
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
 
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
 
-                    int enchantsNeeded = (int) task.getConfigValue("amount");
+          int enchantsNeeded = (int) task.getConfigValue("amount");
 
-                    int progressEnchant;
-                    if (taskProgress.getProgress() == null) {
-                        progressEnchant = 0;
-                    } else {
-                        progressEnchant = (int) taskProgress.getProgress();
-                    }
+          int progressEnchant;
+          if (taskProgress.getProgress() == null) {
+            progressEnchant = 0;
+          } else {
+            progressEnchant = (int) taskProgress.getProgress();
+          }
 
-                    taskProgress.setProgress(progressEnchant + 1);
+          taskProgress.setProgress(progressEnchant + 1);
 
-                    if (((int) taskProgress.getProgress()) >= enchantsNeeded) {
-                        taskProgress.setCompleted(true);
-                    }
-                }
-            }
+          if (((int) taskProgress.getProgress()) >= enchantsNeeded) {
+            taskProgress.setCompleted(true);
+          }
         }
+      }
     }
+  }
 }

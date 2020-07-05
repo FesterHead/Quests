@@ -22,88 +22,88 @@ import java.util.List;
 
 public final class MobkillingCertainTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public MobkillingCertainTaskType() {
-        super("mobkillingcertain", "LMBishop", "Kill a set amount of a specific entity type.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of mobs to be killed."));
-        this.creatorConfigValues.add(new ConfigValue("mob", true, "Name of mob."));
-        this.creatorConfigValues.add(
-                new ConfigValue("name", false, "Only allow a specific name for mob (unspecified = any name allowed)."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public MobkillingCertainTaskType() {
+    super("mobkillingcertain", "LMBishop", "Kill a set amount of a specific entity type.");
+    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of mobs to be killed."));
+    this.creatorConfigValues.add(new ConfigValue("mob", true, "Name of mob."));
+    this.creatorConfigValues
+        .add(new ConfigValue("name", false, "Only allow a specific name for mob (unspecified = any name allowed)."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onMobKill(EntityDeathEvent event) {
+    Player killer = event.getEntity().getKiller();
+    Entity mob = event.getEntity();
+
+    if (mob == null || mob instanceof Player) {
+      return;
     }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
+    if (killer == null) {
+      return;
     }
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onMobKill(EntityDeathEvent event) {
-        Player killer = event.getEntity().getKiller();
-        Entity mob = event.getEntity();
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(killer.getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
-        if (mob == null || mob instanceof Player) {
-            return;
-        }
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-        if (killer == null) {
-            return;
-        }
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
 
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(killer.getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
 
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+          String configEntity = (String) task.getConfigValue("mob");
+          String configName = (String) task.getConfigValue("name");
 
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+          EntityType entity;
+          try {
+            entity = EntityType.valueOf(configEntity);
+          } catch (IllegalArgumentException ex) {
+            continue;
+          }
 
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
-
-                    String configEntity = (String) task.getConfigValue("mob");
-                    String configName = (String) task.getConfigValue("name");
-
-                    EntityType entity;
-                    try {
-                        entity = EntityType.valueOf(configEntity);
-                    } catch (IllegalArgumentException ex) {
-                        continue;
-                    }
-
-                    if (configName != null) {
-                        configName = ChatColor.translateAlternateColorCodes('&', configName);
-                        if (mob.getCustomName() == null || !mob.getCustomName().equals(configName)) {
-                            return;
-                        }
-                    }
-
-                    if (mob.getType() != entity) {
-                        continue;
-                    }
-
-                    int mobKillsNeeded = (int) task.getConfigValue("amount");
-
-                    int progressKills;
-                    if (taskProgress.getProgress() == null) {
-                        progressKills = 0;
-                    } else {
-                        progressKills = (int) taskProgress.getProgress();
-                    }
-
-                    taskProgress.setProgress(progressKills + 1);
-
-                    if (((int) taskProgress.getProgress()) >= mobKillsNeeded) {
-                        taskProgress.setCompleted(true);
-                    }
-                }
+          if (configName != null) {
+            configName = ChatColor.translateAlternateColorCodes('&', configName);
+            if (mob.getCustomName() == null || !mob.getCustomName().equals(configName)) {
+              return;
             }
+          }
+
+          if (mob.getType() != entity) {
+            continue;
+          }
+
+          int mobKillsNeeded = (int) task.getConfigValue("amount");
+
+          int progressKills;
+          if (taskProgress.getProgress() == null) {
+            progressKills = 0;
+          } else {
+            progressKills = (int) taskProgress.getProgress();
+          }
+
+          taskProgress.setProgress(progressKills + 1);
+
+          if (((int) taskProgress.getProgress()) >= mobKillsNeeded) {
+            taskProgress.setCompleted(true);
+          }
         }
+      }
     }
+  }
 
 }

@@ -20,73 +20,73 @@ import java.util.List;
 
 public final class MythicMobsKillingType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public MythicMobsKillingType() {
-        super("mythicmobs_killing", "LMBishop", "Kill a set amount of a MythicMobs entity.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of mobs to be killed."));
-        this.creatorConfigValues.add(new ConfigValue("name", true, "The 'internal name' of the MythicMob."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public MythicMobsKillingType() {
+    super("mythicmobs_killing", "LMBishop", "Kill a set amount of a MythicMobs entity.");
+    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of mobs to be killed."));
+    this.creatorConfigValues.add(new ConfigValue("name", true, "The 'internal name' of the MythicMob."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onMobKill(MythicMobDeathEvent event) {
+    Entity killer = event.getKiller();
+    Entity mob = event.getEntity();
+
+    if (mob == null || mob instanceof Player) {
+      return;
     }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
+    if (killer == null) {
+      return;
     }
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onMobKill(MythicMobDeathEvent event) {
-        Entity killer = event.getKiller();
-        Entity mob = event.getEntity();
+    String mobName = event.getMobType().getInternalName();
 
-        if (mob == null || mob instanceof Player) {
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(killer.getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
+
+          String configName = (String) task.getConfigValue("name");
+
+          if (!mobName.equals(configName)) {
             return;
+          }
+
+          int mobKillsNeeded = (int) task.getConfigValue("amount");
+
+          int progressKills;
+          if (taskProgress.getProgress() == null) {
+            progressKills = 0;
+          } else {
+            progressKills = (int) taskProgress.getProgress();
+          }
+
+          taskProgress.setProgress(progressKills + 1);
+
+          if (((int) taskProgress.getProgress()) >= mobKillsNeeded) {
+            taskProgress.setCompleted(true);
+          }
         }
-
-        if (killer == null) {
-            return;
-        }
-
-        String mobName = event.getMobType().getInternalName();
-
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(killer.getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
-
-                    String configName = (String) task.getConfigValue("name");
-
-                    if (!mobName.equals(configName)) {
-                        return;
-                    }
-
-                    int mobKillsNeeded = (int) task.getConfigValue("amount");
-
-                    int progressKills;
-                    if (taskProgress.getProgress() == null) {
-                        progressKills = 0;
-                    } else {
-                        progressKills = (int) taskProgress.getProgress();
-                    }
-
-                    taskProgress.setProgress(progressKills + 1);
-
-                    if (((int) taskProgress.getProgress()) >= mobKillsNeeded) {
-                        taskProgress.setCompleted(true);
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 
 }

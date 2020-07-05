@@ -21,61 +21,60 @@ import java.util.List;
 
 public final class MilkingTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public MilkingTaskType() {
-        super("milking", "LMBishop", "Milk a set amount of cows.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of cows to be milked."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public MilkingTaskType() {
+    super("milking", "LMBishop", "Milk a set amount of cows.");
+    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of cows to be milked."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @SuppressWarnings("deprecation")
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onMilk(PlayerInteractEntityEvent event) {
+    if (!(event.getRightClicked() instanceof Cow) || (event.getPlayer().getItemInHand().getType() != Material.BUCKET)) {
+      return;
     }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+    Player player = event.getPlayer();
 
-    @SuppressWarnings("deprecation")
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onMilk(PlayerInteractEntityEvent event) {
-        if (!(event.getRightClicked() instanceof Cow)
-                || (event.getPlayer().getItemInHand().getType() != Material.BUCKET)) {
-            return;
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
+
+          int cowsNeeded = (int) task.getConfigValue("amount");
+
+          int progressMilked;
+          if (taskProgress.getProgress() == null) {
+            progressMilked = 0;
+          } else {
+            progressMilked = (int) taskProgress.getProgress();
+          }
+
+          taskProgress.setProgress(progressMilked + 1);
+
+          if (((int) taskProgress.getProgress()) >= cowsNeeded) {
+            taskProgress.setCompleted(true);
+          }
         }
-
-        Player player = event.getPlayer();
-
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
-
-                    int cowsNeeded = (int) task.getConfigValue("amount");
-
-                    int progressMilked;
-                    if (taskProgress.getProgress() == null) {
-                        progressMilked = 0;
-                    } else {
-                        progressMilked = (int) taskProgress.getProgress();
-                    }
-
-                    taskProgress.setProgress(progressMilked + 1);
-
-                    if (((int) taskProgress.getProgress()) >= cowsNeeded) {
-                        taskProgress.setCompleted(true);
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 
 }

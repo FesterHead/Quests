@@ -20,73 +20,73 @@ import java.util.List;
 
 public final class FarmingTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public FarmingTaskType() {
-        super("farming", "LMBishop", "Break a set amount of a crop.");
-        this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of crops to be broken."));
-        this.creatorConfigValues.add(new ConfigValue("crop", true, "Name or ID of crop."));
-        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  public FarmingTaskType() {
+    super("farming", "LMBishop", "Break a set amount of a crop.");
+    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of crops to be broken."));
+    this.creatorConfigValues.add(new ConfigValue("crop", true, "Name or ID of crop."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  @SuppressWarnings("deprecation")
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onBlockBreak(BlockBreakEvent event) {
+    // TODO: finish this
+    if (!(event.getBlock().getState() instanceof Crops)) {
+      return;
     }
+    Crops crop = (Crops) event.getBlock().getState();
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
-    @SuppressWarnings("deprecation")
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onBlockBreak(BlockBreakEvent event) {
-        // TODO: finish this
-        if (!(event.getBlock().getState() instanceof Crops)) {
-            return;
-        }
-        Crops crop = (Crops) event.getBlock().getState();
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
 
-        for (Quest quest : super.getRegisteredQuests()) {
-            if (questProgressFile.hasStartedQuest(quest)) {
-                QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+          if (taskProgress.isCompleted()) {
+            continue;
+          }
 
-                for (Task task : quest.getTasksOfType(super.getType())) {
-                    TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+          Material material;
+          Object configBlock = task.getConfigValue("block");
+          Object configData = task.getConfigValue("data");
 
-                    if (taskProgress.isCompleted()) {
-                        continue;
-                    }
+          material = Material.matchMaterial(String.valueOf(configBlock));
 
-                    Material material;
-                    Object configBlock = task.getConfigValue("block");
-                    Object configData = task.getConfigValue("data");
+          if (material != null && event.getBlock().getType().equals(material)) {
 
-                    material = Material.matchMaterial(String.valueOf(configBlock));
-
-                    if (material != null && event.getBlock().getType().equals(material)) {
-
-                        if (configData != null && (((int) event.getBlock().getData()) != ((int) configData))) {
-                            continue;
-                        }
-                        int brokenBlocksNeeded = (int) task.getConfigValue("amount");
-
-                        int progressBlocksBroken;
-                        if (taskProgress.getProgress() == null) {
-                            progressBlocksBroken = 0;
-                        } else {
-                            progressBlocksBroken = (int) taskProgress.getProgress();
-                        }
-
-                        taskProgress.setProgress(progressBlocksBroken + 1);
-
-                        if (((int) taskProgress.getProgress()) >= brokenBlocksNeeded) {
-                            taskProgress.setCompleted(true);
-                        }
-                    }
-                }
+            if (configData != null && (((int) event.getBlock().getData()) != ((int) configData))) {
+              continue;
             }
+            int brokenBlocksNeeded = (int) task.getConfigValue("amount");
+
+            int progressBlocksBroken;
+            if (taskProgress.getProgress() == null) {
+              progressBlocksBroken = 0;
+            } else {
+              progressBlocksBroken = (int) taskProgress.getProgress();
+            }
+
+            taskProgress.setProgress(progressBlocksBroken + 1);
+
+            if (((int) taskProgress.getProgress()) >= brokenBlocksNeeded) {
+              taskProgress.setCompleted(true);
+            }
+          }
         }
+      }
     }
+  }
 
 }

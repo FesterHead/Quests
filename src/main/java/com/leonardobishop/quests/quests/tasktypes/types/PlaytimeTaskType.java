@@ -20,56 +20,56 @@ import java.util.List;
 
 public final class PlaytimeTaskType extends TaskType {
 
-    private BukkitTask poll;
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private BukkitTask poll;
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-    public PlaytimeTaskType() {
-        super("playtime", "Reinatix", "Track the amount of playing time a user has been on");
-        this.creatorConfigValues.add(new ConfigValue("minutes", true, "Time in minutes."));
-    }
+  public PlaytimeTaskType() {
+    super("playtime", "Reinatix", "Track the amount of playing time a user has been on");
+    this.creatorConfigValues.add(new ConfigValue("minutes", true, "Time in minutes."));
+  }
 
-    @Override
-    public void onReady() {
-        this.poll = new BukkitRunnable() {
-            @Override
-            public void run() {
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
-                    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-                    for (Quest quest : PlaytimeTaskType.super.getRegisteredQuests()) {
-                        if (questProgressFile.hasStartedQuest(quest)) {
-                            QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-                            for (Task task : quest.getTasksOfType(PlaytimeTaskType.super.getType())) {
-                                TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-                                if (taskProgress.isCompleted()) {
-                                    continue;
-                                }
-                                int minutes = (int) task.getConfigValue("minutes");
-                                if (taskProgress.getProgress() == null) {
-                                    taskProgress.setProgress(1);
-                                } else {
-                                    taskProgress.setProgress((int) taskProgress.getProgress() + 1);
-                                }
-                                if (((int) taskProgress.getProgress()) >= minutes) {
-                                    taskProgress.setCompleted(true);
-                                }
-                            }
-                        }
-                    }
+  @Override
+  public void onReady() {
+    this.poll = new BukkitRunnable() {
+      @Override
+      public void run() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+          QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
+          QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+          for (Quest quest : PlaytimeTaskType.super.getRegisteredQuests()) {
+            if (questProgressFile.hasStartedQuest(quest)) {
+              QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+              for (Task task : quest.getTasksOfType(PlaytimeTaskType.super.getType())) {
+                TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+                if (taskProgress.isCompleted()) {
+                  continue;
                 }
+                int minutes = (int) task.getConfigValue("minutes");
+                if (taskProgress.getProgress() == null) {
+                  taskProgress.setProgress(1);
+                } else {
+                  taskProgress.setProgress((int) taskProgress.getProgress() + 1);
+                }
+                if (((int) taskProgress.getProgress()) >= minutes) {
+                  taskProgress.setCompleted(true);
+                }
+              }
             }
-        }.runTaskTimer(Quests.get(), 1200L, 1200L);
-    }
-
-    @Override
-    public void onDisable() {
-        if (this.poll != null) {
-            this.poll.cancel();
+          }
         }
-    }
+      }
+    }.runTaskTimer(Quests.get(), 1200L, 1200L);
+  }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
+  @Override
+  public void onDisable() {
+    if (this.poll != null) {
+      this.poll.cancel();
     }
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
 }

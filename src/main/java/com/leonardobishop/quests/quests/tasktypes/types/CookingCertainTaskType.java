@@ -55,7 +55,7 @@ public final class CookingCertainTaskType extends TaskType {
         questLogger.debug("    Incoming object: §b" + incomingObject.toString());
 
         for (Task task : quest.getTasksOfType(super.getType())) {
-          Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)));
+          Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
           int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 

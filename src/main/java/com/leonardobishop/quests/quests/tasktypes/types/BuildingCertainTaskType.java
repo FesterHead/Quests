@@ -100,7 +100,7 @@ public final class BuildingCertainTaskType extends TaskType {
     Object configData = task.getConfigValue("data");
     Object configSimilarBlocks = task.getConfigValue("use-similar-blocks");
 
-    material = Material.getMaterial(String.valueOf(configBlock));
+    material = Material.getMaterial(String.valueOf(configBlock).toUpperCase());
 
     Material blockType = block.getType();
     short blockData = block.getData();

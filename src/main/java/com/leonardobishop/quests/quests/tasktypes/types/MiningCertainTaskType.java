@@ -122,7 +122,7 @@ public final class MiningCertainTaskType extends TaskType {
         comparableData = Integer.parseInt(split[1]);
       }
 
-      material = Material.getMaterial(String.valueOf(split[0]));
+      material = Material.getMaterial(String.valueOf(split[0]).toUpperCase());
       Material blockType = block.getType();
 
       short blockData = block.getData();

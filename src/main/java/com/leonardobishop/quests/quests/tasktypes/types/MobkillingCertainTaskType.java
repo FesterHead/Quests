@@ -71,7 +71,7 @@ public final class MobkillingCertainTaskType extends TaskType {
 
           EntityType entity;
           try {
-            entity = EntityType.valueOf(configEntity);
+            entity = EntityType.valueOf(configEntity.toUpperCase());
           } catch (IllegalArgumentException ex) {
             continue;
           }

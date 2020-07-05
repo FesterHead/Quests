@@ -58,7 +58,7 @@ public final class TamingCertainTaskType extends TaskType {
         questLogger.debug("    Incoming object: §b" + incomingObject.toString());
 
         for (Task task : quest.getTasksOfType(super.getType())) {
-          EntityType expectedObject = EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)));
+          EntityType expectedObject = EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
           int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 

@@ -53,16 +53,8 @@ public final class InventoryTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR/* , ignoreCancelled = true */)
   public void onInventoryClick(InventoryClickEvent event) {
-    Bukkit.getScheduler().runTaskLater(Quests.get(), () -> checkInventory((Player) event.getWhoClicked()), 1L); // Still
-                                                                                                                // some
-                                                                                                                // work
-                                                                                                                // to
-                                                                                                                // do
-                                                                                                                // as
-                                                                                                                // it
-                                                                                                                // doesn't
-                                                                                                                // really
-                                                                                                                // work
+    // Still some work to do as it doesn't really work
+    Bukkit.getScheduler().runTaskLater(Quests.get(), () -> checkInventory((Player) event.getWhoClicked()), 1L);
   }
 
   @SuppressWarnings("deprecation")
@@ -91,7 +83,7 @@ public final class InventoryTaskType extends TaskType {
           Object configData = task.getConfigValue("data");
           Object remove = task.getConfigValue("remove-items-when-complete");
 
-          material = Material.getMaterial(String.valueOf(configBlock));
+          material = Material.getMaterial(String.valueOf(configBlock).toUpperCase());
 
           if (material == null) {
             continue;

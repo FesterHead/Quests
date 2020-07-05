@@ -24,6 +24,8 @@ public final class DealDamageTaskType extends TaskType {
     public DealDamageTaskType() {
         super("dealdamage", "toasted", "Deal a certain amount of damage.");
         this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of damage you need to deal"));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override

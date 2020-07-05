@@ -22,14 +22,14 @@ import org.bukkit.event.block.BlockDropItemEvent;
 public final class HarvestCertainTaskType extends TaskType {
 
     private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private static final String MATERIAL_KEY = "crop";
-    private static final String AMOUNT_KEY = "amount";
 
     public HarvestCertainTaskType() {
         super("harvestcertain", "FesterHead", "Harvest a set amount of a specific crop.");
-        this.creatorConfigValues.add(new ConfigValue(MATERIAL_KEY, true,
+        this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true,
                 "The crop to harvest. Can really any item dropped from a block break."));
         this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of items to harvest."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -50,7 +50,7 @@ public final class HarvestCertainTaskType extends TaskType {
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
-                    Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
+                    Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)));
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();

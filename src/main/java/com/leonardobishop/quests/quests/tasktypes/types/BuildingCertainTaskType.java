@@ -28,8 +28,12 @@ public final class BuildingCertainTaskType extends TaskType {
         this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of blocks to be placed."));
         this.creatorConfigValues.add(new ConfigValue("block", true, "Name or ID of block."));
         this.creatorConfigValues.add(new ConfigValue("data", false, "Data code for block."));
-        this.creatorConfigValues.add(new ConfigValue("reverse-if-broken", false, "Will reverse progression if block of same type is broken."));
-        this.creatorConfigValues.add(new ConfigValue("use-similar-blocks", false, "(Deprecated) If true, this will ignore orientation of doors, logs etc."));
+        this.creatorConfigValues.add(new ConfigValue("reverse-if-broken", false,
+                "Will reverse progression if block of same type is broken."));
+        this.creatorConfigValues.add(new ConfigValue("use-similar-blocks", false,
+                "(Deprecated) If true, this will ignore orientation of doors, logs etc."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -78,7 +82,8 @@ public final class BuildingCertainTaskType extends TaskType {
                         continue;
                     }
 
-                    if (task.getConfigValue("reverse-if-placed") != null && ((boolean) task.getConfigValue("reverse-if-placed"))) {
+                    if (task.getConfigValue("reverse-if-placed") != null
+                            && ((boolean) task.getConfigValue("reverse-if-placed"))) {
                         if (matchBlock(task, event.getBlock())) {
                             increment(task, taskProgress, -1);
                         }

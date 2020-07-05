@@ -1,23 +1,26 @@
 tasks:
-  task1:
-    type: "breeding"
-    amount: 4
+    task1:
+        type: "breeding"
+        amount: 4
+        present: "breed"
+        past: "bred"
 display:
-  name: "Breeding 2"
-  lore-normal:
-    - ""
-    - "&7This quest requires you to breed."
-  lore-started:
-    - ""
-    - "&7Your current progression:"
-    - "&7 - {task1:progress}/4 animals bred."
-  type: "WHEAT"
+    name: "Breeding 2"
+    lore-normal:
+        - ""
+        - "&7This quest requires you to:"
+        - "&7 - {task1:present} animals"
+    lore-started:
+        - ""
+        - "&7Status:"
+        - "&7 - {task1:progress}/{task1:amount} animals {task1:past}."
+    type: "WHEAT"
 rewards:
-  - ""
+    - ""
 options:
-  category: "examples"
-  repeatable: true
-  cooldown:
-    enabled: false
-    time: 1440
-  sort-order: 8
+    category: "examples"
+    repeatable: true
+    cooldown:
+        enabled: false
+        time: 1440
+    sort-order: 8

@@ -26,6 +26,8 @@ public final class FarmingTaskType extends TaskType {
         super("farming", "LMBishop", "Break a set amount of a crop.");
         this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of crops to be broken."));
         this.creatorConfigValues.add(new ConfigValue("crop", true, "Name or ID of crop."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -36,7 +38,7 @@ public final class FarmingTaskType extends TaskType {
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
-        //TODO: finish this
+        // TODO: finish this
         if (!(event.getBlock().getState() instanceof Crops)) {
             return;
         }
@@ -61,7 +63,6 @@ public final class FarmingTaskType extends TaskType {
                     Object configData = task.getConfigValue("data");
 
                     material = Material.matchMaterial(String.valueOf(configBlock));
-
 
                     if (material != null && event.getBlock().getType().equals(material)) {
 

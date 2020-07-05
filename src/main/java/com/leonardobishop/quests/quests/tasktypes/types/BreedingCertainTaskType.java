@@ -21,13 +21,13 @@ import org.bukkit.event.entity.EntityBreedEvent;
 public final class BreedingCertainTaskType extends TaskType {
 
     private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private static final String MATERIAL_KEY = "animal";
-    private static final String AMOUNT_KEY = "amount";
 
     public BreedingCertainTaskType() {
         super("breedingcertain", "FesterHead", "Breed a set amount of a specific animal.");
-        this.creatorConfigValues.add(new ConfigValue(MATERIAL_KEY, true, "The animal to breed."));
+        this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "The animal to breed."));
         this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The amount of the animal to breed."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -53,7 +53,7 @@ public final class BreedingCertainTaskType extends TaskType {
                         .debug("    Incoming object: §b" + incomingObject.toString());
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
-                    EntityType expectedObject = EntityType.valueOf(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
+                    EntityType expectedObject = EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)));
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();

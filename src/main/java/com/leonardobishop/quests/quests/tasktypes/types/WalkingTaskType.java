@@ -24,6 +24,8 @@ public final class WalkingTaskType extends TaskType {
     public WalkingTaskType() {
         super("walking", "LMBishop", "Walk a set distance.");
         this.creatorConfigValues.add(new ConfigValue("distance", true, "Amount of meters (blocks) to be travelled."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -33,7 +35,8 @@ public final class WalkingTaskType extends TaskType {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onMove(PlayerMoveEvent event) {
-        if (event.getFrom().getBlockX() == event.getTo().getBlockX() && event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
+        if (event.getFrom().getBlockX() == event.getTo().getBlockX()
+                && event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
             return;
         }
 

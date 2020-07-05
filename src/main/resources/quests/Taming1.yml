@@ -1,29 +1,35 @@
 tasks:
-  task1:
-    type: "tamingcertain"
-    animal: HORSE
-    amount: 2
-  task2:
-    type: "tamingcertain"
-    animal: WOLF
-    amount: 2
+    task1:
+        type: "tamingcertain"
+        item: HORSE
+        amount: 2
+        present: "tame"
+        past: "tamed"
+    task2:
+        type: "tamingcertain"
+        item: WOLF
+        amount: 2
+        present: "tame"
+        past: "tamed"
 display:
-  name: "Taming"
-  lore-normal:
-    - ""
-    - "&7This quest requires you to tame."
-  lore-started:
-    - ""
-    - "&7Your current progression:"
-    - "&7 - {task1:progress}/2 horses tamed."
-    - "&7 - {task2:progress}/2 wolves tamed."
-  type: "APPLE"
+    name: "Taming"
+    lore-normal:
+        - ""
+        - "&7This quest requires you to:"
+        - "&7 - {task1:present} {task1:item}s"
+        - "&7 - {task2:present} {task2:item}s"
+    lore-started:
+        - ""
+        - "&7Status:"
+        - "&7 - {task1:progress}/{task1:amount} {task1:item}s {task1:past}."
+        - "&7 - {task2:progress}/{task2:amount} {task2:item}s {task2:past}."
+    type: "APPLE"
 rewards:
-  - ""
+    - ""
 options:
-  category: "examples"
-  repeatable: true
-  cooldown:
-    enabled: false
-    time: 1440
-  sort-order: 15
+    category: "examples"
+    repeatable: true
+    cooldown:
+        enabled: false
+        time: 1440
+    sort-order: 15

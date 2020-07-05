@@ -26,6 +26,8 @@ public final class MythicMobsKillingType extends TaskType {
         super("mythicmobs_killing", "LMBishop", "Kill a set amount of a MythicMobs entity.");
         this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of mobs to be killed."));
         this.creatorConfigValues.add(new ConfigValue("name", true, "The 'internal name' of the MythicMob."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override

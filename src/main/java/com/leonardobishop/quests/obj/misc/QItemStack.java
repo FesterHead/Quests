@@ -1,17 +1,18 @@
 package com.leonardobishop.quests.obj.misc;
 
-import com.leonardobishop.quests.player.questprogressfile.QuestProgress;
-import com.leonardobishop.quests.player.questprogressfile.QuestProgressFile;
-import com.leonardobishop.quests.quests.Quest;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.leonardobishop.quests.player.questprogressfile.QuestProgress;
+import com.leonardobishop.quests.player.questprogressfile.QuestProgressFile;
+import com.leonardobishop.quests.quests.Quest;
+
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class QItemStack {
 
@@ -59,7 +60,6 @@ public class QItemStack {
         this.startingItemStack = startingItemStack;
     }
 
-    @SuppressWarnings("deprecation")
     public ItemStack toItemStack(Quest quest, QuestProgressFile questProgressFile, QuestProgress questProgress) {
         ItemStack is = new ItemStack(startingItemStack);
         ItemMeta ism = is.getItemMeta();
@@ -85,13 +85,48 @@ public class QItemStack {
                         if (questProgress.getTaskProgress(parts[0]) == null) {
                             continue;
                         }
-                        if (parts[1].equals("progress")) {
-                            String str = String.valueOf(questProgress.getTaskProgress(parts[0]).getProgress());
-                            s = s.replace("{" + m.group(1) + "}", (str.equals("null") ? String.valueOf(0) : str));
-                        }
-                        if (parts[1].equals("complete")) {
-                            String str = String.valueOf(questProgress.getTaskProgress(parts[0]).isCompleted());
-                            s = s.replace("{" + m.group(1) + "}", str);
+                        String tempString = "";
+                        switch (parts[1]) {
+                        case "progress":
+                            tempString = String.valueOf(questProgress.getTaskProgress(parts[0]).getProgress());
+                            s = s.replace("{" + m.group(1) + "}",
+                                    (tempString.equals("null") ? String.valueOf(0) : tempString));
+                            break;
+
+                        case "item":
+                            tempString = String
+                                    .valueOf(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                                            .getConfigValue("item"));
+                            tempString = tempString.replaceAll("_", " ").toLowerCase();
+                            s = s.replace("{" + m.group(1) + "}",
+                                    (tempString.equals("null") ? String.valueOf(0) : tempString));
+                            break;
+
+                        case "amount":
+                            tempString = String
+                                    .valueOf(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                                            .getConfigValue("amount"));
+                            s = s.replace("{" + m.group(1) + "}",
+                                    (tempString.equals("null") ? String.valueOf(0) : tempString));
+                            break;
+                        case "present":
+                            tempString = String
+                                    .valueOf(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                                            .getConfigValue("present"));
+                            s = s.replace("{" + m.group(1) + "}",
+                                    (tempString.equals("null") ? String.valueOf(0) : tempString));
+                            break;
+                        case "past":
+                            tempString = String
+                                    .valueOf(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                                            .getConfigValue("past"));
+                            s = s.replace("{" + m.group(1) + "}",
+                                    (tempString.equals("null") ? String.valueOf(0) : tempString));
+                            break;
+                        case "complete":
+                            s = s.replace("{" + m.group(1) + "}",
+                                    String.valueOf(questProgress.getTaskProgress(parts[0]).isCompleted()));
+                            break;
                         }
                     }
                 }

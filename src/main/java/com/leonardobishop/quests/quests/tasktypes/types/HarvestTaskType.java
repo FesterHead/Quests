@@ -22,12 +22,12 @@ import org.bukkit.event.block.BlockDropItemEvent;
 public final class HarvestTaskType extends TaskType {
 
     private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private static final String MATERIAL_KEY = "crop";
-    private static final String AMOUNT_KEY = "amount";
 
     public HarvestTaskType() {
         super("harvest", "FesterHead", "Harvest a set amount of items. All item drops count.");
         this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of items to harvest."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -48,7 +48,7 @@ public final class HarvestTaskType extends TaskType {
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
-                    Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
+                    ;
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();
@@ -58,8 +58,6 @@ public final class HarvestTaskType extends TaskType {
                             .debug("      Checking task: §8" + task.getId());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("               Type: §8" + task.getType());
-                    QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
-                            .debug("    Expected object: §3" + expectedObject.toString());
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
                             .debug("           Progress: §d" + taskProgressCounter);
                     QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()

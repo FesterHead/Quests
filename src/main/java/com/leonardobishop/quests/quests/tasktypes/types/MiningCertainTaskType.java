@@ -28,10 +28,17 @@ public final class MiningCertainTaskType extends TaskType {
         super("blockbreakcertain", "LMBishop", "Break a set amount of a specific block.");
         this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of blocks to be broken."));
         this.creatorConfigValues.add(new ConfigValue("block", false, "Name or ID of block.")); // Can use name:datacode
-        this.creatorConfigValues.add(new ConfigValue("blocks", false, "List of blocks (alias for block for config readability)."));
-        this.creatorConfigValues.add(new ConfigValue("data", false, "Data code for block.")); // only used if no datacode provided in block or blocks
-        this.creatorConfigValues.add(new ConfigValue("reverse-if-placed", false, "Will reverse progression if block of same type is placed."));
-        this.creatorConfigValues.add(new ConfigValue("use-similar-blocks", false, "(Deprecated) If true, this will ignore orientation of doors, logs etc."));
+        this.creatorConfigValues
+                .add(new ConfigValue("blocks", false, "List of blocks (alias for block for config readability)."));
+        this.creatorConfigValues.add(new ConfigValue("data", false, "Data code for block.")); // only used if no
+                                                                                              // datacode provided in
+                                                                                              // block or blocks
+        this.creatorConfigValues.add(new ConfigValue("reverse-if-placed", false,
+                "Will reverse progression if block of same type is placed."));
+        this.creatorConfigValues.add(new ConfigValue("use-similar-blocks", false,
+                "(Deprecated) If true, this will ignore orientation of doors, logs etc."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -80,7 +87,8 @@ public final class MiningCertainTaskType extends TaskType {
                         continue;
                     }
 
-                    if (task.getConfigValue("reverse-if-placed") != null && ((boolean) task.getConfigValue("reverse-if-placed"))) {
+                    if (task.getConfigValue("reverse-if-placed") != null
+                            && ((boolean) task.getConfigValue("reverse-if-placed"))) {
                         if (matchBlock(task, event.getBlock())) {
                             increment(task, taskProgress, -1);
                         }
@@ -94,8 +102,8 @@ public final class MiningCertainTaskType extends TaskType {
     private boolean matchBlock(Task task, Block block) {
         Material material;
 
-
-        Object configBlock = task.getConfigValues().containsKey("block") ? task.getConfigValue("block") : task.getConfigValue("blocks");
+        Object configBlock = task.getConfigValues().containsKey("block") ? task.getConfigValue("block")
+                : task.getConfigValue("blocks");
         Object configData = task.getConfigValue("data");
         Object configSimilarBlocks = task.getConfigValue("use-similar-blocks");
 

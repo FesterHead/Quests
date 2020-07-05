@@ -33,6 +33,8 @@ public final class BrewingTaskType extends TaskType {
     public BrewingTaskType() {
         super("brewing", "LMBishop", "Brew a potion.");
         this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of potions to be brewed."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -86,7 +88,8 @@ public final class BrewingTaskType extends TaskType {
                         ItemStack potion2 = event.getContents().getItem(1);
                         ItemStack potion3 = event.getContents().getItem(2);
 
-                        taskProgress.setProgress(progress + (potion1 == null ? 0 : 1) + (potion2 == null ? 0 : 1) + (potion3 == null ? 0 : 1));
+                        taskProgress.setProgress(progress + (potion1 == null ? 0 : 1) + (potion2 == null ? 0 : 1)
+                                + (potion3 == null ? 0 : 1));
 
                         if (((int) taskProgress.getProgress()) >= potionsNeeded) {
                             taskProgress.setCompleted(true);

@@ -8,12 +8,16 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A task type which can be used within Quests. A {@link Quest}
- * will be registered to this if it contains at least 1 task
- * which is of this type. This is so you do not have to
- * iterate through every single quest.
+ * A task type which can be used within Quests. A {@link Quest} will be
+ * registered to this if it contains at least 1 task which is of this type. This
+ * is so you do not have to iterate through every single quest.
  */
 public abstract class TaskType implements Listener {
+
+    public static final String ITEM_KEY = "item";
+    public static final String AMOUNT_KEY = "amount";
+    public static final String PRESENT_KEY = "present";
+    public static final String PAST_KEY = "past";
 
     private final List<Quest> quests = new ArrayList<>();
     private final String type;
@@ -21,9 +25,12 @@ public abstract class TaskType implements Listener {
     private String description;
 
     /**
-     * @param type the name of the task type, should not contain spaces
-     * @param author the name of the person (or people) who wrote it
-     * @param description a short, simple description of the task type
+     * @param type
+     *                        the name of the task type, should not contain spaces
+     * @param author
+     *                        the name of the person (or people) who wrote it
+     * @param description
+     *                        a short, simple description of the task type
      */
     public TaskType(String type, String author, String description) {
         this.type = type;
@@ -32,17 +39,19 @@ public abstract class TaskType implements Listener {
     }
 
     /**
-     * @param type the name of the task type, should not contain spaces
+     * @param type
+     *                 the name of the task type, should not contain spaces
      */
     public TaskType(String type) {
         this.type = type;
     }
 
     /**
-     * Registers a {@link Quest} to this task type. This is usually done when
-     * all the quests are initially loaded.
+     * Registers a {@link Quest} to this task type. This is usually done when all
+     * the quests are initially loaded.
      *
-     * @param quest the {@link Quest} to register.
+     * @param quest
+     *                  the {@link Quest} to register.
      */
     public final void registerQuest(Quest quest) {
         if (!quests.contains(quest)) {

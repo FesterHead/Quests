@@ -8,7 +8,8 @@ import java.util.*;
 public class Quest implements Comparable<Quest> {
 
     private Map<String, Task> tasks = new HashMap<>();
-    //TODO: maybe store by <tasktypename (string), list<task>> since we never get task by id, but always get tasks by type.
+    // TODO: maybe store by <tasktypename (string), list<task>> since we never get
+    // task by id, but always get tasks by type.
     private final String id;
     private final QItemStack displayItem;
     private final List<String> rewards;
@@ -22,13 +23,17 @@ public class Quest implements Comparable<Quest> {
     private boolean permissionRequired;
     private String categoryid;
 
-
-    public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable, boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString, List<String> startString, String categoryid, int sortOrder) {
-        this(id, displayItem, rewards, requirements, repeatable, cooldownEnabled, cooldown, permissionRequired, rewardString, startString, sortOrder);
+    public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable,
+            boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString,
+            List<String> startString, String categoryid, int sortOrder) {
+        this(id, displayItem, rewards, requirements, repeatable, cooldownEnabled, cooldown, permissionRequired,
+                rewardString, startString, sortOrder);
         this.categoryid = categoryid;
     }
 
-    public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable, boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString, List<String> startString, int sortOrder) {
+    public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable,
+            boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString,
+            List<String> startString, int sortOrder) {
         this.id = id;
         this.displayItem = displayItem;
         this.rewards = rewards;
@@ -50,6 +55,10 @@ public class Quest implements Comparable<Quest> {
         return tasks.values();
     }
 
+    public Task getTask(String taskId) {
+        return tasks.get(taskId);
+    }
+
     public List<Task> getTasksOfType(String type) {
         List<Task> tasks = new ArrayList<>();
         for (Task task : getTasks()) {
@@ -59,7 +68,6 @@ public class Quest implements Comparable<Quest> {
         }
         return tasks;
     }
-
 
     public boolean isPermissionRequired() {
         return permissionRequired;

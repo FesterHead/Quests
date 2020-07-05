@@ -27,7 +27,10 @@ public final class MobkillingTaskType extends TaskType {
     public MobkillingTaskType() {
         super("mobkilling", "LMBishop", "Kill a set amount of entities.");
         this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of mobs to be killed."));
-        this.creatorConfigValues.add(new ConfigValue("hostile", false, "Only allow hostile or non-hostile mobs (unspecified = any type allowed)."));
+        this.creatorConfigValues.add(new ConfigValue("hostile", false,
+                "Only allow hostile or non-hostile mobs (unspecified = any type allowed)."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -37,7 +40,7 @@ public final class MobkillingTaskType extends TaskType {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onMobKill(EntityDeathEvent event) {
-        Player killer = event.getEntity().getKiller(); //The killer is a player
+        Player killer = event.getEntity().getKiller(); // The killer is a player
         Entity mob = event.getEntity();
 
         if (mob == null || mob instanceof Player) {

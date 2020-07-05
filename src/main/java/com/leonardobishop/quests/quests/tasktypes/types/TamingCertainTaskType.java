@@ -22,13 +22,13 @@ import org.bukkit.event.entity.EntityTameEvent;
 public final class TamingCertainTaskType extends TaskType {
 
     private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private static final String MATERIAL_KEY = "animal";
-    private static final String AMOUNT_KEY = "amount";
 
     public TamingCertainTaskType() {
         super("tamingcertain", "FesterHead", "Tame a set amount of a specific animals.");
-        this.creatorConfigValues.add(new ConfigValue(MATERIAL_KEY, true, "The animal to tame."));
+        this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "The animal to tame."));
         this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The amount of the animal to catch."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -58,7 +58,7 @@ public final class TamingCertainTaskType extends TaskType {
                         .debug("    Incoming object: §b" + incomingObject.toString());
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
-                    EntityType expectedObject = EntityType.valueOf(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
+                    EntityType expectedObject = EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)));
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();

@@ -1,38 +1,50 @@
 tasks:
-  task1:
-    type: "fishingcertain"
-    item: SALMON
-    amount: 3
-  task2:
-    type: "fishingcertain"
-    item: PUFFERFISH
-    amount: 2
-  task3:
-    type: "fishingcertain"
-    item: INK_SAC
-    amount: 2
-  task4:
-    type: "fishing"
-    amount: 36
+    task1:
+        type: "fishingcertain"
+        item: SALMON
+        amount: 3
+        present: "catch"
+        past: "caught"
+    task2:
+        type: "fishingcertain"
+        item: PUFFERFISH
+        amount: 2
+        present: "catch"
+        past: "caught"
+    task3:
+        type: "fishingcertain"
+        item: INK_SAC
+        amount: 2
+        present: "pull up"
+        past: "pulled up"
+    task4:
+        type: "fishing"
+        amount: 36
+        present: "catch"
+        past: "caught"
 display:
-  name: "Fishing 1"
-  lore-normal:
-    - ""
-    - "&7This quest requires you to fish."
-  lore-started:
-    - ""
-    - "&7Your current progression:"
-    - "&7 - {task1:progress}/3 salmon caught."
-    - "&7 - {task2:progress}/2 pufferfish caught."
-    - "&7 - {task3:progress}/2 ink sac caught."
-    - "&7 - {task4:progress}/2 fish caught."
-  type: "FISHING_ROD"
+    name: "Fishing 1"
+    lore-normal:
+        - ""
+        - "&7This quest requires you to:"
+        - "&7 - {task1:present} {task1:item}s"
+        - "&7 - {task2:present} {task2:item}s"
+        - "&7 - {task3:present} {task3:item}s"
+        - "&7 - {task4:present} items"
+    lore-started:
+        - ""
+        - "&7Status:"
+        - "&7 - {task1:progress}/{task1:amount} {task1:item}s {task1:past}."
+        - "&7 - {task2:progress}/{task2:amount} {task2:item}s {task2:past}."
+        - "&7 - {task3:progress}/{task3:amount} {task3:item}s {task3:past}."
+        - "&7 - {task4:progress}/{task4:amount} items {task4:past}."
+    type: "FISHING_ROD"
 rewards:
-  - ""
+    - ""
 options:
-  category: "examples"
-  repeatable: true
-  cooldown:
-    enabled: false
-    time: 1440
-  sort-order: 11
+    category: "examples"
+    repeatable: true
+    cooldown:
+        enabled: false
+        time: 1440
+    sort-order: 11

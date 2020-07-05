@@ -21,15 +21,15 @@ import org.bukkit.event.inventory.FurnaceExtractEvent;
 public final class CookingCertainTaskType extends TaskType {
 
     private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private static final String MATERIAL_KEY = "item";
-    private static final String AMOUNT_KEY = "amount";
 
     public CookingCertainTaskType() {
         super("cookingcertain", "FesterHead", "Cook/Smelt a set amount of a specific item.");
-        this.creatorConfigValues.add(new ConfigValue(MATERIAL_KEY, true,
+        this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true,
                 "The resulting item from cooking/smelting. Must extract from furnace."));
         this.creatorConfigValues.add(
                 new ConfigValue(AMOUNT_KEY, true, "The number of items to cook/smelt. Must extract from furnace."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -55,7 +55,7 @@ public final class CookingCertainTaskType extends TaskType {
                         .debug("    Incoming object: §b" + incomingObject.toString());
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
-                    Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
+                    Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)));
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();

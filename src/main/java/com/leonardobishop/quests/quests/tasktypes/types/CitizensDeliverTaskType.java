@@ -31,8 +31,10 @@ public final class CitizensDeliverTaskType extends TaskType {
         this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of item to retrieve."));
         this.creatorConfigValues.add(new ConfigValue("item", true, "Name or ID of item."));
         this.creatorConfigValues.add(new ConfigValue("npc-name", true, "Name of the NPC."));
-        this.creatorConfigValues.add(new ConfigValue("remove-items-when-complete", false, "Take the items away from the player on completion (true/false, " +
-                "default = false)."));
+        this.creatorConfigValues.add(new ConfigValue("remove-items-when-complete", false,
+                "Take the items away from the player on completion (true/false, " + "default = false)."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -42,7 +44,8 @@ public final class CitizensDeliverTaskType extends TaskType {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onNPCClick(NPCRightClickEvent event) {
-        Bukkit.getScheduler().runTaskLater(Quests.get(), () -> checkInventory(event.getClicker(), event.getNPC().getName()), 1L);
+        Bukkit.getScheduler().runTaskLater(Quests.get(),
+                () -> checkInventory(event.getClicker(), event.getNPC().getName()), 1L);
     }
 
     @SuppressWarnings("deprecation")
@@ -59,8 +62,10 @@ public final class CitizensDeliverTaskType extends TaskType {
                 QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
-                    if (!ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', String.valueOf(task.getConfigValue("npc-name")))).equals(ChatColor
-                            .stripColor(ChatColor.translateAlternateColorCodes('&', citizenName)))) {
+                    if (!ChatColor
+                            .stripColor(ChatColor.translateAlternateColorCodes('&',
+                                    String.valueOf(task.getConfigValue("npc-name"))))
+                            .equals(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', citizenName)))) {
                         return;
                     }
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
@@ -77,7 +82,8 @@ public final class CitizensDeliverTaskType extends TaskType {
 
                     ItemStack is;
                     if (configBlock instanceof ConfigurationSection) {
-                        is = Quests.get().getItemStack(null, (org.bukkit.configuration.ConfigurationSection) configBlock);
+                        is = Quests.get().getItemStack(null,
+                                (org.bukkit.configuration.ConfigurationSection) configBlock);
                     } else {
                         material = Material.getMaterial(String.valueOf(configBlock));
 

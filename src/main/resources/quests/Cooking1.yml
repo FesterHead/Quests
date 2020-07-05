@@ -1,39 +1,51 @@
 tasks:
-  task1:
-    type: "cookingcertain"
-    item: COOKED_COD
-    amount: 3
-  task2:
-    type: "cookingcertain"
-    item: COOKED_CHICKEN
-    amount: 3
-  task3:
-    type: "cookingcertain"
-    item: IRON_INGOT
-    amount: 3
-  task4:
-    type: "cookingcertain"
-    item: GOLD_NUGGET
-    amount: 3
+    task1:
+        type: "cookingcertain"
+        item: COOKED_COD
+        amount: 3
+        present: "cook"
+        past: "cooked"
+    task2:
+        type: "cookingcertain"
+        item: COOKED_CHICKEN
+        amount: 3
+        present: "cook"
+        past: "cooked"
+    task3:
+        type: "cookingcertain"
+        item: IRON_INGOT
+        amount: 3
+        present: "smelt"
+        past: "smelted"
+    task4:
+        type: "cookingcertain"
+        item: GOLD_NUGGET
+        amount: 3
+        present: "smelt"
+        past: "smelted"
 display:
-  name: "Cooking"
-  lore-normal:
-    - ""
-    - "&7This quest requires you to cook."
-  lore-started:
-    - ""
-    - "&7Your current progression:"
-    - "&7 - {task1:progress}/3 cooked cod."
-    - "&7 - {task2:progress}/3 cooked chicken."
-    - "&7 - {task3:progress}/3 iron ingot."
-    - "&7 - {task4:progress}/3 gold nugget."
-  type: "COOKED_BEEF"
+    name: "Cooking"
+    lore-normal:
+        - ""
+        - "&7This quest requires you to:"
+        - "&7 - {task1:present} {task1:item}s"
+        - "&7 - {task2:present} {task2:item}s"
+        - "&7 - {task3:present} {task3:item}s"
+        - "&7 - {task4:present} {task4:item}s"
+    lore-started:
+        - ""
+        - "&7Status:"
+        - "&7 - {task1:progress}/{task1:amount} {task1:item}."
+        - "&7 - {task2:progress}/{task2:amount} {task2:item}."
+        - "&7 - {task3:progress}/{task3:amount} {task3:item} {task4:past}."
+        - "&7 - {task4:progress}/{task4:amount} {task4:item} {task4:past}."
+    type: "COOKED_BEEF"
 rewards:
-  - ""
+    - ""
 options:
-  category: "examples"
-  repeatable: true
-  cooldown:
-    enabled: false
-    time: 1440
-  sort-order: 9
+    category: "examples"
+    repeatable: true
+    cooldown:
+        enabled: false
+        time: 1440
+    sort-order: 9

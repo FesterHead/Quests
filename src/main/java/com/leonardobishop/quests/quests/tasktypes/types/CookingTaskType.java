@@ -26,6 +26,8 @@ public final class CookingTaskType extends TaskType {
     public CookingTaskType() {
         super("cooking", "FesterHead", "Cook/Smelt a set amount of items.");
         this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of items to cook/smelt."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override

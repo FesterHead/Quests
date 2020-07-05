@@ -22,11 +22,12 @@ import java.util.List;
 public final class TamingTaskType extends TaskType {
 
     private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private static final String AMOUNT_KEY = "amount";
 
     public TamingTaskType() {
         super("taming", "LMBishop", "Tame a set amount of animals.");
         this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of animals to be tamed."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override

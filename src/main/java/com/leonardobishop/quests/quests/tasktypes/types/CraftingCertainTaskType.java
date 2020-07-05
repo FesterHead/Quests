@@ -22,12 +22,10 @@ import org.bukkit.inventory.ItemStack;
 public final class CraftingCertainTaskType extends TaskType {
 
     private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private static final String MATERIAL_KEY = "item";
-    private static final String AMOUNT_KEY = "amount";
 
     public CraftingCertainTaskType() {
         super("craftingcertain", "FesterHead", "Craft a set amount of a specific material.");
-        this.creatorConfigValues.add(new ConfigValue(MATERIAL_KEY, true, "The material to craft."));
+        this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "The material to craft."));
         this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The amount of the material to craft."));
     }
 
@@ -54,7 +52,7 @@ public final class CraftingCertainTaskType extends TaskType {
                         .debug("    Incoming object: " + incomingObject.toString());
 
                 for (Task task : quest.getTasksOfType(super.getType())) {
-                    Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(MATERIAL_KEY)));
+                    Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)));
                     TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                     int taskProgressCounter = (taskProgress.getProgress() == null) ? 0
                             : (int) taskProgress.getProgress();

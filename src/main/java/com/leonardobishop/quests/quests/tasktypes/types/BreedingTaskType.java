@@ -21,11 +21,12 @@ import org.bukkit.event.entity.EntityBreedEvent;
 public final class BreedingTaskType extends TaskType {
 
     private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private static final String AMOUNT_KEY = "amount";
 
     public BreedingTaskType() {
         super("breeding", "toasted", "Breed a set amount of animals.");
         this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of animals to breed."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override

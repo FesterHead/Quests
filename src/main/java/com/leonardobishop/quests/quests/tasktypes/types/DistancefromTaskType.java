@@ -30,7 +30,10 @@ public final class DistancefromTaskType extends TaskType {
         this.creatorConfigValues.add(new ConfigValue("y", true, "Y position."));
         this.creatorConfigValues.add(new ConfigValue("z", true, "Z position."));
         this.creatorConfigValues.add(new ConfigValue("world", true, "Name of world."));
-        this.creatorConfigValues.add(new ConfigValue("distance", true, "Distance the player needs to be from the co-ordinates."));
+        this.creatorConfigValues
+                .add(new ConfigValue("distance", true, "Distance the player needs to be from the co-ordinates."));
+        this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
+        this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
     }
 
     @Override
@@ -40,7 +43,8 @@ public final class DistancefromTaskType extends TaskType {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onMove(PlayerMoveEvent event) {
-        if (event.getFrom().getBlockX() == event.getTo().getBlockX() && event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
+        if (event.getFrom().getBlockX() == event.getTo().getBlockX()
+                && event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
             return;
         }
 

@@ -21,5 +21,5 @@ permissions:
     description: Permission for main command
     default: true
   quests.admin:
-    description: Permission for the admin commands 
+    description: Permission for the admin commands
     default: op

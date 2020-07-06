@@ -28,25 +28,25 @@ categories:
     display:
       name: "&cExample Quests"
       lore:
-      - "&7This category contains example quests"
-      - "&7which are commented in the config."
-      - "&7The comments should guide you with"
-      - "&7how the config works."
-      - ""
-      - "&cIt is highly recommended you read this"
-      - "&csection and all the comments so you can"
-      - "&cmake the most of this plugin."
+        - "&7This category contains example quests"
+        - "&7which are commented in the config."
+        - "&7The comments should guide you with"
+        - "&7how the config works."
+        - ""
+        - "&cIt is highly recommended you read this"
+        - "&csection and all the comments so you can"
+        - "&cmake the most of this plugin."
       type: "WATER_BUCKET"
   permissionexample:
     display:
       name: "&cPermission Example"
       lore:
-      - "&7This category is an example of one which"
-      - "&7requires a permission to open."
-      - ""
-      - "&cIt is highly recommended you read this"
-      - "&csection and all the comments so you can"
-      - "&cmake the most of this plugin."
+        - "&7This category is an example of one which"
+        - "&7requires a permission to open."
+        - ""
+        - "&cIt is highly recommended you read this"
+        - "&csection and all the comments so you can"
+        - "&cmake the most of this plugin."
       type: "WATER_BUCKET"
     # This category needs the permission "quests.category.permissionexample", because the category ID is 'permissionexample'.
     # The permission for other categories is: "quests.category.<id>".
@@ -58,63 +58,63 @@ gui:
   back-button:
     name: "&cReturn"
     lore:
-    - "&7Return to the categories menu."
+      - "&7Return to the categories menu."
     type: "ARROW"
   page-prev:
     name: "&7Previous Page"
     lore:
-    - "&7Switch the page to page &c{prevpage}."
+      - "&7Switch the page to page &c{prevpage}."
     type: "FEATHER"
   page-next:
     name: "&7Next Page"
     lore:
-    - "&7Switch the page to page &c{nextpage}."
+      - "&7Switch the page to page &c{nextpage}."
     type: "FEATHER"
   page-desc:
     name: "&7Page &c{page}"
     lore:
-    - "&7You are currently viewing page &c{page}."
+      - "&7You are currently viewing page &c{page}."
     type: "PAPER"
   quest-locked-display:
     name: "&c&lQuest Locked"
     lore:
-    - "&7You have not completed the requirements"
-    - "&7for this quest (&c{quest}&7)."
-    - ""
-    - "&7Requires: &c{requirements}"
-    - "&7to be completed to unlock."
+      - "&7You have not completed the requirements"
+      - "&7for this quest (&c{quest}&7)."
+      - ""
+      - "&7Requires: &c{requirements}"
+      - "&7to be completed to unlock."
     type: "RED_STAINED_GLASS_PANE"
   quest-permission-display:
     name: "&6&lNo Permission"
     lore:
-    - "&7You do not have permission for this"
-    - "&7quest (&6{quest}&7)."
+      - "&7You do not have permission for this"
+      - "&7quest (&6{quest}&7)."
     type: "BROWN_STAINED_GLASS_PANE"
   quest-cooldown-display:
     name: "&e&lQuest On Cooldown"
     lore:
-    - "&7You have recently completed this quest"
-    - "&7(&e{quest}&7) and you must"
-    - "&7wait another &e{time} &7to unlock again."
+      - "&7You have recently completed this quest"
+      - "&7(&e{quest}&7) and you must"
+      - "&7wait another &e{time} &7to unlock again."
     type: "ORANGE_STAINED_GLASS_PANE"
   quest-completed-display:
     name: "&a&lQuest Complete"
     lore:
-    - "&7You have completed this quest"
-    - "&7(&a{quest}&7) and cannot."
-    - "&7repeat it."
+      - "&7You have completed this quest"
+      - "&7(&a{quest}&7) and cannot."
+      - "&7repeat it."
     type: "GREEN_STAINED_GLASS_PANE"
   quest-cancel-yes:
     name: "&a&lConfirm Cancel"
     lore:
-    - "&7Confirm you wish to cancel"
-    - "&7this quest and lose all"
-    - "&7progress."
+      - "&7Confirm you wish to cancel"
+      - "&7this quest and lose all"
+      - "&7progress."
     type: "GREEN_STAINED_GLASS_PANE"
   quest-cancel-no:
     name: "&c&lAbort Cancel"
     lore:
-    - "&7Return to the quest menu."
+      - "&7Return to the quest menu."
     type: "RED_STAINED_GLASS_PANE"
   quest-cancel-background:
     type: "GRAY_STAINED_GLASS_PANE"
@@ -127,14 +127,14 @@ options:
   # Enable/disable titles
   titles-enabled: true
   # Players cannot start any more quests than this at a single time
-  quest-started-limit: 2
+  quest-started-limit: 4
   # Hide locked quests, quests on cooldown and completed (but not repeatable) quests
   gui-hide-locked: false
   # Allow players to cancel a quest
   allow-quest-cancel: true
   # Titles for the GUIs
   guinames:
-    quests-category: "Quests Categories"
+    quests-category: "Quest Categories"
     quests-menu: "Quests"
     daily-quests: "Daily Quests"
     quest-cancel: "Cancel Quest"
@@ -147,10 +147,10 @@ options:
   # Make it so players do not have to start quest themselves
   quest-autostart: false
   # How much quests should log, 0 = errors only, 1 = warnings, 2 = info, 3 = debug
-  verbose-logging-level: 2
+  verbose-logging-level: 1
   performance-tweaking: # The following are measured in server ticks, multiply SECONDS by 20 to get the number of ticks.
-    quest-completer-poll-interval: 100    # how frequently Quests should check if quests have been completed (def=100 - 5 seconds) - increase this value if you are struggling with performance
-    quest-autosave-interval: 12000        # how frequently online players data will be autosaved (def=12000 - 10 minutes)
+    quest-completer-poll-interval: 100 # how frequently Quests should check if quests have been completed (def=100 - 5 seconds) - increase this value if you are struggling with performance
+    quest-autosave-interval: 12000 # how frequently online players data will be autosaved (def=12000 - 10 minutes)
 
 # This switches up the entire quest system.
 # By enabling daily-quests, players will no longer be presented with the standard Quest GUI.
@@ -214,4 +214,3 @@ messages:
   command-quest-admin-category-permission: "&7Category &c{category} &7 could not be opened for player &c{player}&7. They do not have permission to view it."
   command-quest-admin-complete-success: "&7Quest &c{quest} &7completed for player &c{player}&7."
   command-quest-admin-reset-success: "&7Successfully reset quest '&c{quest}&7' for player &c{player}&7."
-

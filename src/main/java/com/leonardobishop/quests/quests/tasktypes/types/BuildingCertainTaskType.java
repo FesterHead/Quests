@@ -25,15 +25,12 @@ public final class BuildingCertainTaskType extends TaskType {
 
   public BuildingCertainTaskType() {
     super("blockplacecertain", "LMBishop", "Place a set amount of a specific block.");
-    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of blocks to be placed."));
-    this.creatorConfigValues.add(new ConfigValue("block", true, "Name or ID of block."));
-    this.creatorConfigValues.add(new ConfigValue("data", false, "Data code for block."));
+    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be placed."));
+    this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "Name or ID of block."));
     this.creatorConfigValues
-        .add(new ConfigValue("reverse-if-broken", false, "Will reverse progression if block of same type is broken."));
-    this.creatorConfigValues.add(new ConfigValue("use-similar-blocks", false,
-        "(Deprecated) If true, this will ignore orientation of doors, logs etc."));
-    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+        .add(new ConfigValue(REVERSE_KEY, true, "Will reverse progression if block of same type is broken."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
 
   @Override
@@ -98,7 +95,7 @@ public final class BuildingCertainTaskType extends TaskType {
     Material material;
     Object configBlock = task.getConfigValue("block");
     Object configData = task.getConfigValue("data");
-    Object configSimilarBlocks = task.getConfigValue("use-similar-blocks");
+    // Object configSimilarBlocks = task.getConfigValue("use-similar-blocks");
 
     material = Material.getMaterial(String.valueOf(configBlock).toUpperCase());
 

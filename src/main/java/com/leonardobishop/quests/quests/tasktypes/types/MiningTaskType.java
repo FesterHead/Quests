@@ -21,13 +21,8 @@ public final class MiningTaskType extends TaskType {
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
   public MiningTaskType() {
-    // type, author, description
     super("blockbreak", "LMBishop", "Break a set amount of blocks.");
-
-    // config values for the quest creator to use, if unspecified then the quest
-    // creator will not know what to put here (and will require users to
-    // go into the config and manually configure there)
-    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of blocks to be broken."));
+    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be broken."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
   }
@@ -39,47 +34,32 @@ public final class MiningTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBlockBreak(BlockBreakEvent event) {
-    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true); // get the
-                                                                                                     // qplayer so
-                                                                                                     // you can get
-                                                                                                     // their
-                                                                                                     // progress
-    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile(); // the quest progress file stores progress
-                                                                          // about all quests and tasks
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
-    for (Quest quest : super.getRegisteredQuests()) { // iterate through all quests which are registered to use this
-                                                      // task type
-      if (questProgressFile.hasStartedQuest(quest)) { // check if the player has actually started the quest before
-                                                      // progressing it
-        QuestProgress questProgress = questProgressFile.getQuestProgress(quest); // get their progress for the
-                                                                                 // specific quest
+    for (Quest quest : super.getRegisteredQuests()) {
+      if (questProgressFile.hasStartedQuest(quest)) {
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-        for (Task task : quest.getTasksOfType(super.getType())) { // get all tasks of this type
-          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId()); // get the task progress
-                                                                                   // and increment progress
-                                                                                   // by 1
+        for (Task task : quest.getTasksOfType(super.getType())) {
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
 
-          if (taskProgress.isCompleted()) { // dont need to increment a completed task
+          if (taskProgress.isCompleted()) {
             continue;
           }
 
-          int brokenBlocksNeeded = (int) task.getConfigValue("amount"); // this will retrieve a value from the
-                                                                        // config under the key "value"
+          int brokenBlocksNeeded = (int) task.getConfigValue("amount");
 
           int progressBlocksBroken;
-          if (taskProgress.getProgress() == null) { // note: if the player has never progressed before,
-                                                    // getProgress() will return null
+          if (taskProgress.getProgress() == null) {
             progressBlocksBroken = 0;
           } else {
             progressBlocksBroken = (int) taskProgress.getProgress();
           }
 
-          taskProgress.setProgress(progressBlocksBroken + 1); // the progress does not have to be an int,
-                                                              // although must be serializable by the yaml
-                                                              // provider
+          taskProgress.setProgress(progressBlocksBroken + 1);
 
-          if (((int) taskProgress.getProgress()) >= brokenBlocksNeeded) { // completion statement, if true the
-                                                                          // task is complete
+          if (((int) taskProgress.getProgress()) >= brokenBlocksNeeded) {
             taskProgress.setCompleted(true);
           }
         }

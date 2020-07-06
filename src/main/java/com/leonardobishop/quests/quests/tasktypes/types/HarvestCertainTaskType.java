@@ -30,8 +30,8 @@ public final class HarvestCertainTaskType extends TaskType {
     this.creatorConfigValues
         .add(new ConfigValue(ITEM_KEY, true, "The crop to harvest. Can really any item dropped from a block break."));
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of items to harvest."));
-    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
 
   @Override

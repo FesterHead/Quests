@@ -28,8 +28,8 @@ public final class BreedingCertainTaskType extends TaskType {
     super("breedingcertain", "FesterHead", "Breed a set amount of a specific animal.");
     this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "The animal to breed."));
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The amount of the animal to breed."));
-    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
 
   @Override

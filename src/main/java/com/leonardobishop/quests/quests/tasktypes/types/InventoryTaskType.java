@@ -1,5 +1,8 @@
 package com.leonardobishop.quests.quests.tasktypes.types;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.leonardobishop.quests.Quests;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
@@ -10,19 +13,17 @@ import com.leonardobishop.quests.quests.Quest;
 import com.leonardobishop.quests.quests.Task;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
-import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public final class InventoryTaskType extends TaskType {
 
@@ -30,11 +31,11 @@ public final class InventoryTaskType extends TaskType {
 
   public InventoryTaskType() {
     super("inventory", "LMBishop", "Obtain a set of items.");
-    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of item to retrieve."));
-    this.creatorConfigValues.add(new ConfigValue("item", true, "Name or ID of item."));
-    this.creatorConfigValues.add(new ConfigValue("remove-items-when-complete", false,
+    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of item to retrieve."));
+    this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "Name or ID of item."));
+    this.creatorConfigValues.add(new ConfigValue("remove-items-when-complete", true,
         "Take the items away from the player on completion (true/false, " + "default = false)."));
-    this.creatorConfigValues.add(new ConfigValue("update-progress", false,
+    this.creatorConfigValues.add(new ConfigValue("update-progress", true,
         "Update the displayed progress (if this causes lag then disable it)."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
@@ -45,10 +46,9 @@ public final class InventoryTaskType extends TaskType {
     return creatorConfigValues;
   }
 
-  @SuppressWarnings("deprecation")
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  public void onItemPickup(PlayerPickupItemEvent event) {
-    Bukkit.getScheduler().runTaskLater(Quests.get(), () -> this.checkInventory(event.getPlayer()), 1L);
+  public void onItemPickup(EntityPickupItemEvent event) {
+    Bukkit.getScheduler().runTaskLater(Quests.get(), () -> this.checkInventory((Player) event.getEntity()), 1L);
   }
 
   @EventHandler(priority = EventPriority.MONITOR/* , ignoreCancelled = true */)
@@ -57,7 +57,6 @@ public final class InventoryTaskType extends TaskType {
     Bukkit.getScheduler().runTaskLater(Quests.get(), () -> checkInventory((Player) event.getWhoClicked()), 1L);
   }
 
-  @SuppressWarnings("deprecation")
   private void checkInventory(Player player) {
     QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
     if (qPlayer == null) {
@@ -90,7 +89,10 @@ public final class InventoryTaskType extends TaskType {
           }
           ItemStack is;
           if (configData != null) {
-            is = new ItemStack(material, 1, ((Integer) configData).shortValue());
+            is = new ItemStack(material, 1);
+            Damageable im = (Damageable) is.getItemMeta();
+            im.setDamage(((Integer) configData).shortValue());
+            is.setItemMeta((ItemMeta) im);
           } else {
             is = new ItemStack(material, 1);
           }

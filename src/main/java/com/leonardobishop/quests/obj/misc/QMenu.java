@@ -6,7 +6,8 @@ import java.util.HashMap;
 
 public interface QMenu {
 
-    QPlayer getOwner();
-    HashMap<?, ?> getSlotsToMenu();
+  QPlayer getOwner();
+
+  HashMap<?, ?> getSlotsToMenu();
 
 }

@@ -23,9 +23,9 @@ public final class EnchantingTaskType extends TaskType {
 
   public EnchantingTaskType() {
     super("enchanting", "toasted", "Enchant a certain amount of items.");
-    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of items you need to enchant."));
-    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of items you need to enchant."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
 
   @Override

@@ -30,8 +30,8 @@ public final class CookingCertainTaskType extends TaskType {
         .add(new ConfigValue(ITEM_KEY, true, "The resulting item from cooking/smelting. Must extract from furnace."));
     this.creatorConfigValues
         .add(new ConfigValue(AMOUNT_KEY, true, "The number of items to cook/smelt. Must extract from furnace."));
-    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
 
   @Override

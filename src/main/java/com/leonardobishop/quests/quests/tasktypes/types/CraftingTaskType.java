@@ -28,8 +28,8 @@ public final class CraftingTaskType extends TaskType {
   public CraftingTaskType() {
     super("crafting", "FesterHead", "Craft a set amount of materials.");
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The amount of the material to craft."));
-    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
 
   @Override

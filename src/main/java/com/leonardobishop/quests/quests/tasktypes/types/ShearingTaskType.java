@@ -24,7 +24,7 @@ public final class ShearingTaskType extends TaskType {
 
   public ShearingTaskType() {
     super("shearing", "LMBishop", "Shear a set amount of sheep.");
-    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of cows to be milked."));
+    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of cows to be milked."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
   }

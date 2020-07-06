@@ -24,74 +24,74 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public final class BentoBoxLevelTaskType extends TaskType {
 
-    private List<ConfigValue> creatorConfigValues = new ArrayList<>();
-    private Field levelField = null;
+  private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private Field levelField = null;
 
-    public BentoBoxLevelTaskType() {
-        super("bentobox_level", "Rodney_Mc_Kay", "Reach a certain island level in the level addon for BentoBox.");
-        this.creatorConfigValues.add(new ConfigValue("level", true, "Minimum island level needed."));
+  public BentoBoxLevelTaskType() {
+    super("bentobox_level", "Rodney_Mc_Kay", "Reach a certain island level.  Requires BentoBox Level addon.");
+    this.creatorConfigValues.add(new ConfigValue("level", true, "Minimum island level needed."));
+  }
+
+  @Override
+  public List<ConfigValue> getCreatorConfigValues() {
+    return creatorConfigValues;
+  }
+
+  public static void register(TaskTypeManager manager) {
+    if (BentoBox.getInstance().getAddonsManager().getAddonByName("Level").isPresent()) {
+      manager.registerTaskType(new BentoBoxLevelTaskType());
     }
+  }
 
-    @Override
-    public List<ConfigValue> getCreatorConfigValues() {
-        return creatorConfigValues;
-    }
+  @EventHandler
+  public void onBentoBoxIslandLevelCalculated(BentoBoxEvent event) {
+    Map<String, Object> keyValues = event.getKeyValues();
 
-    public static void register(TaskTypeManager manager) {
-        if (BentoBox.getInstance().getAddonsManager().getAddonByName("Level").isPresent()) {
-            manager.registerTaskType(new BentoBoxLevelTaskType());
+    if ("IslandLevelCalculatedEvent".equalsIgnoreCase(event.getEventName())) {
+      Island island = (Island) keyValues.get("island");
+
+      for (UUID member : island.getMemberSet()) {
+        QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(member, true);
+        if (qPlayer == null) {
+          continue;
         }
-    }
 
-    @EventHandler
-    public void onBentoBoxIslandLevelCalculated(BentoBoxEvent event) {
-        Map<String, Object> keyValues = event.getKeyValues();
+        QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
-        if ("IslandLevelCalculatedEvent".equalsIgnoreCase(event.getEventName())) {
-            Island island = (Island) keyValues.get("island");
+        for (Quest quest : super.getRegisteredQuests()) {
+          if (questProgressFile.hasStartedQuest(quest)) {
+            QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
-            for (UUID member : island.getMemberSet()) {
-                QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(member, true);
-                if (qPlayer == null) {
-                    continue;
+            for (Task task : quest.getTasksOfType(super.getType())) {
+              TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+
+              if (taskProgress.isCompleted()) {
+                continue;
+              }
+
+              long islandLevelNeeded = (long) (int) task.getConfigValue("level");
+
+              Object results = keyValues.get("results");
+
+              try {
+                if (levelField == null) {
+                  levelField = results.getClass().getDeclaredField("level");
+                  levelField.setAccessible(true);
                 }
 
-                QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+                AtomicLong level = (AtomicLong) levelField.get(results);
+                taskProgress.setProgress(level.get());
+              } catch (NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace();
+              }
 
-                for (Quest quest : super.getRegisteredQuests()) {
-                    if (questProgressFile.hasStartedQuest(quest)) {
-                        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-
-                        for (Task task : quest.getTasksOfType(super.getType())) {
-                            TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-
-                            if (taskProgress.isCompleted()) {
-                                continue;
-                            }
-
-                            long islandLevelNeeded = (long) (int) task.getConfigValue("level");
-
-                            Object results = keyValues.get("results");
-
-                            try {
-                                if (levelField == null) {
-                                    levelField = results.getClass().getDeclaredField("level");
-                                    levelField.setAccessible(true);
-                                }
-
-                                AtomicLong level = (AtomicLong) levelField.get(results);
-                                taskProgress.setProgress(level.get());
-                            } catch (NoSuchFieldException | IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-
-                            if (((long) taskProgress.getProgress()) >= islandLevelNeeded) {
-                                taskProgress.setCompleted(true);
-                            }
-                        }
-                    }
-                }
+              if (((long) taskProgress.getProgress()) >= islandLevelNeeded) {
+                taskProgress.setCompleted(true);
+              }
             }
+          }
         }
+      }
     }
+  }
 }

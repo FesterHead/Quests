@@ -14,86 +14,87 @@ import java.util.List;
  */
 public abstract class TaskType implements Listener {
 
-    public static final String ITEM_KEY = "item";
-    public static final String AMOUNT_KEY = "amount";
-    public static final String PRESENT_KEY = "present";
-    public static final String PAST_KEY = "past";
+  public static final String ITEM_KEY = "item";
+  public static final String AMOUNT_KEY = "amount";
+  public static final String PRESENT_KEY = "present";
+  public static final String PAST_KEY = "past";
+  public static final String REVERSE_KEY = "reverse-if-broken";
 
-    private final List<Quest> quests = new ArrayList<>();
-    private final String type;
-    private String author;
-    private String description;
+  private final List<Quest> quests = new ArrayList<>();
+  private final String type;
+  private String author;
+  private String description;
 
-    /**
-     * @param type
-     *                        the name of the task type, should not contain spaces
-     * @param author
-     *                        the name of the person (or people) who wrote it
-     * @param description
-     *                        a short, simple description of the task type
-     */
-    public TaskType(String type, String author, String description) {
-        this.type = type;
-        this.author = author;
-        this.description = description;
+  /**
+   * @param type
+   *                      the name of the task type, should not contain spaces
+   * @param author
+   *                      the name of the person (or people) who wrote it
+   * @param description
+   *                      a short, simple description of the task type
+   */
+  public TaskType(String type, String author, String description) {
+    this.type = type;
+    this.author = author;
+    this.description = description;
+  }
+
+  /**
+   * @param type
+   *               the name of the task type, should not contain spaces
+   */
+  public TaskType(String type) {
+    this.type = type;
+  }
+
+  /**
+   * Registers a {@link Quest} to this task type. This is usually done when all
+   * the quests are initially loaded.
+   *
+   * @param quest
+   *                the {@link Quest} to register.
+   */
+  public final void registerQuest(Quest quest) {
+    if (!quests.contains(quest)) {
+      quests.add(quest);
     }
+  }
 
-    /**
-     * @param type
-     *                 the name of the task type, should not contain spaces
-     */
-    public TaskType(String type) {
-        this.type = type;
-    }
+  /**
+   * Clears the list which contains the registered quests.
+   */
+  public final void unregisterAll() {
+    quests.clear();
+  }
 
-    /**
-     * Registers a {@link Quest} to this task type. This is usually done when all
-     * the quests are initially loaded.
-     *
-     * @param quest
-     *                  the {@link Quest} to register.
-     */
-    public final void registerQuest(Quest quest) {
-        if (!quests.contains(quest)) {
-            quests.add(quest);
-        }
-    }
+  /**
+   * @return {@link List} of type {@link Quest} of all registered quests.
+   */
+  public final List<Quest> getRegisteredQuests() {
+    return quests;
+  }
 
-    /**
-     * Clears the list which contains the registered quests.
-     */
-    public final void unregisterAll() {
-        quests.clear();
-    }
+  public final String getType() {
+    return type;
+  }
 
-    /**
-     * @return {@link List} of type {@link Quest} of all registered quests.
-     */
-    public final List<Quest> getRegisteredQuests() {
-        return quests;
-    }
+  public String getAuthor() {
+    return author;
+  }
 
-    public final String getType() {
-        return type;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public String getAuthor() {
-        return author;
-    }
+  public List<ConfigValue> getCreatorConfigValues() {
+    return Collections.emptyList();
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public void onReady() {
+    // not implemented here
+  }
 
-    public List<ConfigValue> getCreatorConfigValues() {
-        return Collections.emptyList();
-    }
-
-    public void onReady() {
-        // not implemented here
-    }
-
-    public void onDisable() {
-        // not implemented here
-    }
+  public void onDisable() {
+    // not implemented here
+  }
 }

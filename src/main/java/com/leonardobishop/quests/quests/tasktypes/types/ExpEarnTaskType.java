@@ -22,9 +22,9 @@ public final class ExpEarnTaskType extends TaskType {
 
   public ExpEarnTaskType() {
     super("expearn", "toasted", "Earn a set amount of exp.");
-    this.creatorConfigValues.add(new ConfigValue("amount", true, "Amount of exp that needs to be earned."));
-    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of exp that needs to be earned."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
 
   @Override

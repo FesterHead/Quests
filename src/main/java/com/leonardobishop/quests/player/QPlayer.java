@@ -15,150 +15,154 @@ import java.util.*;
 
 public class QPlayer {
 
-    private final UUID uuid;
-    private final QuestProgressFile questProgressFile;
-    private boolean onlyDataLoaded;
-    private final Quests plugin;
+  private final UUID uuid;
+  private final QuestProgressFile questProgressFile;
+  private boolean onlyDataLoaded;
+  private final Quests plugin;
 
-    public QPlayer(UUID uuid, QuestProgressFile questProgressFile, Quests plugin) {
-        this(uuid, questProgressFile, false, plugin);
+  public QPlayer(UUID uuid, QuestProgressFile questProgressFile, Quests plugin) {
+    this(uuid, questProgressFile, false, plugin);
+  }
+
+  public QPlayer(UUID uuid, QuestProgressFile questProgressFile, boolean onlyDataLoaded, Quests plugin) {
+    this.uuid = uuid;
+    this.questProgressFile = questProgressFile;
+    this.onlyDataLoaded = onlyDataLoaded;
+    this.plugin = plugin;
+  }
+
+  public UUID getUuid() {
+    return this.uuid;
+  }
+
+  /**
+   * @return 0 if success, 1 if no permission, 2 is only data loaded, 3 if player
+   *         not found
+   */
+  public int openCategory(Category category, QMenuCategory superMenu, boolean backButton) {
+    if (onlyDataLoaded) {
+      return 2;
     }
 
-    public QPlayer(UUID uuid, QuestProgressFile questProgressFile, boolean onlyDataLoaded, Quests plugin) {
-        this.uuid = uuid;
-        this.questProgressFile = questProgressFile;
-        this.onlyDataLoaded = onlyDataLoaded;
-        this.plugin = plugin;
+    Player player = Bukkit.getPlayer(this.uuid);
+    if (player == null) {
+      return 3;
     }
 
-    public UUID getUuid() {
-        return this.uuid;
+    if (category.isPermissionRequired() && !player.hasPermission("quests.category." + category.getId())) {
+      return 1;
     }
 
-    /**
-     * @return 0 if success, 1 if no permission, 2 is only data loaded, 3 if player not found
-     */
-    public int openCategory(Category category, QMenuCategory superMenu, boolean backButton) {
-        if (onlyDataLoaded) {
-            return 2;
-        }
+    // Using `this` instead of searching again for this QPlayer
+    QMenuQuest qMenuQuest = new QMenuQuest(this, category.getId(), superMenu);
+    List<Quest> quests = new ArrayList<>();
+    for (String questid : category.getRegisteredQuestIds()) {
+      Quest quest = plugin.getQuestManager().getQuestById(questid);
+      if (quest != null) {
+        quests.add(quest);
+      }
+    }
+    qMenuQuest.populate(quests);
+    qMenuQuest.setBackButtonEnabled(backButton);
+    return openCategory(category, qMenuQuest);
+  }
 
-        Player player = Bukkit.getPlayer(this.uuid);
-        if (player == null) {
-            return 3;
-        }
+  /**
+   * @return 0 if success, 1 if no permission, 2 is only data loaded, 3 if player
+   *         not found
+   */
+  public int openCategory(Category category, QMenuQuest qMenuQuest) {
+    if (onlyDataLoaded) {
+      return 2;
+    }
 
-        if (category.isPermissionRequired() && !player.hasPermission("quests.category." + category.getId())) {
-            return 1;
-        }
+    Player player = Bukkit.getPlayer(this.uuid);
+    if (player == null) {
+      return 3;
+    }
 
-        // Using `this` instead of searching again for this QPlayer
-        QMenuQuest qMenuQuest = new QMenuQuest(this, category.getId(), superMenu);
+    if (category.isPermissionRequired() && !player.hasPermission("quests.category." + category.getId())) {
+      return 1;
+    }
+
+    player.openInventory(qMenuQuest.toInventory(1));
+    EventInventory.track(this.uuid, qMenuQuest);
+    return 0;
+  }
+
+  public void openQuests() {
+    if (onlyDataLoaded) {
+      return;
+    }
+
+    if (this.uuid == null) {
+      return;
+    }
+    Player player = Bukkit.getPlayer(this.uuid);
+    if (player == null) {
+      return;
+    }
+
+    if (Options.CATEGORIES_ENABLED.getBooleanValue()) {
+      QMenuCategory qMenuCategory = new QMenuCategory(plugin.getPlayerManager().getPlayer(player.getUniqueId()));
+      List<QMenuQuest> questMenus = new ArrayList<>();
+      for (Category category : plugin.getQuestManager().getCategories()) {
+        QMenuQuest qMenuQuest = new QMenuQuest(plugin.getPlayerManager().getPlayer(player.getUniqueId()),
+            category.getId(), qMenuCategory);
         List<Quest> quests = new ArrayList<>();
         for (String questid : category.getRegisteredQuestIds()) {
-            Quest quest = plugin.getQuestManager().getQuestById(questid);
-            if (quest != null) {
-                quests.add(quest);
-            }
+          Quest quest = plugin.getQuestManager().getQuestById(questid);
+          if (quest != null) {
+            quests.add(quest);
+          }
         }
         qMenuQuest.populate(quests);
-        qMenuQuest.setBackButtonEnabled(backButton);
-        return openCategory(category, qMenuQuest);
+        questMenus.add(qMenuQuest);
+      }
+      qMenuCategory.populate(questMenus);
+
+      player.openInventory(qMenuCategory.toInventory(1));
+      EventInventory.track(player.getUniqueId(), qMenuCategory);
+    } else {
+      QMenuQuest qMenuQuest = new QMenuQuest(plugin.getPlayerManager().getPlayer(player.getUniqueId()), "", null);
+      List<Quest> quests = new ArrayList<>();
+      for (Map.Entry<String, Quest> entry : plugin.getQuestManager().getQuests().entrySet()) {
+        quests.add(entry.getValue());
+      }
+      qMenuQuest.populate(quests);
+      qMenuQuest.setBackButtonEnabled(false);
+
+      player.openInventory(qMenuQuest.toInventory(1));
+      EventInventory.track(player.getUniqueId(), qMenuQuest);
     }
+  }
 
-    /**
-     * @return 0 if success, 1 if no permission, 2 is only data loaded, 3 if player not found
-     */
-    public int openCategory(Category category, QMenuQuest qMenuQuest) {
-        if (onlyDataLoaded) {
-            return 2;
-        }
+  public boolean isOnlyDataLoaded() {
+    return onlyDataLoaded;
+  }
 
-        Player player = Bukkit.getPlayer(this.uuid);
-        if (player == null) {
-            return 3;
-        }
+  public void setOnlyDataLoaded(boolean onlyDataLoaded) {
+    this.onlyDataLoaded = onlyDataLoaded;
+  }
 
-        if (category.isPermissionRequired() && !player.hasPermission("quests.category." + category.getId())) {
-            return 1;
-        }
+  public QuestProgressFile getQuestProgressFile() {
+    return questProgressFile;
+  }
 
-        player.openInventory(qMenuQuest.toInventory(1));
-        EventInventory.track(this.uuid, qMenuQuest);
-        return 0;
-    }
+  public QuestProgressFile setQuestProgressFile() {
+    return questProgressFile;
+  }
 
-    public void openQuests() {
-        if (onlyDataLoaded) {
-            return;
-        }
+  @Override // Used by java GC
+  public boolean equals(Object o) {
+    if (!(o instanceof QPlayer))
+      return false;
+    QPlayer qPlayer = (QPlayer) o;
+    return this.uuid == qPlayer.getUuid();
+  }
 
-        if (this.uuid == null) {
-            return;
-        }
-        Player player = Bukkit.getPlayer(this.uuid);
-        if (player == null) {
-            return;
-        }
-
-        if (Options.CATEGORIES_ENABLED.getBooleanValue()) {
-            QMenuCategory qMenuCategory = new QMenuCategory(plugin.getPlayerManager().getPlayer(player.getUniqueId()));
-            List<QMenuQuest> questMenus = new ArrayList<>();
-            for (Category category : plugin.getQuestManager().getCategories()) {
-                QMenuQuest qMenuQuest = new QMenuQuest(plugin.getPlayerManager().getPlayer(player.getUniqueId()), category.getId(), qMenuCategory);
-                List<Quest> quests = new ArrayList<>();
-                for (String questid : category.getRegisteredQuestIds()) {
-                    Quest quest = plugin.getQuestManager().getQuestById(questid);
-                    if (quest != null) {
-                        quests.add(quest);
-                    }
-                }
-                qMenuQuest.populate(quests);
-                questMenus.add(qMenuQuest);
-            }
-            qMenuCategory.populate(questMenus);
-
-            player.openInventory(qMenuCategory.toInventory(1));
-            EventInventory.track(player.getUniqueId(), qMenuCategory);
-        } else {
-            QMenuQuest qMenuQuest = new QMenuQuest(plugin.getPlayerManager().getPlayer(player.getUniqueId()), "", null);
-            List<Quest> quests = new ArrayList<>();
-            for (Map.Entry<String, Quest> entry : plugin.getQuestManager().getQuests().entrySet()) {
-                quests.add(entry.getValue());
-            }
-            qMenuQuest.populate(quests);
-            qMenuQuest.setBackButtonEnabled(false);
-
-            player.openInventory(qMenuQuest.toInventory(1));
-            EventInventory.track(player.getUniqueId(), qMenuQuest);
-        }
-    }
-
-    public boolean isOnlyDataLoaded() {
-        return onlyDataLoaded;
-    }
-
-    public void setOnlyDataLoaded(boolean onlyDataLoaded) {
-        this.onlyDataLoaded = onlyDataLoaded;
-    }
-
-    public QuestProgressFile getQuestProgressFile() {
-        return questProgressFile;
-    }
-
-    public QuestProgressFile setQuestProgressFile() {
-        return questProgressFile;
-    }
-
-    @Override //Used by java GC
-    public boolean equals(Object o) {
-        if (!(o instanceof QPlayer)) return false;
-        QPlayer qPlayer = (QPlayer) o;
-        return this.uuid == qPlayer.getUuid();
-    }
-
-    @Override //Used by java GC
-    public int hashCode() {
-        return uuid.hashCode() * 73; //uuid hash * prime number
-    }
+  @Override // Used by java GC
+  public int hashCode() {
+    return uuid.hashCode() * 73; // uuid hash * prime number
+  }
 }

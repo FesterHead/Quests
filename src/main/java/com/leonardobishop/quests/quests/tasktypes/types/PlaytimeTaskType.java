@@ -25,7 +25,7 @@ public final class PlaytimeTaskType extends TaskType {
 
   public PlaytimeTaskType() {
     super("playtime", "Reinatix", "Track the amount of playing time a user has been on");
-    this.creatorConfigValues.add(new ConfigValue("minutes", true, "Time in minutes."));
+    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Time in minutes."));
   }
 
   @Override

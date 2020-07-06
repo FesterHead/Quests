@@ -5,25 +5,25 @@ package com.leonardobishop.quests.quests.tasktypes;
  */
 public final class ConfigValue {
 
-    private final String key;
-    private final boolean required;
-    private final String description;
+  private final String key;
+  private final boolean required;
+  private final String description;
 
-    public ConfigValue(String key, boolean required, String description) {
-        this.key = key;
-        this.required = required;
-        this.description = description;
-    }
+  public ConfigValue(String key, boolean required, String description) {
+    this.key = key;
+    this.required = required;
+    this.description = description;
+  }
 
-    public String getKey() {
-        return key;
-    }
+  public String getKey() {
+    return key;
+  }
 
-    public boolean isRequired() {
-        return required;
-    }
+  public boolean isRequired() {
+    return required;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public String getDescription() {
+    return description;
+  }
 }

@@ -7,122 +7,122 @@ import java.util.*;
 
 public class Quest implements Comparable<Quest> {
 
-    private Map<String, Task> tasks = new HashMap<>();
-    // TODO: maybe store by <tasktypename (string), list<task>> since we never get
-    // task by id, but always get tasks by type.
-    private final String id;
-    private final QItemStack displayItem;
-    private final List<String> rewards;
-    private final List<String> requirements;
-    private final List<String> rewardString;
-    private final List<String> startString;
-    private final boolean repeatable;
-    private final boolean cooldownEnabled;
-    private final int cooldown;
-    private final int sortOrder;
-    private boolean permissionRequired;
-    private String categoryid;
+  private Map<String, Task> tasks = new HashMap<>();
+  // TO DO: maybe store by <tasktypename (string), list<task>> since we never get
+  // task by id, but always get tasks by type.
+  private final String id;
+  private final QItemStack displayItem;
+  private final List<String> rewards;
+  private final List<String> requirements;
+  private final List<String> rewardString;
+  private final List<String> startString;
+  private final boolean repeatable;
+  private final boolean cooldownEnabled;
+  private final int cooldown;
+  private final int sortOrder;
+  private boolean permissionRequired;
+  private String categoryid;
 
-    public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable,
-            boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString,
-            List<String> startString, String categoryid, int sortOrder) {
-        this(id, displayItem, rewards, requirements, repeatable, cooldownEnabled, cooldown, permissionRequired,
-                rewardString, startString, sortOrder);
-        this.categoryid = categoryid;
-    }
+  public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable,
+      boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString,
+      List<String> startString, String categoryid, int sortOrder) {
+    this(id, displayItem, rewards, requirements, repeatable, cooldownEnabled, cooldown, permissionRequired,
+        rewardString, startString, sortOrder);
+    this.categoryid = categoryid;
+  }
 
-    public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable,
-            boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString,
-            List<String> startString, int sortOrder) {
-        this.id = id;
-        this.displayItem = displayItem;
-        this.rewards = rewards;
-        this.requirements = requirements;
-        this.repeatable = repeatable;
-        this.cooldownEnabled = cooldownEnabled;
-        this.cooldown = cooldown;
-        this.permissionRequired = permissionRequired;
-        this.rewardString = rewardString;
-        this.startString = startString;
-        this.sortOrder = sortOrder;
-    }
+  public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable,
+      boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString,
+      List<String> startString, int sortOrder) {
+    this.id = id;
+    this.displayItem = displayItem;
+    this.rewards = rewards;
+    this.requirements = requirements;
+    this.repeatable = repeatable;
+    this.cooldownEnabled = cooldownEnabled;
+    this.cooldown = cooldown;
+    this.permissionRequired = permissionRequired;
+    this.rewardString = rewardString;
+    this.startString = startString;
+    this.sortOrder = sortOrder;
+  }
 
-    public void registerTask(Task task) {
-        tasks.put(task.getId(), task);
-    }
+  public void registerTask(Task task) {
+    tasks.put(task.getId(), task);
+  }
 
-    public Collection<Task> getTasks() {
-        return tasks.values();
-    }
+  public Collection<Task> getTasks() {
+    return tasks.values();
+  }
 
-    public Task getTask(String taskId) {
-        return tasks.get(taskId);
-    }
+  public Task getTask(String taskId) {
+    return tasks.get(taskId);
+  }
 
-    public List<Task> getTasksOfType(String type) {
-        List<Task> tasks = new ArrayList<>();
-        for (Task task : getTasks()) {
-            if (task.getType().equals(type)) {
-                tasks.add(task);
-            }
-        }
-        return tasks;
+  public List<Task> getTasksOfType(String type) {
+    List<Task> tasks = new ArrayList<>();
+    for (Task task : getTasks()) {
+      if (task.getType().equals(type)) {
+        tasks.add(task);
+      }
     }
+    return tasks;
+  }
 
-    public boolean isPermissionRequired() {
-        return permissionRequired;
-    }
+  public boolean isPermissionRequired() {
+    return permissionRequired;
+  }
 
-    public void setPermissionRequired(boolean permissionRequired) {
-        this.permissionRequired = permissionRequired;
-    }
+  public void setPermissionRequired(boolean permissionRequired) {
+    this.permissionRequired = permissionRequired;
+  }
 
-    public List<String> getRewardString() {
-        return rewardString;
-    }
+  public List<String> getRewardString() {
+    return rewardString;
+  }
 
-    public List<String> getStartString() {
-        return startString;
-    }
+  public List<String> getStartString() {
+    return startString;
+  }
 
-    public String getId() {
-        return id;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public QItemStack getDisplayItem() {
-        return displayItem;
-    }
+  public QItemStack getDisplayItem() {
+    return displayItem;
+  }
 
-    public List<String> getRewards() {
-        return rewards;
-    }
+  public List<String> getRewards() {
+    return rewards;
+  }
 
-    public List<String> getRequirements() {
-        return requirements;
-    }
+  public List<String> getRequirements() {
+    return requirements;
+  }
 
-    public boolean isRepeatable() {
-        return repeatable;
-    }
+  public boolean isRepeatable() {
+    return repeatable;
+  }
 
-    public boolean isCooldownEnabled() {
-        return cooldownEnabled;
-    }
+  public boolean isCooldownEnabled() {
+    return cooldownEnabled;
+  }
 
-    public int getCooldown() {
-        return cooldown;
-    }
+  public int getCooldown() {
+    return cooldown;
+  }
 
-    public String getCategoryId() {
-        return categoryid;
-    }
+  public String getCategoryId() {
+    return categoryid;
+  }
 
-    public String getDisplayNameStripped() {
-        return ChatColor.stripColor(this.displayItem.getName());
-    }
+  public String getDisplayNameStripped() {
+    return ChatColor.stripColor(this.displayItem.getName());
+  }
 
-    @Override
-    public int compareTo(Quest quest) {
-        return (sortOrder - quest.sortOrder);
-    }
+  @Override
+  public int compareTo(Quest quest) {
+    return (sortOrder - quest.sortOrder);
+  }
 }

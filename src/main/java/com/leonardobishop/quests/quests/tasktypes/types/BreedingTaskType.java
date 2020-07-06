@@ -27,8 +27,8 @@ public final class BreedingTaskType extends TaskType {
   public BreedingTaskType() {
     super("breeding", "toasted", "Breed a set amount of animals.");
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of animals to breed."));
-    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
+    this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
 
   @Override
@@ -38,7 +38,8 @@ public final class BreedingTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBreed(EntityBreedEvent event) {
-    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getBreeder().getUniqueId(), true);
+    QPlayer qPlayer =
+        QuestsAPI.getPlayerManager().getPlayer(event.getBreeder().getUniqueId(), true);
     QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
     for (Quest quest : super.getRegisteredQuests()) {
@@ -53,7 +54,8 @@ public final class BreedingTaskType extends TaskType {
 
         for (Task task : quest.getTasksOfType(super.getType())) {
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-          int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
+          int taskProgressCounter =
+              (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());

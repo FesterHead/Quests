@@ -1,9 +1,7 @@
-out/
-.idea/
-*.iml
-.github/
-target/
-/bin/
-.classpath
-.project
 .settings/
+.vscode/
+out/
+target/
+.classpath
+.github/
+.project

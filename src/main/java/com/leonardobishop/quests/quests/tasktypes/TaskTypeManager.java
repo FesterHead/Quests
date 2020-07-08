@@ -27,7 +27,7 @@ public class TaskTypeManager {
     return taskTypes;
   }
 
-  public void resetTaskTypes() {S
+  public void resetTaskTypes() {
     for (TaskType taskType : taskTypes) {
       taskType.getRegisteredQuests().clear();
     }

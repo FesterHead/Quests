@@ -20,7 +20,7 @@ public class Quest implements Comparable<Quest> {
   private final boolean cooldownEnabled;
   private final int cooldown;
   private final int sortOrder;
-  private boolean permissionRequired;S
+  private boolean permissionRequired;
   private String categoryid;
 
   public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements,

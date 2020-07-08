@@ -24,7 +24,7 @@ public abstract class TaskType implements Listener {
   private final String type;
   private String author;
   private String description;
-S
+
   /**
    * @param type        the name of the task type, should not contain spaces
    * @param author      the name of the person (or people) who wrote it

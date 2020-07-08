@@ -21,7 +21,8 @@ public class EventPlayerJoin implements Listener {
   public void onEvent(PlayerJoinEvent event) {
     UUID playerUuid = event.getPlayer().getUniqueId();
     plugin.getPlayerManager().loadPlayer(playerUuid, false);
-    if (plugin.getDescription().getVersion().contains("beta") && event.getPlayer().hasPermission("quests.admin")) {
+    if (plugin.getDescription().getVersion().contains("beta")
+        && event.getPlayer().hasPermission("quests.admin")) {
       event.getPlayer().sendMessage(Messages.BETA_REMINDER.getMessage());
     }
   }

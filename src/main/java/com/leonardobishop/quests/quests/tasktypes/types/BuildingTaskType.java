@@ -22,7 +22,8 @@ public final class BuildingTaskType extends TaskType {
 
   public BuildingTaskType() {
     super("blockplace", "LMBishop", "Place a set amount of blocks.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be placed."));
+    this.creatorConfigValues
+        .add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be placed."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }

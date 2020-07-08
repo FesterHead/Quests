@@ -27,9 +27,10 @@ public final class HarvestCertainTaskType extends TaskType {
 
   public HarvestCertainTaskType() {
     super("harvestcertain", "FesterHead", "Harvest a set amount of a specific crop.");
+    this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true,
+        "The crop to harvest. Can really any item dropped from a block break."));
     this.creatorConfigValues
-        .add(new ConfigValue(ITEM_KEY, true, "The crop to harvest. Can really any item dropped from a block break."));
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of items to harvest."));
+        .add(new ConfigValue(AMOUNT_KEY, true, "The number of items to harvest."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
@@ -51,9 +52,11 @@ public final class HarvestCertainTaskType extends TaskType {
         QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
         for (Task task : quest.getTasksOfType(super.getType())) {
-          Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+          Material expectedObject =
+              Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-          int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
+          int taskProgressCounter =
+              (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());

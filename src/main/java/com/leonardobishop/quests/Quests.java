@@ -119,7 +119,8 @@ public class Quests extends JavaPlugin {
     long seconds = ((m % 3600) % 60) % 60;
 
     return Messages.TIME_FORMAT.getMessage().replace("{hours}", String.format("%02d", hours))
-        .replace("{minutes}", String.format("%02d", minutes)).replace("{seconds}", String.format("%02d", seconds));
+        .replace("{minutes}", String.format("%02d", minutes))
+        .replace("{seconds}", String.format("%02d", seconds));
   }
 
   @Override
@@ -194,9 +195,10 @@ public class Quests extends JavaPlugin {
       reloadQuests();
       if (!questsConfigLoader.getBrokenFiles().isEmpty()) {
         this.getQuestsLogger().severe("Quests has failed to load the following files:");
-        for (Map.Entry<String, QuestsConfigLoader.ConfigLoadError> entry : questsConfigLoader.getBrokenFiles()
-            .entrySet()) {
-          this.getQuestsLogger().severe(" - " + entry.getKey() + ": " + entry.getValue().getMessage());
+        for (Map.Entry<String, QuestsConfigLoader.ConfigLoadError> entry : questsConfigLoader
+            .getBrokenFiles().entrySet()) {
+          this.getQuestsLogger()
+              .severe(" - " + entry.getKey() + ": " + entry.getValue().getMessage());
         }
       }
 
@@ -232,10 +234,10 @@ public class Quests extends JavaPlugin {
     long autocompleteInterval = 12000;
     long completerPollInterval = 100;
     if (!isBrokenConfig()) {
-      autocompleteInterval = this.getConfig().getLong("options.performance-tweaking.quest-autocomplete-interval",
-          12000);
-      completerPollInterval = this.getConfig().getLong("options.performance-tweaking.quest-completer-poll-interval",
-          100);
+      autocompleteInterval = this.getConfig()
+          .getLong("options.performance-tweaking.quest-autocomplete-interval", 12000);
+      completerPollInterval = this.getConfig()
+          .getLong("options.performance-tweaking.quest-completer-poll-interval", 100);
     }
     if (questAutosaveTask != null) {
       try {
@@ -257,15 +259,18 @@ public class Quests extends JavaPlugin {
       } catch (Exception ignored) {
       }
     }
-    questCompleterTask = Bukkit.getScheduler().runTaskTimer(this, new QuestCompleter(this), 20, completerPollInterval);
+    questCompleterTask = Bukkit.getScheduler().runTaskTimer(this, new QuestCompleter(this), 20,
+        completerPollInterval);
   }
 
-  public ItemStack getItemStack(String path, ConfigurationSection config, ItemGetter.Filter... excludes) {
+  public ItemStack getItemStack(String path, ConfigurationSection config,
+      ItemGetter.Filter... excludes) {
     return itemGetter.getItem(path, config, this, excludes);
   }
 
   private void setupVersionSpecific() {
-    String version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
+    String version =
+        Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
     getQuestsLogger().info("Your server is running version " + version + ".");
     title = new Title_Bukkit();
     itemGetter = new ItemGetterLatest();
@@ -333,7 +338,8 @@ public class Quests extends JavaPlugin {
       examples.add("README.txt");
 
       for (String name : examples) {
-        File file = new File(this.getDataFolder() + File.separator + "quests" + File.separator + name);
+        File file =
+            new File(this.getDataFolder() + File.separator + "quests" + File.separator + name);
 
         InputStream in = null;
         OutputStream out = null;

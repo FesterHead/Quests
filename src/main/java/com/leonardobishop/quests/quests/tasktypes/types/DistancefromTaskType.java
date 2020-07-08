@@ -30,8 +30,8 @@ public final class DistancefromTaskType extends TaskType {
     this.creatorConfigValues.add(new ConfigValue("y", true, "Y position."));
     this.creatorConfigValues.add(new ConfigValue("z", true, "Z position."));
     this.creatorConfigValues.add(new ConfigValue("world", true, "Name of world."));
-    this.creatorConfigValues
-        .add(new ConfigValue("distance", true, "Distance the player needs to be from the co-ordinates."));
+    this.creatorConfigValues.add(new ConfigValue("distance", true,
+        "Distance the player needs to be from the co-ordinates."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
   }
@@ -76,7 +76,8 @@ public final class DistancefromTaskType extends TaskType {
           }
 
           Location location = new Location(world, x, y, z);
-          if (player.getWorld().equals(world) && player.getLocation().distance(location) > distance) {
+          if (player.getWorld().equals(world)
+              && player.getLocation().distance(location) > distance) {
             taskProgress.setCompleted(true);
           }
         }

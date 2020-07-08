@@ -27,7 +27,8 @@ public final class FishingTaskType extends TaskType {
 
   public FishingTaskType() {
     super("fishing", "LMBishop", "Catch a set amount of fish/items from the sea.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of fish/items to catch."));
+    this.creatorConfigValues
+        .add(new ConfigValue(AMOUNT_KEY, true, "Amount of fish/items to catch."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
@@ -58,7 +59,8 @@ public final class FishingTaskType extends TaskType {
 
         for (Task task : quest.getTasksOfType(super.getType())) {
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-          int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
+          int taskProgressCounter =
+              (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());

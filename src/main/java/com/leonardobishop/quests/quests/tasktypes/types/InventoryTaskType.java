@@ -48,13 +48,15 @@ public final class InventoryTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onItemPickup(EntityPickupItemEvent event) {
-    Bukkit.getScheduler().runTaskLater(Quests.get(), () -> this.checkInventory((Player) event.getEntity()), 1L);
+    Bukkit.getScheduler().runTaskLater(Quests.get(),
+        () -> this.checkInventory((Player) event.getEntity()), 1L);
   }
 
   @EventHandler(priority = EventPriority.MONITOR/* , ignoreCancelled = true */)
   public void onInventoryClick(InventoryClickEvent event) {
     // Still some work to do as it doesn't really work
-    Bukkit.getScheduler().runTaskLater(Quests.get(), () -> checkInventory((Player) event.getWhoClicked()), 1L);
+    Bukkit.getScheduler().runTaskLater(Quests.get(),
+        () -> checkInventory((Player) event.getWhoClicked()), 1L);
   }
 
   private void checkInventory(Player player) {
@@ -97,7 +99,8 @@ public final class InventoryTaskType extends TaskType {
             is = new ItemStack(material, 1);
           }
 
-          if (task.getConfigValue("update-progress") != null && (Boolean) task.getConfigValue("update-progress")) {
+          if (task.getConfigValue("update-progress") != null
+              && (Boolean) task.getConfigValue("update-progress")) {
             taskProgress.setProgress(getAmount(player, is, amount));
           }
 

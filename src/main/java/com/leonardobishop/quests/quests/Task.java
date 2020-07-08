@@ -24,7 +24,7 @@ public class Task {
   }
 
   public Object getConfigValue(String key) {
-    return configValues.getOrDefault(key, null); // ??? this will return null without the need of `OrDefault(key, null)`
+    return configValues.getOrDefault(key, null);
   }
 
   public Map<String, Object> getConfigValues() {

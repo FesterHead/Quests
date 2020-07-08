@@ -28,8 +28,8 @@ public final class MobkillingCertainTaskType extends TaskType {
     super("mobkillingcertain", "LMBishop", "Kill a set amount of a specific entity type.");
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of mobs to be killed."));
     this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "Name of mob."));
-    this.creatorConfigValues
-        .add(new ConfigValue("name", false, "Only allow a specific name for mob (unspecified = any name allowed)."));
+    this.creatorConfigValues.add(new ConfigValue("name", false,
+        "Only allow a specific name for mob (unspecified = any name allowed)."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }

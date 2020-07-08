@@ -26,9 +26,11 @@ public final class FishingCertainTaskType extends TaskType {
   private QuestsLogger questLogger = QuestsAPI.getQuestManager().getPlugin().getQuestsLogger();
 
   public FishingCertainTaskType() {
-    super("fishingcertain", "FesterHead", "Catch a set amount of a specific fish/item from the sea.");
+    super("fishingcertain", "FesterHead",
+        "Catch a set amount of a specific fish/item from the sea.");
     this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "The fish/item to catch."));
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The amount of the fish/item to catch."));
+    this.creatorConfigValues
+        .add(new ConfigValue(AMOUNT_KEY, true, "The amount of the fish/item to catch."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
@@ -58,9 +60,11 @@ public final class FishingCertainTaskType extends TaskType {
         questLogger.debug("    Incoming object: §b" + incomingObject.toString());
 
         for (Task task : quest.getTasksOfType(super.getType())) {
-          Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+          Material expectedObject =
+              Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-          int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
+          int taskProgressCounter =
+              (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());

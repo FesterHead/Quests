@@ -8,28 +8,22 @@ import org.bukkit.inventory.ItemStack;
 public interface ItemGetter {
 
   /**
-   * Gets an ItemStack from a configuration. Implementations should specific to
-   * the server version.
+   * Gets an ItemStack from a configuration. Implementations should specific to the server version.
    *
-   * @param path
-   *                   the path to where the item is defined in the config (null
-   *                   if item is defined in second param)
-   * @param config
-   *                   the configuration file
-   * @param plugin
-   *                   Quests plugin instance
-   * @param excludes
-   *                   exclude certain fields in the configuration
+   * @param path     the path to where the item is defined in the config (null if item is defined in
+   *                 second param)
+   * @param config   the configuration file
+   * @param plugin   Quests plugin instance
+   * @param excludes exclude certain fields in the configuration
    * @return {@link org.bukkit.inventory.ItemStack}
    */
   ItemStack getItem(String path, ConfigurationSection config, Quests plugin, Filter... excludes);
 
   /**
-   * Gets an ItemStack from a given string (which represents a material). For
-   * pre-1.13 server implementations, the string may use a data code.
+   * Gets an ItemStack from a given string (which represents a material). For pre-1.13 server
+   * implementations, the string may use a data code.
    *
-   * @param material
-   *                   the string
+   * @param material the string
    * @return {@link org.bukkit.inventory.ItemStack}
    */
   ItemStack getItemStack(String material, Quests plugin);

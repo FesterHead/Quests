@@ -27,7 +27,8 @@ public final class CraftingTaskType extends TaskType {
 
   public CraftingTaskType() {
     super("crafting", "FesterHead", "Craft a set amount of materials.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The amount of the material to craft."));
+    this.creatorConfigValues
+        .add(new ConfigValue(AMOUNT_KEY, true, "The amount of the material to craft."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
@@ -39,7 +40,8 @@ public final class CraftingTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onCraftItem(CraftItemEvent event) {
-    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getWhoClicked().getUniqueId(), true);
+    QPlayer qPlayer =
+        QuestsAPI.getPlayerManager().getPlayer(event.getWhoClicked().getUniqueId(), true);
     QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
     for (Quest quest : super.getRegisteredQuests()) {
@@ -54,7 +56,8 @@ public final class CraftingTaskType extends TaskType {
 
         for (Task task : quest.getTasksOfType(super.getType())) {
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-          int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
+          int taskProgressCounter =
+              (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());

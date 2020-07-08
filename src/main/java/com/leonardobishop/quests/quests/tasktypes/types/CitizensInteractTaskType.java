@@ -35,7 +35,8 @@ public final class CitizensInteractTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onNPCClick(NPCRightClickEvent event) {
-    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(event.getClicker().getUniqueId(), true);
+    QPlayer qPlayer =
+        QuestsAPI.getPlayerManager().getPlayer(event.getClicker().getUniqueId(), true);
     if (qPlayer == null) {
       return;
     }
@@ -48,8 +49,10 @@ public final class CitizensInteractTaskType extends TaskType {
 
         for (Task task : quest.getTasksOfType(super.getType())) {
           if (!ChatColor
-              .stripColor(ChatColor.translateAlternateColorCodes('&', String.valueOf(task.getConfigValue("npc-name"))))
-              .equals(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', event.getNPC().getName())))) {
+              .stripColor(ChatColor.translateAlternateColorCodes('&',
+                  String.valueOf(task.getConfigValue("npc-name"))))
+              .equals(ChatColor.stripColor(
+                  ChatColor.translateAlternateColorCodes('&', event.getNPC().getName())))) {
             return;
           }
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());

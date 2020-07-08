@@ -45,20 +45,23 @@ public class QuestsConfigLoader {
       YamlConfiguration config = new YamlConfiguration();
       config.load(new File(plugin.getDataFolder() + File.separator + "config.yml"));
     } catch (Exception ex) {
-      brokenFiles.put("<MAIN CONFIG> config.yml", new ConfigLoadError(ConfigLoadErrorType.MALFORMED_YAML));
+      brokenFiles.put("<MAIN CONFIG> config.yml",
+          new ConfigLoadError(ConfigLoadErrorType.MALFORMED_YAML));
       plugin.setBrokenConfig(true);
       return;
     }
 
     for (String id : plugin.getConfig().getConfigurationSection("categories").getKeys(false)) {
-      ItemStack displayItem = plugin.getItemStack("categories." + id + ".display", plugin.getConfig());
-      boolean permissionRequired = plugin.getConfig().getBoolean("categories." + id + ".permission-required", false);
+      ItemStack displayItem =
+          plugin.getItemStack("categories." + id + ".display", plugin.getConfig());
+      boolean permissionRequired =
+          plugin.getConfig().getBoolean("categories." + id + ".permission-required", false);
 
       Category category = new Category(id, displayItem, permissionRequired);
       plugin.getQuestManager().registerCategory(category);
     }
-    plugin.getQuestsLogger()
-        .setServerLoggingLevel(LoggingLevel.fromNumber(plugin.getConfig().getInt("options.verbose-logging-level", 2)));
+    plugin.getQuestsLogger().setServerLoggingLevel(
+        LoggingLevel.fromNumber(plugin.getConfig().getInt("options.verbose-logging-level", 2)));
 
     FileVisitor<Path> fileVisitor = new SimpleFileVisitor<Path>() {
       final URI questsRoot = Paths.get(plugin.getDataFolder() + File.separator + "quests").toUri();
@@ -76,14 +79,16 @@ public class QuestsConfigLoader {
         try {
           config.load(questFile);
         } catch (Exception ex) {
-          brokenFiles.put(relativeLocation.getPath(), new ConfigLoadError(ConfigLoadErrorType.MALFORMED_YAML));
+          brokenFiles.put(relativeLocation.getPath(),
+              new ConfigLoadError(ConfigLoadErrorType.MALFORMED_YAML));
           return FileVisitResult.CONTINUE;
         }
 
         String id = questFile.getName().replace(".yml", "");
 
         if (!StringUtils.isAlphanumeric(id)) {
-          brokenFiles.put(relativeLocation.getPath(), new ConfigLoadError(ConfigLoadErrorType.INVALID_QUEST_ID));
+          brokenFiles.put(relativeLocation.getPath(),
+              new ConfigLoadError(ConfigLoadErrorType.INVALID_QUEST_ID));
           return FileVisitResult.CONTINUE;
         }
 
@@ -113,19 +118,19 @@ public class QuestsConfigLoader {
                   missingFields.add(cv.getKey());
               }
               if (!missingFields.isEmpty())
-                taskErrors.add("task '" + taskId + "': '" + t.getType() + "' missing required field(s) '"
-                    + String.join(", ", missingFields) + "'");
+                taskErrors.add("task '" + taskId + "': '" + t.getType()
+                    + "' missing required field(s) '" + String.join(", ", missingFields) + "'");
             }
           }
         }
 
         if (!questErrors.isEmpty()) { // if the file quest is not okay, do not load the quest
-          brokenFiles.put(relativeLocation.getPath(),
-              new ConfigLoadError(ConfigLoadErrorType.MALFORMED_QUEST, String.join("; ", questErrors)));
+          brokenFiles.put(relativeLocation.getPath(), new ConfigLoadError(
+              ConfigLoadErrorType.MALFORMED_QUEST, String.join("; ", questErrors)));
           return FileVisitResult.CONTINUE; // next quest please!
         } else if (!taskErrors.isEmpty()) { // likewise with tasks
-          brokenFiles.put(relativeLocation.getPath(),
-              new ConfigLoadError(ConfigLoadErrorType.MALFORMED_TASK, String.join("; ", taskErrors)));
+          brokenFiles.put(relativeLocation.getPath(), new ConfigLoadError(
+              ConfigLoadErrorType.MALFORMED_TASK, String.join("; ", taskErrors)));
           return FileVisitResult.CONTINUE;
         }
 
@@ -148,11 +153,11 @@ public class QuestsConfigLoader {
 
         Quest quest;
         if (category.equals("")) {
-          quest = new Quest(id, displayItem, rewards, requirements, repeatable, cooldown, cooldownTime,
-              permissionRequired, rewardString, startString, sortOrder);
+          quest = new Quest(id, displayItem, rewards, requirements, repeatable, cooldown,
+              cooldownTime, permissionRequired, rewardString, startString, sortOrder);
         } else {
-          quest = new Quest(id, displayItem, rewards, requirements, repeatable, cooldown, cooldownTime,
-              permissionRequired, rewardString, startString, category, sortOrder);
+          quest = new Quest(id, displayItem, rewards, requirements, repeatable, cooldown,
+              cooldownTime, permissionRequired, rewardString, startString, category, sortOrder);
           Category c = plugin.getQuestManager().getCategoryById(category);
           if (c != null) {
             c.registerQuestId(id);
@@ -173,8 +178,8 @@ public class QuestsConfigLoader {
         }
 
         if (plugin.getConfig().getBoolean("options.show-quest-registrations")) {
-          plugin.getQuestsLogger()
-              .info("Registering quest " + quest.getId() + " with " + quest.getTasks().size() + " tasks.");
+          plugin.getQuestsLogger().info("Registering quest " + quest.getId() + " with "
+              + quest.getTasks().size() + " tasks.");
         }
         plugin.getQuestManager().registerQuest(quest);
         plugin.getTaskTypeManager().registerQuestTasksWithTaskTypes(quest);
@@ -183,7 +188,8 @@ public class QuestsConfigLoader {
     };
 
     try {
-      Files.walkFileTree(Paths.get(plugin.getDataFolder() + File.separator + "quests"), fileVisitor);
+      Files.walkFileTree(Paths.get(plugin.getDataFolder() + File.separator + "quests"),
+          fileVisitor);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -199,8 +205,7 @@ public class QuestsConfigLoader {
   /**
    * Gets recent file errors during load.
    *
-   * @return Errors during load, Map<String, ConfigLoadError> of file name and
-   *         error
+   * @return Errors during load, Map<String, ConfigLoadError> of file name and error
    */
   public Map<String, ConfigLoadError> getBrokenFiles() {
     return brokenFiles;
@@ -226,16 +231,18 @@ public class QuestsConfigLoader {
     }
     name = ChatColor.translateAlternateColorCodes('&', cName);
 
-    ItemStack is = plugin.getItemStack(path, config, ItemGetter.Filter.DISPLAY_NAME, ItemGetter.Filter.LORE,
-        ItemGetter.Filter.ENCHANTMENTS, ItemGetter.Filter.ITEM_FLAGS);
+    ItemStack is = plugin.getItemStack(path, config, ItemGetter.Filter.DISPLAY_NAME,
+        ItemGetter.Filter.LORE, ItemGetter.Filter.ENCHANTMENTS, ItemGetter.Filter.ITEM_FLAGS);
 
     return new QItemStack(name, loreNormal, loreStarted, is);
   }
 
   public enum ConfigLoadErrorType {
 
-    MALFORMED_YAML("Malformed YAML"), INVALID_QUEST_ID("Invalid quest ID (must be alphanumeric)"), MALFORMED_QUEST(
-        "Quest file is not configured properly: %s"), MALFORMED_TASK("Tasks are not configured properly: %s");
+    MALFORMED_YAML("Malformed YAML"), INVALID_QUEST_ID(
+        "Invalid quest ID (must be alphanumeric)"), MALFORMED_QUEST(
+            "Quest file is not configured properly: %s"), MALFORMED_TASK(
+                "Tasks are not configured properly: %s");
 
     private String message;
 

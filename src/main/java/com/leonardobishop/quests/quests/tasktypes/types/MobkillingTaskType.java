@@ -27,8 +27,8 @@ public final class MobkillingTaskType extends TaskType {
   public MobkillingTaskType() {
     super("mobkilling", "LMBishop", "Kill a set amount of entities.");
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of mobs to be killed."));
-    this.creatorConfigValues.add(
-        new ConfigValue("hostile", false, "Only allow hostile or non-hostile mobs (unspecified = any type allowed)."));
+    this.creatorConfigValues.add(new ConfigValue("hostile", false,
+        "Only allow hostile or non-hostile mobs (unspecified = any type allowed)."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }

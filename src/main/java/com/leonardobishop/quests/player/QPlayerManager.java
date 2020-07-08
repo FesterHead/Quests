@@ -23,12 +23,10 @@ public class QPlayerManager {
   private final Map<UUID, QPlayer> qPlayers = new HashMap<>();
 
   /**
-   * Gets the QPlayer from a given UUID. Calls
-   * {@link QPlayerManager#getPlayer(UUID, boolean)} with the 2nd argument as
-   * false.
+   * Gets the QPlayer from a given UUID. Calls {@link QPlayerManager#getPlayer(UUID, boolean)} with
+   * the 2nd argument as false.
    *
-   * @param uuid
-   *               the uuid
+   * @param uuid the uuid
    * @return {@link QPlayer} if they are loaded
    */
   public QPlayer getPlayer(UUID uuid) {
@@ -38,17 +36,16 @@ public class QPlayerManager {
   /**
    * Gets the QPlayer from a given UUID.
    *
-   * @param uuid
-   *                     the uuid
-   * @param loadIfNull
-   *                     load the QPlayer if the result is null and return the
-   *                     QPlayer if successfully loaded
+   * @param uuid       the uuid
+   * @param loadIfNull load the QPlayer if the result is null and return the QPlayer if successfully
+   *                   loaded
    * @return {@link QPlayer} if they are loaded
    */
   public QPlayer getPlayer(UUID uuid, boolean loadIfNull) {
     QPlayer qPlayer = qPlayers.get(uuid);
     if (qPlayer == null && loadIfNull) {
-      plugin.getQuestsLogger().debug("QPlayer of " + uuid + " is null, but was requested! Attempting to load it.");
+      plugin.getQuestsLogger()
+          .debug("QPlayer of " + uuid + " is null, but was requested! Attempting to load it.");
       loadPlayer(uuid, false);
       return getPlayer(uuid, false);
     }
@@ -73,27 +70,32 @@ public class QPlayerManager {
       try {
         File directory = new File(plugin.getDataFolder() + File.separator + "playerdata");
         if (directory.exists() && directory.isDirectory()) {
-          File file = new File(
-              plugin.getDataFolder() + File.separator + "playerdata" + File.separator + uuid.toString() + ".yml");
+          File file = new File(plugin.getDataFolder() + File.separator + "playerdata"
+              + File.separator + uuid.toString() + ".yml");
           if (file.exists()) {
             YamlConfiguration data = YamlConfiguration.loadConfiguration(file);
-            if (data.isConfigurationSection("quest-progress")) { // Same job as "isSet" + it checks if is CfgSection
+            if (data.isConfigurationSection("quest-progress")) { // Same job as "isSet" + it checks
+                                                                 // if is CfgSection
               for (String id : data.getConfigurationSection("quest-progress").getKeys(false)) {
                 boolean started = data.getBoolean("quest-progress." + id + ".started");
                 boolean completed = data.getBoolean("quest-progress." + id + ".completed");
-                boolean completedBefore = data.getBoolean("quest-progress." + id + ".completed-before");
+                boolean completedBefore =
+                    data.getBoolean("quest-progress." + id + ".completed-before");
                 long completionDate = data.getLong("quest-progress." + id + ".completion-date");
 
-                QuestProgress questProgress = new QuestProgress(id, completed, completedBefore, completionDate, uuid,
-                    started, true);
+                QuestProgress questProgress = new QuestProgress(id, completed, completedBefore,
+                    completionDate, uuid, started, true);
 
-                for (String taskid : data.getConfigurationSection("quest-progress." + id + ".task-progress")
+                for (String taskid : data
+                    .getConfigurationSection("quest-progress." + id + ".task-progress")
                     .getKeys(false)) {
-                  boolean taskCompleted = data
-                      .getBoolean("quest-progress." + id + ".task-progress." + taskid + ".completed");
-                  Object taskProgression = data.get("quest-progress." + id + ".task-progress." + taskid + ".progress");
+                  boolean taskCompleted = data.getBoolean(
+                      "quest-progress." + id + ".task-progress." + taskid + ".completed");
+                  Object taskProgression =
+                      data.get("quest-progress." + id + ".task-progress." + taskid + ".progress");
 
-                  TaskProgress taskProgress = new TaskProgress(taskid, taskProgression, uuid, taskCompleted, false);
+                  TaskProgress taskProgress =
+                      new TaskProgress(taskid, taskProgression, uuid, taskCompleted, false);
                   questProgress.addTaskProgress(taskProgress);
                 }
 
@@ -103,7 +105,8 @@ public class QPlayerManager {
           }
         }
       } catch (Exception ex) {
-        plugin.getQuestsLogger().severe("Failed to load player: " + uuid + "! This WILL cause errors.");
+        plugin.getQuestsLogger()
+            .severe("Failed to load player: " + uuid + "! This WILL cause errors.");
         ex.printStackTrace();
         // fuck
       }

@@ -16,7 +16,8 @@ public class TaskProgress {
     this.completed = completed;
   }
 
-  public TaskProgress(String taskid, Object progress, UUID player, boolean completed, boolean modified) {
+  public TaskProgress(String taskid, Object progress, UUID player, boolean completed,
+      boolean modified) {
     this(taskid, progress, player, completed);
     this.modified = modified;
   }

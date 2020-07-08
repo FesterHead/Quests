@@ -23,18 +23,18 @@ public class QuestsLogger {
       return;
     }
     switch (level) {
-    case DEBUG:
-      plugin.getLogger().info("Debug: " + str);
-      break;
-    case INFO:
-      plugin.getLogger().info(str);
-      break;
-    case ERROR:
-      plugin.getLogger().severe(str);
-      break;
-    case WARNING:
-      plugin.getLogger().warning(str);
-      break;
+      case DEBUG:
+        plugin.getLogger().info("Debug: " + str);
+        break;
+      case INFO:
+        plugin.getLogger().info(str);
+        break;
+      case ERROR:
+        plugin.getLogger().severe(str);
+        break;
+      case WARNING:
+        plugin.getLogger().warning(str);
+        break;
     }
   }
 
@@ -54,6 +54,7 @@ public class QuestsLogger {
     log(str, LoggingLevel.ERROR);
   }
 }
+
 
 enum LoggingLevel {
   ERROR(0), WARNING(1), INFO(2), DEBUG(3);

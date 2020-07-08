@@ -44,8 +44,8 @@ public final class CitizensDeliverTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onNPCClick(NPCRightClickEvent event) {
-    Bukkit.getScheduler().runTaskLater(Quests.get(), () -> checkInventory(event.getClicker(), event.getNPC().getName()),
-        1L);
+    Bukkit.getScheduler().runTaskLater(Quests.get(),
+        () -> checkInventory(event.getClicker(), event.getNPC().getName()), 1L);
   }
 
   @SuppressWarnings("deprecation")
@@ -63,8 +63,10 @@ public final class CitizensDeliverTaskType extends TaskType {
 
         for (Task task : quest.getTasksOfType(super.getType())) {
           if (!ChatColor
-              .stripColor(ChatColor.translateAlternateColorCodes('&', String.valueOf(task.getConfigValue("npc-name"))))
-              .equals(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', citizenName)))) {
+              .stripColor(ChatColor.translateAlternateColorCodes('&',
+                  String.valueOf(task.getConfigValue("npc-name"))))
+              .equals(
+                  ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', citizenName)))) {
             return;
           }
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
@@ -81,7 +83,8 @@ public final class CitizensDeliverTaskType extends TaskType {
 
           ItemStack is;
           if (configBlock instanceof ConfigurationSection) {
-            is = Quests.get().getItemStack(null, (org.bukkit.configuration.ConfigurationSection) configBlock);
+            is = Quests.get().getItemStack(null,
+                (org.bukkit.configuration.ConfigurationSection) configBlock);
           } else {
             material = Material.getMaterial(String.valueOf(configBlock));
 

@@ -25,10 +25,11 @@ public final class BuildingCertainTaskType extends TaskType {
 
   public BuildingCertainTaskType() {
     super("blockplacecertain", "LMBishop", "Place a set amount of a specific block.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be placed."));
-    this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "Name or ID of block."));
     this.creatorConfigValues
-        .add(new ConfigValue(REVERSE_KEY, true, "Will reverse progression if block of same type is broken."));
+        .add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be placed."));
+    this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "Name or ID of block."));
+    this.creatorConfigValues.add(new ConfigValue(REVERSE_KEY, true,
+        "Will reverse progression if block of same type is broken."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }

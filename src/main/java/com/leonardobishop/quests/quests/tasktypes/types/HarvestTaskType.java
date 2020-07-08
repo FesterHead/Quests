@@ -25,7 +25,8 @@ public final class HarvestTaskType extends TaskType {
 
   public HarvestTaskType() {
     super("harvest", "FesterHead", "Harvest a set amount of items. All item drops count.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of items to harvest."));
+    this.creatorConfigValues
+        .add(new ConfigValue(AMOUNT_KEY, true, "The number of items to harvest."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
@@ -43,16 +44,20 @@ public final class HarvestTaskType extends TaskType {
     for (Quest quest : super.getRegisteredQuests()) {
       if (questProgressFile.hasStartedQuest(quest)) {
         QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("§4--------------------");
-        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("              Quest: §6" + quest.getId());
+        QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+            .debug("              Quest: §6" + quest.getId());
         QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
 
         for (Task task : quest.getTasksOfType(super.getType())) {
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-          int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
+          int taskProgressCounter =
+              (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 
           QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("");
-          QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("      Checking task: §8" + task.getId());
-          QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("               Type: §8" + task.getType());
+          QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+              .debug("      Checking task: §8" + task.getId());
+          QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+              .debug("               Type: §8" + task.getType());
           QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
               .debug("           Progress: §d" + taskProgressCounter);
           QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
@@ -80,7 +85,8 @@ public final class HarvestTaskType extends TaskType {
 
             if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
               taskProgress.setCompleted(true);
-              QuestsAPI.getQuestManager().getPlugin().getQuestsLogger().debug("         §6Completed!");
+              QuestsAPI.getQuestManager().getPlugin().getQuestsLogger()
+                  .debug("         §6Completed!");
             }
           }
         }

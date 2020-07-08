@@ -25,10 +25,11 @@ public final class MiningCertainTaskType extends TaskType {
 
   public MiningCertainTaskType() {
     super("blockbreakcertain", "LMBishop", "Break a set amount of a specific block.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be broken."));
-    this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "Name or ID of block."));
     this.creatorConfigValues
-        .add(new ConfigValue(REVERSE_KEY, true, "Will reverse progression if block of same type is placed."));
+        .add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be broken."));
+    this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "Name or ID of block."));
+    this.creatorConfigValues.add(new ConfigValue(REVERSE_KEY, true,
+        "Will reverse progression if block of same type is placed."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
@@ -55,7 +56,8 @@ public final class MiningCertainTaskType extends TaskType {
           }
 
           Material incomingObject = event.getBlock().getType();
-          Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue("block")).toUpperCase());
+          Material expectedObject =
+              Material.getMaterial(String.valueOf(task.getConfigValue("block")).toUpperCase());
 
           if (incomingObject.equals(expectedObject)) {
             increment(task, taskProgress, 1);
@@ -83,7 +85,8 @@ public final class MiningCertainTaskType extends TaskType {
           }
 
           Material incomingObject = event.getBlock().getType();
-          Material expectedObject = Material.getMaterial(String.valueOf(task.getConfigValue("block")).toUpperCase());
+          Material expectedObject =
+              Material.getMaterial(String.valueOf(task.getConfigValue("block")).toUpperCase());
 
           if (task.getConfigValue("reverse-if-placed") != null
               && ((boolean) task.getConfigValue("reverse-if-placed"))) {

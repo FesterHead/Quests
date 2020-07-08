@@ -42,24 +42,27 @@ public class QuestProgressFile {
     Player player = Bukkit.getPlayer(this.playerUUID);
     if (player != null) {
       QPlayer questPlayer = QuestsAPI.getPlayerManager().getPlayer(this.playerUUID);
-      String questFinishMessage = Messages.QUEST_COMPLETE.getMessage().replace("{quest}",
-          quest.getDisplayNameStripped());
+      String questFinishMessage =
+          Messages.QUEST_COMPLETE.getMessage().replace("{quest}", quest.getDisplayNameStripped());
       // PlayerFinishQuestEvent -- start
-      PlayerFinishQuestEvent questFinishEvent = new PlayerFinishQuestEvent(player, questPlayer, questProgress,
-          questFinishMessage);
+      PlayerFinishQuestEvent questFinishEvent =
+          new PlayerFinishQuestEvent(player, questPlayer, questProgress, questFinishMessage);
       Bukkit.getPluginManager().callEvent(questFinishEvent);
       // PlayerFinishQuestEvent -- end
       Bukkit.getServer().getScheduler().runTask(plugin, () -> {
         for (String s : quest.getRewards()) {
-          Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), s.replace("{player}", player.getName()));
+          Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),
+              s.replace("{player}", player.getName()));
         }
       });
       if (questFinishEvent.getQuestFinishMessage() != null)
         player.sendMessage(questFinishEvent.getQuestFinishMessage());
       if (Options.TITLES_ENABLED.getBooleanValue()) {
         plugin.getTitle().sendTitle(player,
-            Messages.TITLE_QUEST_COMPLETE_TITLE.getMessage().replace("{quest}", quest.getDisplayNameStripped()),
-            Messages.TITLE_QUEST_COMPLETE_SUBTITLE.getMessage().replace("{quest}", quest.getDisplayNameStripped()));
+            Messages.TITLE_QUEST_COMPLETE_TITLE.getMessage().replace("{quest}",
+                quest.getDisplayNameStripped()),
+            Messages.TITLE_QUEST_COMPLETE_SUBTITLE.getMessage().replace("{quest}",
+                quest.getDisplayNameStripped()));
       }
       for (String s : quest.getRewardString()) {
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
@@ -73,8 +76,7 @@ public class QuestProgressFile {
    * <p>
    * Warning: will fail if the player is not online.
    *
-   * @param quest
-   *                the quest to check
+   * @param quest the quest to check
    * @return the quest start result
    */
   public QuestStartResult canStartQuest(Quest quest) {
@@ -108,7 +110,8 @@ public class QuestProgressFile {
         return QuestStartResult.QUEST_NO_PERMISSION;
       }
     }
-    if (quest.getCategoryId() != null && plugin.getQuestManager().getCategoryById(quest.getCategoryId()) != null
+    if (quest.getCategoryId() != null
+        && plugin.getQuestManager().getCategoryById(quest.getCategoryId()) != null
         && plugin.getQuestManager().getCategoryById(quest.getCategoryId()).isPermissionRequired()) {
       if (playerUUID != null) {
         if (!p.hasPermission("quests.category." + quest.getCategoryId())) {
@@ -126,8 +129,7 @@ public class QuestProgressFile {
    * <p>
    * Warning: will fail if the player is not online.
    *
-   * @param quest
-   *                the quest to check
+   * @param quest the quest to check
    * @return the quest start result
    */
   public QuestStartResult startQuest(Quest quest) {
@@ -136,42 +138,45 @@ public class QuestProgressFile {
     if (player != null) {
       String questResultMessage = null;
       switch (code) {
-      case QUEST_SUCCESS:
-        // This one is hacky
-        break;
-      case QUEST_LIMIT_REACHED:
-        questResultMessage = Messages.QUEST_START_LIMIT.getMessage().replace("{limit}",
-            String.valueOf(Options.QUESTS_START_LIMIT.getIntValue()));
-        break;
-      case QUEST_ALREADY_COMPLETED:
-        questResultMessage = Messages.QUEST_START_DISABLED.getMessage();
-        break;
-      case QUEST_COOLDOWN:
-        long cooldown = getCooldownFor(quest);
-        questResultMessage = Messages.QUEST_START_COOLDOWN.getMessage().replace("{time}",
-            String.valueOf(plugin.convertToFormat(TimeUnit.SECONDS.convert(cooldown, TimeUnit.MILLISECONDS))));
-        break;
-      case QUEST_LOCKED:
-        questResultMessage = Messages.QUEST_START_LOCKED.getMessage();
-        break;
-      case QUEST_ALREADY_STARTED:
-        questResultMessage = Messages.QUEST_START_STARTED.getMessage();
-        break;
-      case QUEST_NO_PERMISSION:
-        questResultMessage = Messages.QUEST_START_PERMISSION.getMessage();
-        break;
-      case NO_PERMISSION_FOR_CATEGORY:
-        questResultMessage = Messages.QUEST_CATEGORY_QUEST_PERMISSION.getMessage();
-        break;
-      case OTHER:
-        break;
+        case QUEST_SUCCESS:
+          // This one is hacky
+          break;
+        case QUEST_LIMIT_REACHED:
+          questResultMessage = Messages.QUEST_START_LIMIT.getMessage().replace("{limit}",
+              String.valueOf(Options.QUESTS_START_LIMIT.getIntValue()));
+          break;
+        case QUEST_ALREADY_COMPLETED:
+          questResultMessage = Messages.QUEST_START_DISABLED.getMessage();
+          break;
+        case QUEST_COOLDOWN:
+          long cooldown = getCooldownFor(quest);
+          questResultMessage =
+              Messages.QUEST_START_COOLDOWN.getMessage().replace("{time}", String.valueOf(plugin
+                  .convertToFormat(TimeUnit.SECONDS.convert(cooldown, TimeUnit.MILLISECONDS))));
+          break;
+        case QUEST_LOCKED:
+          questResultMessage = Messages.QUEST_START_LOCKED.getMessage();
+          break;
+        case QUEST_ALREADY_STARTED:
+          questResultMessage = Messages.QUEST_START_STARTED.getMessage();
+          break;
+        case QUEST_NO_PERMISSION:
+          questResultMessage = Messages.QUEST_START_PERMISSION.getMessage();
+          break;
+        case NO_PERMISSION_FOR_CATEGORY:
+          questResultMessage = Messages.QUEST_CATEGORY_QUEST_PERMISSION.getMessage();
+          break;
+        case OTHER:
+          break;
       }
       QPlayer questPlayer = QuestsAPI.getPlayerManager().getPlayer(this.playerUUID);
       // PreStartQuestEvent -- start
-      PreStartQuestEvent preStartQuestEvent = new PreStartQuestEvent(player, questPlayer, questResultMessage, code);
+      PreStartQuestEvent preStartQuestEvent =
+          new PreStartQuestEvent(player, questPlayer, questResultMessage, code);
       Bukkit.getPluginManager().callEvent(preStartQuestEvent);
       // PreStartQuestEvent -- end
-      if (preStartQuestEvent.getQuestResultMessage() != null && code != QuestStartResult.QUEST_SUCCESS)
+      if (preStartQuestEvent.getQuestResultMessage() != null
+          && code != QuestStartResult.QUEST_SUCCESS)
         player.sendMessage(preStartQuestEvent.getQuestResultMessage());
     }
     if (code == QuestStartResult.QUEST_SUCCESS) {
@@ -184,19 +189,23 @@ public class QuestProgressFile {
       questProgress.setCompleted(false);
       if (player != null) {
         QPlayer questPlayer = QuestsAPI.getPlayerManager().getPlayer(this.playerUUID);
-        String questStartMessage = Messages.QUEST_START.getMessage().replace("{quest}", quest.getDisplayNameStripped());
+        String questStartMessage =
+            Messages.QUEST_START.getMessage().replace("{quest}", quest.getDisplayNameStripped());
         // PlayerStartQuestEvent -- start
-        PlayerStartQuestEvent questStartEvent = new PlayerStartQuestEvent(player, questPlayer, questProgress,
-            questStartMessage);
+        PlayerStartQuestEvent questStartEvent =
+            new PlayerStartQuestEvent(player, questPlayer, questProgress, questStartMessage);
         Bukkit.getPluginManager().callEvent(questStartEvent);
         // PlayerStartQuestEvent -- end
         if (questStartEvent.getQuestStartMessage() != null)
-          player.sendMessage(questStartEvent.getQuestStartMessage()); // Don't send a message if the event message is
+          player.sendMessage(questStartEvent.getQuestStartMessage()); // Don't send a message if the
+                                                                      // event message is
                                                                       // null
         if (Options.TITLES_ENABLED.getBooleanValue()) {
           plugin.getTitle().sendTitle(player,
-              Messages.TITLE_QUEST_START_TITLE.getMessage().replace("{quest}", quest.getDisplayNameStripped()),
-              Messages.TITLE_QUEST_START_SUBTITLE.getMessage().replace("{quest}", quest.getDisplayNameStripped()));
+              Messages.TITLE_QUEST_START_TITLE.getMessage().replace("{quest}",
+                  quest.getDisplayNameStripped()),
+              Messages.TITLE_QUEST_START_SUBTITLE.getMessage().replace("{quest}",
+                  quest.getDisplayNameStripped()));
         }
         for (String s : quest.getStartString()) {
           player.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
@@ -221,10 +230,11 @@ public class QuestProgressFile {
     }
     if (player != null) {
       QPlayer questPlayer = QuestsAPI.getPlayerManager().getPlayer(this.playerUUID);
-      String questCancelMessage = Messages.QUEST_CANCEL.getMessage().replace("{quest}", quest.getDisplayNameStripped());
+      String questCancelMessage =
+          Messages.QUEST_CANCEL.getMessage().replace("{quest}", quest.getDisplayNameStripped());
       // PlayerCancelQuestEvent -- start
-      PlayerCancelQuestEvent questCancelEvent = new PlayerCancelQuestEvent(player, questPlayer, questProgress,
-          questCancelMessage);
+      PlayerCancelQuestEvent questCancelEvent =
+          new PlayerCancelQuestEvent(player, questPlayer, questProgress, questCancelMessage);
       Bukkit.getPluginManager().callEvent(questCancelEvent);
       // PlayerCancelQuestEvent -- end
       if (questCancelEvent.getQuestCancelMessage() != null)
@@ -289,7 +299,8 @@ public class QuestProgressFile {
   public boolean hasStartedQuest(Quest quest) {
     if (Options.QUEST_AUTOSTART.getBooleanValue()) {
       QuestStartResult response = canStartQuest(quest);
-      return response == QuestStartResult.QUEST_SUCCESS || response == QuestStartResult.QUEST_ALREADY_STARTED;
+      return response == QuestStartResult.QUEST_SUCCESS
+          || response == QuestStartResult.QUEST_ALREADY_STARTED;
     } else {
       return hasQuestProgress(quest) && getQuestProgress(quest).isStarted();
     }
@@ -338,7 +349,8 @@ public class QuestProgressFile {
   public boolean generateBlankQuestProgress(String questid) {
     if (plugin.getQuestManager().getQuestById(questid) != null) {
       Quest quest = plugin.getQuestManager().getQuestById(questid);
-      QuestProgress questProgress = new QuestProgress(quest.getId(), false, false, 0, playerUUID, false, false);
+      QuestProgress questProgress =
+          new QuestProgress(quest.getId(), false, false, 0, playerUUID, false, false);
       for (Task task : quest.getTasks()) {
         TaskProgress taskProgress = new TaskProgress(task.getId(), null, playerUUID, false, false);
         questProgress.addTaskProgress(taskProgress);
@@ -356,8 +368,8 @@ public class QuestProgressFile {
     if (!directory.exists() && !directory.isDirectory()) {
       directory.mkdirs();
     }
-    File file = new File(
-        plugin.getDataFolder() + File.separator + "playerdata" + File.separator + playerUUID.toString() + ".yml");
+    File file = new File(plugin.getDataFolder() + File.separator + "playerdata" + File.separator
+        + playerUUID.toString() + ".yml");
     if (!file.exists()) {
       try {
         file.createNewFile();
@@ -372,16 +384,19 @@ public class QuestProgressFile {
       if (!questProgress.isWorthSaving()) {
         continue;
       }
-      data.set("quest-progress." + questProgress.getQuestId() + ".started", questProgress.isStarted());
-      data.set("quest-progress." + questProgress.getQuestId() + ".completed", questProgress.isCompleted());
-      data.set("quest-progress." + questProgress.getQuestId() + ".completed-before", questProgress.isCompletedBefore());
-      data.set("quest-progress." + questProgress.getQuestId() + ".completion-date", questProgress.getCompletionDate());
+      data.set("quest-progress." + questProgress.getQuestId() + ".started",
+          questProgress.isStarted());
+      data.set("quest-progress." + questProgress.getQuestId() + ".completed",
+          questProgress.isCompleted());
+      data.set("quest-progress." + questProgress.getQuestId() + ".completed-before",
+          questProgress.isCompletedBefore());
+      data.set("quest-progress." + questProgress.getQuestId() + ".completion-date",
+          questProgress.getCompletionDate());
       for (TaskProgress taskProgress : questProgress.getTaskProgress()) {
-        data.set("quest-progress." + questProgress.getQuestId() + ".task-progress." + taskProgress.getTaskId()
-            + ".completed", taskProgress.isCompleted());
-        data.set(
-            "quest-progress." + questProgress.getQuestId() + ".task-progress." + taskProgress.getTaskId() + ".progress",
-            taskProgress.getProgress());
+        data.set("quest-progress." + questProgress.getQuestId() + ".task-progress."
+            + taskProgress.getTaskId() + ".completed", taskProgress.isCompleted());
+        data.set("quest-progress." + questProgress.getQuestId() + ".task-progress."
+            + taskProgress.getTaskId() + ".progress", taskProgress.getProgress());
       }
     }
 

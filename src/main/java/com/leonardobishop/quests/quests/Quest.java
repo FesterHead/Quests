@@ -20,20 +20,20 @@ public class Quest implements Comparable<Quest> {
   private final boolean cooldownEnabled;
   private final int cooldown;
   private final int sortOrder;
-  private boolean permissionRequired;
+  private boolean permissionRequired;S
   private String categoryid;
 
-  public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable,
-      boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString,
-      List<String> startString, String categoryid, int sortOrder) {
-    this(id, displayItem, rewards, requirements, repeatable, cooldownEnabled, cooldown, permissionRequired,
-        rewardString, startString, sortOrder);
+  public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements,
+      boolean repeatable, boolean cooldownEnabled, int cooldown, boolean permissionRequired,
+      List<String> rewardString, List<String> startString, String categoryid, int sortOrder) {
+    this(id, displayItem, rewards, requirements, repeatable, cooldownEnabled, cooldown,
+        permissionRequired, rewardString, startString, sortOrder);
     this.categoryid = categoryid;
   }
 
-  public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements, boolean repeatable,
-      boolean cooldownEnabled, int cooldown, boolean permissionRequired, List<String> rewardString,
-      List<String> startString, int sortOrder) {
+  public Quest(String id, QItemStack displayItem, List<String> rewards, List<String> requirements,
+      boolean repeatable, boolean cooldownEnabled, int cooldown, boolean permissionRequired,
+      List<String> rewardString, List<String> startString, int sortOrder) {
     this.id = id;
     this.displayItem = displayItem;
     this.rewards = rewards;

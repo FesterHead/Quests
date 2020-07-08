@@ -24,7 +24,8 @@ public class QPlayer {
     this(uuid, questProgressFile, false, plugin);
   }
 
-  public QPlayer(UUID uuid, QuestProgressFile questProgressFile, boolean onlyDataLoaded, Quests plugin) {
+  public QPlayer(UUID uuid, QuestProgressFile questProgressFile, boolean onlyDataLoaded,
+      Quests plugin) {
     this.uuid = uuid;
     this.questProgressFile = questProgressFile;
     this.onlyDataLoaded = onlyDataLoaded;
@@ -36,8 +37,7 @@ public class QPlayer {
   }
 
   /**
-   * @return 0 if success, 1 if no permission, 2 is only data loaded, 3 if player
-   *         not found
+   * @return 0 if success, 1 if no permission, 2 is only data loaded, 3 if player not found
    */
   public int openCategory(Category category, QMenuCategory superMenu, boolean backButton) {
     if (onlyDataLoaded) {
@@ -49,7 +49,8 @@ public class QPlayer {
       return 3;
     }
 
-    if (category.isPermissionRequired() && !player.hasPermission("quests.category." + category.getId())) {
+    if (category.isPermissionRequired()
+        && !player.hasPermission("quests.category." + category.getId())) {
       return 1;
     }
 
@@ -68,8 +69,7 @@ public class QPlayer {
   }
 
   /**
-   * @return 0 if success, 1 if no permission, 2 is only data loaded, 3 if player
-   *         not found
+   * @return 0 if success, 1 if no permission, 2 is only data loaded, 3 if player not found
    */
   public int openCategory(Category category, QMenuQuest qMenuQuest) {
     if (onlyDataLoaded) {
@@ -81,7 +81,8 @@ public class QPlayer {
       return 3;
     }
 
-    if (category.isPermissionRequired() && !player.hasPermission("quests.category." + category.getId())) {
+    if (category.isPermissionRequired()
+        && !player.hasPermission("quests.category." + category.getId())) {
       return 1;
     }
 
@@ -104,11 +105,13 @@ public class QPlayer {
     }
 
     if (Options.CATEGORIES_ENABLED.getBooleanValue()) {
-      QMenuCategory qMenuCategory = new QMenuCategory(plugin.getPlayerManager().getPlayer(player.getUniqueId()));
+      QMenuCategory qMenuCategory =
+          new QMenuCategory(plugin.getPlayerManager().getPlayer(player.getUniqueId()));
       List<QMenuQuest> questMenus = new ArrayList<>();
       for (Category category : plugin.getQuestManager().getCategories()) {
-        QMenuQuest qMenuQuest = new QMenuQuest(plugin.getPlayerManager().getPlayer(player.getUniqueId()),
-            category.getId(), qMenuCategory);
+        QMenuQuest qMenuQuest =
+            new QMenuQuest(plugin.getPlayerManager().getPlayer(player.getUniqueId()),
+                category.getId(), qMenuCategory);
         List<Quest> quests = new ArrayList<>();
         for (String questid : category.getRegisteredQuestIds()) {
           Quest quest = plugin.getQuestManager().getQuestById(questid);
@@ -124,7 +127,8 @@ public class QPlayer {
       player.openInventory(qMenuCategory.toInventory(1));
       EventInventory.track(player.getUniqueId(), qMenuCategory);
     } else {
-      QMenuQuest qMenuQuest = new QMenuQuest(plugin.getPlayerManager().getPlayer(player.getUniqueId()), "", null);
+      QMenuQuest qMenuQuest =
+          new QMenuQuest(plugin.getPlayerManager().getPlayer(player.getUniqueId()), "", null);
       List<Quest> quests = new ArrayList<>();
       for (Map.Entry<String, Quest> entry : plugin.getQuestManager().getQuests().entrySet()) {
         quests.add(entry.getValue());

@@ -30,8 +30,8 @@ public final class PositionTaskType extends TaskType {
     this.creatorConfigValues.add(new ConfigValue("y", true, "Y position."));
     this.creatorConfigValues.add(new ConfigValue("z", true, "Z position."));
     this.creatorConfigValues.add(new ConfigValue("world", true, "Name of world."));
-    this.creatorConfigValues
-        .add(new ConfigValue("distance-padding", false, "Padding zone in meters/blocks (default/unspecified = 0)."));
+    this.creatorConfigValues.add(new ConfigValue("distance-padding", false,
+        "Padding zone in meters/blocks (default/unspecified = 0)."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
   }
@@ -78,11 +78,13 @@ public final class PositionTaskType extends TaskType {
           }
 
           Location location = new Location(world, x, y, z);
-          if (player.getWorld().equals(world) && player.getLocation().getBlockX() == location.getBlockX()
+          if (player.getWorld().equals(world)
+              && player.getLocation().getBlockX() == location.getBlockX()
               && player.getLocation().getBlockY() == location.getBlockY()
               && player.getLocation().getBlockZ() == location.getBlockZ()) {
             taskProgress.setCompleted(true);
-          } else if (player.getWorld().equals(world) && player.getLocation().distance(location) < padding) {
+          } else if (player.getWorld().equals(world)
+              && player.getLocation().distance(location) < padding) {
             taskProgress.setCompleted(true);
           }
         }

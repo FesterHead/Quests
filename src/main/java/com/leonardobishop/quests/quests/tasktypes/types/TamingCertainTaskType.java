@@ -28,7 +28,8 @@ public final class TamingCertainTaskType extends TaskType {
   public TamingCertainTaskType() {
     super("tamingcertain", "FesterHead", "Tame a set amount of a specific animals.");
     this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "The animal to tame."));
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The amount of the animal to catch."));
+    this.creatorConfigValues
+        .add(new ConfigValue(AMOUNT_KEY, true, "The amount of the animal to catch."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
@@ -58,9 +59,11 @@ public final class TamingCertainTaskType extends TaskType {
         questLogger.debug("    Incoming object: §b" + incomingObject.toString());
 
         for (Task task : quest.getTasksOfType(super.getType())) {
-          EntityType expectedObject = EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+          EntityType expectedObject =
+              EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-          int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
+          int taskProgressCounter =
+              (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());

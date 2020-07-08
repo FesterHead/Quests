@@ -27,7 +27,7 @@ public class TaskTypeManager {
     return taskTypes;
   }
 
-  public void resetTaskTypes() {
+  public void resetTaskTypes() {S
     for (TaskType taskType : taskTypes) {
       taskType.getRegisteredQuests().clear();
     }
@@ -35,7 +35,8 @@ public class TaskTypeManager {
 
   public void registerTaskType(TaskType taskType) {
     if (!allowRegistrations) {
-      throw new IllegalStateException("No longer accepting new task types (must be done before quests are loaded)");
+      throw new IllegalStateException(
+          "No longer accepting new task types (must be done before quests are loaded)");
     }
     Bukkit.getPluginManager().registerEvents(taskType, plugin);
     plugin.getQuestsLogger().info("Task type " + taskType.getType() + " has been registered.");

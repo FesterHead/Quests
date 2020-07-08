@@ -38,7 +38,8 @@ public final class MilkingTaskType extends TaskType {
   @SuppressWarnings("deprecation")
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onMilk(PlayerInteractEntityEvent event) {
-    if (!(event.getRightClicked() instanceof Cow) || (event.getPlayer().getItemInHand().getType() != Material.BUCKET)) {
+    if (!(event.getRightClicked() instanceof Cow)
+        || (event.getPlayer().getItemInHand().getType() != Material.BUCKET)) {
       return;
     }
 

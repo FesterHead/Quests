@@ -22,7 +22,8 @@ public final class MiningTaskType extends TaskType {
 
   public MiningTaskType() {
     super("blockbreak", "LMBishop", "Break a set amount of blocks.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be broken."));
+    this.creatorConfigValues
+        .add(new ConfigValue(AMOUNT_KEY, true, "Amount of blocks to be broken."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
   }

@@ -16,8 +16,8 @@ public class QuestProgress {
   private UUID player;
   private boolean modified;
 
-  public QuestProgress(String questid, boolean completed, boolean completedBefore, long completionDate, UUID player,
-      boolean started) {
+  public QuestProgress(String questid, boolean completed, boolean completedBefore,
+      long completionDate, UUID player, boolean started) {
     this.questid = questid;
     this.completed = completed;
     this.completedBefore = completedBefore;
@@ -26,8 +26,8 @@ public class QuestProgress {
     this.started = started;
   }
 
-  public QuestProgress(String questid, boolean completed, boolean completedBefore, long completionDate, UUID player,
-      boolean started, boolean modified) {
+  public QuestProgress(String questid, boolean completed, boolean completedBefore,
+      long completionDate, UUID player, boolean started, boolean modified) {
     this(questid, completed, completedBefore, completionDate, player, started);
     this.modified = modified;
   }

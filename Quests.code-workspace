@@ -6,9 +6,12 @@
   ],
   "settings": {
     "java.configuration.updateBuildConfiguration": "automatic",
-    "prettier.printWidth": 120,
     "editor.tabSize": 2,
-    "yaml.format.printWidth": 120,
-    "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+    "yaml.format.printWidth": 240,
+    "yaml.format.proseWrap": "never",
+    "editor.detectIndentation": false,
+    "editor.wordWrapColumn": 240,
+    "html.format.wrapLineLength": 0,
+    "editor.wordWrap": "wordWrapColumn"
   }
 }

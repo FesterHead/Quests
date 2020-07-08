@@ -25,5 +25,5 @@ public final class ConfigValue {
 
   public String getDescription() {
     return description;
-  }
+  }S
 }

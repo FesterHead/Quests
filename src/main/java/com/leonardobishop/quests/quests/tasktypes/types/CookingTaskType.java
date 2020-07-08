@@ -26,7 +26,8 @@ public final class CookingTaskType extends TaskType {
 
   public CookingTaskType() {
     super("cooking", "FesterHead", "Cook/Smelt a set amount of items.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of items to cook/smelt."));
+    this.creatorConfigValues
+        .add(new ConfigValue(AMOUNT_KEY, true, "The number of items to cook/smelt."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
   }
@@ -53,7 +54,8 @@ public final class CookingTaskType extends TaskType {
 
         for (Task task : quest.getTasksOfType(super.getType())) {
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-          int taskProgressCounter = (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
+          int taskProgressCounter =
+              (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress();
 
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());
@@ -95,8 +97,8 @@ public final class CookingTaskType extends TaskType {
             continue;
           }
 
-          taskProgress.setProgress(
-              (taskProgress.getProgress() == null) ? 0 : (int) taskProgress.getProgress() + event.getItemAmount());
+          taskProgress.setProgress((taskProgress.getProgress() == null) ? 0
+              : (int) taskProgress.getProgress() + event.getItemAmount());
 
           if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue("amount")) {
             taskProgress.setCompleted(true);

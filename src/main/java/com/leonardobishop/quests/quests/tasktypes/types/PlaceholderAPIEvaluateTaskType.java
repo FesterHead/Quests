@@ -26,9 +26,10 @@ public final class PlaceholderAPIEvaluateTaskType extends TaskType {
 
   public PlaceholderAPIEvaluateTaskType() {
     super("placeholderapi_evaluate", "LMBishop", "Test if a player has a permission");
-    this.creatorConfigValues.add(new ConfigValue("placeholder", true, "The placeholder string (including %%)."));
     this.creatorConfigValues
-        .add(new ConfigValue("evaluates", true, "What it should evaluate to be marked as complete."));
+        .add(new ConfigValue("placeholder", true, "The placeholder string (including %%)."));
+    this.creatorConfigValues.add(
+        new ConfigValue("evaluates", true, "What it should evaluate to be marked as complete."));
   }
 
   @Override
@@ -42,7 +43,8 @@ public final class PlaceholderAPIEvaluateTaskType extends TaskType {
           for (Quest quest : PlaceholderAPIEvaluateTaskType.super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
               QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-              for (Task task : quest.getTasksOfType(PlaceholderAPIEvaluateTaskType.super.getType())) {
+              for (Task task : quest
+                  .getTasksOfType(PlaceholderAPIEvaluateTaskType.super.getType())) {
                 TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                 if (taskProgress.isCompleted()) {
                   continue;

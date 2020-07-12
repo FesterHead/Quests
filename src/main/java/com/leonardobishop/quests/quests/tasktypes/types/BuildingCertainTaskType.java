@@ -1,5 +1,7 @@
 package com.leonardobishop.quests.quests.tasktypes.types;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
 import com.leonardobishop.quests.player.questprogressfile.QuestProgress;
@@ -10,14 +12,10 @@ import com.leonardobishop.quests.quests.Task;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public final class BuildingCertainTaskType extends TaskType {
 
@@ -55,7 +53,11 @@ public final class BuildingCertainTaskType extends TaskType {
             continue;
           }
 
-          if (matchBlock(task, event.getBlock())) {
+          Material incomingObject = event.getBlock().getType();
+          Material expectedObject =
+              Material.getMaterial(String.valueOf(task.getConfigValue("block")).toUpperCase());
+
+          if (incomingObject.equals(expectedObject)) {
             increment(task, taskProgress, 1);
           }
         }
@@ -80,33 +82,19 @@ public final class BuildingCertainTaskType extends TaskType {
             continue;
           }
 
+          Material incomingObject = event.getBlock().getType();
+          Material expectedObject =
+              Material.getMaterial(String.valueOf(task.getConfigValue("block")).toUpperCase());
+
           if (task.getConfigValue("reverse-if-placed") != null
               && ((boolean) task.getConfigValue("reverse-if-placed"))) {
-            if (matchBlock(task, event.getBlock())) {
+            if (incomingObject.equals(expectedObject)) {
               increment(task, taskProgress, -1);
             }
           }
         }
       }
     }
-  }
-
-  @SuppressWarnings("deprecation")
-  private boolean matchBlock(Task task, Block block) {
-    Material material;
-    Object configBlock = task.getConfigValue("block");
-    Object configData = task.getConfigValue("data");
-    // Object configSimilarBlocks = task.getConfigValue("use-similar-blocks");
-
-    material = Material.getMaterial(String.valueOf(configBlock).toUpperCase());
-
-    Material blockType = block.getType();
-    short blockData = block.getData();
-
-    if (blockType.equals(material)) {
-      return configData == null || (((int) blockData) == ((int) configData));
-    }
-    return false;
   }
 
   private void increment(Task task, TaskProgress taskProgress, int amount) {

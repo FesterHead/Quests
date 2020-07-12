@@ -142,7 +142,6 @@ public class Quests extends JavaPlugin {
 
     // register task types after the server has fully started
     Bukkit.getScheduler().runTask(this, () -> {
-      BentoBoxLevelTaskType.register(taskTypeManager);
       taskTypeManager.registerTaskType(new BreedingCertainTaskType());
       taskTypeManager.registerTaskType(new BreedingTaskType());
       taskTypeManager.registerTaskType(new BrewingTaskType());
@@ -174,6 +173,9 @@ public class Quests extends JavaPlugin {
       taskTypeManager.registerTaskType(new TamingCertainTaskType());
       taskTypeManager.registerTaskType(new TamingTaskType());
       taskTypeManager.registerTaskType(new WalkingTaskType());
+      if (Bukkit.getPluginManager().isPluginEnabled("BentoBox")) {
+        BentoBoxLevelTaskType.register(taskTypeManager);
+      }
 
       taskTypeManager.closeRegistrations();
       reloadQuests();

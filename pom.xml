@@ -4,7 +4,7 @@
 
   <groupId>com.leonardobishop</groupId>
   <artifactId>quests</artifactId>
-  <version>2.9.5</version>
+  <version>3.0.0</version>
   <name>Quests</name>
 
   <properties>
@@ -25,18 +25,6 @@
     <repository>
       <id>codemc-repo</id>
       <url>https://repo.codemc.org/repository/maven-public/</url>
-    </repository>
-
-    <!-- Citizens -->
-    <repository>
-      <id>everything</id>
-      <url>http://repo.citizensnpcs.co/</url>
-    </repository>
-
-    <!-- MythicMobs -->
-    <repository>
-      <id>mythicmobs</id>
-      <url>http://mc.hackerzlair.org:8888/repository/public</url>
     </repository>
 
     <!-- PlaceholderAPI -->
@@ -69,24 +57,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- MythicMobs -->
-    <dependency>
-      <groupId>io.lumine.xikage</groupId>
-      <artifactId>mythicmobs</artifactId>
-      <version>4.5.7</version>
-      <type>jar</type>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- Citizens -->
-    <dependency>
-      <groupId>net.citizensnpcs</groupId>
-      <artifactId>citizens</artifactId>
-      <version>2.0.24-SNAPSHOT</version>
-      <type>jar</type>
-      <scope>provided</scope>
-    </dependency>
-
     <!-- PlaceholderAPI -->
     <dependency>
       <groupId>me.clip</groupId>
@@ -95,6 +65,14 @@
       <type>jar</type>
       <scope>provided</scope>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>16.0.1</version>
+    </dependency>
+
   </dependencies>
 
   <build>

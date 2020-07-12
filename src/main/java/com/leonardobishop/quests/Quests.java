@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Map;
-
 import com.leonardobishop.quests.api.QuestsPlaceholders;
 import com.leonardobishop.quests.commands.CommandQuests;
 import com.leonardobishop.quests.events.EventInventory;
@@ -27,8 +26,6 @@ import com.leonardobishop.quests.quests.tasktypes.types.BreedingTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.BrewingTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.BuildingCertainTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.BuildingTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.CitizensDeliverTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.CitizensInteractTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.CookingCertainTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.CookingTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.CraftingCertainTaskType;
@@ -46,7 +43,6 @@ import com.leonardobishop.quests.quests.tasktypes.types.MiningCertainTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.MiningTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.MobkillingCertainTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.MobkillingTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.MythicMobsKillingType;
 import com.leonardobishop.quests.quests.tasktypes.types.PermissionTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.PlaceholderAPIEvaluateTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.PlayerkillingTaskType;
@@ -58,7 +54,6 @@ import com.leonardobishop.quests.quests.tasktypes.types.TamingTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.WalkingTaskType;
 import com.leonardobishop.quests.title.Title;
 import com.leonardobishop.quests.title.Title_Bukkit;
-
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -147,6 +142,7 @@ public class Quests extends JavaPlugin {
 
     // register task types after the server has fully started
     Bukkit.getScheduler().runTask(this, () -> {
+      BentoBoxLevelTaskType.register(taskTypeManager);
       taskTypeManager.registerTaskType(new BreedingCertainTaskType());
       taskTypeManager.registerTaskType(new BreedingTaskType());
       taskTypeManager.registerTaskType(new BrewingTaskType());
@@ -170,6 +166,7 @@ public class Quests extends JavaPlugin {
       taskTypeManager.registerTaskType(new MobkillingCertainTaskType());
       taskTypeManager.registerTaskType(new MobkillingTaskType());
       taskTypeManager.registerTaskType(new PermissionTaskType());
+      taskTypeManager.registerTaskType(new PlaceholderAPIEvaluateTaskType());
       taskTypeManager.registerTaskType(new PlayerkillingTaskType());
       taskTypeManager.registerTaskType(new PlaytimeTaskType());
       taskTypeManager.registerTaskType(new PositionTaskType());
@@ -177,19 +174,6 @@ public class Quests extends JavaPlugin {
       taskTypeManager.registerTaskType(new TamingCertainTaskType());
       taskTypeManager.registerTaskType(new TamingTaskType());
       taskTypeManager.registerTaskType(new WalkingTaskType());
-      if (Bukkit.getPluginManager().isPluginEnabled("BentoBox")) {
-        BentoBoxLevelTaskType.register(taskTypeManager);
-      }
-      if (Bukkit.getPluginManager().isPluginEnabled("Citizens")) {
-        taskTypeManager.registerTaskType(new CitizensDeliverTaskType());
-        taskTypeManager.registerTaskType(new CitizensInteractTaskType());
-      }
-      if (Bukkit.getPluginManager().isPluginEnabled("MythicMobs")) {
-        taskTypeManager.registerTaskType(new MythicMobsKillingType());
-      }
-      if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-        taskTypeManager.registerTaskType(new PlaceholderAPIEvaluateTaskType());
-      }
 
       taskTypeManager.closeRegistrations();
       reloadQuests();

@@ -1,13 +1,16 @@
-name: Quests
-
-# This will be replaced with the property "release.version" in pom.xml upon build.
-version: %PLUGIN_VERSION%
-
 main: com.leonardobishop.quests.Quests
-author: LMBishop
-softdepend: [BentoBox, Citizens, PlaceholderAPI]
+name: Quests
+version: "%PLUGIN_VERSION%"
+description: "This plugin will allow your players to do quests in-game to earn rewards."
+
+authors: 
+  - LMBishop
+  - FesterHead
+depend:
+  - BentoBox
+  - PlaceholderAPI
 prefix: Quests
-api-version: "1.13" # allows new API features but Quests will still work pre-1.13
+api-version: "1.13"
 
 commands:
   quests:

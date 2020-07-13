@@ -34,11 +34,9 @@
 // this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of item to retrieve."));
 // this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "Name or ID of item."));
 // this.creatorConfigValues.add(new ConfigValue("remove-items-when-complete", true,
-// "Take the items away from the player on completion (true/false, " + "default = false)."));
+// "Take the items away from the player on completion (true/false, default = false)."));
 // this.creatorConfigValues.add(new ConfigValue("update-progress", true,
 // "Update the displayed progress (if this causes lag then disable it)."));
-// this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
-// this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
 // }
 
 // @Override

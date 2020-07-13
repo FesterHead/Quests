@@ -132,7 +132,7 @@
             <phase>prepare-package</phase>
             <configuration>
               <target>
-                <replace token="%PLUGIN_VERSION%" value="${project.version}-${buildNumber}" dir="target/classes">
+                <replace token="%PLUGIN_VERSION%" value="${project.version}" dir="target/classes">
                   <include name="**/*.yml" />
                 </replace>
               </target>

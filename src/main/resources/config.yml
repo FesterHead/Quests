@@ -1,79 +1,55 @@
 # | =================================================== |
-# | Thank you for downloading and trying out my plugin: |
-# |                       Quests                        |
-# |      https://www.spigotmc.org/resources/23696/      |
-# |         https://github.com/LMBishop/Quests/         |
+# | This plugin is a fork from:                         |
+# |   https://www.spigotmc.org/resources/23696/         |
+# |   https://github.com/LMBishop/Quests/               |
 # |                                                     |
-# |                         =x=                         |
-# |                                                     |
-# |              File comments should help              |
-# |               you with the new config               |
-# |              and guide you with making              |
-# |                        quests                       |
-# |                                                     |
-# |                         =x=                         |
-# |                                                     |
-# |              Have Discord & need help?              |
-# |           https://www.discord.gg/8amrJnX            |
+# | Modifications permitted via MIT License             |
 # | =================================================== |
 
 # Categories are a way of grouping up quests.
 # When a player uses /quests, a menu of categories will be presented to them.
-# When a player clicks ona category, a list of quests under that category will show.
+# When a player clicks on a category, a list of quests under that category will show.
 # If categories are disabled, all quests will be shown under one big GUI.
 # Players can access specific categories by command using /quests c [category].
 # If a quest does not have a category, it will not be shown.
+
 categories:
   examples:
     display:
       name: "&cExample Quests"
       lore:
-        - "&7This category contains example quests"
-        - "&7which are commented in the config."
-        - "&7The comments should guide you with"
-        - "&7how the config works."
-        - ""
-        - "&cIt is highly recommended you read this"
-        - "&csection and all the comments so you can"
-        - "&cmake the most of this plugin."
+        - "&7Exampe quests bundled with the plugin."
       type: "WATER_BUCKET"
   permissionexample:
     display:
       name: "&cPermission Example"
       lore:
-        - "&7This category is an example of one which"
-        - "&7requires a permission to open."
-        - ""
-        - "&cIt is highly recommended you read this"
-        - "&csection and all the comments so you can"
-        - "&cmake the most of this plugin."
-      type: "WATER_BUCKET"
-    # This category needs the permission "quests.category.permissionexample", because the category ID is 'permissionexample'.
+        - "&7This category requires a permission to open."
+      type: "LAVA_BUCKET"
+    # This category needs the permission "quests.category.permissionexample"
     # The permission for other categories is: "quests.category.<id>".
     permission-required: true
 
-# The items listed below are placeholder items for quests which the player cannot start.
-# You should change these for 1.8
 gui:
   back-button:
     name: "&cReturn"
     lore:
-      - "&7Return to the categories menu."
+      - "&7Return to the category menu."
     type: "ARROW"
   page-prev:
     name: "&7Previous Page"
     lore:
-      - "&7Switch the page to page &c{prevpage}."
+      - "&7Go to page &c{prevpage}."
     type: "FEATHER"
   page-next:
     name: "&7Next Page"
     lore:
-      - "&7Switch the page to page &c{nextpage}."
+      - "&7Go to page &c{nextpage}."
     type: "FEATHER"
   page-desc:
     name: "&7Page &c{page}"
     lore:
-      - "&7You are currently viewing page &c{page}."
+      - "&7Currently viewing page &c{page}."
     type: "PAPER"
   quest-locked-display:
     name: "&c&lQuest Locked"
@@ -91,7 +67,7 @@ gui:
       - "&7quest (&6{quest}&7)."
     type: "BROWN_STAINED_GLASS_PANE"
   quest-cooldown-display:
-    name: "&e&lQuest On Cooldown"
+    name: "&e&lQuest on Cooldown"
     lore:
       - "&7You have recently completed this quest"
       - "&7(&e{quest}&7) and you must"
@@ -101,18 +77,15 @@ gui:
     name: "&a&lQuest Complete"
     lore:
       - "&7You have completed this quest"
-      - "&7(&a{quest}&7) and cannot."
-      - "&7repeat it."
+      - "&7(&a{quest}&7) and cannot repeat it."
     type: "GREEN_STAINED_GLASS_PANE"
   quest-cancel-yes:
-    name: "&a&lConfirm Cancel"
+    name: "&a&lConfirm Cancellation"
     lore:
-      - "&7Confirm you wish to cancel"
-      - "&7this quest and lose all"
-      - "&7progress."
+      - "&7Cancel this quest and lose all progress."
     type: "GREEN_STAINED_GLASS_PANE"
   quest-cancel-no:
-    name: "&c&lAbort Cancel"
+    name: "&c&lKeep Questing"
     lore:
       - "&7Return to the quest menu."
     type: "RED_STAINED_GLASS_PANE"

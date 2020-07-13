@@ -25,12 +25,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-public final class BrewingTaskType extends TaskType {
+public final class BrewTaskType extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
   private HashMap<Location, UUID> brewingStands = new HashMap<>();
 
-  public BrewingTaskType() {
+  public BrewTaskType() {
     super("brewing", "LMBishop", "Brew a potion.");
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of potions to brew."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));

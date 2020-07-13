@@ -1,0 +1,29 @@
+tasks:
+  task1:
+    type: "blockplace"
+    amount: 2
+    present: "place"
+    past: "placed"
+display:
+  name: "Place Any Blocks"
+  lore-normal:
+    - ""
+    - "&7This quest requires you to:"
+    - "&7 - {task1:present} blocks"
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "&7 - {task1:progress}/{task1:amount} blocks {task1:past}."
+  type: "stone"
+rewards:
+  - "eco give {player} 1"
+  - "give {player} dirt 1"
+rewardstring:
+  - "Quest completed."
+options:
+  category: "examples"
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 1

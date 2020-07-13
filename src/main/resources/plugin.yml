@@ -1,17 +1,20 @@
 main: com.leonardobishop.quests.Quests
 name: Quests
 version: "%PLUGIN_VERSION%"
-description: "This plugin will allow your players to do quests in-game to earn rewards."
+description: "This plugin will allows players to do quests in-game to earn rewards."
 
 authors:
   - LMBishop
   - FesterHead
-soft-depend:
-  - BentoBox
-depends:
+depend:
   - PlaceholderAPI
+softdepend:
+  - BentoBox
+  - Vault
+
 prefix: Quests
 api-version: "1.13"
+api: "1.13"
 
 commands:
   quests:

@@ -24,8 +24,9 @@ public final class PermissionTaskType extends TaskType {
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
   public PermissionTaskType() {
-    super("permission", "LMBishop", "Test if a player has a permission");
-    this.creatorConfigValues.add(new ConfigValue("permission", true, "The required permission."));
+    super("permission", "LMBishop", "Require a specific permission");
+    this.creatorConfigValues
+        .add(new ConfigValue("permission", true, "The specific required permission."));
   }
 
   @Override

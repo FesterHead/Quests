@@ -1,11 +1,20 @@
 package com.leonardobishop.quests.quests.tasktypes;
 
-import com.leonardobishop.quests.quests.Quest;
-import org.bukkit.event.Listener;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import com.leonardobishop.quests.QuestsLogger;
+import com.leonardobishop.quests.api.QuestsAPI;
+import com.leonardobishop.quests.player.QPlayer;
+import com.leonardobishop.quests.player.questprogressfile.QuestProgress;
+import com.leonardobishop.quests.player.questprogressfile.QuestProgressFile;
+import com.leonardobishop.quests.player.questprogressfile.TaskProgress;
+import com.leonardobishop.quests.quests.Quest;
+import com.leonardobishop.quests.quests.Task;
+import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
+import org.bukkit.event.Listener;
 
 /**
  * A task type which can be used within Quests. A {@link Quest} will be registered to this if it
@@ -24,6 +33,8 @@ public abstract class TaskType implements Listener {
   private final String type;
   private String author;
   private String description;
+
+  private QuestsLogger questLogger = QuestsAPI.getQuestManager().getPlugin().getQuestsLogger();
 
   /**
    * @param type        the name of the task type, should not contain spaces
@@ -91,5 +102,128 @@ public abstract class TaskType implements Listener {
 
   public void onDisable() {
     // not implemented here
+  }
+
+  public void processEntity(EntityType incomingObject, QPlayer qPlayer,
+      QuestProgressFile questProgressFile, int progressIncrement) {
+
+    for (Quest quest : this.getRegisteredQuests()) {
+
+      if (questProgressFile.hasStartedQuest(quest)) {
+
+        questLogger.debug("§4--------------------");
+        questLogger.debug("              Quest: §6" + quest.getId());
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+
+        for (Task task : quest.getTasksOfType(this.getType())) {
+
+          // If the task is done, skip it
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+          int taskProgressCounter =
+              (Objects.isNull(taskProgress.getProgress())) ? 0 : (int) taskProgress.getProgress();
+          if (taskProgress.isCompleted()) {
+            questLogger.debug("                     §aDONE!");
+            continue;
+          }
+
+          // Use specific item if configured for the task
+          EntityType expectedObject = null;
+          if (Objects.nonNull(task.getConfigValue(ITEM_KEY))) {
+            expectedObject =
+                EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+          }
+
+          // Helpful debug information to console
+          questLogger.debug("");
+          questLogger.debug("      Checking task: §8" + task.getId());
+          questLogger.debug("               Type: §8" + task.getType());
+          questLogger.debug("    Incoming object: §b" + incomingObject.toString());
+          questLogger.debug("    Expected object: §3"
+              + ((Objects.nonNull(expectedObject)) ? expectedObject.toString() : "n/a"));
+          questLogger.debug("           Progress: §d" + taskProgressCounter);
+          questLogger.debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
+          questLogger.debug("          Completed: §6" + taskProgress.isCompleted());
+
+          // If the expected object is null then this is a general task, all events count
+          // Otherwise the incoming object must match the expected object
+          if ((Objects.isNull(expectedObject))
+              || (Objects.equals(incomingObject, expectedObject))) {
+            questLogger.debug("                     §aMatch!");
+
+            questLogger.debug("          Increment: §2" + progressIncrement);
+
+            taskProgress.setProgress(taskProgressCounter + progressIncrement);
+            questLogger.debug("       New progress: §e" + taskProgress.getProgress().toString());
+
+            if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
+              taskProgress.setCompleted(true);
+              questLogger.debug("                     §6Completed!");
+            }
+
+            return;
+          }
+        }
+      }
+    }
+  }
+
+  public void processMaterial(Material incomingObject, QPlayer qPlayer,
+      QuestProgressFile questProgressFile, int progressIncrement) {
+    for (Quest quest : this.getRegisteredQuests()) {
+
+      if (questProgressFile.hasStartedQuest(quest)) {
+
+        questLogger.debug("§4--------------------");
+        questLogger.debug("              Quest: §6" + quest.getId());
+        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+
+        for (Task task : quest.getTasksOfType(this.getType())) {
+
+          // If the task is done, skip it
+          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+          int taskProgressCounter =
+              (Objects.isNull(taskProgress.getProgress())) ? 0 : (int) taskProgress.getProgress();
+          if (taskProgress.isCompleted()) {
+            questLogger.debug("                     §aDONE!");
+            continue;
+          }
+
+          Material expectedObject = null;
+          if (Objects.nonNull(task.getConfigValue(ITEM_KEY))) {
+            expectedObject =
+                Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+          }
+
+          // Helpful debug information to console
+          questLogger.debug("");
+          questLogger.debug("      Checking task: §8" + task.getId());
+          questLogger.debug("               Type: §8" + task.getType());
+          questLogger.debug("    Incoming object: §b" + incomingObject.toString());
+          questLogger.debug("    Expected object: §3"
+              + ((Objects.nonNull(expectedObject)) ? expectedObject.toString() : "n/a"));
+          questLogger.debug("           Progress: §d" + taskProgressCounter);
+          questLogger.debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
+          questLogger.debug("          Completed: §6" + taskProgress.isCompleted());
+
+          // If the expected object is null then this is a general task, all events count
+          // Otherwise the incoming object must match the expected object
+          if ((Objects.isNull(expectedObject))
+              || (Objects.equals(incomingObject, expectedObject))) {
+            questLogger.debug("                     §aMatch!");
+            questLogger.debug("          Increment: §2" + progressIncrement);
+            taskProgress.setProgress(taskProgressCounter + progressIncrement);
+            questLogger.debug("       New progress: §e" + taskProgress.getProgress().toString());
+
+            if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
+              taskProgress.setCompleted(true);
+              questLogger.debug("                     §6Completed!");
+            }
+
+            return;
+          }
+        }
+      }
+    }
   }
 }

@@ -20,11 +20,11 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class DistancefromTaskType extends TaskType {
+public final class DistanceFromTaskType extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public DistancefromTaskType() {
+  public DistanceFromTaskType() {
     super("distancefrom", "LMBishop", "Distance yourself from a set of co-ordinates.");
     this.creatorConfigValues.add(new ConfigValue("x", true, "X position."));
     this.creatorConfigValues.add(new ConfigValue("y", true, "Y position."));
@@ -86,3 +86,5 @@ public final class DistancefromTaskType extends TaskType {
   }
 
 }
+
+

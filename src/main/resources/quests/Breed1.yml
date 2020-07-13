@@ -1,26 +1,29 @@
 tasks:
   task1:
-    type: taming
+    type: "breed"
     amount: 2
-    present: "tame"
-    past: "tamed"
+    present: "breed"
+    past: "bred"
 display:
-  name: "Taming 2"
+  name: "Breed Any Animal"
   lore-normal:
     - ""
     - "&7This quest requires you to:"
-    - "&7 - {task1:present} animals"
+    - "&7 - {task1:present} {task1:amount} animals"
   lore-started:
     - ""
     - "&7Status:"
     - "&7 - {task1:progress}/{task1:amount} animals {task1:past}."
-  type: apple
+  type: "wheat"
 rewards:
-  - ""
+  - "eco give {player} 1"
+  - "give {player} dirt 1"
+rewardstring:
+  - "Quest completed."
 options:
   category: "examples"
   repeatable: true
   cooldown:
     enabled: false
     time: 1440
-  sort-order: 16
+  sort-order: 1

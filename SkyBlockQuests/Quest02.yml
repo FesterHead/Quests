@@ -1,0 +1,26 @@
+tasks:
+  Quest02:
+    type: "permission"
+    permission: "quest.mode.on"
+display:
+  name: "&aOak Sapling"
+  lore-normal:
+    - ""
+    - "&7Need a &2sapling&7?"
+    - "&7Start this quest to get an &2oak sapling&7."
+    - ""
+    - "&7This quest is repeatable every&6 15&7 minutes."
+  type: "oak_sapling"
+rewards:
+  - "give {player} oak_sapling 1"
+rewardstring:
+  - "&7Every day is &2Arbor Day&7.  Go plant a &atree&7!"
+options:
+  category: ""
+  requires:
+    - "Quest01"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 15
+  sort-order: 2

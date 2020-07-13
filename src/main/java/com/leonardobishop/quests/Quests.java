@@ -28,6 +28,7 @@ import com.leonardobishop.quests.quests.tasktypes.types.CraftItemTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.EntityBreedTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.EntityTameTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.FurnaceExtractTaskType;
+import com.leonardobishop.quests.quests.tasktypes.types.InventoryTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.PermissionTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.PlayerFishTaskType;
 import com.leonardobishop.quests.quests.tasktypes.types.PlaytimeTaskType;
@@ -128,7 +129,7 @@ public class Quests extends JavaPlugin {
       taskTypeManager.registerTaskType(new EntityBreedTaskType());
       taskTypeManager.registerTaskType(new EntityTameTaskType());
       taskTypeManager.registerTaskType(new FurnaceExtractTaskType());
-      // taskTypeManager.registerTaskType(new InventoryTaskType());
+      taskTypeManager.registerTaskType(new InventoryTaskType());
       taskTypeManager.registerTaskType(new PermissionTaskType());
       taskTypeManager.registerTaskType(new PlayerFishTaskType());
       taskTypeManager.registerTaskType(new PlaytimeTaskType());

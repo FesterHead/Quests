@@ -15,7 +15,7 @@ public final class EntityDeathTaskType extends TaskType {
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
   public EntityDeathTaskType() {
-    super("mobkillingcertain", "LMBishop, FesterHead", "Kill entities.");
+    super("kill", "LMBishop, FesterHead", "Kill entities.");
     this.creatorConfigValues
         .add(new ConfigValue(AMOUNT_KEY, true, "The number of entites to kill."));
     this.creatorConfigValues

@@ -105,18 +105,18 @@ public abstract class TaskType implements Listener {
     // not implemented here
   }
 
-  public void processObject(Object incoming, UUID playerUUID, int progressIncrement) {
+  public void processObject(Object incoming, UUID uuid, int increment) {
 
-    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(playerUUID, true);
-    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+    QPlayer player = QuestsAPI.getPlayerManager().getPlayer(uuid, true);
+    QuestProgressFile progressFile = player.getQuestProgressFile();
 
     for (Quest quest : this.getRegisteredQuests()) {
 
-      if (questProgressFile.hasStartedQuest(quest)) {
+      if (progressFile.hasStartedQuest(quest)) {
 
         questLogger.debug("§4--------------------");
         questLogger.debug("              Quest: §6" + quest.getId());
-        QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
+        QuestProgress questProgress = progressFile.getQuestProgress(quest);
 
         for (Task task : quest.getTasksOfType(this.getType())) {
 
@@ -129,7 +129,7 @@ public abstract class TaskType implements Listener {
             continue;
           }
 
-          taskPreProcess(incoming, task);
+          taskPreprocess(incoming, player, quest, task);
 
           // Use specific item if configured for the task
           Object expected = null;
@@ -158,9 +158,10 @@ public abstract class TaskType implements Listener {
           // Otherwise the incoming object must match the expected object
           if ((Objects.isNull(expected)) || (Objects.equals(incoming, expected))) {
             questLogger.debug("                     §aMatch!");
-            questLogger.debug("          Increment: §2" + progressIncrement);
-            taskProgress.setProgress(taskProgressCounter + progressIncrement);
-            questLogger.debug("       New progress: §e" + taskProgress.getProgress().toString());
+            questLogger.debug("          Increment: §2" + increment);
+            taskProgress.setProgress(taskProgressCounter + increment);
+            questLogger
+                .debug("       New progressFile: §e" + taskProgress.getProgress().toString());
             if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
               taskProgress.setCompleted(true);
               questLogger.debug("                     §6Completed!");
@@ -173,7 +174,7 @@ public abstract class TaskType implements Listener {
     }
   }
 
-  public void taskPreProcess(Object object, Task task) {
+  public void taskPreprocess(Object object, QPlayer player, Quest quest, Task task) {
     // not implemented here
   }
 }

@@ -104,8 +104,9 @@ public abstract class TaskType implements Listener {
     // not implemented here
   }
 
-  public void processEntity(EntityType incomingObject, QPlayer qPlayer,
-      QuestProgressFile questProgressFile, int progressIncrement) {
+  public void processEntity(EntityType incomingEntity, QPlayer qPlayer, int progressIncrement) {
+
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
     for (Quest quest : this.getRegisteredQuests()) {
 
@@ -138,7 +139,7 @@ public abstract class TaskType implements Listener {
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());
           questLogger.debug("               Type: §8" + task.getType());
-          questLogger.debug("    Incoming object: §b" + incomingObject.toString());
+          questLogger.debug("    Incoming object: §b" + incomingEntity.toString());
           questLogger.debug("    Expected object: §3"
               + ((Objects.nonNull(expectedObject)) ? expectedObject.toString() : "n/a"));
           questLogger.debug("           Progress: §d" + taskProgressCounter);
@@ -148,7 +149,7 @@ public abstract class TaskType implements Listener {
           // If the expected object is null then this is a general task, all events count
           // Otherwise the incoming object must match the expected object
           if ((Objects.isNull(expectedObject))
-              || (Objects.equals(incomingObject, expectedObject))) {
+              || (Objects.equals(incomingEntity, expectedObject))) {
             questLogger.debug("                     §aMatch!");
 
             questLogger.debug("          Increment: §2" + progressIncrement);
@@ -168,8 +169,10 @@ public abstract class TaskType implements Listener {
     }
   }
 
-  public void processMaterial(Material incomingObject, QPlayer qPlayer,
-      QuestProgressFile questProgressFile, int progressIncrement) {
+  public void processMaterial(Material incomingEntity, QPlayer qPlayer, int progressIncrement) {
+
+    QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
+
     for (Quest quest : this.getRegisteredQuests()) {
 
       if (questProgressFile.hasStartedQuest(quest)) {
@@ -199,7 +202,7 @@ public abstract class TaskType implements Listener {
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());
           questLogger.debug("               Type: §8" + task.getType());
-          questLogger.debug("    Incoming object: §b" + incomingObject.toString());
+          questLogger.debug("    Incoming object: §b" + incomingEntity.toString());
           questLogger.debug("    Expected object: §3"
               + ((Objects.nonNull(expectedObject)) ? expectedObject.toString() : "n/a"));
           questLogger.debug("           Progress: §d" + taskProgressCounter);
@@ -209,7 +212,7 @@ public abstract class TaskType implements Listener {
           // If the expected object is null then this is a general task, all events count
           // Otherwise the incoming object must match the expected object
           if ((Objects.isNull(expectedObject))
-              || (Objects.equals(incomingObject, expectedObject))) {
+              || (Objects.equals(incomingEntity, expectedObject))) {
             questLogger.debug("                     §aMatch!");
             questLogger.debug("          Increment: §2" + progressIncrement);
             taskProgress.setProgress(taskProgressCounter + progressIncrement);
@@ -225,5 +228,9 @@ public abstract class TaskType implements Listener {
         }
       }
     }
+  }
+
+  public void specialProcessing() {
+
   }
 }

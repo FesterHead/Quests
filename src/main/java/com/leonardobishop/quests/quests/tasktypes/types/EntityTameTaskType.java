@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
-import com.leonardobishop.quests.player.questprogressfile.QuestProgressFile;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.entity.Player;
@@ -40,8 +39,6 @@ public final class EntityTameTaskType extends TaskType {
     }
 
     QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getOwner().getUniqueId(), true);
-    QuestProgressFile qpf = qp.getQuestProgressFile();
-
-    processEntity(event.getEntity().getType(), qp, qpf, 1);
+    processEntity(event.getEntity().getType(), qp, 1);
   }
 }

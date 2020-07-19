@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
-import com.leonardobishop.quests.player.questprogressfile.QuestProgressFile;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.Material;
@@ -41,11 +40,8 @@ public final class PlayerFishTaskType extends TaskType {
     }
 
     QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-    QuestProgressFile qpf = qp.getQuestProgressFile();
-
     Material incoming = ((Item) event.getCaught()).getItemStack().getType();
     int count = ((Item) event.getCaught()).getItemStack().getAmount();
-
-    processMaterial(incoming, qp, qpf, count);
+    processMaterial(incoming, qp, count);
   }
 }

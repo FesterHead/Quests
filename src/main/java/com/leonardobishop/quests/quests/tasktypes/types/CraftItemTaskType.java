@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
-import com.leonardobishop.quests.player.questprogressfile.QuestProgressFile;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.Material;
@@ -38,11 +37,8 @@ public final class CraftItemTaskType extends TaskType {
   public void onCraftItem(CraftItemEvent event) {
 
     QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getWhoClicked().getUniqueId(), true);
-    QuestProgressFile qpf = qp.getQuestProgressFile();
-
     Material incoming = event.getRecipe().getResult().getType();
-
-    processMaterial(incoming, qp, qpf, getAmountCraftItem(incoming, event));
+    processMaterial(incoming, qp, getAmountCraftItem(incoming, event));
   }
 
   // Helper code to get shift-clicks when crafting multiple stacks

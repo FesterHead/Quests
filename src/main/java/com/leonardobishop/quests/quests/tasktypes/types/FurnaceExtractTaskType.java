@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
-import com.leonardobishop.quests.player.questprogressfile.QuestProgressFile;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.event.EventHandler;
@@ -37,8 +36,6 @@ public final class FurnaceExtractTaskType extends TaskType {
   public void onFurnaceExtract(FurnaceExtractEvent event) {
 
     QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-    QuestProgressFile qpf = qp.getQuestProgressFile();
-
-    processMaterial(event.getItemType(), qp, qpf, event.getItemAmount());
+    processMaterial(event.getItemType(), qp, event.getItemAmount());
   }
 }

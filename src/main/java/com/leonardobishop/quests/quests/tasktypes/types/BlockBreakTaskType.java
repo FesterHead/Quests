@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
-import com.leonardobishop.quests.player.questprogressfile.QuestProgressFile;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.event.EventHandler;
@@ -37,9 +36,7 @@ public final class BlockBreakTaskType extends TaskType {
   public void onBlockBreak(BlockBreakEvent event) {
 
     QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-    QuestProgressFile qpf = qp.getQuestProgressFile();
-
-    processMaterial(event.getBlock().getType(), qp, qpf, 1);
+    processMaterial(event.getBlock().getType(), qp, 1);
   }
 
   // subtract if enabled
@@ -47,8 +44,6 @@ public final class BlockBreakTaskType extends TaskType {
   public void onBlockPlace(BlockPlaceEvent event) {
 
     QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-    QuestProgressFile qpf = qp.getQuestProgressFile();
-
-    processMaterial(event.getBlock().getType(), qp, qpf, -1);
+    processMaterial(event.getBlock().getType(), qp, -1);
   }
 }

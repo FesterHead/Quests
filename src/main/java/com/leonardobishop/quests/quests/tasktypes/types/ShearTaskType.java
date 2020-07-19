@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
-import org.bukkit.Material;
-import org.bukkit.entity.Cow;
+import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerShearEntityEvent;
 
-public final class MilkingTaskType extends TaskType {
+public final class ShearTaskType extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public MilkingTaskType() {
-    super("milking", "LMBishop, FesterHead", "Milk cows.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of cows to milk."));
+  public ShearTaskType() {
+    super("shear", "LMBishop, FesterHead", "Shear sheep.");
+    this.creatorConfigValues
+        .add(new ConfigValue(AMOUNT_KEY, true, "The number of sheep to shear."));
     this.creatorConfigValues
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues
@@ -29,12 +29,10 @@ public final class MilkingTaskType extends TaskType {
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  public void onMilk(PlayerInteractEntityEvent event) {
-    if (!(event.getRightClicked() instanceof Cow)
-        || (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.BUCKET)) {
+  public void onShear(PlayerShearEntityEvent event) {
+    if (!(event.getEntity() instanceof Sheep)) {
       return;
     }
-    processEntity(event.getRightClicked().getType(), event.getPlayer().getUniqueId(), 1);
+    processEntity(event.getEntity().getType(), event.getPlayer().getUniqueId(), 1);
   }
-
 }

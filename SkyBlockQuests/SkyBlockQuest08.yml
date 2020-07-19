@@ -31,7 +31,7 @@ rewards:
   - "give {player} grass_block 1"
   - "cc give p SkyBlock 1 {player}"
   - "luckperms user {player} permission set island.level.2"
-  - "luckperms user {player} permission set skyblock-store"
+  - "luckperms user {player} permission set commandpanel.panel.skyblock-store"
   - "quests admin moddata start {player} SkyBlockQuest09"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

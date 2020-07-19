@@ -27,7 +27,7 @@ rewards:
   - "give {player} bedrock 2"
   - "cc give p SkyBlock 4 {player}"
   - "luckperms user {player} permission set island.level.100"
-  - "luckperms user {player} permission set skyblock-spawners-store"
+  - "luckperms user {player} permission set commandpanel.panel.skyblock-spawners-store"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

@@ -27,7 +27,7 @@ rewards:
   - "give {player} bedrock 1"
   - "cc give p SkyBlock 2 {player}"
   - "luckperms user {player} permission set island.level.25"
-  - "luckperms user {player} permission set skyblock-hostile-spawn-egg-store"
+  - "luckperms user {player} permission set commandpanel.panel.skyblock-hostile-spawn-egg-store"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

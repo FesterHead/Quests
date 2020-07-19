@@ -24,7 +24,7 @@ rewards:
   - "cc give p SkyBlock 1 {player}"
   - "give {player} enchanted_golden_apple 1"
   - "luckperms user {player} permission set island.level.5"
-  - "luckperms user {player} permission set skyblock-passive-spawn-egg-store"
+  - "luckperms user {player} permission set commandpanel.panel.skyblock-passive-spawn-egg-store"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

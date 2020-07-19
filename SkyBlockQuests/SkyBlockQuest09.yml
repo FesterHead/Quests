@@ -1,0 +1,89 @@
+tasks:
+  task01:
+    type: "craftitem"
+    amount: 64
+    item: "stone_bricks"
+    present: "construct"
+    past: "constructed"
+  task02:
+    type: "inventory"
+    amount: 64
+    item: "stone_bricks"
+    remove-items-when-complete: true
+    update-progress: true
+  task03:
+    type: "furnaceextract"
+    amount: 1
+    item: "smooth_stone"
+    present: "smelt"
+    past: "smelted"
+  task04:
+    type: "inventory"
+    amount: 64
+    item: "smooth_stone"
+    remove-items-when-complete: true
+    update-progress: true
+  task05:
+    type: "furnaceextract"
+    amount: 1
+    item: "cracked_stone_bricks"
+    present: "smelt"
+    past: "smelted"
+  task06:
+    type: "inventory"
+    amount: 64
+    item: "cracked_stone_bricks"
+    remove-items-when-complete: true
+    update-progress: true
+  task07:
+    type: "craftitem"
+    amount: 64
+    item: "chiseled_stone_bricks"
+    present: "construct"
+    past: "constructed"
+  task08:
+    type: "inventory"
+    amount: 64
+    item: "chiseled_stone_bricks"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aFour types of stone blocks"
+  type: "stone_bricks"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}"
+    - "&7 - &8{task03:present} &7{task03:item}"
+    - "&7 - &8{task05:present} &7{task05:item}"
+    - "&7 - &8{task07:present} &7{task07:item}"
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item} &7{task05:past}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}."
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item} &7{task07:past}."
+    - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} dirt 2"
+  - "give {player} iron_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:3},{id:efficiency,lvl:2}]}"
+  - "give {player} iron_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:3},{id:efficiency,lvl:2}]}"
+  - "give {player} iron_shovel 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:3},{id:efficiency,lvl:2}]}"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest03"
+  repeatable: false
+  cooldown:
+    enabled: true
+    time: 15
+  sort-order: 4

@@ -1,0 +1,103 @@
+tasks:
+  task01:
+    type: "craftitem"
+    amount: 1
+    item: "furnace"
+    present: "craft"
+    past: "crafted"
+  task02:
+    type: "blockplace"
+    amount: 1
+    item: "furnace"
+    present: "place"
+    past: "placed"
+  task03:
+    type: "furnaceextract"
+    amount: 24
+    item: "charcoal"
+    present: "smelt"
+    past: "smelted"
+  task04:
+    type: "craftitem"
+    amount: 8
+    item: "torch"
+    present: "craft"
+    past: "crafted"
+  task05:
+    type: "blockplace"
+    amount: 8
+    item: "torch"
+    present: "place"
+    past: "placed"
+  task06:
+    type: "craftitem"
+    amount: 1
+    item: "smoker"
+    present: "craft"
+    past: "crafted"
+  task07:
+    type: "blockplace"
+    amount: 1
+    item: "smoker"
+    present: "place"
+    past: "placed"
+  task08:
+    type: "furnaceextract"
+    amount: 1
+    item: "cooked_beef"
+    present: "cook"
+    past: "cooked"
+  task09:
+    type: "furnaceextract"
+    amount: 1
+    item: "cooked_chicken"
+    present: "cook"
+    past: "cooked"
+display:
+  name: "&aSmelting and cooking"
+  type: "furnace"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}"
+    - "&7 - &8{task02:present} &7{task02:item}"
+    - "&7 - &8{task03:present} &7{task03:item}"
+    - "&7 - &8{task04:present} &7{task04:item}es"
+    - "&7 - &8{task05:present} &7{task05:item}es"
+    - "&7 - &8{task06:present} &7{task06:item}"
+    - "&7 - &8{task07:present} &7{task07:item}"
+    - "&7 - &7{task08:item}"
+    - "&7 - &7{task09:item}"
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item} &7{task02:past}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item} &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}es &7{task04:past}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}es &7{task05:past}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item} &7{task06:past}."
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item} &7{task07:past}."
+    - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}."
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &3cooked beef"
+    - "&7 - &dcooked chicken"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} dirt 2"
+  - "give {player} cooked_beef 2"
+  - "give {player} cooked_chicken 2"
+  - "quests admin moddata start {player} SkyBlockQuest08"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest06"
+  repeatable: false
+  cooldown:
+    enabled: true
+    time: 15
+  sort-order: 7

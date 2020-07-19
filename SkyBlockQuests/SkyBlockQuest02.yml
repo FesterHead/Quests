@@ -1,16 +1,16 @@
 tasks:
-  Quest02:
+  task01:
     type: "permission"
     permission: "quest.mode.on"
 display:
   name: "&aOak Sapling"
+  type: "oak_sapling"
   lore-normal:
     - ""
     - "&7Need a &2sapling&7?"
     - "&7Start this quest to get an &2oak sapling&7."
     - ""
-    - "&7This quest is repeatable every&6 15&7 minutes."
-  type: "oak_sapling"
+    - "&7This quest is repeatable every &615 &7minutes."
 rewards:
   - "give {player} oak_sapling 1"
 rewardstring:
@@ -18,7 +18,7 @@ rewardstring:
 options:
   category: ""
   requires:
-    - "Quest01"
+    - "SkyBlockQuest01"
   repeatable: true
   cooldown:
     enabled: true

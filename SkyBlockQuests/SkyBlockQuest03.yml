@@ -1,0 +1,51 @@
+tasks:
+  task01:
+    type: "blockbreak"
+    amount: 12
+    item: "oak_log"
+    present: "chop"
+    past: "chopped"
+  task02:
+    type: "craftitem"
+    amount: 24
+    item: "oak_planks"
+    present: "construct"
+    past: "constructed"
+  task03:
+    type: "blockplace"
+    amount: 8
+    item: "oak_sapling"
+    present: "plant"
+    past: "planted"
+display:
+  name: "&aBreak, craft, and plant"
+  type: "oak_log"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7 - &8{task02:present} &7{task02:item}"
+    - "&7 - &8{task03:present} &7{task03:item}s"
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item} &7{task02:past}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} dirt 2"
+  - "quests admin moddata start {player} SkyBlockQuest04"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest01"
+  repeatable: false
+  cooldown:
+    enabled: true
+    time: 15
+  sort-order: 3

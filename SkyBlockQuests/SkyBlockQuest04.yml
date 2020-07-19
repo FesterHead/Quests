@@ -1,0 +1,89 @@
+tasks:
+  task01:
+    type: "craftitem"
+    amount: 12
+    item: "oak_planks"
+    present: "construct"
+    past: "constructed"
+  task02:
+    type: "blockplace"
+    amount: 12
+    item: "oak_planks"
+    present: "place"
+    past: "placed"
+  task03:
+    type: "craftitem"
+    amount: 12
+    item: "oak_fence"
+    present: "construct"
+    past: "constructed"
+  task04:
+    type: "blockplace"
+    amount: 12
+    item: "oak_fence"
+    present: "place"
+    past: "placed"
+  task05:
+    type: "craftitem"
+    amount: 12
+    item: "oak_slab"
+    present: "construct"
+    past: "constructed"
+  task06:
+    type: "inventory"
+    amount: 12
+    item: "oak_slab"
+    remove-items-when-complete: true
+    update-progress: true
+  task07:
+    type: "craftitem"
+    amount: 12
+    item: "oak_stairs"
+    present: "construct"
+    past: "constructed"
+  task08:
+    type: "inventory"
+    amount: 12
+    item: "oak_slab"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aMore placing and crafting"
+  type: "oak_stairs"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}"
+    - "&7 - &8{task02:present} &7{task02:item}"
+    - "&7 - &8{task03:present} &7{task03:item}s"
+    - "&7 - &8{task04:present} &7{task04:item}s"
+    - "&7 - &8{task05:present} &7{task05:item}s"
+    - "&7 - &8{task07:present} &7{task07:item}"
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item} &7{task02:past}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s &7{task04:past}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}s"
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item} &7{task07:past}."
+    - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}"
+    - ""
+    - "&7Rewards:"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} dirt 2"
+  - "quests admin moddata start {player} SkyBlockQuest05"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest03"
+  repeatable: false
+  cooldown:
+    enabled: true
+    time: 15
+  sort-order: 4

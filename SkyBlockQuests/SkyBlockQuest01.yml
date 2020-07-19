@@ -1,0 +1,71 @@
+tasks:
+  task01:
+    type: "blockbreak"
+    amount: 1
+    item: "oak_log"
+    present: "chop"
+    past: "chopped"
+  task02:
+    type: "craftitem"
+    amount: 4
+    item: "oak_planks"
+    present: "construct"
+    past: "constructed"
+  task03:
+    type: "craftitem"
+    amount: 1
+    item: "crafting_table"
+    present: "craft"
+    past: "crafted"
+  task04:
+    type: "blockplace"
+    amount: 1
+    item: "crafting_table"
+    present: "place"
+    past: "placed"
+display:
+  name: "&aCrafting Table"
+  type: "crafting_table"
+  lore-normal:
+    - ""
+    - "&bIt all starts with a &8crafting table&b."
+    - ""
+    - "&7If you &cdo not &7want to quest then go to the"
+    - "&9control panel &7-> &9commands panel &cNOW &7and use"
+    - "&7the &aQuest Mode &7option to &cDISABLE &7it."
+    - "&3Otherwise, keep on reading..."
+    - ""
+    - "&7Chop down the &atree &7to get &2wood &7and construct &64 &3oak planks&7."
+    - "&7Then craft and place a &8crafting table&7."
+    - ""
+    - "&7On this server, you will earn &6$1 &7for just about"
+    - "&7every 'action' you take such as &8breaking &7or &aplacing"
+    - "&7blocks, &9crafting &7items, &2taming&7, &3shearing&7, &4fishing&7,"
+    - "&5baking&7, &6eating&7, &8smelting&7, &9enchanting&7, &fmilking&7,"
+    - "&9reparing&7, &abreeding&7, &cbrewing &7, ..."
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item} &7{task02:past}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item} &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item} &7{task04:past}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &8dirt"
+rewards:
+  - "luckperms user {player} permission set quest.mode.decided"
+  - "luckperms user {player} permission set quest.mode.on"
+  - "quests admin moddata start {player} SkyBlockQuest03"
+  - "give {player} dirt 2"
+rewardstring:
+  - "&6Congratulations!  &7Have fun playing SkyBlock!"
+options:
+  category: ""
+  requires:
+    - ""
+  repeatable: false
+  cooldown:
+    enabled: true
+    time: 1440
+  sort-order: 1

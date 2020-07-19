@@ -34,7 +34,7 @@ public final class CraftItemTaskType extends TaskType {
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onCraftItem(CraftItemEvent event) {
     Material incoming = event.getRecipe().getResult().getType();
-    processMaterial(incoming, event.getWhoClicked().getUniqueId(),
+    processObject(incoming, event.getWhoClicked().getUniqueId(),
         getAmountCraftItem(incoming, event));
   }
 

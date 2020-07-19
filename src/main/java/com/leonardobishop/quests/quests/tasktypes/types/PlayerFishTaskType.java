@@ -38,6 +38,6 @@ public final class PlayerFishTaskType extends TaskType {
     }
     Material incoming = ((Item) event.getCaught()).getItemStack().getType();
     int count = ((Item) event.getCaught()).getItemStack().getAmount();
-    processMaterial(incoming, event.getPlayer().getUniqueId(), count);
+    processObject(incoming, event.getPlayer().getUniqueId(), count);
   }
 }

@@ -31,7 +31,7 @@ public final class ShearTaskType extends TaskType {
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onShear(PlayerShearEntityEvent event) {
     if (event.getEntity() instanceof Sheep) {
-      processEntity(event.getEntity().getType(), event.getPlayer().getUniqueId(), 1);
+      processObject(event.getEntity().getType(), event.getPlayer().getUniqueId(), 1);
     }
   }
 }

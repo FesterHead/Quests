@@ -32,7 +32,7 @@ public final class MilkTaskType extends TaskType {
   public void onMilk(PlayerInteractEntityEvent event) {
     Material itemInMainHand = event.getPlayer().getInventory().getItemInMainHand().getType();
     if ((event.getRightClicked() instanceof Cow) && (itemInMainHand.equals(Material.BUCKET))) {
-      processEntity(event.getRightClicked().getType(), event.getPlayer().getUniqueId(), 1);
+      processObject(event.getRightClicked().getType(), event.getPlayer().getUniqueId(), 1);
     }
   }
 }

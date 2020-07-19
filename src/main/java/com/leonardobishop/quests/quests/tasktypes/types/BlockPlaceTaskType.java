@@ -31,11 +31,11 @@ public final class BlockPlaceTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBlockPlace(BlockPlaceEvent event) {
-    processMaterial(event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
+    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBlockBreak(BlockBreakEvent event) {
-    processMaterial(event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
+    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
   }
 }

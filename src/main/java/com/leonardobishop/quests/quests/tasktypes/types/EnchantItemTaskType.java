@@ -31,6 +31,6 @@ public final class EnchantItemTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onEnchant(EnchantItemEvent event) {
-    processMaterial(event.getItem().getType(), event.getEnchanter().getUniqueId(), 1);
+    processObject(event.getItem().getType(), event.getEnchanter().getUniqueId(), 1);
   }
 }

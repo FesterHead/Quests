@@ -36,7 +36,7 @@ public final class EntityDeathTaskType extends TaskType {
     if (killer == null || mob == null || mob instanceof Player) {
       return;
     }
-    processEntity(event.getEntity().getType(), killer.getUniqueId(), 1);
+    processObject(event.getEntity().getType(), killer.getUniqueId(), 1);
   }
 
 }

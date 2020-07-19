@@ -32,6 +32,6 @@ public final class FurnaceExtractTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onFurnaceExtract(FurnaceExtractEvent event) {
-    processMaterial(event.getItemType(), event.getPlayer().getUniqueId(), event.getItemAmount());
+    processObject(event.getItemType(), event.getPlayer().getUniqueId(), event.getItemAmount());
   }
 }

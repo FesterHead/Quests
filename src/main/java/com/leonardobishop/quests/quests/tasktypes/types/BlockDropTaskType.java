@@ -36,7 +36,7 @@ public final class BlockDropTaskType extends TaskType {
     for (Item item : event.getItems()) {
       Material incoming = item.getItemStack().getType();
       int count = item.getItemStack().getAmount();
-      processMaterial(incoming, event.getPlayer().getUniqueId(), count);
+      processObject(incoming, event.getPlayer().getUniqueId(), count);
     }
   }
 }

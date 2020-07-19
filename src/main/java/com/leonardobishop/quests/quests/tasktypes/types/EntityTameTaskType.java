@@ -35,6 +35,6 @@ public final class EntityTameTaskType extends TaskType {
     if (!(event.getOwner() instanceof Player)) {
       return;
     }
-    processEntity(event.getEntity().getType(), event.getOwner().getUniqueId(), 1);
+    processObject(event.getEntity().getType(), event.getOwner().getUniqueId(), 1);
   }
 }

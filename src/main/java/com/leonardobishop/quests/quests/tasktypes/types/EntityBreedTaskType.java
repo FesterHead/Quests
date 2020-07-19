@@ -31,6 +31,6 @@ public final class EntityBreedTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBreed(EntityBreedEvent event) {
-    processEntity(event.getEntity().getType(), event.getBreeder().getUniqueId(), 1);
+    processObject(event.getEntity().getType(), event.getBreeder().getUniqueId(), 1);
   }
 }

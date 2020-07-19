@@ -417,6 +417,21 @@ public class QuestProgressFile {
     }
   }
 
+  public void delete() {
+    plugin.getQuestsLogger().debug("Deleting player " + playerUUID + " quest progress file.");
+    String prefix = plugin.getDataFolder() + File.separator + "playerdata";
+    String suffix = File.separator + playerUUID.toString() + ".yml";
+    File directory = new File(prefix);
+    if (!directory.exists() && !directory.isDirectory()) {
+      return;
+    }
+    File file = new File(prefix + suffix);
+    if (file.exists()) {
+      file.delete();
+      plugin.getQuestsLogger().debug("Deleted " + prefix + suffix);
+    }
+  }
+
   public void clear() {
     questProgress.clear();
   }

@@ -162,6 +162,7 @@ public class CommandQuests implements CommandExecutor {
               }
               QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
               questProgressFile.clear();
+              questProgressFile.delete();
               questProgressFile.saveToDisk(false);
               sender.sendMessage(
                   Messages.COMMAND_QUEST_ADMIN_FULLRESET.getMessage().replace("{player}", name));
@@ -313,17 +314,14 @@ public class CommandQuests implements CommandExecutor {
             } else {
               if (qPlayer == null) {
                 // shit + fan
-                sender.sendMessage(ChatColor.RED + "An error occurred finding your player."); // lazy?
-                                                                                              // :)
+                sender.sendMessage(ChatColor.RED + "An error occurred finding your player.");
               } else {
                 qPlayer.getQuestProgressFile().startQuest(quest);
               }
             }
           } else if (args[2].equalsIgnoreCase("c") || args[2].equalsIgnoreCase("cancel")) {
             if (qPlayer == null) {
-              sender.sendMessage(ChatColor.RED + "An error occurred finding your player."); // lazy
-                                                                                            // x2?
-                                                                                            // ;)
+              sender.sendMessage(ChatColor.RED + "An error occurred finding your player.");
             } else {
               qPlayer.getQuestProgressFile().cancelQuest(quest);
             }
@@ -376,9 +374,6 @@ public class CommandQuests implements CommandExecutor {
             + ChatColor.DARK_GRAY + ": start or cancel quest by ID");
     sender.sendMessage(ChatColor.DARK_GRAY + " * " + ChatColor.RED + "/quests a/admin "
         + ChatColor.DARK_GRAY + ": view help for admins");
-    sender.sendMessage(ChatColor.GRAY.toString() + ChatColor.STRIKETHROUGH + "--------=["
-        + ChatColor.RED + " made with <3 by LMBishop " + ChatColor.GRAY.toString()
-        + ChatColor.STRIKETHROUGH + "]=--------");
   }
 
   private void showAdminHelp(CommandSender sender, String command) {

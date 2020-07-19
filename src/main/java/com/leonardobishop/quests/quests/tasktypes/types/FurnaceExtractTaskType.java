@@ -2,8 +2,6 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.leonardobishop.quests.api.QuestsAPI;
-import com.leonardobishop.quests.player.QPlayer;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.event.EventHandler;
@@ -34,8 +32,6 @@ public final class FurnaceExtractTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onFurnaceExtract(FurnaceExtractEvent event) {
-
-    QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-    processMaterial(event.getItemType(), qp, event.getItemAmount());
+    processMaterial(event.getItemType(), event.getPlayer().getUniqueId(), event.getItemAmount());
   }
 }

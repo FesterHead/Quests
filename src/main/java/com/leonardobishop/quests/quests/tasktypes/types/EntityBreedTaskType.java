@@ -2,8 +2,6 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.leonardobishop.quests.api.QuestsAPI;
-import com.leonardobishop.quests.player.QPlayer;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.event.EventHandler;
@@ -33,8 +31,6 @@ public final class EntityBreedTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBreed(EntityBreedEvent event) {
-
-    QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getBreeder().getUniqueId(), true);
-    processEntity(event.getEntity().getType(), qp, 1);
+    processEntity(event.getEntity().getType(), event.getBreeder().getUniqueId(), 1);
   }
 }

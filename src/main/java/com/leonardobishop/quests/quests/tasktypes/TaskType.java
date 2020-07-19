@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import com.leonardobishop.quests.QuestsLogger;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
@@ -104,8 +105,9 @@ public abstract class TaskType implements Listener {
     // not implemented here
   }
 
-  public void processEntity(EntityType incomingEntity, QPlayer qPlayer, int progressIncrement) {
+  public void processEntity(EntityType incomingEntity, UUID playerUUID, int progressIncrement) {
 
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(playerUUID, true);
     QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
     for (Quest quest : this.getRegisteredQuests()) {
@@ -169,8 +171,9 @@ public abstract class TaskType implements Listener {
     }
   }
 
-  public void processMaterial(Material incomingEntity, QPlayer qPlayer, int progressIncrement) {
+  public void processMaterial(Material incomingEntity, UUID playerUUID, int progressIncrement) {
 
+    QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(playerUUID, true);
     QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
 
     for (Quest quest : this.getRegisteredQuests()) {

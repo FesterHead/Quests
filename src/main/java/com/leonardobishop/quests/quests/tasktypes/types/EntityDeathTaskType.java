@@ -2,8 +2,6 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.leonardobishop.quests.api.QuestsAPI;
-import com.leonardobishop.quests.player.QPlayer;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.entity.Entity;
@@ -35,13 +33,10 @@ public final class EntityDeathTaskType extends TaskType {
   public void onMobKill(EntityDeathEvent event) {
     Player killer = event.getEntity().getKiller();
     Entity mob = event.getEntity();
-
     if (killer == null || mob == null || mob instanceof Player) {
       return;
     }
-
-    QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(killer.getUniqueId(), true);
-    processEntity(event.getEntity().getType(), qp, 1);
+    processEntity(event.getEntity().getType(), killer.getUniqueId(), 1);
   }
 
 }

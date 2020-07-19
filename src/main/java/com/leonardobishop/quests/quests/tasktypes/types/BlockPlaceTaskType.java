@@ -2,8 +2,6 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.leonardobishop.quests.api.QuestsAPI;
-import com.leonardobishop.quests.player.QPlayer;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.event.EventHandler;
@@ -33,15 +31,11 @@ public final class BlockPlaceTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBlockPlace(BlockPlaceEvent event) {
-
-    QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-    processMaterial(event.getBlock().getType(), qp, 1);
+    processMaterial(event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBlockBreak(BlockBreakEvent event) {
-
-    QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-    processMaterial(event.getBlock().getType(), qp, -1);
+    processMaterial(event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
   }
 }

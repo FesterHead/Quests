@@ -2,8 +2,6 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.leonardobishop.quests.api.QuestsAPI;
-import com.leonardobishop.quests.player.QPlayer;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.Material;
@@ -35,15 +33,10 @@ public final class BlockDropTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onHarvest(BlockDropItemEvent event) {
-
-    QPlayer qp = QuestsAPI.getPlayerManager().getPlayer(event.getPlayer().getUniqueId(), true);
-
     for (Item item : event.getItems()) {
-
       Material incoming = item.getItemStack().getType();
       int count = item.getItemStack().getAmount();
-
-      processMaterial(incoming, qp, count);
+      processMaterial(incoming, event.getPlayer().getUniqueId(), count);
     }
   }
 }

@@ -30,11 +30,9 @@ public final class MilkTaskType extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onMilk(PlayerInteractEntityEvent event) {
-    if (!(event.getRightClicked() instanceof Cow)
-        || (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.BUCKET)) {
-      return;
+    Material itemInMainHand = event.getPlayer().getInventory().getItemInMainHand().getType();
+    if ((event.getRightClicked() instanceof Cow) && (itemInMainHand.equals(Material.BUCKET))) {
+      processEntity(event.getRightClicked().getType(), event.getPlayer().getUniqueId(), 1);
     }
-    processEntity(event.getRightClicked().getType(), event.getPlayer().getUniqueId(), 1);
   }
-
 }

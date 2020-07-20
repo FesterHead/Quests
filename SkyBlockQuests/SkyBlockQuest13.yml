@@ -1,0 +1,59 @@
+tasks:
+  task01:
+    type: "place"
+    amount: 8
+    item: "wheat_seeds"
+    present: "plant"
+    past: "planted"
+  task02:
+    type: "drop"
+    amount: 12
+    item: "wheat"
+    present: "harvest"
+    past: "harvested"
+  task03:
+    type: "craft"
+    amount: 1
+    item: "composter"
+    present: "craft"
+    past: "crafted"
+  task04:
+    type: "place"
+    amount: 1
+    item: "composter"
+    present: "place"
+    past: "placed"
+display:
+  name: "&aWheat farming"
+  type: "wheat"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}"
+    - "&7 - &8{task02:present} &7{task02:item}"
+    - "&7 - &8{task03:present} &7{task03:item}"
+    - "&7 - &8{task04:present} &7{task04:item}"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item} &7{task02:past}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item} &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item} &7{task04:past}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest09"
+  repeatable: false
+  cooldown:
+    enabled: true
+    time: 30
+  sort-order: 13

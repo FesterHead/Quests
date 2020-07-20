@@ -1,0 +1,44 @@
+tasks:
+  task01:
+    type: "break"
+    amount: 64
+    item: "oak_log"
+    present: "chop"
+    past: "chopped"
+  task02:
+    type: "inventory"
+    amount: 64
+    item: "oak_log"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aOak logs to dirt and sand"
+  type: "oak_log"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}s"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &esand"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} sand 4"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest10"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 30
+  sort-order: 11

@@ -114,7 +114,7 @@ display:
     - "&7Rewards:"
     - "&7 - &3beef"
     - "&7 - &dchicken"
-    - "&7 - &bmagic tools"
+    - "&7 - &bmagic wooden tools"
     - "&7 - &8dirt"
 rewards:
   - "give {player} stone_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:2},{id:efficiency,lvl:1}]}"

@@ -1,0 +1,45 @@
+tasks:
+  task01:
+    type: "craft"
+    amount: 18
+    item: "beetroot_soup"
+    present: "cook"
+    past: "cooked"
+  task02:
+    type: "inventory"
+    amount: 18
+    item: "beetroot_soup"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aSoup kitchen I"
+  type: "beetroot_soup"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &2mushrooms"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} brown_mushroom 2"
+  - "give {player} red_mushroom 2"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest17"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 360
+  sort-order: 18

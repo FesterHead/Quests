@@ -70,6 +70,7 @@ display:
     - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}."
     - ""
     - "&7Rewards:"
+    - "&7 - &bmagic iron tools"
     - "&7 - &8dirt"
 rewards:
   - "give {player} dirt 2"
@@ -86,4 +87,4 @@ options:
   cooldown:
     enabled: true
     time: 15
-  sort-order: 4
+  sort-order: 9

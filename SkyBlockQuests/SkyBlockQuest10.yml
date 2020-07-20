@@ -1,0 +1,38 @@
+tasks:
+  task01:
+    type: "playtime"
+    amount: 120
+display:
+  name: "&aPlay for two hours"
+  type: "clock"
+  lore-normal:
+    - ""
+    - "&7This quest requires you to be connected"
+    - "&7to the server for &btwo &7hours."
+    - ""
+    - "&7Have &2fun&r, &3enjoy&7, and &dbe awesome&7!"
+    - ""
+    - "&7This quest is repeatable."
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} minutes played."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &ewheat seeds"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} dirt 2"
+  - "give {player} wheat_seeds 2"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest01"
+    - "SkyBlockQuest08"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 0
+  sort-order: 10

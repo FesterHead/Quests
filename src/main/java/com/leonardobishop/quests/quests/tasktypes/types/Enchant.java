@@ -8,11 +8,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.enchantment.EnchantItemEvent;
 
-public final class EnchantItemTaskType extends TaskType {
+public final class Enchant extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public EnchantItemTaskType() {
+  public Enchant() {
     super("enchant", "toasted, FesterHead", "Enchant items.");
     this.creatorConfigValues
         .add(new ConfigValue(AMOUNT_KEY, true, "The number of items to enchant."));

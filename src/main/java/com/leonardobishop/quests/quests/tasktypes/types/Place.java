@@ -6,19 +6,18 @@ import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.inventory.FurnaceExtractEvent;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 
-public final class FurnaceExtractTaskType extends TaskType {
+public final class Place extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public FurnaceExtractTaskType() {
-    super("furnaceextract", "FesterHead",
-        "Extract items from a furnace, blast furnace, or smoker.");
+  public Place() {
+    super("place", "LMBishop, FesterHead", "Place blocks.");
+    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of blocks place."));
     this.creatorConfigValues
-        .add(new ConfigValue(AMOUNT_KEY, true, "The number of items to extract."));
-    this.creatorConfigValues
-        .add(new ConfigValue(ITEM_KEY, false, "If supplied, a specific item to extract."));
+        .add(new ConfigValue(ITEM_KEY, false, "If supplied, the specific block to place."));
     this.creatorConfigValues
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues
@@ -31,7 +30,12 @@ public final class FurnaceExtractTaskType extends TaskType {
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  public void onFurnaceExtract(FurnaceExtractEvent event) {
-    processObject(event.getItemType(), event.getPlayer().getUniqueId(), event.getItemAmount());
+  public void onBlockPlace(BlockPlaceEvent event) {
+    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onBlockBreak(BlockBreakEvent event) {
+    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
   }
 }

@@ -9,11 +9,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerShearEntityEvent;
 
-public final class ShearTaskType extends TaskType {
+public final class Shear extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public ShearTaskType() {
+  public Shear() {
     super("shear", "LMBishop, FesterHead", "Shear sheep.");
     this.creatorConfigValues
         .add(new ConfigValue(AMOUNT_KEY, true, "The number of sheep to shear."));

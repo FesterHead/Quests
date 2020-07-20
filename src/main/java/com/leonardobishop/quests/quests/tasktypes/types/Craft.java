@@ -10,12 +10,12 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-public final class CraftItemTaskType extends TaskType {
+public final class Craft extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public CraftItemTaskType() {
-    super("craftitem", "FesterHead", "Craft a set amount of a specific material.");
+  public Craft() {
+    super("craft", "FesterHead", "Craft a set amount of a specific material.");
     this.creatorConfigValues
         .add(new ConfigValue(AMOUNT_KEY, true, "The number of items to craft."));
     this.creatorConfigValues

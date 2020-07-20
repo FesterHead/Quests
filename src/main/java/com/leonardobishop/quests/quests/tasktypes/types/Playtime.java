@@ -18,12 +18,12 @@ import org.bukkit.scheduler.BukkitTask;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class PlaytimeTaskType extends TaskType {
+public final class Playtime extends TaskType {
 
   private BukkitTask poll;
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public PlaytimeTaskType() {
+  public Playtime() {
     super("playtime", "Reinatix", "Play a certain amount of time.");
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The time to play in minutes."));
   }
@@ -36,10 +36,10 @@ public final class PlaytimeTaskType extends TaskType {
         for (Player player : Bukkit.getOnlinePlayers()) {
           QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
           QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-          for (Quest quest : PlaytimeTaskType.super.getRegisteredQuests()) {
+          for (Quest quest : Playtime.super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
               QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-              for (Task task : quest.getTasksOfType(PlaytimeTaskType.super.getType())) {
+              for (Task task : quest.getTasksOfType(Playtime.super.getType())) {
                 TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                 if (taskProgress.isCompleted()) {
                   continue;

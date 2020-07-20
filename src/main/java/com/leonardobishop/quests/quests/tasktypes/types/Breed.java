@@ -4,22 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
-import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.player.PlayerFishEvent;
+import org.bukkit.event.entity.EntityBreedEvent;
 
-public final class PlayerFishTaskType extends TaskType {
+public final class Breed extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public PlayerFishTaskType() {
-    super("fish", "FesterHead", "Go fish.");
+  public Breed() {
+    super("breed", "FesterHead", "Breed animals.");
     this.creatorConfigValues
-        .add(new ConfigValue(AMOUNT_KEY, true, "The number of things to catch."));
+        .add(new ConfigValue(AMOUNT_KEY, true, "The number of animals to breed."));
     this.creatorConfigValues
-        .add(new ConfigValue(ITEM_KEY, false, "If supplied, the item to catch."));
+        .add(new ConfigValue(ITEM_KEY, false, "If supplied, the specific animal to breed."));
     this.creatorConfigValues
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues
@@ -32,12 +30,7 @@ public final class PlayerFishTaskType extends TaskType {
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  public void onFishCaught(PlayerFishEvent event) {
-    if (event.getState() != PlayerFishEvent.State.CAUGHT_FISH) {
-      return;
-    }
-    Material incoming = ((Item) event.getCaught()).getItemStack().getType();
-    int count = ((Item) event.getCaught()).getItemStack().getAmount();
-    processObject(incoming, event.getPlayer().getUniqueId(), count);
+  public void onBreed(EntityBreedEvent event) {
+    processObject(event.getEntity().getType(), event.getBreeder().getUniqueId(), 1);
   }
 }

@@ -6,18 +6,18 @@ import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.inventory.FurnaceExtractEvent;
 
-public final class BlockPlaceTaskType extends TaskType {
+public final class Furnace extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public BlockPlaceTaskType() {
-    super("blockplace", "LMBishop, FesterHead", "Place blocks.");
-    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of blocks place."));
+  public Furnace() {
+    super("furnace", "FesterHead", "Extract items from a furnace, blast furnace, or smoker.");
     this.creatorConfigValues
-        .add(new ConfigValue(ITEM_KEY, false, "If supplied, the specific block to place."));
+        .add(new ConfigValue(AMOUNT_KEY, true, "The number of items to extract."));
+    this.creatorConfigValues
+        .add(new ConfigValue(ITEM_KEY, false, "If supplied, a specific item to extract."));
     this.creatorConfigValues
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues
@@ -30,12 +30,7 @@ public final class BlockPlaceTaskType extends TaskType {
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  public void onBlockPlace(BlockPlaceEvent event) {
-    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
-  }
-
-  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  public void onBlockBreak(BlockBreakEvent event) {
-    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
+  public void onFurnaceExtract(FurnaceExtractEvent event) {
+    processObject(event.getItemType(), event.getPlayer().getUniqueId(), event.getItemAmount());
   }
 }

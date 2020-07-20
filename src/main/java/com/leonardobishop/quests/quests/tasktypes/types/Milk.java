@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
-import org.bukkit.entity.Player;
+import org.bukkit.Material;
+import org.bukkit.entity.Cow;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.entity.EntityTameEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 
-public final class EntityTameTaskType extends TaskType {
+public final class Milk extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public EntityTameTaskType() {
-    super("tame", "FesterHead", "Tame animals.");
-    this.creatorConfigValues
-        .add(new ConfigValue(AMOUNT_KEY, true, "The number of animals to tame."));
-    this.creatorConfigValues
-        .add(new ConfigValue(ITEM_KEY, false, "If present, the specific animal to tame."));
+  public Milk() {
+    super("milk", "LMBishop, FesterHead", "Milk cows.");
+    this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of cows to milk."));
     this.creatorConfigValues
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues
@@ -31,10 +29,10 @@ public final class EntityTameTaskType extends TaskType {
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  public void onTame(EntityTameEvent event) {
-    if (!(event.getOwner() instanceof Player)) {
-      return;
+  public void onMilk(PlayerInteractEntityEvent event) {
+    Material itemInMainHand = event.getPlayer().getInventory().getItemInMainHand().getType();
+    if ((event.getRightClicked() instanceof Cow) && (itemInMainHand.equals(Material.BUCKET))) {
+      processObject(event.getRightClicked().getType(), event.getPlayer().getUniqueId(), 1);
     }
-    processObject(event.getEntity().getType(), event.getOwner().getUniqueId(), 1);
   }
 }

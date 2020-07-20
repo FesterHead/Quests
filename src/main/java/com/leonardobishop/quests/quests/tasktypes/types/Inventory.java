@@ -25,11 +25,11 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public final class InventoryTaskType extends TaskType {
+public final class Inventory extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public InventoryTaskType() {
+  public Inventory() {
     super("inventory", "LMBishop", "Obtain a set of items.");
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "Amount of item to have."));
     this.creatorConfigValues.add(new ConfigValue(ITEM_KEY, true, "The specific item."));

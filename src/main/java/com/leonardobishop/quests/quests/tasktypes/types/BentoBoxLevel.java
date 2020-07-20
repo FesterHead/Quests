@@ -22,12 +22,12 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
-public final class BentoBoxLevelTaskType extends TaskType {
+public final class BentoBoxLevel extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
   private Field levelField = null;
 
-  public BentoBoxLevelTaskType() {
+  public BentoBoxLevel() {
     super("bentobox_level", "Rodney_Mc_Kay",
         "Reach a certain island level.  Requires BentoBox Level addon.");
     this.creatorConfigValues.add(new ConfigValue("level", true, "Minimum island level needed."));
@@ -40,7 +40,7 @@ public final class BentoBoxLevelTaskType extends TaskType {
 
   public static void register(TaskTypeManager manager) {
     if (BentoBox.getInstance().getAddonsManager().getAddonByName("Level").isPresent()) {
-      manager.registerTaskType(new BentoBoxLevelTaskType());
+      manager.registerTaskType(new BentoBoxLevel());
     }
   }
 

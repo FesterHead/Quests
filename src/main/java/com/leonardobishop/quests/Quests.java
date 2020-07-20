@@ -20,22 +20,22 @@ import com.leonardobishop.quests.player.QPlayerManager;
 import com.leonardobishop.quests.quests.QuestManager;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import com.leonardobishop.quests.quests.tasktypes.TaskTypeManager;
-import com.leonardobishop.quests.quests.tasktypes.types.BentoBoxLevelTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.BlockBreakTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.BlockDropTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.BlockPlaceTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.CraftItemTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.EnchantItemTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.EntityBreedTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.EntityDeathTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.EntityTameTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.FurnaceExtractTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.InventoryTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.MilkTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.PermissionTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.PlayerFishTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.PlaytimeTaskType;
-import com.leonardobishop.quests.quests.tasktypes.types.ShearTaskType;
+import com.leonardobishop.quests.quests.tasktypes.types.BentoBoxLevel;
+import com.leonardobishop.quests.quests.tasktypes.types.Break;
+import com.leonardobishop.quests.quests.tasktypes.types.Breed;
+import com.leonardobishop.quests.quests.tasktypes.types.Craft;
+import com.leonardobishop.quests.quests.tasktypes.types.Death;
+import com.leonardobishop.quests.quests.tasktypes.types.Drop;
+import com.leonardobishop.quests.quests.tasktypes.types.Enchant;
+import com.leonardobishop.quests.quests.tasktypes.types.Fish;
+import com.leonardobishop.quests.quests.tasktypes.types.Furnace;
+import com.leonardobishop.quests.quests.tasktypes.types.Inventory;
+import com.leonardobishop.quests.quests.tasktypes.types.Milk;
+import com.leonardobishop.quests.quests.tasktypes.types.Permission;
+import com.leonardobishop.quests.quests.tasktypes.types.Place;
+import com.leonardobishop.quests.quests.tasktypes.types.Playtime;
+import com.leonardobishop.quests.quests.tasktypes.types.Shear;
+import com.leonardobishop.quests.quests.tasktypes.types.Tame;
 import com.leonardobishop.quests.title.Title;
 import com.leonardobishop.quests.title.Title_Bukkit;
 import org.bukkit.Bukkit;
@@ -126,23 +126,23 @@ public class Quests extends JavaPlugin {
 
     // register task types after the server has fully started
     Bukkit.getScheduler().runTask(this, () -> {
-      taskTypeManager.registerTaskType(new BlockBreakTaskType());
-      taskTypeManager.registerTaskType(new BlockDropTaskType());
-      taskTypeManager.registerTaskType(new BlockPlaceTaskType());
-      taskTypeManager.registerTaskType(new CraftItemTaskType());
-      taskTypeManager.registerTaskType(new EnchantItemTaskType());
-      taskTypeManager.registerTaskType(new EntityBreedTaskType());
-      taskTypeManager.registerTaskType(new EntityDeathTaskType());
-      taskTypeManager.registerTaskType(new EntityTameTaskType());
-      taskTypeManager.registerTaskType(new FurnaceExtractTaskType());
-      taskTypeManager.registerTaskType(new InventoryTaskType());
-      taskTypeManager.registerTaskType(new MilkTaskType());
-      taskTypeManager.registerTaskType(new PermissionTaskType());
-      taskTypeManager.registerTaskType(new PlayerFishTaskType());
-      taskTypeManager.registerTaskType(new PlaytimeTaskType());
-      taskTypeManager.registerTaskType(new ShearTaskType());
+      taskTypeManager.registerTaskType(new Break());
+      taskTypeManager.registerTaskType(new Breed());
+      taskTypeManager.registerTaskType(new Craft());
+      taskTypeManager.registerTaskType(new Death());
+      taskTypeManager.registerTaskType(new Drop());
+      taskTypeManager.registerTaskType(new Enchant());
+      taskTypeManager.registerTaskType(new Fish());
+      taskTypeManager.registerTaskType(new Furnace());
+      taskTypeManager.registerTaskType(new Inventory());
+      taskTypeManager.registerTaskType(new Milk());
+      taskTypeManager.registerTaskType(new Permission());
+      taskTypeManager.registerTaskType(new Place());
+      taskTypeManager.registerTaskType(new Playtime());
+      taskTypeManager.registerTaskType(new Shear());
+      taskTypeManager.registerTaskType(new Tame());
       if (Bukkit.getPluginManager().isPluginEnabled("BentoBox")) {
-        BentoBoxLevelTaskType.register(taskTypeManager);
+        BentoBoxLevel.register(taskTypeManager);
       }
 
       taskTypeManager.closeRegistrations();

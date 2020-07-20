@@ -8,18 +8,18 @@ import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.block.BlockDropItemEvent;
+import org.bukkit.event.player.PlayerFishEvent;
 
-public final class BlockDropTaskType extends TaskType {
+public final class Fish extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public BlockDropTaskType() {
-    super("blockdrop", "FesterHead", "Collect block drops.");
+  public Fish() {
+    super("fish", "FesterHead", "Go fish.");
     this.creatorConfigValues
-        .add(new ConfigValue(AMOUNT_KEY, true, "The number of block drops to collect."));
+        .add(new ConfigValue(AMOUNT_KEY, true, "The number of things to catch."));
     this.creatorConfigValues
-        .add(new ConfigValue(ITEM_KEY, false, "If supplied, the specific block drop to collect."));
+        .add(new ConfigValue(ITEM_KEY, false, "If supplied, the item to catch."));
     this.creatorConfigValues
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues
@@ -32,11 +32,12 @@ public final class BlockDropTaskType extends TaskType {
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  public void onHarvest(BlockDropItemEvent event) {
-    for (Item item : event.getItems()) {
-      Material incoming = item.getItemStack().getType();
-      int count = item.getItemStack().getAmount();
-      processObject(incoming, event.getPlayer().getUniqueId(), count);
+  public void onFishCaught(PlayerFishEvent event) {
+    if (event.getState() != PlayerFishEvent.State.CAUGHT_FISH) {
+      return;
     }
+    Material incoming = ((Item) event.getCaught()).getItemStack().getType();
+    int count = ((Item) event.getCaught()).getItemStack().getAmount();
+    processObject(incoming, event.getPlayer().getUniqueId(), count);
   }
 }

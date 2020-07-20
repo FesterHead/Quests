@@ -10,12 +10,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityDeathEvent;
 
-public final class EntityDeathTaskType extends TaskType {
+public final class Death extends TaskType {
 
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public EntityDeathTaskType() {
-    super("kill", "LMBishop, FesterHead", "Kill entities.");
+  public Death() {
+    super("death", "LMBishop, FesterHead", "Kill entities.");
     this.creatorConfigValues
         .add(new ConfigValue(AMOUNT_KEY, true, "The number of entites to kill."));
     this.creatorConfigValues

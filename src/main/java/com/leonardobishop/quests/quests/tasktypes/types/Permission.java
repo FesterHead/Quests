@@ -18,12 +18,12 @@ import org.bukkit.scheduler.BukkitTask;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class PermissionTaskType extends TaskType {
+public final class Permission extends TaskType {
 
   private BukkitTask poll;
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
 
-  public PermissionTaskType() {
+  public Permission() {
     super("permission", "LMBishop", "Require a specific permission");
     this.creatorConfigValues
         .add(new ConfigValue("permission", true, "The specific required permission."));
@@ -37,10 +37,10 @@ public final class PermissionTaskType extends TaskType {
         for (Player player : Bukkit.getOnlinePlayers()) {
           QPlayer qPlayer = QuestsAPI.getPlayerManager().getPlayer(player.getUniqueId(), true);
           QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
-          for (Quest quest : PermissionTaskType.super.getRegisteredQuests()) {
+          for (Quest quest : Permission.super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
               QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
-              for (Task task : quest.getTasksOfType(PermissionTaskType.super.getType())) {
+              for (Task task : quest.getTasksOfType(Permission.super.getType())) {
                 TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                 if (taskProgress.isCompleted()) {
                   continue;

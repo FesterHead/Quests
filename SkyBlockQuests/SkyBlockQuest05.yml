@@ -1,6 +1,6 @@
 tasks:
   task01:
-    type: "craftitem"
+    type: "craft"
     amount: 2
     item: "wooden_axe"
     present: "craft"
@@ -10,9 +10,9 @@ tasks:
     amount: 2
     item: "wooden_axe"
     remove-items-when-complete: true
-    update-progress: true 
+    update-progress: true
   task03:
-    type: "craftitem"
+    type: "craft"
     amount: 2
     item: "wooden_hoe"
     present: "craft"
@@ -24,7 +24,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task05:
-    type: "craftitem"
+    type: "craft"
     amount: 2
     item: "wooden_pickaxe"
     present: "craft"
@@ -36,9 +36,9 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task07:
-    type: "craftitem"
+    type: "craft"
     amount: 2
-    item: "wooden_dhovel"
+    item: "wooden_shovel"
     present: "craft"
     past: "crafted"
   task08:
@@ -48,7 +48,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task09:
-    type: "craftitem"
+    type: "craft"
     amount: 2
     item: "wooden_sword"
     present: "craft"

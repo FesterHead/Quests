@@ -1,6 +1,6 @@
 tasks:
   task01:
-    type: "craftitem"
+    type: "craft"
     amount: 64
     item: "stone_bricks"
     present: "construct"
@@ -12,7 +12,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task03:
-    type: "furnaceextract"
+    type: "furnace"
     amount: 1
     item: "smooth_stone"
     present: "smelt"
@@ -24,7 +24,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task05:
-    type: "furnaceextract"
+    type: "furnace"
     amount: 1
     item: "cracked_stone_bricks"
     present: "smelt"
@@ -36,7 +36,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task07:
-    type: "craftitem"
+    type: "craft"
     amount: 64
     item: "chiseled_stone_bricks"
     present: "construct"

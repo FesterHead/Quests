@@ -1,21 +1,20 @@
 tasks:
   task1:
-    type: "blockplace"
+    type: "place"
     amount: 2
-    item: "sand"
     present: "place"
     past: "placed"
 display:
-  name: "Place Specific Blocks"
+  name: "Place Any Blocks"
+  type: "stone"
   lore-normal:
     - ""
     - "&7This quest requires you to:"
-    - "&7 - {task1:present} {task1:item}"
+    - "&7 - {task1:present} blocks"
   lore-started:
     - ""
     - "&7Status:"
-    - "&7 - {task1:progress}/{task1:amount} {task1:item} {task1:past}."
-  type: "stone"
+    - "&7 - {task1:progress}/{task1:amount} blocks {task1:past}."
 rewards:
   - "eco give {player} 1"
   - "give {player} dirt 1"

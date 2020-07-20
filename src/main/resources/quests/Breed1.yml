@@ -6,6 +6,7 @@ tasks:
     past: "bred"
 display:
   name: "Breed Any Animal"
+  type: "wheat"
   lore-normal:
     - ""
     - "&7This quest requires you to:"
@@ -14,7 +15,6 @@ display:
     - ""
     - "&7Status:"
     - "&7 - {task1:progress}/{task1:amount} animals {task1:past}."
-  type: "wheat"
 rewards:
   - "eco give {player} 1"
   - "give {player} dirt 1"

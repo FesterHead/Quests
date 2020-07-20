@@ -1,54 +1,54 @@
 tasks:
   task01:
-    type: "craftitem"
+    type: "craft"
     amount: 1
     item: "furnace"
     present: "craft"
     past: "crafted"
   task02:
-    type: "blockplace"
+    type: "place"
     amount: 1
     item: "furnace"
     present: "place"
     past: "placed"
   task03:
-    type: "furnaceextract"
+    type: "furnace"
     amount: 24
     item: "charcoal"
     present: "smelt"
     past: "smelted"
   task04:
-    type: "craftitem"
+    type: "craft"
     amount: 8
     item: "torch"
     present: "craft"
     past: "crafted"
   task05:
-    type: "blockplace"
+    type: "place"
     amount: 8
     item: "torch"
     present: "place"
     past: "placed"
   task06:
-    type: "craftitem"
+    type: "craft"
     amount: 1
     item: "smoker"
     present: "craft"
     past: "crafted"
   task07:
-    type: "blockplace"
+    type: "place"
     amount: 1
     item: "smoker"
     present: "place"
     past: "placed"
   task08:
-    type: "furnaceextract"
+    type: "furnace"
     amount: 1
     item: "cooked_beef"
     present: "cook"
     past: "cooked"
   task09:
-    type: "furnaceextract"
+    type: "furnace"
     amount: 1
     item: "cooked_chicken"
     present: "cook"

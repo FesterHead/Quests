@@ -1,12 +1,13 @@
 tasks:
   task1:
     type: "breed"
-    item: chicken
+    item: "chicken"
     amount: 2
     present: "breed"
     past: "bred"
 display:
   name: "Breed Specific Animals"
+  type: "chicken"
   lore-normal:
     - ""
     - "&7This quest requires you to:"
@@ -15,7 +16,6 @@ display:
     - ""
     - "&7Status:"
     - "&7 - {task1:progress}/{task1:amount} {task1:item}s {task1:past}."
-  type: "wheat"
 rewards:
   - "eco give {player} 1"
   - "give {player} dirt 1"

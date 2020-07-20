@@ -1,30 +1,30 @@
 tasks:
   task01:
-    type: "craftitem"
+    type: "craft"
     amount: 12
     item: "oak_planks"
     present: "construct"
     past: "constructed"
   task02:
-    type: "blockplace"
+    type: "place"
     amount: 12
     item: "oak_planks"
     present: "place"
     past: "placed"
   task03:
-    type: "craftitem"
+    type: "craft"
     amount: 12
     item: "oak_fence"
     present: "construct"
     past: "constructed"
   task04:
-    type: "blockplace"
+    type: "place"
     amount: 12
     item: "oak_fence"
     present: "place"
     past: "placed"
   task05:
-    type: "craftitem"
+    type: "craft"
     amount: 12
     item: "oak_slab"
     present: "construct"
@@ -36,7 +36,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task07:
-    type: "craftitem"
+    type: "craft"
     amount: 12
     item: "oak_stairs"
     present: "construct"

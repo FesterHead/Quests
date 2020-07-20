@@ -1,18 +1,18 @@
 tasks:
   task01:
-    type: "blockbreak"
+    type: "break"
     amount: 12
     item: "oak_log"
     present: "chop"
     past: "chopped"
   task02:
-    type: "craftitem"
+    type: "craft"
     amount: 24
     item: "oak_planks"
     present: "construct"
     past: "constructed"
   task03:
-    type: "blockplace"
+    type: "place"
     amount: 8
     item: "oak_sapling"
     present: "plant"

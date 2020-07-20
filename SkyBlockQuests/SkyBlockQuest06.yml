@@ -1,24 +1,24 @@
 tasks:
   task01:
-    type: "blockbreak"
+    type: "break"
     amount: 64
     item: "stone"
     present: "mine"
     past: "mined"
   task02:
-    type: "blockplace"
+    type: "place"
     amount: 64
     item: "cobblestone"
     present: "place"
     past: "placed"
   task03:
-    type: "blockplace"
+    type: "place"
     amount: 64
     item: "cobblestone_wall"
     present: "place"
     past: "placed"
   task04:
-    type: "craftitem"
+    type: "craft"
     amount: 2
     item: "stone_axe"
     present: "craft"
@@ -28,9 +28,9 @@ tasks:
     amount: 2
     item: "stone_axe"
     remove-items-when-complete: true
-    update-progress: true 
+    update-progress: true
   task06:
-    type: "craftitem"
+    type: "craft"
     amount: 2
     item: "stone_hoe"
     present: "craft"
@@ -42,7 +42,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task08:
-    type: "craftitem"
+    type: "craft"
     amount: 2
     item: "stone_pickaxe"
     present: "craft"
@@ -54,7 +54,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task10:
-    type: "craftitem"
+    type: "craft"
     amount: 2
     item: "stone_dhovel"
     present: "craft"
@@ -66,7 +66,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
   task12:
-    type: "craftitem"
+    type: "craft"
     amount: 2
     item: "stone_sword"
     present: "craft"

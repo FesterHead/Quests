@@ -1,0 +1,63 @@
+tasks:
+  task01:
+    type: "break"
+    amount: 64
+    item: "oak_log"
+    present: "chop"
+    past: "chopped"
+  task02:
+    type: "inventory"
+    amount: 64
+    item: "oak_log"
+    remove-items-when-complete: true
+    update-progress: true
+  task03:
+    type: "break"
+    amount: 64
+    item: "stone"
+    present: "mine"
+    past: "mined"
+  task04:
+    type: "inventory"
+    amount: 64
+    item: "cobblestone"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aMore tree types"
+  type: "birch_sapling"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7 - &8{task03:present} &7{task03:item}"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &esaplings"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} birch_sapling 2"
+  - "give {player} spruce_sapling 2"
+  - "give {player} acacia_sapling 2"
+  - "give {player} dark_oak_sapling 2"
+  - "give {player} jungle_sapling 2"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest25"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 360
+  sort-order: 26

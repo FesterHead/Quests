@@ -1,0 +1,103 @@
+tasks:
+  task01:
+    type: "shear"
+    amount: 100
+    present: "shear sheep"
+    past: "sheep sheared"
+  task02:
+    type: "craft"
+    amount: 18
+    item: "banner"
+    present: "construct"
+    past: "constructed"
+  task03:
+    type: "inventory"
+    amount: 18
+    item: "banner"
+    remove-items-when-complete: true
+    update-progress: true
+  task04:
+    type: "craft"
+    amount: 18
+    item: "bed"
+    present: "construct"
+    past: "constructed"
+  task05:
+    type: "inventory"
+    amount: 18
+    item: "bed"
+    remove-items-when-complete: true
+    update-progress: true
+  task06:
+    type: "craft"
+    amount: 64
+    item: "painting"
+    present: "paint"
+    past: "painted"
+  task07:
+    type: "inventory"
+    amount: 64
+    item: "painting"
+    remove-items-when-complete: true
+    update-progress: true
+  task08:
+    type: "milk"
+    amount: 100
+    present: "milk cows"
+    past: "cows milked"
+  task09:
+    type: "craft"
+    amount: 64
+    item: "pumpkin_pie"
+    present: "bake"
+    past: "baked"
+  task10:
+    type: "inventory"
+    amount: 64
+    item: "pumpkin_pie"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aMaking more stuff"
+  type: "painting"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present}"
+    - "&7 - &8{task02:present} &7{task02:item}s"
+    - "&7 - &8{task04:present} &7{task04:item}s"
+    - "&7 - &8{task06:present} &7{task06:item}s"
+    - "&7 - &8{task08:present}"
+    - "&7 - &8{task09:present} &7{task08:item}s"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s &7{task02:past}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s &7{task04:past}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}s &7{task06:past}."
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s."
+    - "  &e{task08:progress}&7/&6{task08:amount} &7{task08:past}."
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}s &7{task09:past}."
+    - "  &e{task10:progress}&7/&6{task10:amount} &8{task10:item}s."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &6Rewards Key"
+    - "&7 - &8dirt"
+rewards:
+  - "cc give p SkyBlock 7 {player}"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest29"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 360
+  sort-order: 30

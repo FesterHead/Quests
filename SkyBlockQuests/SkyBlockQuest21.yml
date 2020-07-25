@@ -1,0 +1,37 @@
+tasks:
+  task01:
+    type: "inventory"
+    amount: 64
+    item: "cactus"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aPrickly pear"
+  type: "cactus"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &7{task01:item}"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &asugar cane"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} sugar_cane 2"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest20"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 360
+  sort-order: 21

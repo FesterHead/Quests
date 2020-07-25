@@ -7,6 +7,8 @@ Modifications permitted via MIT License
 
 I use it for my BentoBox SkyBlock server.
 
+[SkyBlock Notes and quest planning document](https://docs.google.com/spreadsheets/d/1T1CFT8XfrbxfMyxMAiZJ2L7EQmGNd1dRIVJ6QupY2xQ/edit?usp=sharing).
+
 ## Tasks
 - [Tasks overview](https://github.com/FesterHead/Quests/wiki/Tasks-overview)
 - [Task types](https://github.com/FesterHead/Quests/wiki/Task-types)
@@ -32,6 +34,6 @@ I use it for my BentoBox SkyBlock server.
 
 ## Credit
 - All credit goes to [LMBishop](https://github.com/LMBishop).
-- I tried other quest plugins and they were either too complex or were missing pieces I really want to use for my SkyBlock server.
+- I tried other quest plugins and they were either too complex or were missing tasks I wanted to use for my SkyBlock server.
 - The combination of the BentoBox level, permissions, and PlaceholderAPI tasks was the hook.
-- Being able to add in a crafting task was the ultimate win.
+- Being able to fork the repository and add in a crafting task was the ultimate win.

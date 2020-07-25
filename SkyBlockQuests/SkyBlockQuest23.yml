@@ -1,0 +1,44 @@
+tasks:
+  task01:
+    type: "craft"
+    amount: 64
+    item: "paper"
+    present: "construct"
+    past: "constructed"
+  task02:
+    type: "inventory"
+    amount: 64
+    item: "paper"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aPapermill"
+  type: "paper"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &akelp"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} kelp 2"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest22"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 360
+  sort-order: 23

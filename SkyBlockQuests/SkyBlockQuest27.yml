@@ -1,0 +1,77 @@
+tasks:
+  task01:
+    type: "break"
+    amount: 64
+    item: "oak_log"
+    present: "chop"
+    past: "chopped"
+  task02:
+    type: "break"
+    amount: 64
+    item: "birch_log"
+    present: "chop"
+    past: "chopped"
+  task03:
+    type: "break"
+    amount: 64
+    item: "spruce_log"
+    present: "chop"
+    past: "chopped"
+  task04:
+    type: "break"
+    amount: 64
+    item: "acacia_log"
+    present: "chop"
+    past: "chopped"
+  task05:
+    type: "break"
+    amount: 64
+    item: "dark_oak_log"
+    present: "chop"
+    past: "chopped"
+  task06:
+    type: "break"
+    amount: 64
+    item: "jungle_log"
+    present: "chop"
+    past: "chopped"
+display:
+  name: "&aLogger"
+  type: "birch_log"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7 - &8{task02:present} &7{task02:item}s"
+    - "&7 - &8{task03:present} &7{task03:item}s"
+    - "&7 - &8{task04:present} &7{task04:item}s"
+    - "&7 - &8{task05:present} &7{task05:item}s"
+    - "&7 - &8{task06:present} &7{task06:item}s"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s &7{task02:past}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s &7{task04:past}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}s &7{task06:past}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &6Rewards Key"
+    - "&7 - &8dirt"
+rewards:
+  - "cc give p SkyBlock 7 {player}"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest26"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 0
+  sort-order: 27

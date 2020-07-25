@@ -1,0 +1,172 @@
+tasks:
+  task01:
+    type: "drop"
+    amount: 8
+    item: "azure_bluet"
+    present: "pick"
+    past: "picked"
+  task02:
+    type: "inventory"
+    amount: 8
+    item: "azure_bluet"
+    remove-items-when-complete: true
+    update-progress: true
+  task03:
+    type: "drop"
+    amount: 8
+    item: "cornflower"
+    present: "pluck"
+    past: "plucked"
+  task04:
+    type: "inventory"
+    amount: 8
+    item: "cornflower"
+    remove-items-when-complete: true
+    update-progress: true
+  task05:
+    type: "drop"
+    amount: 8
+    item: "dandelion"
+    present: "weed"
+    past: "weeded"
+  task06:
+    type: "inventory"
+    amount: 8
+    item: "dandelion"
+    remove-items-when-complete: true
+    update-progress: true
+  task07:
+    type: "drop"
+    amount: 8
+    item: "orange_tulip"
+    present: "clip"
+    past: "clipped"
+  task08:
+    type: "inventory"
+    amount: 8
+    item: "orange_tulip"
+    remove-items-when-complete: true
+    update-progress: true
+  task08:
+    type: "drop"
+    amount: 8
+    item: "oxeye_daisy"
+    present: "collect"
+    past: "collected"
+  task10:
+    type: "inventory"
+    amount: 8
+    item: "oxeye_daisy"
+    remove-items-when-complete: true
+    update-progress: true
+  task11:
+    type: "drop"
+    amount: 8
+    item: "pink_tulip"
+    present: "snip"
+    past: "sniped"
+  task12:
+    type: "inventory"
+    amount: 8
+    item: "pink_tulip"
+    remove-items-when-complete: true
+    update-progress: true
+  task13:
+    type: "drop"
+    amount: 8
+    item: "poppy"
+    present: "pop"
+    past: "popped"
+  task14:
+    type: "inventory"
+    amount: 8
+    item: "poppy"
+    remove-items-when-complete: true
+    update-progress: true
+  task15:
+    type: "drop"
+    amount: 8
+    item: "red_tulip"
+    present: "harvest"
+    past: "harvested"
+  task16:
+    type: "inventory"
+    amount: 8
+    item: "red_tulip"
+    remove-items-when-complete: true
+    update-progress: true
+  task17:
+    type: "drop"
+    amount: 8
+    item: "white_tulip"
+    present: "cultivate"
+    past: "cultivated"
+  task18:
+    type: "inventory"
+    amount: 8
+    item: "white_tulip"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aFlowers for flowers"
+  type: "dandelion"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7 - &8{task03:present} &7{task03:item}s"
+    - "&7 - &8{task05:present} &7{task05:item}s"
+    - "&7 - &8{task07:present} &7{task07:item}s"
+    - "&7 - &8{task09:present} &7{task09:item}s"
+    - "&7 - &8{task11:present} &7{task11:item}s"
+    - "&7 - &8{task13:present} &7{task13:item}s"
+    - "&7 - &8{task15:present} &7{task15:item}s"
+    - "&7 - &8{task17:present} &7{task17:item}s"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}s."
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}."
+    - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}s."
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}s &7{task09:past}."
+    - "  &e{task10:progress}&7/&6{task10:amount} &8{task10:item}s."
+    - "  &e{task11:progress}&7/&6{task11:amount} &8{task11:item}s &7{task11:past}."
+    - "  &e{task12:progress}&7/&6{task12:amount} &8{task12:item}s."
+    - "  &e{task13:progress}&7/&6{task13:amount} &8{task13:item}s &7{task13:past}."
+    - "  &e{task14:progress}&7/&6{task14:amount} &8{task14:item}s."
+    - "  &e{task15:progress}&7/&6{task15:amount} &8{task15:item}s &7{task15:past}."
+    - "  &e{task16:progress}&7/&6{task16:amount} &8{task16:item}s."
+    - "  &e{task17:progress}&7/&6{task17:amount} &8{task17:item}s &7{task17:past}."
+    - "  &e{task18:progress}&7/&6{task18:amount} &8{task18:item}s."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &amore flowers"
+    - "&7 - &8dirt"
+rewards:
+  - "give {player} allium 4"
+  - "give {player} blue_orchid 4"
+  - "give {player} cocao_beans 2"
+  - "give {player} large_fern 4"
+  - "give {player} lilac 4"
+  - "give {player} lily_of_the_valley 4"
+  - "give {player} peony 4"
+  - "give {player} rose_bush 4"
+  - "give {player} sunflower 4"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest31"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 360
+  sort-order: 32

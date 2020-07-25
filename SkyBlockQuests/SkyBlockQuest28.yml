@@ -1,0 +1,145 @@
+tasks:
+  task01:
+    type: "breed"
+    amount: 50
+    item: "cow"
+    present: "breed"
+    past: "bred"
+  task02:
+    type: "death"
+    amount: 100
+    item: "cow"
+    present: "kill"
+    past: "slaughtered"
+  task03:
+    type: "furnace"
+    amount: 64
+    item: "cooked_beef"
+    present: "roast"
+    past: "roasted"
+  task04:
+    type: "inventory"
+    amount: 64
+    item: "cooked_beef"
+    remove-items-when-complete: true
+    update-progress: true
+  task05:
+    type: "breed"
+    amount: 50
+    item: "sheep"
+    present: "breed"
+    past: "bred"
+  task06:
+    type: "death"
+    amount: 100
+    item: "sheep"
+    present: "kill"
+    past: "slaughtered"
+  task07:
+    type: "furnace"
+    amount: 64
+    item: "cooked_mutton"
+    present: "braise"
+    past: "braised"
+  task08:
+    type: "inventory"
+    amount: 64
+    item: "cooked_mutton"
+    remove-items-when-complete: true
+    update-progress: true
+  task09:
+    type: "breed"
+    amount: 50
+    item: "pig"
+    present: "breed"
+    past: "bred"
+  task10:
+    type: "death"
+    amount: 100
+    item: "pig"
+    present: "kill"
+    past: "slaughtered"
+  task11:
+    type: "furnace"
+    amount: 64
+    item: "cooked_porkchop"
+    present: "barbeque"
+    past: "barbequed"
+  task12:
+    type: "inventory"
+    amount: 64
+    item: "cooked_porkchop"
+    remove-items-when-complete: true
+    update-progress: true
+  task13:
+    type: "breed"
+    amount: 50
+    item: "chicken"
+    present: "breed"
+    past: "bred"
+  task14:
+    type: "death"
+    amount: 100
+    item: "chicken"
+    present: "kill"
+    past: "slaughtered"
+  task15:
+    type: "furnace"
+    amount: 64
+    item: "cooked_chicken"
+    present: "rotisserie"
+    past: "rotisseried"
+  task16:
+    type: "inventory"
+    amount: 64
+    item: "cooked_chicken"
+    remove-items-when-complete: true
+    update-progress: true    
+display:
+  name: "&aAnimal husbandry"
+  type: "chicken"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present}&7, &8{task02:present}&7, &8{task03:present} &7{task01:item}s"
+    - "&7 - &8{task05:present}&7, &8{task06:present}&7, &8{task07:present} &7{task01:item}s"
+    - "&7 - &8{task09:present}&7, &8{task10:present}&7, &8{task11:present} &7{task01:item}s"
+    - "&7 - &8{task13:present}&7, &8{task14:present}&7, &8{task15:present} &7{task01:item}s"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s &7{task02:past}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item} &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}s &7{task06:past}."
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item} &7{task07:past}."
+    - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}."
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}s &7{task09:past}."
+    - "  &e{task10:progress}&7/&6{task10:amount} &8{task10:item}s &7{task10:past}."
+    - "  &e{task11:progress}&7/&6{task11:amount} &8{task11:item} &7{task11:past}."
+    - "  &e{task12:progress}&7/&6{task12:amount} &8{task12:item}."
+    - "  &e{task13:progress}&7/&6{task13:amount} &8{task13:item}s &7{task13:past}."
+    - "  &e{task14:progress}&7/&6{task14:amount} &8{task14:item}s &7{task14:past}."
+    - "  &e{task15:progress}&7/&6{task15:amount} &8{task15:item} &7{task15:past}."
+    - "  &e{task16:progress}&7/&6{task16:amount} &8{task16:item}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &6Rewards Key"
+    - "&7 - &8dirt"
+rewards:
+  - "cc give p SkyBlock 7 {player}"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest27"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 360
+  sort-order: 28

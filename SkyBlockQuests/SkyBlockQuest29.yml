@@ -1,0 +1,82 @@
+tasks:
+  task01:
+    type: "death"
+    amount: 100
+    item: "zombie"
+    present: "destroy"
+    past: "destroyed"
+  task02:
+    type: "inventory"
+    amount: 128
+    item: "rotten_flesh"
+    remove-items-when-complete: true
+    update-progress: true
+  task03:
+    type: "death"
+    amount: 100
+    item: "skeleton"
+    present: "crush"
+    past: "crushed"
+  task04:
+    type: "inventory"
+    amount: 16
+    item: "bone_block"
+    remove-items-when-complete: true
+    update-progress: true
+  task05:
+    type: "death"
+    amount: 100
+    item: "creeper"
+    present: "explode"
+    past: "exploded"
+  task06:
+    type: "inventory"
+    amount: 16
+    item: "tnt"
+    remove-items-when-complete: true
+    update-progress: true
+  task07:
+    type: "death"
+    amount: 100
+    item: "witch"
+    present: "burn"
+    past: "burn"  
+display:
+  name: "&aMob hunter"
+  type: "rotten_flesh"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7 - &8{task03:present} &7{task03:item}s"
+    - "&7 - &8{task05:present} &7{task05:item}s"
+    - "&7 - &8{task07:present} &7{task07:item}es"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}."
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &6Rewards Key"
+    - "&7 - &8dirt"
+rewards:
+  - "cc give p SkyBlock 7 {player}"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest28"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 360
+  sort-order: 29

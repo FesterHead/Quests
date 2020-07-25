@@ -9,6 +9,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockDropItemEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 
 public final class Drop extends TaskType {
 
@@ -32,11 +33,18 @@ public final class Drop extends TaskType {
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  public void onHarvest(BlockDropItemEvent event) {
+  public void onDrop(BlockDropItemEvent event) {
     for (Item item : event.getItems()) {
       Material incoming = item.getItemStack().getType();
       int count = item.getItemStack().getAmount();
       processObject(incoming, event.getPlayer().getUniqueId(), count);
+    }
+  }
+
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  public void onPlace(BlockPlaceEvent event) {
+      Material incoming = event.getItemInHand().getType();
+      processObject(incoming, event.getPlayer().getUniqueId(), -1);
     }
   }
 }

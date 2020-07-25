@@ -35,7 +35,6 @@ public final class Break extends TaskType {
     processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
   }
 
-  // subtract if enabled
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBlockPlace(BlockPlaceEvent event) {
     processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);

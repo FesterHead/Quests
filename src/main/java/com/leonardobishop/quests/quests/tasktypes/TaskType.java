@@ -16,6 +16,7 @@ import com.leonardobishop.quests.quests.Task;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Listener;
+import org.bukkit.potion.PotionType;
 
 /**
  * A task type which can be used within Quests. A {@link Quest} will be registered to this if it
@@ -140,6 +141,9 @@ public abstract class TaskType implements Listener {
             } else if (incoming instanceof EntityType) {
               expected =
                   EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+            } else if (incoming instanceof PotionType) {
+              expected =
+                  PotionType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
             }
           }
 

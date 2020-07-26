@@ -43,8 +43,7 @@ public final class Drop extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onPlace(BlockPlaceEvent event) {
-      Material incoming = event.getItemInHand().getType();
-      processObject(incoming, event.getPlayer().getUniqueId(), -1);
-    }
+    Material incoming = event.getItemInHand().getType();
+    processObject(incoming, event.getPlayer().getUniqueId(), -1);
   }
 }

@@ -2,6 +2,7 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.entity.Entity;
@@ -33,7 +34,7 @@ public final class Death extends TaskType {
   public void onMobKill(EntityDeathEvent event) {
     Player killer = event.getEntity().getKiller();
     Entity mob = event.getEntity();
-    if (killer == null || mob == null || mob instanceof Player) {
+    if (Objects.isNull(killer) || Objects.isNull(mob) || mob instanceof Player) {
       return;
     }
     processObject(event.getEntity().getType(), killer.getUniqueId(), 1);

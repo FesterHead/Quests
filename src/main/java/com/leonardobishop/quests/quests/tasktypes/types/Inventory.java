@@ -46,12 +46,18 @@ public final class Inventory extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onItemPickup(EntityPickupItemEvent event) {
+    if (!(event.getEntity() instanceof Player)) {
+      return;
+    }
     Bukkit.getScheduler().runTaskLater(Quests.get(),
         () -> this.checkInventory((Player) event.getEntity()), 1L);
   }
 
   @EventHandler(priority = EventPriority.MONITOR/* , ignoreCancelled = true */)
   public void onInventoryClick(InventoryClickEvent event) {
+    if (!(event.getWhoClicked() instanceof Player)) {
+      return;
+    }
     // Still some work to do as it doesn't really work
     Bukkit.getScheduler().runTaskLater(Quests.get(),
         () -> checkInventory((Player) event.getWhoClicked()), 1L);

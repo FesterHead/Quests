@@ -23,6 +23,7 @@ import com.leonardobishop.quests.quests.tasktypes.TaskTypeManager;
 import com.leonardobishop.quests.quests.tasktypes.types.BentoBoxLevel;
 import com.leonardobishop.quests.quests.tasktypes.types.Break;
 import com.leonardobishop.quests.quests.tasktypes.types.Breed;
+import com.leonardobishop.quests.quests.tasktypes.types.Brew;
 import com.leonardobishop.quests.quests.tasktypes.types.Craft;
 import com.leonardobishop.quests.quests.tasktypes.types.Death;
 import com.leonardobishop.quests.quests.tasktypes.types.Drop;
@@ -128,6 +129,7 @@ public class Quests extends JavaPlugin {
     Bukkit.getScheduler().runTask(this, () -> {
       taskTypeManager.registerTaskType(new Break());
       taskTypeManager.registerTaskType(new Breed());
+      taskTypeManager.registerTaskType(new Brew());
       taskTypeManager.registerTaskType(new Craft());
       taskTypeManager.registerTaskType(new Death());
       taskTypeManager.registerTaskType(new Drop());

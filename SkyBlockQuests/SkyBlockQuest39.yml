@@ -1,0 +1,57 @@
+tasks:
+  task01:
+    type: "craft"
+    amount: 64
+    item: "bookshelf"
+    present: "assemble"
+    past: "assembled"
+  task02:
+    type: "inventory"
+    amount: 64
+    item: "bookshelf"
+    remove-items-when-complete: true
+    update-progress: true
+  task03:
+    type: "enchant"
+    amount: 100
+    present: "enchant"
+    past: "enchanted"
+  task04:
+    type: "brew"
+    amount: 100
+    present: "brew"
+    past: "brewed"
+display:
+  name: "&aEnchanting and brewing"
+  type: "bookshelf"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7 - &8{task03:present}"
+    - "&7 - &8{task04:present}"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s."
+    - "  &e{task03:progress}&7/&6{task03:amount} items &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} items &7{task04:past}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &6Rewards Key"
+    - "&7 - &8dirt"
+rewards:
+  - "cc give p SkyBlock 2 {player}"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest38"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 60
+  sort-order: 39

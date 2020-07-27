@@ -1,67 +1,74 @@
 tasks:
   task01:
-    type: "death"
-    amount: 100
-    item: "zombie"
-    present: "destroy"
-    past: "destroyed"
+    type: "craft"
+    amount: 64
+    item: "baked_potato"
+    present: "cook"
+    past: "cooked"
   task02:
     type: "inventory"
-    amount: 128
-    item: "rotten_flesh"
+    amount: 64
+    item: "baked_potato"
     remove-items-when-complete: true
     update-progress: true
   task03:
-    type: "death"
-    amount: 100
-    item: "skeleton"
-    present: "crush"
-    past: "crushed"
+    type: "craft"
+    amount: 32
+    item: "golden_carrot"
+    present: "craft"
+    past: "crafted"
   task04:
     type: "inventory"
-    amount: 16
-    item: "bone_block"
+    amount: 32
+    item: "golden_carrot"
     remove-items-when-complete: true
     update-progress: true
   task05:
-    type: "death"
-    amount: 100
-    item: "creeper"
-    present: "explode"
-    past: "exploded"
+    type: "craft"
+    amount: 32
+    item: "golden_apple"
+    present: "craft"
+    past: "crafted"
   task06:
     type: "inventory"
-    amount: 16
-    item: "tnt"
+    amount: 32
+    item: "golden_apple"
     remove-items-when-complete: true
     update-progress: true
   task07:
-    type: "death"
-    amount: 100
-    item: "witch"
-    present: "burn"
-    past: "burn"  
+    type: "craft"
+    amount: 18
+    item: "rabbit_stew"
+    present: "cook"
+    past: "cooked"
+  task08:
+    type: "inventory"
+    amount: 18
+    item: "rabbit_stew"
+    remove-items-when-complete: true
+    update-progress: true
 display:
-  name: "&aMob hunter"
-  type: "rotten_flesh"
+  name: "&aMore food"
+  type: "rabbit_stew"
   lore-normal:
     - ""
     - "&7This quest requires:"
     - "&7 - &8{task01:present} &7{task01:item}s"
     - "&7 - &8{task03:present} &7{task03:item}s"
-    - "&7 - &8{task05:present} &7{task05:item}s"
-    - "&7 - &8{task07:present} &7{task07:item}es"
+    - "&7 - &8{task05:present} &7{task03:item}s"
+    - "&7 - &8{task07:present} &7{task03:item}s"
     - ""
   lore-started:
     - ""
     - "&7Status:"
     - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
-    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s."
     - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}."
     - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s."
     - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}."
-    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}s."
     - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}."
+    - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}s."
     - ""
     - "&7Rewards:"
     - "&7 - &6Rewards Key"
@@ -74,9 +81,9 @@ rewards:
 options:
   category: ""
   requires:
-    - "SkyBlockQuest28"
+    - "SkyBlockQuest33"
   repeatable: true
   cooldown:
     enabled: true
     time: 60
-  sort-order: 29
+  sort-order: 34

@@ -1,75 +1,76 @@
 tasks:
   task01:
     type: "craft"
-    amount: 2
-    item: "wooden_axe"
-    present: "craft"
-    past: "crafted"
+    amount: 16
+    item: "coal_block"
+    present: "assemble"
+    past: "assembled"
   task02:
     type: "inventory"
-    amount: 2
-    item: "wooden_axe"
+    amount: 16
+    item: "coal_block"
     remove-items-when-complete: true
     update-progress: true
   task03:
     type: "craft"
-    amount: 2
-    item: "wooden_hoe"
-    present: "craft"
-    past: "crafted"
+    amount: 16
+    item: "iron_block"
+    present: "assemble"
+    past: "assembled"
   task04:
     type: "inventory"
-    amount: 2
-    item: "wooden_hoe"
+    amount: 16
+    item: "iron_block"
     remove-items-when-complete: true
     update-progress: true
   task05:
     type: "craft"
-    amount: 2
-    item: "wooden_pickaxe"
-    present: "craft"
-    past: "crafted"
+    amount: 16
+    item: "gold_block"
+    present: "assemble"
+    past: "assembled"
   task06:
     type: "inventory"
-    amount: 2
-    item: "wooden_pickaxe"
+    amount: 16
+    item: "gold_block"
     remove-items-when-complete: true
     update-progress: true
   task07:
     type: "craft"
-    amount: 2
-    item: "wooden_shovel"
-    present: "craft"
-    past: "crafted"
+    amount: 16
+    item: "lapis_block"
+    present: "assemble"
+    past: "assembled"
   task08:
     type: "inventory"
-    amount: 2
-    item: "wooden_shovel"
+    amount: 16
+    item: "lapis_block"
     remove-items-when-complete: true
     update-progress: true
   task09:
     type: "craft"
-    amount: 2
-    item: "wooden_sword"
-    present: "craft"
-    past: "crafted"
+    amount: 16
+    item: "redstone_block"
+    present: "assemble"
+    past: "assembled"
   task10:
     type: "inventory"
-    amount: 2
-    item: "wooden_sword"
+    amount: 16
+    item: "redstone_block"
     remove-items-when-complete: true
     update-progress: true
 display:
-  name: "&aFurnish a tool shed"
-  type: "wooden_pickaxe"
+  name: "&aOre blocks"
+  type: "lapis_block"
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&7 - Craft wooden tools"
+    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7 - &8{task03:present} &7{task03:item}s"
+    - "&7 - &8{task05:present} &7{task05:item}s"
+    - "&7 - &8{task07:present} &7{task07:item}s"
+    - "&7 - &8{task09:present} &7{task09:item}s"
     - ""
-    - "&5Notes:"
-    - "&3 - Crafted materials must be in your inventory."
-    - "&3 - Crafted items will be &cremoved &3for this quest."
   lore-started:
     - ""
     - "&7Status:"
@@ -79,29 +80,20 @@ display:
     - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}, &e{task08:progress}&7/&6{task08:amount} &8{task08:item}s."
     - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}s &7{task09:past}, &e{task10:progress}&7/&6{task10:amount} &8{task10:item}s."
     - ""
-    - "&5Note:  Tools in inventory must not be damaged to be counted!"
-    - ""
     - "&7Rewards:"
-    - "&7 - &9ice blocks"
-    - "&7 - &clava bucket"
-    - "&7 - &bmagic tools"
+    - "&7 - &6Rewards Key"
     - "&7 - &8dirt"
 rewards:
-  - "give {player} wooden_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:1}]}"
-  - "give {player} wooden_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:1}]}"
-  - "give {player} wooden_shovel 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:1}]}"
-  - "give {player} ice 2"
-  - "give {player} lava_bucket 1"
-  - "give {player} dirt 2"
-  - "quests admin moddata start {player} SkyBlockQuest06"
+  - "cc give p SkyBlock 2 {player}"
+  - "give {player} dirt 4"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:
   category: ""
   requires:
-    - "SkyBlockQuest04"
-  repeatable: false
+    - "SkyBlockQuest37"
+  repeatable: true
   cooldown:
     enabled: true
-    time: 15
-  sort-order: 5
+    time: 60
+  sort-order: 38

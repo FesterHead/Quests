@@ -1,0 +1,69 @@
+tasks:
+  task01:
+    type: "break"
+    amount: 200
+    item: "coal_ore"
+    present: "mine"
+    past: "mined"
+  task02:
+    type: "break"
+    amount: 200
+    item: "iron_ore"
+    present: "mine"
+    past: "mined"
+  task03:
+    type: "break"
+    amount: 200
+    item: "gold_ore"
+    present: "mine"
+    past: "mined"
+  task04:
+    type: "break"
+    amount: 200
+    item: "lapis_ore"
+    present: "mine"
+    past: "mined"
+  task05:
+    type: "break"
+    amount: 200
+    item: "redstone_ore"
+    present: "mine"
+    past: "mined"
+display:
+  name: "&aMore ore"
+  type: "lapis_ore"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}"
+    - "&7 - &8{task02:present} &7{task02:item}"
+    - "&7 - &8{task03:present} &7{task03:item}"
+    - "&7 - &8{task04:present} &7{task04:item}"
+    - "&7 - &8{task05:present} &7{task05:item}"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s &7{task02:past}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s &7{task04:past}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &6Rewards Key"
+    - "&7 - &8dirt"
+rewards:
+  - "cc give p SkyBlock 2 {player}"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest35"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 60
+  sort-order: 36

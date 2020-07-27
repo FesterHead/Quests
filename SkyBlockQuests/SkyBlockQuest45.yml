@@ -1,0 +1,144 @@
+tasks:
+  task01:
+    type: "inventory"
+    amount: 64
+    item: "black_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task02:
+    type: "inventory"
+    amount: 64
+    item: "blue_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task03:
+    type: "inventory"
+    amount: 64
+    item: "brown_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task04:
+    type: "inventory"
+    amount: 64
+    item: "cyan_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task05:
+    type: "inventory"
+    amount: 64
+    item: "gray_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task06:
+    type: "inventory"
+    amount: 64
+    item: "green_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task07:
+    type: "inventory"
+    amount: 64
+    item: "light_blue_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task08:
+    type: "inventory"
+    amount: 64
+    item: "light_gray_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task09:
+    type: "inventory"
+    amount: 64
+    item: "lime_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task10:
+    type: "inventory"
+    amount: 64
+    item: "magenta_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task11:
+    type: "inventory"
+    amount: 64
+    item: "orange_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task12:
+    type: "inventory"
+    amount: 64
+    item: "pink_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task13:
+    type: "inventory"
+    amount: 64
+    item: "purple_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task14:
+    type: "inventory"
+    amount: 64
+    item: "red_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task15:
+    type: "inventory"
+    amount: 64
+    item: "white_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+  task16:
+    type: "inventory"
+    amount: 64
+    item: "yellow_concrete"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "&aConcrete"
+  type: "yellow_concrete"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - Plenty concrete"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}."
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}."
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}."
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}."
+    - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}."
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}."
+    - "  &e{task10:progress}&7/&6{task10:amount} &8{task10:item}."
+    - "  &e{task11:progress}&7/&6{task11:amount} &8{task11:item}."
+    - "  &e{task12:progress}&7/&6{task12:amount} &8{task12:item}."
+    - "  &e{task13:progress}&7/&6{task13:amount} &8{task13:item}."
+    - "  &e{task14:progress}&7/&6{task14:amount} &8{task14:item}."
+    - "  &e{task15:progress}&7/&6{task15:amount} &8{task15:item}."
+    - "  &e{task16:progress}&7/&6{task16:amount} &8{task16:item}."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &6Rewards Key"
+    - "&7 - &clava bucket"
+    - "&7 - &8dirt"
+rewards:
+  - "cc give p SkyBlock 4 {player}"
+  - "give {player} lava_bucket 1"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest41"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 360
+  sort-order: 44

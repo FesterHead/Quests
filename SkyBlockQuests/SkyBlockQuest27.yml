@@ -62,7 +62,7 @@ display:
     - "&7 - &6Rewards Key"
     - "&7 - &8dirt"
 rewards:
-  - "cc give p SkyBlock 7 {player}"
+  - "cc give p SkyBlock 1 {player}"
   - "give {player} dirt 4"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

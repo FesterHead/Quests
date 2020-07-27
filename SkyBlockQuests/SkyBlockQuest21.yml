@@ -33,5 +33,5 @@ options:
   repeatable: true
   cooldown:
     enabled: true
-    time: 360
+    time: 60
   sort-order: 21

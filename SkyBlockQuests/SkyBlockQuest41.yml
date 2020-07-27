@@ -1,0 +1,211 @@
+tasks:
+  task01:
+    type: "craft"
+    amount: 8
+    item: "barrel"
+    present: "assemble"
+    past: "assembled"
+  task02:
+    type: "inventory"
+    amount: 8
+    item: "barrel"
+    remove-items-when-complete: true
+    update-progress: true
+  task03:
+    type: "craft"
+    amount: 8
+    item: "blast_furnace"
+    present: "assemble"
+    past: "assembled"
+  task04:
+    type: "inventory"
+    amount: 8
+    item: "blast_furnace"
+    remove-items-when-complete: true
+    update-progress: true
+  task05:
+    type: "craft"
+    amount: 8
+    item: "brewing_stand"
+    present: "assemble"
+    past: "assembled"
+  task06:
+    type: "inventory"
+    amount: 8
+    item: "brewing_stand"
+    remove-items-when-complete: true
+    update-progress: true
+  task07:
+    type: "craft"
+    amount: 8
+    item: "cartography_table"
+    present: "assemble"
+    past: "assembled"
+  task08:
+    type: "inventory"
+    amount: 8
+    item: "cartography_table"
+    remove-items-when-complete: true
+    update-progress: true
+  task09:
+    type: "craft"
+    amount: 8
+    item: "cauldron"
+    present: "assemble"
+    past: "assembled"
+  task10:
+    type: "inventory"
+    amount: 8
+    item: "cauldron"
+    remove-items-when-complete: true
+    update-progress: true
+  task11:
+    type: "craft"
+    amount: 8
+    item: "composter"
+    present: "assemble"
+    past: "assembled"
+  task12:
+    type: "inventory"
+    amount: 8
+    item: "composter"
+    remove-items-when-complete: true
+    update-progress: true
+  task13:
+    type: "craft"
+    amount: 8
+    item: "fletching_table"
+    present: "assemble"
+    past: "assembled"
+  task14:
+    type: "inventory"
+    amount: 8
+    item: "fletching_table"
+    remove-items-when-complete: true
+    update-progress: true
+  task15:
+    type: "craft"
+    amount: 8
+    item: "grindstone"
+    present: "assemble"
+    past: "assembled"
+  task16:
+    type: "inventory"
+    amount: 8
+    item: "grindstone"
+    remove-items-when-complete: true
+    update-progress: true
+  task17:
+    type: "craft"
+    amount: 8
+    item: "lectern"
+    present: "assemble"
+    past: "assembled"
+  task18:
+    type: "inventory"
+    amount: 8
+    item: "lectern"
+    remove-items-when-complete: true
+    update-progress: true
+  task19:
+    type: "craft"
+    amount: 8
+    item: "loom"
+    present: "assemble"
+    past: "assembled"
+  task20:
+    type: "inventory"
+    amount: 8
+    item: "loom"
+    remove-items-when-complete: true
+    update-progress: true
+  task21:
+    type: "craft"
+    amount: 8
+    item: "smithing_table"
+    present: "assemble"
+    past: "assembled"
+  task22:
+    type: "inventory"
+    amount: 8
+    item: "smithing_table"
+    remove-items-when-complete: true
+    update-progress: true    
+  task23:
+    type: "craft"
+    amount: 8
+    item: "smoker"
+    present: "assemble"
+    past: "assembled"
+  task24:
+    type: "inventory"
+    amount: 8
+    item: "smoker"
+    remove-items-when-complete: true
+    update-progress: true
+  task25:
+    type: "craft"
+    amount: 8
+    item: "stonecutter"
+    present: "assemble"
+    past: "assembled"
+  task26:
+    type: "inventory"
+    amount: 8
+    item: "stonecutter"
+    remove-items-when-complete: true
+    update-progress: true 
+display:
+  name: "&aVillage professions"
+  type: "dispenser"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7 - &8{task03:present} &7{task03:item}s"
+    - "&7 - &8{task05:present} &7{task05:item}s"
+    - "&7 - &8{task07:present} &7{task07:item}s"
+    - "&7 - &8{task09:present} &7{task09:item}s"
+    - "&7 - &8{task11:present} &7{task11:item}s"
+    - "&7 - &8{task13:present} &7{task13:item}s"
+    - "&7 - &8{task15:present} &7{task15:item}s"
+    - "&7 - &8{task17:present} &7{task17:item}s"
+    - "&7 - &8{task19:present} &7{task19:item}s"
+    - "&7 - &8{task21:present} &7{task21:item}s"
+    - "&7 - &8{task23:present} &7{task23:item}s"
+    - "&7 - &8{task25:present} &7{task25:item}s"
+    - ""
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s."
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}, &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}, &e{task06:progress}&7/&6{task06:amount} &8{task06:item}s."
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}, &e{task08:progress}&7/&6{task08:amount} &8{task08:item}s."
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}s &7{task09:past}, &e{task10:progress}&7/&6{task10:amount} &8{task10:item}s."
+    - "  &e{task11:progress}&7/&6{task11:amount} &8{task11:item}s &7{task11:past}, &e{task12:progress}&7/&6{task12:amount} &8{task12:item}s."
+    - "  &e{task13:progress}&7/&6{task13:amount} &8{task13:item}s &7{task13:past}, &e{task14:progress}&7/&6{task14:amount} &8{task14:item}s."
+    - "  &e{task15:progress}&7/&6{task15:amount} &8{task15:item}s &7{task15:past}, &e{task16:progress}&7/&6{task16:amount} &8{task16:item}s."
+    - "  &e{task17:progress}&7/&6{task17:amount} &8{task17:item}s &7{task17:past}, &e{task18:progress}&7/&6{task18:amount} &8{task18:item}s."
+    - "  &e{task19:progress}&7/&6{task19:amount} &8{task19:item}s &7{task19:past}, &e{task20:progress}&7/&6{task20:amount} &8{task20:item}s."
+    - "  &e{task21:progress}&7/&6{task21:amount} &8{task21:item}s &7{task21:past}, &e{task22:progress}&7/&6{task22:amount} &8{task22:item}s."
+    - "  &e{task23:progress}&7/&6{task23:amount} &8{task23:item}s &7{task23:past}, &e{task24:progress}&7/&6{task24:amount} &8{task24:item}s."
+    - "  &e{task25:progress}&7/&6{task25:amount} &8{task25:item}s &7{task25:past}, &e{task26:progress}&7/&6{task26:amount} &8{task26:item}s."
+    - ""
+    - "&7Rewards:"
+    - "&7 - &6Rewards Key"
+    - "&7 - &8dirt"
+rewards:
+  - "cc give p SkyBlock 3 {player}"
+  - "give {player} dirt 4"
+#rewardstring:
+#  - "&7Check your inventory for the rewards!"
+options:
+  category: ""
+  requires:
+    - "SkyBlockQuest40"
+  repeatable: true
+  cooldown:
+    enabled: true
+    time: 60
+  sort-order: 41

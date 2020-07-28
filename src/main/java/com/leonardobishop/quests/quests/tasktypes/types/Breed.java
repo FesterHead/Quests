@@ -2,8 +2,10 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityBreedEvent;
@@ -31,6 +33,9 @@ public final class Breed extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBreed(EntityBreedEvent event) {
+    if (Objects.isNull(event.getBreeder()) || !(event.getBreeder() instanceof Player)) {
+      return;
+    }
     processObject(event.getEntity().getType(), event.getBreeder().getUniqueId(), 1);
   }
 }

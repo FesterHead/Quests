@@ -2,6 +2,7 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.entity.Player;
@@ -32,7 +33,7 @@ public final class Tame extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onTame(EntityTameEvent event) {
-    if (!(event.getOwner() instanceof Player)) {
+    if (Objects.isNull(event.getOwner()) || !(event.getOwner() instanceof Player)) {
       return;
     }
     processObject(event.getEntity().getType(), event.getOwner().getUniqueId(), 1);

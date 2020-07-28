@@ -55,7 +55,7 @@ public final class Brew extends TaskType {
     UUID playerUUID = brewingStands.get(event.getBlock().getLocation());
     if (Objects.nonNull(playerUUID)) {
       Player player = Bukkit.getPlayer(playerUUID);
-      if (Objects.isNull(player)) {
+      if (Objects.isNull(player) || !(player instanceof Player)) {
         return;
       }
 

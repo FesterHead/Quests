@@ -2,8 +2,10 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -31,11 +33,17 @@ public final class Place extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBlockPlace(BlockPlaceEvent event) {
+    if (Objects.isNull(event.getPlayer()) || !(event.getPlayer() instanceof Player)) {
+      return;
+    }
     processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onBlockBreak(BlockBreakEvent event) {
+    if (Objects.isNull(event.getPlayer()) || !(event.getPlayer() instanceof Player)) {
+      return;
+    }
     processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
   }
 }

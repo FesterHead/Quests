@@ -2,9 +2,11 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import com.leonardobishop.quests.quests.tasktypes.ConfigValue;
 import com.leonardobishop.quests.quests.tasktypes.TaskType;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.inventory.CraftItemEvent;
@@ -33,6 +35,9 @@ public final class Craft extends TaskType {
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
   public void onCraftItem(CraftItemEvent event) {
+    if (Objects.isNull(event.getWhoClicked()) || !(event.getWhoClicked() instanceof Player)) {
+      return;
+    }
     Material incoming = event.getRecipe().getResult().getType();
     processObject(incoming, event.getWhoClicked().getUniqueId(),
         getAmountCraftItem(incoming, event));

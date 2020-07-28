@@ -34,7 +34,8 @@ public final class Death extends TaskType {
   public void onMobKill(EntityDeathEvent event) {
     Player killer = event.getEntity().getKiller();
     Entity mob = event.getEntity();
-    if (Objects.isNull(killer) || Objects.isNull(mob) || mob instanceof Player) {
+    if (Objects.isNull(killer) || !(killer instanceof Player) || Objects.isNull(mob)
+        || mob instanceof Player) {
       return;
     }
     processObject(event.getEntity().getType(), killer.getUniqueId(), 1);

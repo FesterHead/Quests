@@ -22,8 +22,7 @@ display:
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}."
-    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
     - ""
     - "&7Rewards:"
     - "&7 - &esand"

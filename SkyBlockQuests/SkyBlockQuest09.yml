@@ -78,7 +78,7 @@ rewards:
 options:
   category: ""
   requires:
-    - "SkyBlockQuest03"
+    - "SkyBlockQuest08"
   repeatable: false
   cooldown:
     enabled: true

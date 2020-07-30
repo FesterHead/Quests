@@ -44,7 +44,7 @@ tasks:
   task08:
     type: "inventory"
     amount: 12
-    item: "oak_slab"
+    item: "oak_stairs"
     remove-items-when-complete: true
     update-progress: true
 display:

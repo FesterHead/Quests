@@ -21,6 +21,7 @@ display:
     - "&7 - &6Rewards Key"
     - "&7 - &bLevel-100 generator"
     - "&7 - &fSpawner store access"
+    - "&7 - &6$ boost for 2 hours"
 rewards:
   - "give {player} grass_block 2"
   - "give {player} enchanted_golden_apple 2"
@@ -28,6 +29,7 @@ rewards:
   - "cc give p SkyBlock 4 {player}"
   - "luckperms user {player} permission set island.level.100"
   - "luckperms user {player} permission set commandpanel.panel.skyblock-spawners-store"
+  - "jobs moneyboost all 120m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

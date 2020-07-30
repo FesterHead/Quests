@@ -238,10 +238,12 @@ display:
     - "&7 - &6Rewards Key"
     - "&7 - &0obsidian"
     - "&7 - &8dirt"
+    - "&7 - &6$ boost for 2 hours"
 rewards:
   - "cc give p SkyBlock 4 {player}"
   - "give {player} obsidian 4"
   - "give {player} dirt 4"
+  - "jobs moneyboost all 120m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

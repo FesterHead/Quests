@@ -130,7 +130,7 @@ tasks:
     amount: 8
     item: "smithing_table"
     remove-items-when-complete: true
-    update-progress: true    
+    update-progress: true
   task23:
     type: "craft"
     amount: 8
@@ -154,7 +154,7 @@ tasks:
     amount: 8
     item: "stonecutter"
     remove-items-when-complete: true
-    update-progress: true 
+    update-progress: true
 display:
   name: "&aVillage professions"
   type: "dispenser"
@@ -195,9 +195,11 @@ display:
     - "&7Rewards:"
     - "&7 - &6Rewards Key"
     - "&7 - &8dirt"
+    - "&7 - &6$ boost for 1 hour"
 rewards:
   - "cc give p SkyBlock 3 {player}"
   - "give {player} dirt 4"
+  - "jobs moneyboost all 60m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

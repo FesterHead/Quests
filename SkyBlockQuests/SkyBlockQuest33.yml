@@ -40,8 +40,10 @@ display:
     - ""
     - "&7Rewards:"
     - "&7 - &8dirt"
+    - "&7 - &6$ boost for 1 hour"
 rewards:
   - "give {player} dirt 4"
+  - "jobs moneyboost all 60m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

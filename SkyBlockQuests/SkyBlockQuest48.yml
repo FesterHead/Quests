@@ -21,6 +21,7 @@ display:
     - "&7 - &6Rewards Key"
     - "&7 - &bLevel-25 generator"
     - "&7 - &fHostile spawn egg store access"
+    - "&7 - &6$ boost for 2 hours"
 rewards:
   - "give {player} grass_block 1"
   - "give {player} enchanted_golden_apple 1"
@@ -28,6 +29,7 @@ rewards:
   - "cc give p SkyBlock 2 {player}"
   - "luckperms user {player} permission set island.level.25"
   - "luckperms user {player} permission set commandpanel.panel.skyblock-hostile-spawn-egg-store"
+  - "jobs moneyboost all 120m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

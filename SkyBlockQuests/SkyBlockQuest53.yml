@@ -20,12 +20,14 @@ display:
     - "&7 - &8bedrock"
     - "&7 - &6Rewards Key"
     - "&7 - &bLevel-400 generator"
+    - "&7 - &6$ boost for 2 hours"
 rewards:
   - "give {player} grass_block 6"
   - "give {player} enchanted_golden_apple 4"
   - "give {player} bedrock 4"
   - "cc give p SkyBlock 7 {player}"
   - "luckperms user {player} permission set island.level.400"
+  - "jobs moneyboost all 120m 4"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

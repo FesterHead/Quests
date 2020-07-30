@@ -110,6 +110,7 @@ display:
     - "&7 - &dchicken"
     - "&7 - &bmagic wooden tools"
     - "&7 - &8dirt"
+    - "&7 - &6$ boost for 15 minutes"
 rewards:
   - "give {player} stone_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:2},{id:efficiency,lvl:1}]}"
   - "give {player} stone_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:2},{id:efficiency,lvl:1}]}"
@@ -117,6 +118,7 @@ rewards:
   - "give {player} beef 2"
   - "give {player} chicken 2"
   - "give {player} dirt 2"
+  - "jobs moneyboost all 15m 2"
   - "quests admin moddata start {player} SkyBlockQuest07"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

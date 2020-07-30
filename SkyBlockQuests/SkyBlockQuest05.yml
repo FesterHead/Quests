@@ -86,6 +86,7 @@ display:
     - "&7 - &clava bucket"
     - "&7 - &bmagic tools"
     - "&7 - &8dirt"
+    - "&7 - &6$ boost for 15 minutes"
 rewards:
   - "give {player} wooden_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:1}]}"
   - "give {player} wooden_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:1}]}"
@@ -93,6 +94,7 @@ rewards:
   - "give {player} ice 2"
   - "give {player} lava_bucket 1"
   - "give {player} dirt 2"
+  - "jobs moneyboost all 15m 2"
   - "quests admin moddata start {player} SkyBlockQuest06"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

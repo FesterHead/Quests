@@ -27,11 +27,13 @@ display:
     - "&7 - &6Rewards Key"
     - "&7 - &bLevel-2 generator"
     - "&7 - &fStore access"
+    - "&7 - &6$ boost for 1 hour"
 rewards:
   - "give {player} grass_block 1"
   - "cc give p SkyBlock 1 {player}"
   - "luckperms user {player} permission set island.level.2"
   - "luckperms user {player} permission set commandpanel.panel.skyblock-store"
+  - "jobs moneyboost all 60m 2"
   - "quests admin moddata start {player} SkyBlockQuest09"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

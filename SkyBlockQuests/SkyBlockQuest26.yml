@@ -41,6 +41,7 @@ display:
     - "&7Rewards:"
     - "&7 - &esaplings"
     - "&7 - &8dirt"
+    - "&7 - &6$ boost for 1 hour"
 rewards:
   - "give {player} birch_sapling 2"
   - "give {player} spruce_sapling 2"
@@ -48,6 +49,7 @@ rewards:
   - "give {player} dark_oak_sapling 2"
   - "give {player} jungle_sapling 2"
   - "give {player} dirt 4"
+  - "jobs moneyboost all 60m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

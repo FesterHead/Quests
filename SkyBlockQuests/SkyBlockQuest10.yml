@@ -21,9 +21,11 @@ display:
     - "&7Rewards:"
     - "&7 - &ewheat seeds"
     - "&7 - &8dirt"
+    - "&7 - &6$ boost for 30 minutes"
 rewards:
   - "give {player} dirt 2"
   - "give {player} wheat_seeds 2"
+  - "jobs moneyboost all 30m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

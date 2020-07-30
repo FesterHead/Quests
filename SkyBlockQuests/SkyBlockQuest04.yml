@@ -59,6 +59,10 @@ display:
     - "&7 - &8{task04:present} &7{task04:item}s"
     - "&7 - &8{task05:present} &7{task05:item}s"
     - "&7 - &8{task07:present} &7{task07:item}"
+    - ""
+    - "&5Notes:"
+    - "&3 - Slabs and stairs must be in your inventory."
+    - "&3 - They will be &cremoved &3for this quest."
   lore-started:
     - ""
     - "&7Status:"

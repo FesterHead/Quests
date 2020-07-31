@@ -50,7 +50,7 @@ options:
   category: ""
   requires:
     - "SkyBlockQuest32"
-  repeatable: true
+  repeatable: false
   cooldown:
     enabled: true
     time: 60

@@ -1,23 +1,29 @@
 tasks:
   task01:
+    type: "place"
+    amount: 1
+    item: "oak_sapling"
+    present: "plant"
+    past: "planted"
+  task02:
     type: "break"
     amount: 1
     item: "oak_log"
     present: "chop"
     past: "chopped"
-  task02:
+  task03:
     type: "craft"
     amount: 4
     item: "oak_planks"
     present: "construct"
     past: "constructed"
-  task03:
+  task04:
     type: "craft"
     amount: 1
     item: "crafting_table"
     present: "craft"
     past: "crafted"
-  task04:
+  task05:
     type: "place"
     amount: 1
     item: "crafting_table"
@@ -28,15 +34,16 @@ display:
   type: "crafting_table"
   lore-normal:
     - ""
-    - "&bIt all starts with a &8crafting table&b."
+    - "&bNeed an &aoak sapling&b?  Do quest #2."
     - ""
     - "&7If you &cdo not &7want to quest then go to the"
     - "&9control panel &7-> &9commands panel &cNOW &7and use"
     - "&7the &aQuest Mode &7option to &cDISABLE &7it."
     - "&3Otherwise, keep on reading..."
     - ""
-    - "&7Chop down the &atree &7to get &2wood &7and construct &64 &3oak planks&7."
-    - "&7Then craft and place a &8crafting table&7."
+    - "&7Plant and chop down &atree &7to get &2wood"
+    - "&7and then construct &64 &3oak planks&7."
+    - "&7Finally, craft and place a &8crafting table&7."
     - ""
     - "&7On this server, you will earn &6$1 &7for just about"
     - "&7every 'action' you take such as &8breaking &7or &aplacing"
@@ -50,6 +57,7 @@ display:
     - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item} &7{task02:past}."
     - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item} &7{task03:past}."
     - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item} &7{task04:past}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item} &7{task05:past}."
     - ""
     - "&7Rewards:"
     - "&7 - &8dirt"
@@ -57,6 +65,7 @@ rewards:
   - "luckperms user {player} permission set quest.mode.decided"
   - "luckperms user {player} permission set quest.mode.on"
   - "quests admin moddata start {player} SkyBlockQuest03"
+  - "quests admin moddata start {player} SkyBlockQuest10"
   - "give {player} dirt 2"
 rewardstring:
   - "&6Congratulations!  &7Have fun playing SkyBlock!"

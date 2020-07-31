@@ -1,7 +1,7 @@
 tasks:
   task01:
     type: "permission"
-    permission: "quest.mode.on"
+    permission: "can.get.free.sapling"
 display:
   name: "&aOak Sapling"
   type: "oak_sapling"
@@ -10,7 +10,15 @@ display:
     - "&7Need a &2sapling&7?"
     - "&7Start this quest to get an &2oak sapling&7."
     - ""
-    - "&7This quest is repeatable every &615 &7minutes."
+    - "&7This quest is repeatable every &615 &7minutes"
+    - "&7until you have finished quest #10."
+    - ""
+    - "&7After that, you better have spare saplings"
+    - "&7because you won't get any more for free!"
+    - ""
+    - "&bHINT - &7After planting a &asapling&7,"
+    - "&7press the &eLEFT SHIFT &7key to &dtwerk"
+    - "&7and make the &asapling &7grow faster!"
 rewards:
   - "give {player} oak_sapling 1"
 rewardstring:
@@ -18,7 +26,7 @@ rewardstring:
 options:
   category: ""
   requires:
-    - "SkyBlockQuest01"
+    - ""
   repeatable: true
   cooldown:
     enabled: true

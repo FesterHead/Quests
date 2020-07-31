@@ -13,26 +13,27 @@ display:
     - "&7Have &2fun&r, &3enjoy&7, and &dbe awesome&7!"
     - ""
     - "&7This quest is repeatable."
+    - ""
+    - "&7When you finish this quest you will no longer"
+    - "&7be able to get free oak saplings!"
   lore-started:
     - ""
     - "&7Status:"
     - "  &e{task01:progress}&7/&6{task01:amount} minutes played."
     - ""
     - "&7Rewards:"
-    - "&7 - &ewheat seeds"
     - "&7 - &8dirt"
     - "&7 - &6$ boost for 30 minutes"
 rewards:
-  - "give {player} dirt 2"
-  - "give {player} wheat_seeds 2"
+  - "give {player} dirt 4"
   - "jobs moneyboost all 30m 2"
+  - "luckperms user {player} permission unset can.get.free.sapling"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:
   category: ""
   requires:
     - "SkyBlockQuest01"
-    - "SkyBlockQuest08"
   repeatable: true
   cooldown:
     enabled: true

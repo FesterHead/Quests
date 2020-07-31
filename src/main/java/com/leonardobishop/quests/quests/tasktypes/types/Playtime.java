@@ -44,7 +44,7 @@ public final class Playtime extends TaskType {
                 if (taskProgress.isCompleted()) {
                   continue;
                 }
-                int minutes = (int) task.getConfigValue("minutes");
+                int minutes = (int) task.getConfigValue(AMOUNT_KEY);
                 if (taskProgress.getProgress() == null) {
                   taskProgress.setProgress(1);
                 } else {

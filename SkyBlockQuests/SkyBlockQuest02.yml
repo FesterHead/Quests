@@ -21,6 +21,8 @@ display:
     - "&7and make the &asapling &7grow faster!"
 rewards:
   - "give {player} oak_sapling 1"
+  - "luckperms user {player} permission set quest.mode.decided"
+  - "luckperms user {player} permission set quest.mode.on"
 rewardstring:
   - "&7Every day is &2Arbor Day&7.  Go plant a &atree&7!"
 options:

@@ -58,7 +58,7 @@ public final class Playtime extends TaskType {
           }
         }
       }
-    }.runTaskTimer(Quests.get(), 1200L, 1200L);
+    }.runTaskTimer(Quests.get(), 0L, 20L * 60);
   }
 
   @Override

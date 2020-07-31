@@ -30,7 +30,7 @@ options:
   category: ""
   requires:
     - "SkyBlockQuest20"
-  repeatable: true
+  repeatable: false
   cooldown:
     enabled: true
     time: 60

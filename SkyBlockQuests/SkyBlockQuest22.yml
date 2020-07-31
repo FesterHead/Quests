@@ -34,7 +34,7 @@ options:
   category: ""
   requires:
     - "SkyBlockQuest21"
-  repeatable: true
+  repeatable: false
   cooldown:
     enabled: true
     time: 60

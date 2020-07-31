@@ -2,6 +2,9 @@ tasks:
   task01:
     type: "playtime"
     amount: 120
+  task02:
+    type: "permission"
+    permission: "quest.mode.on"
 display:
   name: "&aPlay for two hours"
   type: "clock"

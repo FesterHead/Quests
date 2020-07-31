@@ -23,6 +23,9 @@ tasks:
     item: "oak_sapling"
     present: "plant"
     past: "planted"
+  task05:
+    type: "permission"
+    permission: "quest.mode.on"
 display:
   name: "&aBreak, craft, and plant"
   type: "oak_log"

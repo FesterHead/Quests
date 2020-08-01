@@ -31,7 +31,7 @@ tasks:
     past: "crafted"
   task06:
     type: "place"
-    amount: 4
+    amount: 1
     item: "chest"
     present: "place"
     past: "placed"
@@ -57,8 +57,8 @@ display:
     - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item} &7{task02:past}."
     - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item} &7{task03:past}."
     - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s &7{task04:past}."
-    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item} &7{task03:past}."
-    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item} &7{task03:past}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item} &7{task05:past}."
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item} &7{task06:past}."
     - ""
     - "&7Rewards:"
     - "&7 - &8dirt"

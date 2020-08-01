@@ -16,9 +16,6 @@ display:
     - "&7Have &2fun&r, &3enjoy&7, and &dbe awesome&7!"
     - ""
     - "&7This quest is repeatable."
-    - ""
-    - "&7When you finish this quest you will no longer"
-    - "&7be able to get free oak saplings!"
   lore-started:
     - ""
     - "&7Status:"
@@ -30,7 +27,6 @@ display:
 rewards:
   - "give {player} dirt 4"
   - "jobs moneyboost all 30m 2"
-  - "luckperms user {player} permission unset can.get.free.sapling"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

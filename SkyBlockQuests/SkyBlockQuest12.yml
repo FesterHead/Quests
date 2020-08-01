@@ -25,12 +25,10 @@ display:
     - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
     - ""
     - "&7Rewards:"
-    - "&7 - &awheat seeds"
     - "&7 - &esand"
     - "&7 - &8dirt"
     - "&7 - &6$ boost for 15 minutes"
 rewards:
-  - "give {player} wheat_seeds 1"
   - "give {player} sand 4"
   - "give {player} dirt 4"
   - "jobs moneyboost all 15m 2"

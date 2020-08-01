@@ -20,7 +20,6 @@ display:
     - "&7and make the &asapling &7grow faster!"
 rewards:
   - "give {player} oak_sapling 1"
-  - "give {player} dirt 1"
   - "luckperms user {player} permission set quest.mode.decided"
   - "luckperms user {player} permission set quest.mode.on"
 rewardstring:

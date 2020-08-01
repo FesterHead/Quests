@@ -65,7 +65,6 @@ rewards:
   - "luckperms user {player} permission set quest.mode.decided"
   - "luckperms user {player} permission set quest.mode.on"
   - "quests admin moddata start {player} SkyBlockQuest03"
-  - "quests admin moddata start {player} SkyBlockQuest10"
   - "give {player} dirt 2"
 rewardstring:
   - "&6Congratulations!  &7Have fun playing SkyBlock!"

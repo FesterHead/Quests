@@ -51,8 +51,7 @@ rewards:
 options:
   category: ""
   requires:
-    - "SkyBlockQuest11"
-    - "SkyBlockQuest12"
+    - "SkyBlockQuest10"
   repeatable: false
   cooldown:
     enabled: true

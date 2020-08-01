@@ -1,6 +1,7 @@
 package com.leonardobishop.quests.quests.tasktypes.types;
 
 import com.leonardobishop.quests.Quests;
+import com.leonardobishop.quests.QuestsLogger;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
 import com.leonardobishop.quests.player.questprogressfile.QuestProgress;
@@ -22,6 +23,7 @@ public final class Playtime extends TaskType {
 
   private BukkitTask poll;
   private List<ConfigValue> creatorConfigValues = new ArrayList<>();
+  private QuestsLogger questLogger = QuestsAPI.getQuestManager().getPlugin().getQuestsLogger();
 
   public Playtime() {
     super("playtime", "Reinatix", "Play a certain amount of time.");
@@ -38,10 +40,14 @@ public final class Playtime extends TaskType {
           QuestProgressFile questProgressFile = qPlayer.getQuestProgressFile();
           for (Quest quest : Playtime.super.getRegisteredQuests()) {
             if (questProgressFile.hasStartedQuest(quest)) {
+              questLogger.debug("§4--------------------");
+              questLogger.debug("              Quest: §6" + quest.getId());
               QuestProgress questProgress = questProgressFile.getQuestProgress(quest);
               for (Task task : quest.getTasksOfType(Playtime.super.getType())) {
                 TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
                 if (taskProgress.isCompleted()) {
+                  questLogger.debug("                     §aDONE!");
+                  this.cancel();
                   continue;
                 }
                 int minutes = (int) task.getConfigValue(AMOUNT_KEY);
@@ -50,8 +56,18 @@ public final class Playtime extends TaskType {
                 } else {
                   taskProgress.setProgress((int) taskProgress.getProgress() + 1);
                 }
+
+                questLogger.debug("");
+                questLogger.debug("      Checking task: §8" + task.getId());
+                questLogger.debug("               Type: §8" + task.getType());
+                questLogger.debug("           Progress: §d" + taskProgress.getProgress());
+                questLogger
+                    .debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
+
                 if (((int) taskProgress.getProgress()) >= minutes) {
+                  questLogger.debug("                     §6Completed!");
                   taskProgress.setCompleted(true);
+                  this.cancel();
                 }
               }
             }

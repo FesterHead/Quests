@@ -13,7 +13,7 @@ tasks:
     past: "placed"
   task03:
     type: "place"
-    amount: 64
+    amount: 36
     item: "cobblestone_wall"
     present: "place"
     past: "placed"

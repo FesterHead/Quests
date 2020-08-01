@@ -19,7 +19,7 @@ tasks:
     past: "crafted"
   task04:
     type: "place"
-    amount: 8
+    amount: 4
     item: "oak_sapling"
     present: "plant"
     past: "planted"

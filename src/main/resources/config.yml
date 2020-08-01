@@ -94,7 +94,7 @@ gui:
 
 options:
   # If categories are disabled, quests will be put into one big gui.
-  categories-enabled: true
+  categories-enabled: false
   # If true, the gui size will automatically change based on the amount of quests inside it.
   trim-gui-size: true
   # Enable/disable titles
@@ -109,7 +109,6 @@ options:
   guinames:
     quests-category: "Quest Categories"
     quests-menu: "Quests"
-    daily-quests: "Daily Quests"
     quest-cancel: "Cancel Quest"
   # Show when quests register in console - will only show if verbose-logging-level=2. Disable if you want less console spam at startup.
   show-quest-registrations: true
@@ -124,19 +123,6 @@ options:
   performance-tweaking: # The following are measured in server ticks, multiply SECONDS by 20 to get the number of ticks.
     quest-completer-poll-interval: 100 # how frequently Quests should check if quests have been completed (def=100 - 5 seconds) - increase this value if you are struggling with performance
     quest-autosave-interval: 12000 # how frequently online players data will be autosaved (def=12000 - 10 minutes)
-
-# This switches up the entire quest system.
-# By enabling daily-quests, players will no longer be presented with the standard Quest GUI.
-# Instead, they will be presented with 5 random quests.
-# The 'requirements' section in each quest does not apply here.
-# The 'cooldown' section in each quest does not apply here - if it's done, it's done (and will be repeatable next time they get the quest).
-# The 'repeatable' section in each quest does not apply here. It will NOT be repeatable until the next day.
-# Enabling this MAY cause previous quest progress to be modified, wiped or changed irreversibly! If you're testing this on a live server, it is wise to backup
-# the Quests/playerdata/ folder! You've been warned!
-#
-# Quests BETA: this feature is a work in progress, it does not work yet!
-daily-quests:
-  enabled: false
 
 # Configure titles
 titles:
@@ -162,7 +148,6 @@ messages:
   quest-category-permission: "&7You do not have permission to view this category."
   quest-category-quest-permission: "&7You do not have permission to start this quest since it is in a category you do not have permission to view."
   quest-cancel-notstarted: "&7You have not started this quest."
-  quest-updater: "&cQuests > &7A new version &c{newver} &7was found on Spigot (your version: &c{oldver}&7). Please update me! <3 - Link: {link}"
   command-sub-doesntexist: "&7The specified subcommand '&c{sub}' &7does not exist."
   command-quest-start-doesntexist: "&7The specified quest '&c{quest}&7' does not exist."
   command-category-open-disabled: "&7Categories are disabled."
@@ -171,7 +156,6 @@ messages:
   command-quest-openquests-admin-success: "&7Opened Quest GUI for player &c{player}&7."
   command-quest-opencategory-admin-success: "&7Opened category &c{category} &7for player &c{player}&7."
   command-taskview-admin-fail: "&7Task type '&c{task}&7' does not exist."
-  beta-reminder: "&cQuests > &7Reminder: you are currently using a &cbeta &7version of Quests. Please send bug reports to https://github.com/fatpigsarefat/Quests/issues and check for updates regularly using &c/quests admin update&7!"
   command-quest-admin-loaddata: "&7Quest data for '&c{player}&7' is being loaded."
   command-quest-admin-nodata: "&7No data could be found for player &c{player}&7."
   command-quest-admin-fullreset: "&7Data for player &c{player}&7 has been fully reset."

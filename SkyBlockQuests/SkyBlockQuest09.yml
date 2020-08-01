@@ -13,7 +13,7 @@ tasks:
     update-progress: true
   task03:
     type: "furnace"
-    amount: 1
+    amount: 64
     item: "smooth_stone"
     present: "smelt"
     past: "smelted"
@@ -25,7 +25,7 @@ tasks:
     update-progress: true
   task05:
     type: "furnace"
-    amount: 1
+    amount: 64
     item: "cracked_stone_bricks"
     present: "smelt"
     past: "smelted"
@@ -47,6 +47,12 @@ tasks:
     item: "chiseled_stone_bricks"
     remove-items-when-complete: true
     update-progress: true
+  task09:
+    type: "break"
+    amount: 300
+    item: "stone"
+    present: "mine"
+    past: "mined"
 display:
   name: "&aFour types of stone blocks"
   type: "stone_bricks"
@@ -57,13 +63,15 @@ display:
     - "&7 - &8{task03:present} &7{task03:item}"
     - "&7 - &8{task05:present} &7{task05:item}"
     - "&7 - &8{task07:present} &7{task07:item}"
+    - "&7 - &8{task09:present} &7{task09:item}"
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
     - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}, &e{task04:progress}&7/&6{task04:amount} &8{task04:item}."
-    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}, &e{task06:progress}&7/&6{task06:amount} &8{task06:item}."
-    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}, &e{task08:progress}&7/&6{task08:amount} &8{task08:item}."
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item} &7{task05:past}, &e{task06:progress}&7/&6{task06:amount} &8{task06:item}."
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item} &7{task07:past}, &e{task08:progress}&7/&6{task08:amount} &8{task08:item}."
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item} &7{task09:past}."
     - ""
     - "&7Rewards:"
     - "&7 - &bmagic iron tools"

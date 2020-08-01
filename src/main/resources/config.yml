@@ -39,54 +39,49 @@ gui:
   page-prev:
     name: "&7Previous Page"
     lore:
-      - "&7Go to page &c{prevpage}."
+      - "&7Go to page &c{prevpage}&7."
     type: "FEATHER"
   page-next:
     name: "&7Next Page"
     lore:
-      - "&7Go to page &c{nextpage}."
+      - "&7Go to page &c{nextpage}&7."
     type: "FEATHER"
   page-desc:
     name: "&7Page &c{page}"
     lore:
-      - "&7Currently viewing page &c{page}."
+      - "&7Currently viewing page &c{page}&7."
     type: "PAPER"
   quest-locked-display:
     name: "&c&lQuest Locked"
     lore:
-      - "&7You have not completed the requirements"
-      - "&7for this quest (&c{quest}&7)."
-      - ""
-      - "&7Requires: &c{requirements}"
-      - "&7to be completed to unlock."
+      - "&7Complete &c{requirements}"
+      - "&7to unlock &a{quest}&7."
     type: "RED_STAINED_GLASS_PANE"
   quest-permission-display:
     name: "&6&lNo Permission"
     lore:
-      - "&7You do not have permission for this"
-      - "&7quest (&6{quest}&7)."
+      - "&7You do not have permission for this quest."
     type: "BROWN_STAINED_GLASS_PANE"
   quest-cooldown-display:
     name: "&e&lQuest on Cooldown"
     lore:
-      - "&7You have recently completed this quest"
-      - "&7(&e{quest}&7) and you must"
-      - "&7wait another &e{time} &7to unlock again."
+      - "&7You have recently completed &a{quest}&7."
+      - "&7It will unlock in &e{time}&7."
     type: "ORANGE_STAINED_GLASS_PANE"
   quest-completed-display:
     name: "&a&lQuest Complete"
     lore:
-      - "&7You have completed this quest"
-      - "&7(&a{quest}&7) and cannot repeat it."
+      - "&7You have completed &a{quest}&7."
     type: "GREEN_STAINED_GLASS_PANE"
   quest-cancel-yes:
     name: "&a&lConfirm Cancellation"
     lore:
-      - "&7Cancel this quest and lose all progress."
+      - "&7Cancel &a{quest} &7and lose all progress?"
     type: "GREEN_STAINED_GLASS_PANE"
   quest-cancel-no:
     name: "&c&lKeep Questing"
     lore:
+      - "&7Keep &a{quest} &7active."
       - "&7Return to the quest menu."
     type: "RED_STAINED_GLASS_PANE"
   quest-cancel-background:

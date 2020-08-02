@@ -11,7 +11,7 @@ task:
   present: "<string>"            # Optional present-tense action verb.
   past: "<string>"               # Optional past-tense action verb.
 
-  Place tasks subtract from break tasks!
+  Place events subtract from break task progress!
 ```
 
 Breed - Breeding, mating, ...
@@ -62,6 +62,8 @@ task:
   item: "<Material>"             # If supplied, the specific block drop to collect.
   present: "<string>"            # Optional present-tense action verb.
   past: "<string>"               # Optional past-tense action verb.
+
+  Place events subtract from drop task progress!
 ```
 
 Enchant - Enchanting items, ...
@@ -122,7 +124,7 @@ task:
   present: "<string>"            # Optional present-tense action verb.
   past: "<string>"               # Optional past-tense action verb.
 
-  Break tasks subtract from place tasks!
+  Break events subtract from place task progress!
 ```
 
 Playtime - Building, placing, ...

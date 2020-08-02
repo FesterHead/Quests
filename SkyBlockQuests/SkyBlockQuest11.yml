@@ -1,13 +1,13 @@
 tasks:
   task01:
     type: "break"
-    amount: 64
+    amount: 128
     item: "oak_log"
     present: "chop"
     past: "chopped"
   task02:
     type: "inventory"
-    amount: 64
+    amount: 128
     item: "oak_log"
     remove-items-when-complete: true
     update-progress: true

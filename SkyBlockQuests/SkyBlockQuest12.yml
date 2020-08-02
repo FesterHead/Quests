@@ -13,7 +13,7 @@ tasks:
     update-progress: true
 display:
   name: "&aStone/Cobblestone to dirt and sand"
-  type: "oak_log"
+  type: "stone"
   lore-normal:
     - ""
     - "&7This quest requires:"

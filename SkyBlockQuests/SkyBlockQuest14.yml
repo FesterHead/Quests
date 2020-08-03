@@ -14,17 +14,17 @@ tasks:
   task03:
     type: "craft"
     amount: 64
-    item: "hay_bale"
+    item: "hay_block"
     present: "craft"
     past: "crafted"
   task04:
     type: "inventory"
     amount: 64
-    item: "hay_bale"
+    item: "hay_block"
     remove-items-when-complete: true
     update-progress: true
 display:
-  name: "&aBread and hay bales"
+  name: "&aBread and hay"
   type: "bread"
   lore-normal:
     - ""
@@ -35,7 +35,7 @@ display:
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
     - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}, &e{task04:progress}&7/&6{task04:amount} &8{task04:item}."
     - ""
     - "&7Rewards:"

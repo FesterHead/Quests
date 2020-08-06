@@ -1,47 +1,23 @@
 tasks:
   task01:
-    type: "craft"
-    amount: 64
-    item: "baked_potato"
-    present: "cook"
-    past: "cooked"
-  task02:
     type: "inventory"
     amount: 64
     item: "baked_potato"
+    remove-items-when-complete: true
+    update-progress: true
+  task02:
+    type: "inventory"
+    amount: 32
+    item: "golden_carrot"
     remove-items-when-complete: true
     update-progress: true
   task03:
-    type: "craft"
+    type: "inventory"
     amount: 32
-    item: "golden_carrot"
-    present: "craft"
-    past: "crafted"
+    item: "golden_apple"
+    remove-items-when-complete: true
+    update-progress: true
   task04:
-    type: "inventory"
-    amount: 32
-    item: "golden_carrot"
-    remove-items-when-complete: true
-    update-progress: true
-  task05:
-    type: "craft"
-    amount: 32
-    item: "golden_apple"
-    present: "craft"
-    past: "crafted"
-  task06:
-    type: "inventory"
-    amount: 32
-    item: "golden_apple"
-    remove-items-when-complete: true
-    update-progress: true
-  task07:
-    type: "craft"
-    amount: 18
-    item: "rabbit_stew"
-    present: "cook"
-    past: "cooked"
-  task08:
     type: "inventory"
     amount: 18
     item: "rabbit_stew"
@@ -52,35 +28,33 @@ display:
   type: "rabbit_stew"
   lore-normal:
     - ""
-    - "&7This quest requires:"
-    - "&7 - &8{task01:present} &7{task01:item}s"
-    - "&7 - &8{task03:present} &7{task03:item}s"
-    - "&7 - &8{task05:present} &7{task03:item}s"
-    - "&7 - &8{task07:present} &7{task03:item}s"
+    - "&7This quest requires you to trade in:"
+    - "&7 - &a{task01:item}"
+    - "&7 - &a{task02:item}"
+    - "&7 - &a{task03:item}"
+    - "&7 - &a{task04:item}"
     - ""
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
-    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}, &e{task04:progress}&7/&6{task04:amount} &8{task04:item}."
-    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}, &e{task06:progress}&7/&6{task06:amount} &8{task06:item}."
-    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}, &e{task08:progress}&7/&6{task08:amount} &8{task08:item}."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}"
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}"
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}"
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}"
     - ""
     - "&7Rewards:"
     - "&7 - &6Rewards Key"
     - "&7 - &8dirt"
-    - "&7 - &6$ boost for 1 hour"
 rewards:
   - "cc give p SkyBlock 1 {player}"
   - "give {player} dirt 4"
-  - "jobs moneyboost all 60m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:
   category: ""
   requires:
     - "SkyBlockQuest33"
-  repeatable: true
+  repeatable: false
   cooldown:
     enabled: true
     time: 60

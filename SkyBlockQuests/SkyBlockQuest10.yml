@@ -16,7 +16,7 @@ display:
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &7minutes connected."
+    - "  &e{task01:progress}&7/&6{task01:amount} &7minutes connected"
     - ""
     - "&7Rewards:"
     - "&7 - &8dirt"

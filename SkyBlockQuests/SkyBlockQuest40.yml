@@ -1,131 +1,65 @@
 tasks:
   task01:
-    type: "craft"
+    type: "inventory"
     amount: 16
     item: "comparator"
-    present: "assemble"
-    past: "assembled"
+    remove-items-when-complete: true
+    update-progress: true
   task02:
     type: "inventory"
     amount: 16
-    item: "comparator"
+    item: "daylight_detector"
     remove-items-when-complete: true
     update-progress: true
   task03:
-    type: "craft"
+    type: "inventory"
     amount: 16
-    item: "daylight_detector"
-    present: "assemble"
-    past: "assembled"
+    item: "dispenser"
+    remove-items-when-complete: true
+    update-progress: true
   task04:
     type: "inventory"
     amount: 16
-    item: "daylight_detector"
+    item: "dropper"
     remove-items-when-complete: true
     update-progress: true
   task05:
-    type: "craft"
+    type: "inventory"
     amount: 16
-    item: "dispenser"
-    present: "assemble"
-    past: "assembled"
+    item: "hopper"
+    remove-items-when-complete: true
+    update-progress: true
   task06:
     type: "inventory"
     amount: 16
-    item: "dispenser"
+    item: "observer"
     remove-items-when-complete: true
     update-progress: true
   task07:
-    type: "craft"
+    type: "inventory"
     amount: 16
-    item: "dropper"
-    present: "assemble"
-    past: "assembled"
+    item: "piston"
+    remove-items-when-complete: true
+    update-progress: true
   task08:
     type: "inventory"
     amount: 16
-    item: "dropper"
+    item: "redstone_lamp"
     remove-items-when-complete: true
     update-progress: true
   task09:
-    type: "craft"
+    type: "inventory"
     amount: 16
-    item: "hopper"
-    present: "assemble"
-    past: "assembled"
+    item: "repeater"
+    remove-items-when-complete: true
+    update-progress: true
   task10:
     type: "inventory"
     amount: 16
-    item: "hopper"
+    item: "sticky_piston"
     remove-items-when-complete: true
     update-progress: true
   task11:
-    type: "craft"
-    amount: 16
-    item: "observer"
-    present: "assemble"
-    past: "assembled"
-  task12:
-    type: "inventory"
-    amount: 16
-    item: "observer"
-    remove-items-when-complete: true
-    update-progress: true
-  task13:
-    type: "craft"
-    amount: 16
-    item: "piston"
-    present: "assemble"
-    past: "assembled"
-  task14:
-    type: "inventory"
-    amount: 16
-    item: "piston"
-    remove-items-when-complete: true
-    update-progress: true
-  task15:
-    type: "craft"
-    amount: 16
-    item: "redstone_lamp"
-    present: "assemble"
-    past: "assembled"
-  task16:
-    type: "inventory"
-    amount: 16
-    item: "redstone_lamp"
-    remove-items-when-complete: true
-    update-progress: true
-  task17:
-    type: "craft"
-    amount: 16
-    item: "repeater"
-    present: "assemble"
-    past: "assembled"
-  task18:
-    type: "inventory"
-    amount: 16
-    item: "repeater"
-    remove-items-when-complete: true
-    update-progress: true
-  task19:
-    type: "craft"
-    amount: 16
-    item: "sticky_piston"
-    present: "assemble"
-    past: "assembled"
-  task20:
-    type: "inventory"
-    amount: 16
-    item: "sticky_piston"
-    remove-items-when-complete: true
-    update-progress: true
-  task21:
-    type: "craft"
-    amount: 16
-    item: "tripwire_hook"
-    present: "assemble"
-    past: "assembled"
-  task22:
     type: "inventory"
     amount: 16
     item: "tripwire_hook"
@@ -136,49 +70,47 @@ display:
   type: "dispenser"
   lore-normal:
     - ""
-    - "&7This quest requires:"
-    - "&7 - &8{task01:present} &7{task01:item}s"
-    - "&7 - &8{task03:present} &7{task03:item}s"
-    - "&7 - &8{task05:present} &7{task05:item}s"
-    - "&7 - &8{task07:present} &7{task07:item}s"
-    - "&7 - &8{task09:present} &7{task09:item}s"
-    - "&7 - &8{task11:present} &7{task11:item}s"
-    - "&7 - &8{task13:present} &7{task13:item}s"
-    - "&7 - &8{task15:present} &7{task15:item}s"
-    - "&7 - &8{task17:present} &7{task17:item}s"
-    - "&7 - &8{task19:present} &7{task19:item}s"
-    - "&7 - &8{task21:present} &7{task21:item}s"
+    - "&7This quest requires you to trade in:"
+    - "&7 - &a{task01:item}"
+    - "&7 - &a{task02:item}"
+    - "&7 - &a{task03:item}"
+    - "&7 - &a{task04:item}"
+    - "&7 - &a{task05:item}"
+    - "&7 - &a{task06:item}"
+    - "&7 - &a{task07:item}"
+    - "&7 - &a{task08:item}"
+    - "&7 - &a{task09:item}"
+    - "&7 - &a{task10:item}"
+    - "&7 - &a{task11:item}"
     - ""
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s."
-    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}, &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s."
-    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}, &e{task06:progress}&7/&6{task06:amount} &8{task06:item}s."
-    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}, &e{task08:progress}&7/&6{task08:amount} &8{task08:item}s."
-    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}s &7{task09:past}, &e{task10:progress}&7/&6{task10:amount} &8{task10:item}s."
-    - "  &e{task11:progress}&7/&6{task11:amount} &8{task11:item}s &7{task11:past}, &e{task12:progress}&7/&6{task12:amount} &8{task12:item}s."
-    - "  &e{task13:progress}&7/&6{task13:amount} &8{task13:item}s &7{task13:past}, &e{task14:progress}&7/&6{task14:amount} &8{task14:item}s."
-    - "  &e{task15:progress}&7/&6{task15:amount} &8{task15:item}s &7{task15:past}, &e{task16:progress}&7/&6{task16:amount} &8{task16:item}s."
-    - "  &e{task17:progress}&7/&6{task17:amount} &8{task17:item}s &7{task17:past}, &e{task18:progress}&7/&6{task18:amount} &8{task18:item}s."
-    - "  &e{task19:progress}&7/&6{task19:amount} &8{task19:item}s &7{task19:past}, &e{task20:progress}&7/&6{task20:amount} &8{task20:item}s."
-    - "  &e{task21:progress}&7/&6{task21:amount} &8{task21:item}s &7{task21:past}, &e{task22:progress}&7/&6{task22:amount} &8{task22:item}s."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}"
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}"
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}"
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}"
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}"
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}"
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}"
+    - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}"
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}"
+    - "  &e{task10:progress}&7/&6{task10:amount} &8{task10:item}"
+    - "  &e{task11:progress}&7/&6{task11:amount} &8{task11:item}"
     - ""
     - "&7Rewards:"
     - "&7 - &6Rewards Key"
     - "&7 - &8dirt"
-    - "&7 - &6$ boost for 1 hour"
 rewards:
   - "cc give p SkyBlock 3 {player}"
   - "give {player} dirt 4"
-  - "jobs moneyboost all 60m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:
   category: ""
   requires:
     - "SkyBlockQuest39"
-  repeatable: true
+  repeatable: false
   cooldown:
     enabled: true
     time: 60

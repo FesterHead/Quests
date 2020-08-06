@@ -1,191 +1,95 @@
 tasks:
   task01:
-    type: "craft"
+    type: "inventory"
     amount: 32
     item: "black_wool"
-    present: "dye"
-    past: "dyed"
+    remove-items-when-complete: true
+    update-progress: true
   task02:
     type: "inventory"
     amount: 32
-    item: "black_wool"
+    item: "blue_wool"
     remove-items-when-complete: true
     update-progress: true
   task03:
-    type: "craft"
+    type: "inventory"
     amount: 32
-    item: "blue_wool"
-    present: "dye"
-    past: "dyed"
+    item: "brown_wool"
+    remove-items-when-complete: true
+    update-progress: true
   task04:
     type: "inventory"
     amount: 32
-    item: "blue_wool"
+    item: "cyan_wool"
     remove-items-when-complete: true
     update-progress: true
   task05:
-    type: "craft"
+    type: "inventory"
     amount: 32
-    item: "brown_wool"
-    present: "dye"
-    past: "dyed"
+    item: "gray_wool"
+    remove-items-when-complete: true
+    update-progress: true
   task06:
     type: "inventory"
     amount: 32
-    item: "brown_wool"
+    item: "green_wool"
     remove-items-when-complete: true
     update-progress: true
   task07:
-    type: "craft"
+    type: "inventory"
     amount: 32
-    item: "cyan_wool"
-    present: "dye"
-    past: "dyed"
+    item: "light_blue_wool"
+    remove-items-when-complete: true
+    update-progress: true
   task08:
     type: "inventory"
     amount: 32
-    item: "cyan_wool"
+    item: "light_gray_wool"
     remove-items-when-complete: true
     update-progress: true
   task09:
-    type: "craft"
+    type: "inventory"
     amount: 32
-    item: "gray_wool"
-    present: "dye"
-    past: "dyed"
+    item: "lime_wool"
+    remove-items-when-complete: true
+    update-progress: true
   task10:
     type: "inventory"
     amount: 32
-    item: "gray_wool"
+    item: "magenta_wool"
     remove-items-when-complete: true
     update-progress: true
   task11:
-    type: "craft"
+    type: "inventory"
     amount: 32
-    item: "green_wool"
-    present: "dye"
-    past: "dyed"
+    item: "orange_wool"
+    remove-items-when-complete: true
+    update-progress: true
   task12:
     type: "inventory"
     amount: 32
-    item: "green_wool"
+    item: "pink_wool"
     remove-items-when-complete: true
     update-progress: true
   task13:
-    type: "craft"
+    type: "inventory"
     amount: 32
-    item: "light_blue_wool"
-    present: "dye"
-    past: "dyed"
+    item: "purple_wool"
+    remove-items-when-complete: true
+    update-progress: true
   task14:
     type: "inventory"
     amount: 32
-    item: "light_blue_wool"
+    item: "red_wool"
     remove-items-when-complete: true
     update-progress: true
   task15:
-    type: "craft"
+    type: "inventory"
     amount: 32
-    item: "light_gray_wool"
-    present: "dye"
-    past: "dyed"
+    item: "white_wool"
+    remove-items-when-complete: true
+    update-progress: true
   task16:
-    type: "inventory"
-    amount: 32
-    item: "light_gray_wool"
-    remove-items-when-complete: true
-    update-progress: true
-  task17:
-    type: "craft"
-    amount: 32
-    item: "lime_wool"
-    present: "dye"
-    past: "dyed"
-  task18:
-    type: "inventory"
-    amount: 32
-    item: "lime_wool"
-    remove-items-when-complete: true
-    update-progress: true
-  task19:
-    type: "craft"
-    amount: 32
-    item: "magenta_wool"
-    present: "dye"
-    past: "dyed"
-  task20:
-    type: "inventory"
-    amount: 32
-    item: "magenta_wool"
-    remove-items-when-complete: true
-    update-progress: true
-  task21:
-    type: "craft"
-    amount: 32
-    item: "orange_wool"
-    present: "dye"
-    past: "dyed"
-  task22:
-    type: "inventory"
-    amount: 32
-    item: "orange_wool"
-    remove-items-when-complete: true
-    update-progress: true
-  task23:
-    type: "craft"
-    amount: 32
-    item: "pink_wool"
-    present: "dye"
-    past: "dyed"
-  task24:
-    type: "inventory"
-    amount: 32
-    item: "pink_wool"
-    remove-items-when-complete: true
-    update-progress: true
-  task25:
-    type: "craft"
-    amount: 32
-    item: "purple_wool"
-    present: "dye"
-    past: "dyed"
-  task26:
-    type: "inventory"
-    amount: 32
-    item: "purple_wool"
-    remove-items-when-complete: true
-    update-progress: true
-  task27:
-    type: "craft"
-    amount: 32
-    item: "red_wool"
-    present: "dye"
-    past: "dyed"
-  task28:
-    type: "inventory"
-    amount: 32
-    item: "red_wool"
-    remove-items-when-complete: true
-    update-progress: true
-  task29:
-    type: "craft"
-    amount: 32
-    item: "white_wool"
-    present: "dye"
-    past: "dyed"
-  task30:
-    type: "inventory"
-    amount: 32
-    item: "white_wool"
-    remove-items-when-complete: true
-    update-progress: true
-  task31:
-    type: "craft"
-    amount: 32
-    item: "yellow_wool"
-    present: "dye"
-    past: "dyed"
-  task32:
     type: "inventory"
     amount: 32
     item: "yellow_wool"
@@ -196,43 +100,43 @@ display:
   type: "yellow_wool"
   lore-normal:
     - ""
-    - "&7This quest requires:"
-    - "&7 - &8{task01:present} &7{task01:item}"
-    - "&7 - &8{task03:present} &7{task03:item}"
-    - "&7 - &8{task05:present} &7{task05:item}"
-    - "&7 - &8{task07:present} &7{task07:item}"
-    - "&7 - &8{task09:present} &7{task09:item}"
-    - "&7 - &8{task11:present} &7{task11:item}"
-    - "&7 - &8{task13:present} &7{task13:item}"
-    - "&7 - &8{task15:present} &7{task15:item}"
-    - "&7 - &8{task17:present} &7{task17:item}"
-    - "&7 - &8{task19:present} &7{task19:item}"
-    - "&7 - &8{task21:present} &7{task21:item}"
-    - "&7 - &8{task23:present} &7{task23:item}"
-    - "&7 - &8{task25:present} &7{task25:item}"
-    - "&7 - &8{task27:present} &7{task27:item}"
-    - "&7 - &8{task29:present} &7{task29:item}"
-    - "&7 - &8{task31:present} &7{task31:item}"
+    - "&7This quest requires you to trade in:"
+    - "&7 - &a{task01:item}"
+    - "&7 - &a{task02:item}"
+    - "&7 - &a{task03:item}"
+    - "&7 - &a{task04:item}"
+    - "&7 - &a{task05:item}"
+    - "&7 - &a{task06:item}"
+    - "&7 - &a{task07:item}"
+    - "&7 - &a{task08:item}"
+    - "&7 - &a{task09:item}"
+    - "&7 - &a{task10:item}"
+    - "&7 - &a{task11:item}"
+    - "&7 - &a{task12:item}"
+    - "&7 - &a{task13:item}"
+    - "&7 - &a{task14:item}"
+    - "&7 - &a{task15:item}"
+    - "&7 - &a{task16:item}"
     - ""
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
-    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}, &e{task04:progress}&7/&6{task04:amount} &8{task04:item}."
-    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}, &e{task06:progress}&7/&6{task06:amount} &8{task06:item}."
-    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}, &e{task08:progress}&7/&6{task08:amount} &8{task08:item}."
-    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}s &7{task09:past}, &e{task10:progress}&7/&6{task10:amount} &8{task10:item}."
-    - "  &e{task11:progress}&7/&6{task11:amount} &8{task11:item}s &7{task11:past}, &e{task12:progress}&7/&6{task12:amount} &8{task12:item}."
-    - "  &e{task13:progress}&7/&6{task13:amount} &8{task13:item}s &7{task13:past}, &e{task14:progress}&7/&6{task14:amount} &8{task14:item}."
-    - "  &e{task15:progress}&7/&6{task15:amount} &8{task15:item}s &7{task15:past}, &e{task16:progress}&7/&6{task16:amount} &8{task16:item}."
-    - "  &e{task17:progress}&7/&6{task17:amount} &8{task17:item}s &7{task17:past}, &e{task18:progress}&7/&6{task18:amount} &8{task18:item}."
-    - "  &e{task19:progress}&7/&6{task19:amount} &8{task19:item}s &7{task19:past}, &e{task20:progress}&7/&6{task20:amount} &8{task20:item}."
-    - "  &e{task21:progress}&7/&6{task21:amount} &8{task21:item}s &7{task21:past}, &e{task22:progress}&7/&6{task22:amount} &8{task22:item}."
-    - "  &e{task23:progress}&7/&6{task23:amount} &8{task23:item}s &7{task23:past}, &e{task24:progress}&7/&6{task24:amount} &8{task24:item}."
-    - "  &e{task25:progress}&7/&6{task25:amount} &8{task25:item}s &7{task25:past}, &e{task26:progress}&7/&6{task26:amount} &8{task26:item}."
-    - "  &e{task27:progress}&7/&6{task27:amount} &8{task27:item}s &7{task27:past}, &e{task28:progress}&7/&6{task28:amount} &8{task28:item}."
-    - "  &e{task29:progress}&7/&6{task29:amount} &8{task29:item}s &7{task29:past}, &e{task30:progress}&7/&6{task30:amount} &8{task30:item}."
-    - "  &e{task31:progress}&7/&6{task31:amount} &8{task31:item}s &7{task31:past}, &e{task32:progress}&7/&6{task32:amount} &8{task32:item}."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}"
+    - "  &e{task02:progress}&7/&6{task02:amount} &8{task02:item}"
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}"
+    - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item}"
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}"
+    - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item}"
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}"
+    - "  &e{task08:progress}&7/&6{task08:amount} &8{task08:item}"
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}"
+    - "  &e{task10:progress}&7/&6{task10:amount} &8{task10:item}"
+    - "  &e{task11:progress}&7/&6{task11:amount} &8{task11:item}"
+    - "  &e{task12:progress}&7/&6{task12:amount} &8{task12:item}"
+    - "  &e{task13:progress}&7/&6{task13:amount} &8{task13:item}"
+    - "  &e{task14:progress}&7/&6{task14:amount} &8{task14:item}"
+    - "  &e{task15:progress}&7/&6{task15:amount} &8{task15:item}"
+    - "  &e{task16:progress}&7/&6{task16:amount} &8{task16:item}"
     - ""
     - "&7Rewards:"
     - "&7 - &6Rewards Key"

@@ -1,11 +1,5 @@
 tasks:
   task01:
-    type: "craft"
-    amount: 64
-    item: "jack_o_lantern"
-    present: "carve"
-    past: "carved"
-  task02:
     type: "inventory"
     amount: 64
     item: "jack_o_lantern"
@@ -16,13 +10,13 @@ display:
   type: "jack_o_lantern"
   lore-normal:
     - ""
-    - "&7This quest requires:"
-    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7This quest requires you to trade in:"
+    - "&7 - &a{task01:item}"
     - ""
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}"
     - ""
     - "&7Rewards:"
     - "&7 - &4beetroot seeds"

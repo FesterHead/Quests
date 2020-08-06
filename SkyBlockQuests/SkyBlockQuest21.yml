@@ -10,13 +10,13 @@ display:
   type: "cactus"
   lore-normal:
     - ""
-    - "&7This quest requires:"
-    - "&7 - &7{task01:item}"
+    - "&7This quest requires you to trade in:"
+    - "&7 - &a{task01:item}"
     - ""
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}"
     - ""
     - "&7Rewards:"
     - "&7 - &asugar cane"

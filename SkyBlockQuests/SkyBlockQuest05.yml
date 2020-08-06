@@ -73,11 +73,11 @@ display:
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}s."
-    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item}s &7{task03:past}, &e{task04:progress}&7/&6{task04:amount} &8{task04:item}s."
-    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item}s &7{task05:past}, &e{task06:progress}&7/&6{task06:amount} &8{task06:item}s."
-    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item}s &7{task07:past}, &e{task08:progress}&7/&6{task08:amount} &8{task08:item}s."
-    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}s &7{task09:past}, &e{task10:progress}&7/&6{task10:amount} &8{task10:item}s."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item} &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}"
+    - "  &e{task03:progress}&7/&6{task03:amount} &8{task03:item} &7{task03:past}, &e{task04:progress}&7/&6{task04:amount} &8{task04:item}"
+    - "  &e{task05:progress}&7/&6{task05:amount} &8{task05:item} &7{task05:past}, &e{task06:progress}&7/&6{task06:amount} &8{task06:item}"
+    - "  &e{task07:progress}&7/&6{task07:amount} &8{task07:item} &7{task07:past}, &e{task08:progress}&7/&6{task08:amount} &8{task08:item}"
+    - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item} &7{task09:past}, &e{task10:progress}&7/&6{task10:amount} &8{task10:item}"
     - ""
     - "&5Note:  Tools in inventory must not be damaged to be counted!"
     - ""
@@ -86,7 +86,6 @@ display:
     - "&7 - &clava bucket"
     - "&7 - &bmagic tools"
     - "&7 - &8dirt"
-    - "&7 - &6$ boost for 15 minutes"
 rewards:
   - "give {player} wooden_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:1}]}"
   - "give {player} wooden_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:1}]}"
@@ -94,7 +93,6 @@ rewards:
   - "give {player} ice 2"
   - "give {player} lava_bucket 1"
   - "give {player} dirt 2"
-  - "jobs moneyboost all 15m 2"
   - "quests admin moddata start {player} SkyBlockQuest06"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

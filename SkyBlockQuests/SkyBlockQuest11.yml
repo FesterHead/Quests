@@ -1,13 +1,7 @@
 tasks:
   task01:
-    type: "break"
-    amount: 128
-    item: "oak_log"
-    present: "chop"
-    past: "chopped"
-  task02:
     type: "inventory"
-    amount: 128
+    amount: 64
     item: "oak_log"
     remove-items-when-complete: true
     update-progress: true
@@ -16,22 +10,22 @@ display:
   type: "oak_log"
   lore-normal:
     - ""
-    - "&7This quest requires:"
-    - "&7 - &8{task01:present} &7{task01:item}s"
+    - "&7This quest requires you to trade in:"
+    - "&7 - &a{task01:item}&7s"
+    - ""
+    - "&7This quest is &frepeatable &7with &dno &7cooldown."
     - ""
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}s &7{task01:past}, &e{task02:progress}&7/&6{task02:amount} &8{task02:item}."
+    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}"
     - ""
     - "&7Rewards:"
     - "&7 - &esand"
     - "&7 - &8dirt"
-    - "&7 - &6$ boost for 15 minutes"
 rewards:
   - "give {player} sand 4"
   - "give {player} dirt 4"
-  - "jobs moneyboost all 15m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:
@@ -41,5 +35,5 @@ options:
   repeatable: true
   cooldown:
     enabled: true
-    time: 30
+    time: 0
   sort-order: 11

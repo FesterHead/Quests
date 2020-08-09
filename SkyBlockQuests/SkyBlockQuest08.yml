@@ -34,6 +34,9 @@ rewards:
   - "cc give p SkyBlock 1 {player}"
   - "luckperms user {player} permission set island.level.2"
   - "luckperms user {player} permission set commandpanel.panel.skyblock-store"
+  - "luckperms user {player} permission set headdb.open"
+  - "luckperms user {player} permission set headdb.allow.buy.*"
+  - "luckperms user {player} permission set headdb.category.*"
   - "jobs moneyboost all 60m 2"
   - "quests admin moddata start {player} SkyBlockQuest09"
 #rewardstring:

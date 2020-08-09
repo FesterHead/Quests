@@ -1,7 +1,7 @@
 tasks:
   task01:
     type: "inventory"
-    amount: 64
+    amount: 24
     item: "dried_kelp_block"
     remove-items-when-complete: true
     update-progress: true

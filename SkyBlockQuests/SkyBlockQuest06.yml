@@ -113,7 +113,6 @@ display:
 rewards:
   - "give {player} stone_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:2},{id:efficiency,lvl:1}]}"
   - "give {player} stone_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:2},{id:efficiency,lvl:1}]}"
-  - "give {player} stone_shovel 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:2},{id:efficiency,lvl:1}]}"
   - "give {player} beef 2"
   - "give {player} chicken 2"
   - "give {player} dirt 2"

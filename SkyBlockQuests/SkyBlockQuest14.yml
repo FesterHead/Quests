@@ -1,13 +1,13 @@
 tasks:
   task01:
     type: "inventory"
-    amount: 64
+    amount: 12
     item: "bread"
     remove-items-when-complete: true
     update-progress: true
   task02:
     type: "inventory"
-    amount: 64
+    amount: 12
     item: "hay_block"
     remove-items-when-complete: true
     update-progress: true

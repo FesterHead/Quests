@@ -1,7 +1,7 @@
 tasks:
   task01:
     type: "inventory"
-    amount: 9
+    amount: 18
     item: "suspicious_stew"
     remove-items-when-complete: true
     update-progress: true

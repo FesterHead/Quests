@@ -1,7 +1,7 @@
 tasks:
   task01:
     type: "inventory"
-    amount: 18
+    amount: 9
     item: "mushroom_stew"
     remove-items-when-complete: true
     update-progress: true

@@ -19,8 +19,10 @@ display:
     - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}"
     - ""
     - "&7Rewards:"
+    - "&7 - &csweet berries"
     - "&7 - &8dirt"
 rewards:
+  - "give {player} sweet_berries 2"
   - "give {player} dirt 4"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

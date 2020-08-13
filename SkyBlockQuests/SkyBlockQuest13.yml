@@ -43,8 +43,10 @@ display:
     - "  &e{task04:progress}&7/&6{task04:amount} &8{task04:item} &7{task04:past}"
     - ""
     - "&7Rewards:"
+    - "&7 - &avine"
     - "&7 - &8dirt"
 rewards:
+  - "give {player} vine 2"
   - "give {player} dirt 4"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

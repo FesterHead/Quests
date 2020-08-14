@@ -18,7 +18,7 @@ display:
     - ""
     - "&7This quest requires:"
     - "&7 - &8{task01:present} &7{task01:item}"
-    - "&7 - &8{task03:present} &7{task03:item}"
+    - "&7 - &8{task02:present} &7{task02:item}"
     - ""
   lore-started:
     - ""

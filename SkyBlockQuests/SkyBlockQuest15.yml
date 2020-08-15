@@ -2,7 +2,7 @@ tasks:
   task01:
     type: "place"
     amount: 8
-    item: "melon_seeds"
+    item: "melon_stem"
     present: "plant"
     past: "planted"
   task02:

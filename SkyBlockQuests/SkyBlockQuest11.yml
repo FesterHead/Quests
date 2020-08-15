@@ -15,6 +15,9 @@ display:
     - ""
     - "&7This quest is &frepeatable &7with &dno &7cooldown."
     - ""
+    - "&7Rewards:"
+    - "&7 - &esand"
+    - "&7 - &8dirt"
   lore-started:
     - ""
     - "&7Status:"

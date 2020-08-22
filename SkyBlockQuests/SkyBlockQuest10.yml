@@ -1,16 +1,19 @@
 tasks:
   task01:
     type: "playtime"
-    amount: 120
+    amount: 60
 display:
-  name: "&aPlay for two hours"
+  name: "&aPlay for one hour"
   type: "clock"
   lore-normal:
     - ""
     - "&7This quest requires you to be connected"
-    - "&7to the server for &btwo &7hours."
+    - "&7to the server for &bone &7hour."
     - ""
     - "&7The timer begins when this quest is started."
+    - ""
+    - "&7Your minutes are saved if you disconnect"
+    - "&7from the server before the quest is completed."
     - ""
     - "&7Have &2fun&r, &3enjoy&7, and &dbe awesome&7!"
   lore-started:
@@ -25,7 +28,7 @@ display:
 rewards:
   - "give {player} dirt 4"
   - "give {player} wheat_seeds 2"
-  - "jobs moneyboost all 2h 2"
+  - "jobs moneyboost all 1h 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

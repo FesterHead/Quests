@@ -167,9 +167,10 @@ public abstract class TaskType implements Listener {
             questLogger.debug("                     §aMatch!");
             questLogger.debug("          Increment: §2" + increment);
 
-            // if reverse key is not present or false, and increment is < 0, then skip task progress
-            if (Objects.isNull(task.getConfigValue(REVERSE_KEY))
-                || ((boolean) (task.getConfigValue(REVERSE_KEY)) && increment < 0)) {
+            // if reverse key is not present or both true and increment is < 0, then skip task
+            // progress
+            if ((Objects.isNull(task.getConfigValue(REVERSE_KEY))
+                || (boolean) (task.getConfigValue(REVERSE_KEY))) && increment < 0) {
               questLogger.debug("                     §aReverse progression skipped!");
             } else {
               taskProgress.setProgress(taskProgressCounter + increment);

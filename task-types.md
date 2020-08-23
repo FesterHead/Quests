@@ -7,7 +7,9 @@ Break - Mining, excavation, digging, ...
 task:
   type: "break"
   amount: <integer>              # The number of blocks to break.
+  continue-evaluating: <boolean> # If supplied, will continue evaluating other break tasks.
   item: "<Material>"             # If supplied, the specific block to break.
+  reverse-progression: <boolean> # If supplied, the same type of block placed or broken will reverse progression.
   present: "<string>"            # Optional present-tense action verb.
   past: "<string>"               # Optional past-tense action verb.
 
@@ -59,7 +61,9 @@ Drop - Farming, harvesting, collecting, ...
 task:
   type: "drop"
   amount: <integer>              # The number of block drops to collect.
+  continue-evaluating: <boolean> # If supplied, will continue evaluating other drop tasks.
   item: "<Material>"             # If supplied, the specific block drop to collect.
+  reverse-progression: <boolean> # If supplied, the same type of block placed or broken will reverse progression.
   present: "<string>"            # Optional present-tense action verb.
   past: "<string>"               # Optional past-tense action verb.
 
@@ -120,7 +124,9 @@ Place - Building, placing, ...
 task:
   type: "place"
   amount: <integer>              # The number of blocks place.
+  continue-evaluating: <boolean> # If supplied, will continue evaluating other place tasks.
   item: "<Material>"             # If supplied, the specific block to place.
+  reverse-progression: <boolean> # If supplied, the same type of block placed or broken will reverse progression.
   present: "<string>"            # Optional present-tense action verb.
   past: "<string>"               # Optional past-tense action verb.
 

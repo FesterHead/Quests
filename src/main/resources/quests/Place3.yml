@@ -2,24 +2,24 @@ tasks:
   task1:
     type: "place"
     amount: 2
-    item: "sand"
+    reverse-progression: false
     continue-evaluating: true
     present: "place"
     past: "placed"
 display:
-  name: "Place Specific Blocks"
-  type: "sand"
+  name: "Place Any Blocks"
+  type: "dirt"
   lore-normal:
     - ""
-    - "reverse=true (default)"
+    - "reverse=false (override)"
     - "continue=true (override)"
     - ""
     - "&7This quest requires you to:"
-    - "&7 - {task1:present} {task1:item}"
+    - "&7 - {task1:present} blocks"
   lore-started:
     - ""
     - "&7Status:"
-    - "&7 - {task1:progress}/{task1:amount} {task1:item} {task1:past}."
+    - "&7 - {task1:progress}/{task1:amount} blocks {task1:past}."
 rewards:
   - "eco give {player} 1"
   - "give {player} dirt 1"
@@ -31,4 +31,4 @@ options:
   cooldown:
     enabled: false
     time: 1440
-  sort-order: 2
+  sort-order: 3

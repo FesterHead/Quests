@@ -76,12 +76,12 @@ gui:
   quest-cancel-yes:
     name: "&a&lConfirm Cancellation"
     lore:
-      - "&7Cancel &a{quest} &7and lose all progress?"
+      - "&7Cancel quest and lose all progress?"
     type: "GREEN_STAINED_GLASS_PANE"
   quest-cancel-no:
     name: "&c&lKeep Questing"
     lore:
-      - "&7Keep &a{quest} &7active."
+      - "&7Keep quest active."
       - "&7Return to the quest menu."
     type: "RED_STAINED_GLASS_PANE"
   quest-cancel-background:

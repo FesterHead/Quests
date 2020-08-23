@@ -29,7 +29,10 @@ public abstract class TaskType implements Listener {
   public static final String AMOUNT_KEY = "amount";
   public static final String PRESENT_KEY = "present";
   public static final String PAST_KEY = "past";
-  public static final String REVERSE_KEY = "reverse-if-broken";
+  public static final String REVERSE_KEY = "reverse-progression";
+  public static final String CONTINUE_EVALUATING_KEY = "continue-evaluating";
+
+  public final boolean foo = true;
 
   private final List<Quest> quests = new ArrayList<>();
   private final String type;
@@ -126,7 +129,7 @@ public abstract class TaskType implements Listener {
           int taskProgressCounter =
               (Objects.isNull(taskProgress.getProgress())) ? 0 : (int) taskProgress.getProgress();
           if (taskProgress.isCompleted()) {
-            questLogger.debug("                     §aDONE!");
+            questLogger.debug("                §aTask complete!");
             continue;
           }
 
@@ -163,15 +166,27 @@ public abstract class TaskType implements Listener {
           if ((Objects.isNull(expected)) || (Objects.equals(incoming, expected))) {
             questLogger.debug("                     §aMatch!");
             questLogger.debug("          Increment: §2" + increment);
-            taskProgress.setProgress(taskProgressCounter + increment);
-            questLogger
-                .debug("       New progressFile: §e" + taskProgress.getProgress().toString());
-            if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
-              taskProgress.setCompleted(true);
-              questLogger.debug("                     §6Completed!");
+
+            // if reverse key is false and increment is < 0 then skip task progress
+            if (Objects.nonNull(task.getConfigValue(REVERSE_KEY))
+                && !(boolean) (task.getConfigValue(REVERSE_KEY)) && increment < 0) {
+              questLogger.debug("                     §aReverse progression skipped!");
+            } else {
+              taskProgress.setProgress(taskProgressCounter + increment);
+              questLogger.debug("       New progress: §e" + taskProgress.getProgress().toString());
+              if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
+                taskProgress.setCompleted(true);
+                questLogger.debug("                     §6Completed!");
+              }
             }
 
-            return;
+            if (Objects.nonNull(task.getConfigValue(CONTINUE_EVALUATING_KEY))
+                && (boolean) (task.getConfigValue(CONTINUE_EVALUATING_KEY))) {
+              questLogger.debug("                     §9Continue task evaluation!");
+              continue;
+            } else {
+              return;
+            }
           }
         }
       }

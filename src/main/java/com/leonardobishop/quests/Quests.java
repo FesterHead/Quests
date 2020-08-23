@@ -274,8 +274,9 @@ public class Quests extends JavaPlugin {
       questsDirectory.mkdir();
 
       ArrayList<String> examples = new ArrayList<>();
-      examples.add("BlockPlace1.yml");
-      examples.add("BlockPlace2.yml");
+      examples.add("Place1.yml");
+      examples.add("Place2.yml");
+      examples.add("Place3.yml");
       examples.add("Breed1.yml");
       examples.add("Breed2.yml");
 

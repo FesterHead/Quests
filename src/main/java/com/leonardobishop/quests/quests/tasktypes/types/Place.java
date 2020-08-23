@@ -18,8 +18,12 @@ public final class Place extends TaskType {
   public Place() {
     super("place", "LMBishop, FesterHead", "Place blocks.");
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The number of blocks place."));
+    this.creatorConfigValues.add(new ConfigValue(CONTINUE_EVALUATING_KEY, false,
+        "If supplied, will continue evaluating other place tasks."));
     this.creatorConfigValues
         .add(new ConfigValue(ITEM_KEY, false, "If supplied, the specific block to place."));
+    this.creatorConfigValues.add(new ConfigValue(REVERSE_KEY, false,
+        "If supplied, the same type of block placed or broken will reverse progression."));
     this.creatorConfigValues
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues

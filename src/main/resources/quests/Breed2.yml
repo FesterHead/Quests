@@ -27,4 +27,4 @@ options:
   cooldown:
     enabled: false
     time: 1440
-  sort-order: 1
+  sort-order: 5

@@ -19,8 +19,12 @@ public final class Break extends TaskType {
     super("break", "LMBishop, FesterHead", "Break blocks.");
     this.creatorConfigValues
         .add(new ConfigValue(AMOUNT_KEY, true, "The number of blocks to break."));
+    this.creatorConfigValues.add(new ConfigValue(CONTINUE_EVALUATING_KEY, false,
+        "If supplied, will continue evaluating other break tasks."));
     this.creatorConfigValues
         .add(new ConfigValue(ITEM_KEY, false, "If supplied, the specific block to break."));
+    this.creatorConfigValues.add(new ConfigValue(REVERSE_KEY, false,
+        "If supplied, the same type of block placed or broken will reverse progression."));
     this.creatorConfigValues
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues

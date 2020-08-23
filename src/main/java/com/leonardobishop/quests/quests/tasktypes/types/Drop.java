@@ -21,8 +21,12 @@ public final class Drop extends TaskType {
     super("drop", "FesterHead", "Collect block drops.");
     this.creatorConfigValues
         .add(new ConfigValue(AMOUNT_KEY, true, "The number of block drops to collect."));
+    this.creatorConfigValues.add(new ConfigValue(CONTINUE_EVALUATING_KEY, false,
+        "If supplied, will continue evaluating other drop tasks."));
     this.creatorConfigValues
         .add(new ConfigValue(ITEM_KEY, false, "If supplied, the specific block drop to collect."));
+    this.creatorConfigValues.add(new ConfigValue(REVERSE_KEY, false,
+        "If supplied, the same type of block placed or broken will reverse progression."));
     this.creatorConfigValues
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues

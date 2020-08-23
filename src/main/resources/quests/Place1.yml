@@ -9,6 +9,9 @@ display:
   type: "stone"
   lore-normal:
     - ""
+    - "reverse=true (default)"
+    - "continue=false (default)"
+    - ""
     - "&7This quest requires you to:"
     - "&7 - {task1:present} blocks"
   lore-started:

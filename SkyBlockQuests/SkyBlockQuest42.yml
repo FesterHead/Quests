@@ -147,7 +147,7 @@ rewards:
   - "cc give p SkyBlock 4 {player}"
   - "give {player} obsidian 4"
   - "give {player} dirt 4"
-  - "jobs moneyboost all 120m 2"
+  - "jobs moneyboost SkyBlock 120m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

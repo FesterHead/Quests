@@ -27,7 +27,7 @@ rewards:
   - "give {player} bedrock 4"
   - "cc give p SkyBlock 7 {player}"
   - "luckperms user {player} permission set island.level.400"
-  - "jobs moneyboost all 120m 4"
+  - "jobs moneyboost SkyBlock 120m 4"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

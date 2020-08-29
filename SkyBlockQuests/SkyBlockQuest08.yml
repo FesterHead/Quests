@@ -37,7 +37,7 @@ rewards:
   - "luckperms user {player} permission set headdb.open"
   - "luckperms user {player} permission set headdb.allow.buy.*"
   - "luckperms user {player} permission set headdb.category.*"
-  - "jobs moneyboost all 60m 2"
+  - "jobs moneyboost SkyBlock 60m 2"
   - "quests admin moddata start {player} SkyBlockQuest09"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

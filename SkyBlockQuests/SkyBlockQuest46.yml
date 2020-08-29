@@ -26,7 +26,7 @@ rewards:
   - "give {player} enchanted_golden_apple 1"
   - "luckperms user {player} permission set island.level.5"
   - "luckperms user {player} permission set commandpanel.panel.skyblock-passive-spawn-egg-store"
-  - "jobs moneyboost all 120m 2"
+  - "jobs moneyboost SkyBlock 120m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

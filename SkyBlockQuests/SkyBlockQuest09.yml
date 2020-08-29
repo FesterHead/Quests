@@ -81,8 +81,9 @@ rewards:
   - "give {player} iron_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:3},{id:efficiency,lvl:2}]}"
   - "give {player} iron_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:3},{id:efficiency,lvl:2}]}"
   - "give {player} iron_shovel 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:3},{id:efficiency,lvl:2}]}"
-#rewardstring:
-#  - "&7Check your inventory for the rewards!"
+  - "luckperms user {player} permission set tg.user"
+rewardstring:
+  - "&7With &3iron &7and &bdiamond &2axes &7you can &9sneak &7to &achop &7down the &6entire tree&7."
 options:
   category: ""
   requires:

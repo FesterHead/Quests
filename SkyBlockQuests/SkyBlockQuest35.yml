@@ -51,7 +51,6 @@ display:
 rewards:
   - "cc give p SkyBlock 1 {player}"
   - "give {player} dirt 4"
-  - "jobs moneyboost SkyBlock 60m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

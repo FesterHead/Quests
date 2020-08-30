@@ -28,7 +28,6 @@ display:
 rewards:
   - "give {player} dirt 4"
   - "give {player} wheat_seeds 2"
-  - "jobs moneyboost SkyBlock 1h 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

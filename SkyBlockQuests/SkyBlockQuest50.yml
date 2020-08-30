@@ -29,7 +29,6 @@ rewards:
   - "cc give p SkyBlock 4 {player}"
   - "luckperms user {player} permission set island.level.100"
   - "luckperms user {player} permission set commandpanel.panel.skyblock-spawners-store"
-  - "jobs moneyboost SkyBlock 120m 2"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

@@ -7,7 +7,7 @@ tasks:
     update-progress: true
 display:
   name: "&aCobblestone to dirt and sand"
-  type: "stone"
+  type: "cobblestone"
   lore-normal:
     - ""
     - "&7This quest requires you to trade in:"

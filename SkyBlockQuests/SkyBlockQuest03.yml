@@ -61,9 +61,11 @@ display:
     - "  &e{task06:progress}&7/&6{task06:amount} &8{task06:item} &7{task06:past}"
     - ""
     - "&7Rewards:"
+    - "&7 - &bmagic axe"
     - "&7 - &8dirt"
 rewards:
   - "give {player} dirt 2"
+  - "give {player} wooden_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:efficiency,lvl:5}]}"
   - "quests admin moddata start {player} SkyBlockQuest04"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

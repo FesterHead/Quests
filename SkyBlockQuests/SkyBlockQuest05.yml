@@ -85,11 +85,10 @@ display:
     - "&7 - &9ice blocks"
     - "&7 - &clava bucket"
     - "&7 - &3cobblestone"
-    - "&7 - &bmagic tools"
+    - "&7 - &bmagic pickaxe"
     - "&7 - &8dirt"
 rewards:
-  - "give {player} wooden_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:1}]}"
-  - "give {player} wooden_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:1}]}"
+  - "give {player} wooden_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:efficiency,lvl:5}]}"
   - "give {player} ice 2"
   - "give {player} lava_bucket 1"
   - "give {player} cobblestone 6"

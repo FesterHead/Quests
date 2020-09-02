@@ -82,13 +82,11 @@ display:
     - "  &e{task09:progress}&7/&6{task09:amount} &8{task09:item}"
     - ""
     - "&7Rewards:"
-    - "&7 - &3cooked beef"
-    - "&7 - &dcooked chicken"
+    - "&7 - &bmagic fishing rod"
     - "&7 - &8dirt"
 rewards:
   - "give {player} dirt 2"
-  - "give {player} cooked_beef 2"
-  - "give {player} cooked_chicken 2"
+  - "give {player} fishing_rod 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:lure,lvl:2},{id:luck_of_the_sea,lvl:1}]}"
   - "quests admin moddata start {player} SkyBlockQuest08"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

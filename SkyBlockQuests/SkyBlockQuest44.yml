@@ -1,97 +1,97 @@
 tasks:
   task01:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "black_wool"
     remove-items-when-complete: true
     update-progress: true
   task02:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "blue_wool"
     remove-items-when-complete: true
     update-progress: true
   task03:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "brown_wool"
     remove-items-when-complete: true
     update-progress: true
   task04:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "cyan_wool"
     remove-items-when-complete: true
     update-progress: true
   task05:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "gray_wool"
     remove-items-when-complete: true
     update-progress: true
   task06:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "green_wool"
     remove-items-when-complete: true
     update-progress: true
   task07:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "light_blue_wool"
     remove-items-when-complete: true
     update-progress: true
   task08:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "light_gray_wool"
     remove-items-when-complete: true
     update-progress: true
   task09:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "lime_wool"
     remove-items-when-complete: true
     update-progress: true
   task10:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "magenta_wool"
     remove-items-when-complete: true
     update-progress: true
   task11:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "orange_wool"
     remove-items-when-complete: true
     update-progress: true
   task12:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "pink_wool"
     remove-items-when-complete: true
     update-progress: true
   task13:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "purple_wool"
     remove-items-when-complete: true
     update-progress: true
   task14:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "red_wool"
     remove-items-when-complete: true
     update-progress: true
   task15:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "white_wool"
     remove-items-when-complete: true
     update-progress: true
   task16:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "yellow_wool"
     remove-items-when-complete: true
     update-progress: true

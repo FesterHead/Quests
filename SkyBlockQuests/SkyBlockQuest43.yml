@@ -1,97 +1,97 @@
 tasks:
   task01:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "black_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task02:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "blue_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task03:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "brown_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task04:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "cyan_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task05:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "gray_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task06:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "green_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task07:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "light_blue_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task08:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "light_gray_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task09:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "lime_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task10:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "magenta_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task11:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "orange_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task12:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "pink_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task13:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "purple_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task14:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "red_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task15:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "white_stained_glass"
     remove-items-when-complete: true
     update-progress: true
   task16:
     type: "inventory"
-    amount: 32
+    amount: 64
     item: "yellow_stained_glass"
     remove-items-when-complete: true
     update-progress: true

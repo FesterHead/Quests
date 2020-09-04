@@ -119,8 +119,8 @@ display:
     - "&7 - &bmagic stone tools"
     - "&7 - &8dirt"
 rewards:
-  - "give {player} stone_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:3},{id:efficiency,lvl:3}]}"
-  - "give {player} stone_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:3},{id:efficiency,lvl:3}]}"
+  - "give {player} stone_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:efficiency,lvl:3}]}"
+  - "give {player} stone_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:efficiency,lvl:3}]}"
   - "give {player} beef 2"
   - "give {player} chicken 2"
   - "give {player} dirt 2"

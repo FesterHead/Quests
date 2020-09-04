@@ -88,7 +88,7 @@ display:
     - "&7 - &bmagic pickaxe"
     - "&7 - &8dirt"
 rewards:
-  - "give {player} wooden_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:efficiency,lvl:5}]}"
+  - "give {player} wooden_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:efficiency,lvl:3}]}"
   - "give {player} ice 2"
   - "give {player} lava_bucket 1"
   - "give {player} cobblestone 6"

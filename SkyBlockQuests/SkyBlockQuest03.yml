@@ -65,7 +65,7 @@ display:
     - "&7 - &8dirt"
 rewards:
   - "give {player} dirt 2"
-  - "give {player} wooden_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:efficiency,lvl:5}]}"
+  - "give {player} wooden_axe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:efficiency,lvl:3}]}"
   - "quests admin moddata start {player} SkyBlockQuest04"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

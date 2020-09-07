@@ -30,9 +30,9 @@ display:
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}"
-    - "  &e{task02:progress}&7/&6{task02:amount} items &7{task02:past}"
-    - "  &e{task03:progress}&7/&6{task03:amount} items &7{task03:past}"
+    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:item}"
+    - "  &e{task02:progress}&7/&6{task02:amount} items &8{task02:past}"
+    - "  &e{task03:progress}&7/&6{task03:amount} items &8{task03:past}"
     - ""
     - "&7Rewards:"
     - "&7 - &6Rewards Key"

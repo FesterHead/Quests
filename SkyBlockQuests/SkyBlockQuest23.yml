@@ -16,7 +16,7 @@ display:
   lore-started:
     - ""
     - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &8{task01:item}"
+    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:item}"
     - ""
     - "&7Rewards:"
     - "&7 - &akelp"

@@ -34,6 +34,8 @@ public final class Brew extends TaskType {
         .add(new ConfigValue(ITEM_KEY, false, "If present, the specific potion type to brew."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, true, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, true, "Past-tense action verb."));
+    this.creatorConfigValues
+        .add(new ConfigValue(WORLD_KEY, false, "Optional world where this task is valid."));
   }
 
   @Override

@@ -23,6 +23,8 @@ public final class Death extends TaskType {
         .add(new ConfigValue(ITEM_KEY, false, "If supplied, the specific entity to kill."));
     this.creatorConfigValues.add(new ConfigValue(PRESENT_KEY, false, "Present-tense action verb."));
     this.creatorConfigValues.add(new ConfigValue(PAST_KEY, false, "Past-tense action verb."));
+    this.creatorConfigValues
+        .add(new ConfigValue(WORLD_KEY, false, "Optional world where this task is valid."));
   }
 
   @Override

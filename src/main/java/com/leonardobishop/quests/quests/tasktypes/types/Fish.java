@@ -26,6 +26,8 @@ public final class Fish extends TaskType {
         .add(new ConfigValue(PRESENT_KEY, false, "Optional present-tense action verb."));
     this.creatorConfigValues
         .add(new ConfigValue(PAST_KEY, false, "Optional past-tense action verb."));
+    this.creatorConfigValues
+        .add(new ConfigValue(WORLD_KEY, false, "Optional world where this task is valid."));
   }
 
   @Override

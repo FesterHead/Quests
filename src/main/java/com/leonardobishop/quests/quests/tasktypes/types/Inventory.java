@@ -2,7 +2,7 @@ package com.leonardobishop.quests.quests.tasktypes.types;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 import com.leonardobishop.quests.Quests;
 import com.leonardobishop.quests.api.QuestsAPI;
 import com.leonardobishop.quests.player.QPlayer;
@@ -16,8 +16,6 @@ import com.leonardobishop.quests.quests.tasktypes.TaskType;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.inventory.meta.Damageable;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -83,27 +81,19 @@ public final class Inventory extends TaskType {
           }
 
           Material material;
-          int amount = (int) task.getConfigValue("amount");
-          Object configBlock = task.getConfigValue("item");
-          Object configData = task.getConfigValue("data");
+          int amount = (int) task.getConfigValue(AMOUNT_KEY);
+          Object configBlock = task.getConfigValue(ITEM_KEY);
           Object remove = task.getConfigValue("remove-items-when-complete");
 
           material = Material.getMaterial(String.valueOf(configBlock).toUpperCase());
 
-          if (material == null) {
+          if (Objects.isNull(material)) {
             continue;
           }
-          ItemStack is;
-          if (configData != null) {
-            is = new ItemStack(material, 1);
-            Damageable im = (Damageable) is.getItemMeta();
-            im.setDamage(((Integer) configData).shortValue());
-            is.setItemMeta((ItemMeta) im);
-          } else {
-            is = new ItemStack(material, 1);
-          }
 
-          if (task.getConfigValue("update-progress") != null
+          ItemStack is = new ItemStack(material, 1);
+
+          if (Objects.nonNull(task.getConfigValue("update-progress"))
               && (Boolean) task.getConfigValue("update-progress")) {
             taskProgress.setProgress(getAmount(player, is, amount));
           }
@@ -112,7 +102,7 @@ public final class Inventory extends TaskType {
             is.setAmount(amount);
             taskProgress.setCompleted(true);
 
-            if (remove != null && ((Boolean) remove)) {
+            if (Objects.nonNull(remove) && ((Boolean) remove)) {
               player.getInventory().removeItem(is);
             }
           }

@@ -26,8 +26,10 @@ public final class Playtime extends TaskType {
   private QuestsLogger questLogger = QuestsAPI.getQuestManager().getPlugin().getQuestsLogger();
 
   public Playtime() {
-    super("playtime", "Reinatix", "Play a certain amount of time.");
+    super("playtime", "Reinatix, FesterHead", "Play a certain amount of time.");
     this.creatorConfigValues.add(new ConfigValue(AMOUNT_KEY, true, "The time to play in minutes."));
+    this.creatorConfigValues
+        .add(new ConfigValue(WORLD_KEY, false, "Optional world where this task is valid."));
   }
 
   @Override

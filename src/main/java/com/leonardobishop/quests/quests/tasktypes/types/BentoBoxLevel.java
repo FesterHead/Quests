@@ -28,9 +28,11 @@ public final class BentoBoxLevel extends TaskType {
   private Field levelField = null;
 
   public BentoBoxLevel() {
-    super("bentobox_level", "Rodney_Mc_Kay",
+    super("bentobox_level", "Rodney_Mc_Kay, FesterHead",
         "Reach a certain island level.  Requires BentoBox Level addon.");
     this.creatorConfigValues.add(new ConfigValue("level", true, "Minimum island level needed."));
+    this.creatorConfigValues
+        .add(new ConfigValue(WORLD_KEY, false, "Optional world where this task is valid."));
   }
 
   @Override

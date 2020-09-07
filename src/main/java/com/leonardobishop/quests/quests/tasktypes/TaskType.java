@@ -13,7 +13,9 @@ import com.leonardobishop.quests.player.questprogressfile.QuestProgressFile;
 import com.leonardobishop.quests.player.questprogressfile.TaskProgress;
 import com.leonardobishop.quests.quests.Quest;
 import com.leonardobishop.quests.quests.Task;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Listener;
 import org.bukkit.potion.PotionType;
@@ -31,6 +33,7 @@ public abstract class TaskType implements Listener {
   public static final String PAST_KEY = "past";
   public static final String REVERSE_KEY = "reverse-progression";
   public static final String CONTINUE_EVALUATING_KEY = "continue-evaluating";
+  public static final String WORLD_KEY = "world";
 
   public final boolean foo = true;
 
@@ -123,6 +126,23 @@ public abstract class TaskType implements Listener {
         QuestProgress questProgress = progressFile.getQuestProgress(quest);
 
         for (Task task : quest.getTasksOfType(this.getType())) {
+
+          // Check if a world is configured for this task
+          if (Objects.nonNull(task.getConfigValue(WORLD_KEY))) {
+            World world = Bukkit.getWorld((String) task.getConfigValue(WORLD_KEY));
+            if (Objects.isNull(world)) {
+              questLogger.debug("                     §aWorld is NULL!");
+              return;
+            }
+            questLogger.debug("     Expected world: §8" + world);
+            questLogger.debug("        Exact world: §8" + Bukkit.getPlayer(uuid).getWorld());
+            if (Objects.equals(Bukkit.getPlayer(uuid).getWorld(), world)) {
+              questLogger.debug("                     §aMatch!");
+            } else {
+              questLogger.debug("                     §aNO match!");
+              continue;
+            }
+          }
 
           // If the task is done, skip it
           TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());

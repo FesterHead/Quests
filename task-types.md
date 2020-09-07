@@ -155,11 +155,11 @@ task:
   type: "location"
   x: <integer>                   # Required: The x coordinate.
   y: <integer>                   # Required: The y coordinate.
-  z: <integer>                   # Required: Thez coordinate.
+  z: <integer>                   # Required: The z coordinate.
+  world: "<string>"              # Required: World where this task is valid
   padding: <integer>             # Optional: Padding for when close is good enough.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
-  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Milk - Milk cows, ...

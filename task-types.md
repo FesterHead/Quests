@@ -11,6 +11,7 @@ task:
   reverse-progression: <boolean> # Optional: The same type of block placed will reverse progression; default is true
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 ```
@@ -22,6 +23,7 @@ task:
   reverse-progression: <boolean> # Optional: The same type of block placed will reverse progression; default is true
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 
 This is a special break task where the event priority is elevated to HIGH.
 Useful for when another plugin cancels the BlockBreakEvent, such as the BentoBox AOneBlock addon.
@@ -35,6 +37,7 @@ task:
   item: "<Material>"             # Optional: The specific animal to breed; default is all animals
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Brew - Brew potions, ...
@@ -45,6 +48,7 @@ task:
   item: "<Material>"             # Optional: The specific potion to brew.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Craft - Crafting, making, constructing, ...
@@ -55,6 +59,17 @@ task:
   item: "<Material>"             # Optional: The specific item to craft.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
+```
+
+# Damage - Beat up mobs
+```
+task:
+  type: "damage"
+  amount: <integer>              # Required: The amount of damage.
+  present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
+  past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Death - Killing animals, mobs, entities, ...
@@ -65,6 +80,7 @@ task:
   item: "<Material>"             # Optional: The specific entity to kill.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Drop - Farming, harvesting, collecting, ...
@@ -77,6 +93,17 @@ task:
   reverse-progression: <boolean> # Optional: The same type of block placed will reverse progression; default is true
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
+```
+
+# Exp - Earn experience
+```
+task:
+  type: "exp"
+  amount: <integer>              # Required: The amount of experience.
+  present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
+  past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Enchant - Enchanting items, ...
@@ -87,6 +114,7 @@ task:
   item: "<Material>"             # Optional: The specific item to enchant.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Fish - Fishing, catching, ...
@@ -97,6 +125,7 @@ task:
   item: "<Material>"             # Optional: The specific item to catch.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Furnace - Cooking, smelting, ...
@@ -107,6 +136,7 @@ task:
   item: "<Material>"             # Optional: The specific item to extract from a furnace.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Inventory
@@ -119,6 +149,19 @@ task:
   update-progress: <boolean>               # Required: Update progress.  If this causes lag then disable it.
 ```
 
+# Location - Be somewhere
+```
+task:
+  type: "location"
+  x: <integer>                   # Required: The x coordinate.
+  y: <integer>                   # Required: The y coordinate.
+  z: <integer>                   # Required: Thez coordinate.
+  padding: <integer>             # Optional: Padding for when close is good enough.
+  present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
+  past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
+```
+
 # Milk - Milk cows, ...
 ```
 task:
@@ -126,6 +169,17 @@ task:
   amount: <integer>              # Required: The number of cows to milk.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
+```
+
+# Move - Walk, run, fly a certain distance
+```
+task:
+  type: "move"
+  amount: <integer>              # Required: The number of blocks (distance) to to move.
+  present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
+  past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Place - Building, placing, ...
@@ -138,6 +192,7 @@ task:
   reverse-progression: <boolean> # Optional: The same type of block placed will reverse progression; default is true
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 ```
@@ -149,6 +204,7 @@ task:
   reverse-progression: <boolean> # Optional: The same type of block placed will reverse progression; default is true
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 
 This is a special place task where the event priority is elevated to HIGH.
 Useful for when another plugin cancels the BlockBreakEvent, such as the BentoBox AOneBlock addon.
@@ -173,6 +229,7 @@ task:
   amount: <integer>              # Required: The number of sheep to shear.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # Tame - Tame animals, ...
@@ -183,6 +240,7 @@ task:
   item: "<Material>"             # Optional: The specific animal to tame.
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
+  world: "<string>"              # Optional: World where this task is valid; default is any world
 ```
 
 # BentoBox - Requires BentoBox Level addon

@@ -38,7 +38,7 @@ public final class Location extends TaskType {
     this.creatorConfigValues
         .add(new ConfigValue(PAST_KEY, false, "Optional past-tense action verb."));
     this.creatorConfigValues
-        .add(new ConfigValue(WORLD_KEY, false, "Optional world where this task is valid."));
+        .add(new ConfigValue(WORLD_KEY, true, "World where this task is valid."));
   }
 
   @Override
@@ -71,7 +71,8 @@ public final class Location extends TaskType {
           if (Objects.nonNull(task.getConfigValue(WORLD_KEY))) {
             World world = Bukkit.getWorld((String) task.getConfigValue(WORLD_KEY));
             if (Objects.isNull(world)) {
-              questLogger.debug("                     §aWorld is NULL!");
+              questLogger.debug("                     §dNot in world "
+                  + (String) task.getConfigValue(WORLD_KEY) + "!");
               return;
             }
             questLogger.debug("     Expected world: §8" + world);
@@ -107,8 +108,9 @@ public final class Location extends TaskType {
           questLogger.debug("");
           questLogger.debug("      Checking task: §8" + task.getId());
           questLogger.debug("               Type: §8" + task.getType());
-          questLogger.debug("           Progress: §dX=" + player.getLocation().getBlockX() + "Y="
-              + player.getLocation().getBlockY() + "Z=" + player.getLocation().getBlockZ());
+          questLogger.debug("             Target: §dX=" + x + " Y=" + y + " Z=" + z);
+          questLogger.debug("           Progress: §dX=" + player.getLocation().getBlockX() + " Y="
+              + player.getLocation().getBlockY() + " Z=" + player.getLocation().getBlockZ());
           questLogger.debug("            Padding: §5" + padding);
 
           if (between(player.getLocation().getBlockX(), location.getBlockX() - padding,

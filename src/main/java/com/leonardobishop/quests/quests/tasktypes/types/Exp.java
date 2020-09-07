@@ -61,7 +61,8 @@ public final class Exp extends TaskType {
           if (Objects.nonNull(task.getConfigValue(WORLD_KEY))) {
             World world = Bukkit.getWorld((String) task.getConfigValue(WORLD_KEY));
             if (Objects.isNull(world)) {
-              questLogger.debug("                     §aWorld is NULL!");
+              questLogger.debug("                     §dNot in world "
+                  + (String) task.getConfigValue(WORLD_KEY) + "!");
               return;
             }
             questLogger.debug("     Expected world: §8" + world);

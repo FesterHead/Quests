@@ -1,20 +1,21 @@
 tasks:
-  task1:
-    type: "breed"
-    amount: 2
-    present: "breed"
-    past: "bred"
+  task01:
+    type: "inventory"
+    amount: 12
+    item: "oak_stairs"
+    remove-items-when-complete: true
+    update-progress: true
 display:
-  name: "Breed Any Animal"
-  type: "wheat"
+  name: "Inventory"
+  type: "oak_stairs"
   lore-normal:
     - ""
-    - "&7This quest requires you to:"
-    - "&7 - {task1:present} {task1:amount} animals"
+    - "&7This quest requires:"
+    - "&a⇨ &b{task01:item}"
   lore-started:
     - ""
     - "&7Status:"
-    - "&7 - {task1:progress}/{task1:amount} animals {task1:past}."
+    - "&a⇨ &6{task01:togo} &b{task01:item} inventoried"
 rewards:
   - "eco give {player} 1"
   - "give {player} dirt 1"

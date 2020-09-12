@@ -38,6 +38,7 @@ public final class Furnace extends TaskType {
     if (Objects.isNull(event.getPlayer()) || !(event.getPlayer() instanceof Player)) {
       return;
     }
-    processObject(event.getItemType(), event.getPlayer().getUniqueId(), event.getItemAmount());
+    processObject(event, event.getItemType(), event.getPlayer().getUniqueId(),
+        event.getItemAmount());
   }
 }

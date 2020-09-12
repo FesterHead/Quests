@@ -38,6 +38,6 @@ public final class Enchant extends TaskType {
     if (Objects.isNull(event.getEnchanter()) || !(event.getEnchanter() instanceof Player)) {
       return;
     }
-    processObject(event.getItem().getType(), event.getEnchanter().getUniqueId(), 1);
+    processObject(event, event.getItem().getType(), event.getEnchanter().getUniqueId(), 1);
   }
 }

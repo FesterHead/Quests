@@ -38,6 +38,6 @@ public final class Tame extends TaskType {
     if (Objects.isNull(event.getOwner()) || !(event.getOwner() instanceof Player)) {
       return;
     }
-    processObject(event.getEntity().getType(), event.getOwner().getUniqueId(), 1);
+    processObject(event, event.getEntity().getType(), event.getOwner().getUniqueId(), 1);
   }
 }

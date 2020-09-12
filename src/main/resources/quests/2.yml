@@ -1,25 +1,23 @@
 tasks:
-  task1:
+  task01:
     type: "place"
-    amount: 2
-    item: "sand"
-    continue-evaluating: true
+    amount: 10
+    item: "dirt"
     present: "place"
     past: "placed"
+    world: "world"
 display:
-  name: "Place Specific Blocks"
-  type: "sand"
+  name: "Place"
+  type: "dirt"
   lore-normal:
     - ""
-    - "reverse=true (default)"
-    - "continue=true (override)"
-    - ""
-    - "&7This quest requires you to:"
-    - "&7 - {task1:present} {task1:item}"
+    - "&7This quest requires:"
+    - "&a⇨ &7{task01:present} &b{task01:item}"
   lore-started:
     - ""
     - "&7Status:"
-    - "&7 - {task1:progress}/{task1:amount} {task1:item} {task1:past}."
+    - "&a⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    - "&a⇨ &e{task01:progress}&7/&6{task01:amount} &b{task01:item} &7{task01:past}"
 rewards:
   - "eco give {player} 1"
   - "give {player} dirt 1"

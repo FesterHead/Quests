@@ -31,6 +31,10 @@ public final class Break extends TaskType {
         .add(new ConfigValue(PAST_KEY, false, "Optional past-tense action verb."));
     this.creatorConfigValues
         .add(new ConfigValue(WORLD_KEY, false, "Optional world where this task is valid."));
+    this.creatorConfigValues.add(new ConfigValue(COREPROTECT_KEY, false,
+        "Optional CoreProtect checking.  If player placed block no credit!"));
+    this.creatorConfigValues.add(new ConfigValue(COREPROTECT_SECONDS_KEY, false,
+        "Optional number of seconds to look in CoreProtect log.  Default is 3600 seconds = 1 hour."));
   }
 
   @Override
@@ -43,7 +47,7 @@ public final class Break extends TaskType {
     if (Objects.isNull(event.getPlayer()) || !(event.getPlayer() instanceof Player)) {
       return;
     }
-    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
+    processObject(event, event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -51,6 +55,6 @@ public final class Break extends TaskType {
     if (Objects.isNull(event.getPlayer()) || !(event.getPlayer() instanceof Player)) {
       return;
     }
-    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
+    processObject(event, event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
   }
 }

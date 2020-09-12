@@ -39,7 +39,7 @@ public final class Milk extends TaskType {
     }
     Material itemInMainHand = event.getPlayer().getInventory().getItemInMainHand().getType();
     if ((event.getRightClicked() instanceof Cow) && (itemInMainHand.equals(Material.BUCKET))) {
-      processObject(event.getRightClicked().getType(), event.getPlayer().getUniqueId(), 1);
+      processObject(event, event.getRightClicked().getType(), event.getPlayer().getUniqueId(), 1);
     }
   }
 }

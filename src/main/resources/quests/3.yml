@@ -1,0 +1,31 @@
+tasks:
+  task01:
+    type: "craft"
+    amount: 4
+    item: "oak_planks"
+    present: "construct"
+    past: "constructed"
+display:
+  name: "Craft"
+  type: "oak_planks"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&a⇨ &7{task01:present} &b{task01:item}"
+  lore-started:
+    - ""
+    - "&7Status:"
+    - "&a⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    - "&a⇨ &e{task01:progress}&7/&6{task01:amount} &b{task01:item} &7{task01:past}"
+rewards:
+  - "eco give {player} 1"
+  - "give {player} dirt 1"
+rewardstring:
+  - "Quest completed."
+options:
+  category: "examples"
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 3

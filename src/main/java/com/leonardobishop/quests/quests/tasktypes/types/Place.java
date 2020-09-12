@@ -42,7 +42,7 @@ public final class Place extends TaskType {
     if (Objects.isNull(event.getPlayer()) || !(event.getPlayer() instanceof Player)) {
       return;
     }
-    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
+    processObject(event, event.getBlock().getType(), event.getPlayer().getUniqueId(), 1);
   }
 
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -50,6 +50,6 @@ public final class Place extends TaskType {
     if (Objects.isNull(event.getPlayer()) || !(event.getPlayer() instanceof Player)) {
       return;
     }
-    processObject(event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
+    processObject(event, event.getBlock().getType(), event.getPlayer().getUniqueId(), -1);
   }
 }

@@ -17,6 +17,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
+import org.bukkit.event.Event;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.Listener;
 import org.bukkit.potion.PotionType;
 
@@ -34,8 +36,8 @@ public abstract class TaskType implements Listener {
   public static final String REVERSE_KEY = "reverse-progression";
   public static final String CONTINUE_EVALUATING_KEY = "continue-evaluating";
   public static final String WORLD_KEY = "world";
-
-  public final boolean foo = true;
+  public static final String COREPROTECT_KEY = "coreprotect";
+  public static final String COREPROTECT_SECONDS_KEY = "coreprotect_seconds";
 
   private final List<Quest> quests = new ArrayList<>();
   private final String type;
@@ -112,7 +114,7 @@ public abstract class TaskType implements Listener {
     // not implemented here
   }
 
-  public void processObject(Object incoming, UUID uuid, int increment) {
+  public void processObject(Event event, Object incoming, UUID uuid, int increment) {
 
     QPlayer player = QuestsAPI.getPlayerManager().getPlayer(uuid, true);
     QuestProgressFile progressFile = player.getQuestProgressFile();
@@ -154,7 +156,22 @@ public abstract class TaskType implements Listener {
             continue;
           }
 
-          taskPreprocess(incoming, player, quest, task);
+          // If break task and coreprotect is configured...
+          if (task.getType().startsWith("break") && (event instanceof BlockBreakEvent)
+              && QuestsAPI.getQuestsCoreProtectAPI().nonNull()
+              && Objects.nonNull(task.getConfigValue(COREPROTECT_KEY))
+              && (boolean) (task.getConfigValue(COREPROTECT_KEY))) {
+
+            BlockBreakEvent tempEvent = (BlockBreakEvent) event;
+            int seconds = Objects.nonNull(task.getConfigValue(COREPROTECT_SECONDS_KEY))
+                ? (int) task.getConfigValue(COREPROTECT_SECONDS_KEY)
+                : 3600;
+
+            if (QuestsAPI.getQuestsCoreProtectAPI().isPlayerBlock(tempEvent.getBlock(), seconds)) {
+              questLogger.debug("Block player placed. Skipping!");
+              continue;
+            }
+          }
 
           // Use specific item if configured for the task
           Object expected = null;
@@ -211,9 +228,5 @@ public abstract class TaskType implements Listener {
         }
       }
     }
-  }
-
-  public void taskPreprocess(Object object, QPlayer player, Quest quest, Task task) {
-    // not implemented here
   }
 }

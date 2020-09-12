@@ -38,7 +38,7 @@ public final class Shear extends TaskType {
       return;
     }
     if (event.getEntity() instanceof Sheep) {
-      processObject(event.getEntity().getType(), event.getPlayer().getUniqueId(), 1);
+      processObject(event, event.getEntity().getType(), event.getPlayer().getUniqueId(), 1);
     }
   }
 }

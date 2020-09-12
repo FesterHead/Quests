@@ -45,6 +45,6 @@ public final class Fish extends TaskType {
     }
     Material incoming = ((Item) event.getCaught()).getItemStack().getType();
     int count = ((Item) event.getCaught()).getItemStack().getAmount();
-    processObject(incoming, event.getPlayer().getUniqueId(), count);
+    processObject(event, incoming, event.getPlayer().getUniqueId(), count);
   }
 }

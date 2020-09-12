@@ -38,6 +38,6 @@ public final class Breed extends TaskType {
     if (Objects.isNull(event.getBreeder()) || !(event.getBreeder() instanceof Player)) {
       return;
     }
-    processObject(event.getEntity().getType(), event.getBreeder().getUniqueId(), 1);
+    processObject(event, event.getEntity().getType(), event.getBreeder().getUniqueId(), 1);
   }
 }

@@ -41,7 +41,7 @@ public final class Craft extends TaskType {
       return;
     }
     Material incoming = event.getRecipe().getResult().getType();
-    processObject(incoming, event.getWhoClicked().getUniqueId(),
+    processObject(event, incoming, event.getWhoClicked().getUniqueId(),
         getAmountCraftItem(incoming, event));
   }
 

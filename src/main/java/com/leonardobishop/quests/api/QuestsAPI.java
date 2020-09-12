@@ -31,4 +31,8 @@ public class QuestsAPI {
     return plugin.getTaskTypeManager();
   }
 
+  public static QuestsCoreProtectAPI getQuestsCoreProtectAPI() {
+    return plugin.getQuestsCoreProtectAPI();
+  }
+
 }

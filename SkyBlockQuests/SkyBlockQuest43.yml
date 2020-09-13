@@ -1,94 +1,190 @@
 tasks:
+  task01craft:
+    type: "craft"
+    amount: 64
+    item: "black_stained_glass"
+    present: "craft"
+    past: "crafted"
   task01:
     type: "inventory"
     amount: 64
     item: "black_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task02craft:
+    type: "craft"
+    amount: 64
+    item: "blue_stained_glass"
+    present: "craft"
+    past: "crafted"
   task02:
     type: "inventory"
     amount: 64
     item: "blue_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task03craft:
+    type: "craft"
+    amount: 64
+    item: "brown_stained_glass"
+    present: "craft"
+    past: "crafted"
   task03:
     type: "inventory"
     amount: 64
     item: "brown_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task04craft:
+    type: "craft"
+    amount: 64
+    item: "cyan_stained_glass"
+    present: "craft"
+    past: "crafted"
   task04:
     type: "inventory"
     amount: 64
     item: "cyan_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task05craft:
+    type: "craft"
+    amount: 64
+    item: "gray_stained_glass"
+    present: "craft"
+    past: "crafted"
   task05:
     type: "inventory"
     amount: 64
     item: "gray_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task06craft:
+    type: "craft"
+    amount: 64
+    item: "green_stained_glass"
+    present: "craft"
+    past: "crafted"
   task06:
     type: "inventory"
     amount: 64
     item: "green_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task07craft:
+    type: "craft"
+    amount: 64
+    item: "light_blue_stained_glass"
+    present: "craft"
+    past: "crafted"
   task07:
     type: "inventory"
     amount: 64
     item: "light_blue_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task08craft:
+    type: "craft"
+    amount: 64
+    item: "light_gray_stained_glass"
+    present: "craft"
+    past: "crafted"
   task08:
     type: "inventory"
     amount: 64
     item: "light_gray_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task09craft:
+    type: "craft"
+    amount: 64
+    item: "lime_stained_glass"
+    present: "craft"
+    past: "crafted"
   task09:
     type: "inventory"
     amount: 64
     item: "lime_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task10craft:
+    type: "craft"
+    amount: 64
+    item: "magenta_stained_glass"
+    present: "craft"
+    past: "crafted"
   task10:
     type: "inventory"
     amount: 64
     item: "magenta_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task11craft:
+    type: "craft"
+    amount: 64
+    item: "orange_stained_glass"
+    present: "craft"
+    past: "crafted"
   task11:
     type: "inventory"
     amount: 64
     item: "orange_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task12craft:
+    type: "craft"
+    amount: 64
+    item: "pink_stained_glass"
+    present: "craft"
+    past: "crafted"
   task12:
     type: "inventory"
     amount: 64
     item: "pink_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task13craft:
+    type: "craft"
+    amount: 64
+    item: "purple_stained_glass"
+    present: "craft"
+    past: "crafted"
   task13:
     type: "inventory"
     amount: 64
     item: "purple_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task14craft:
+    type: "craft"
+    amount: 64
+    item: "red_stained_glass"
+    present: "craft"
+    past: "crafted"
   task14:
     type: "inventory"
     amount: 64
     item: "red_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task15craft:
+    type: "craft"
+    amount: 64
+    item: "white_stained_glass"
+    present: "craft"
+    past: "crafted"
   task15:
     type: "inventory"
     amount: 64
     item: "white_stained_glass"
     remove-items-when-complete: true
     update-progress: true
+  task16craft:
+    type: "craft"
+    amount: 64
+    item: "yellow_stained_glass"
+    present: "craft"
+    past: "crafted"
   task16:
     type: "inventory"
     amount: 64
@@ -101,48 +197,32 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires you to trade in:"
-    - "&7 - &a{task01:item}"
-    - "&7 - &a{task02:item}"
-    - "&7 - &a{task03:item}"
-    - "&7 - &a{task04:item}"
-    - "&7 - &a{task05:item}"
-    - "&7 - &a{task06:item}"
-    - "&7 - &a{task07:item}"
-    - "&7 - &a{task08:item}"
-    - "&7 - &a{task09:item}"
-    - "&7 - &a{task10:item}"
-    - "&7 - &a{task11:item}"
-    - "&7 - &a{task12:item}"
-    - "&7 - &a{task13:item}"
-    - "&7 - &a{task14:item}"
-    - "&7 - &a{task15:item}"
-    - "&7 - &a{task16:item}"
+    - "&f⇨ &7Craft &bstained glass"
     - ""
   lore-started:
     - ""
-    - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:item}"
-    - "  &e{task02:progress}&7/&6{task02:amount} &7{task02:item}"
-    - "  &e{task03:progress}&7/&6{task03:amount} &7{task03:item}"
-    - "  &e{task04:progress}&7/&6{task04:amount} &7{task04:item}"
-    - "  &e{task05:progress}&7/&6{task05:amount} &7{task05:item}"
-    - "  &e{task06:progress}&7/&6{task06:amount} &7{task06:item}"
-    - "  &e{task07:progress}&7/&6{task07:amount} &7{task07:item}"
-    - "  &e{task08:progress}&7/&6{task08:amount} &7{task08:item}"
-    - "  &e{task09:progress}&7/&6{task09:amount} &7{task09:item}"
-    - "  &e{task10:progress}&7/&6{task10:amount} &7{task10:item}"
-    - "  &e{task11:progress}&7/&6{task11:amount} &7{task11:item}"
-    - "  &e{task12:progress}&7/&6{task12:amount} &7{task12:item}"
-    - "  &e{task13:progress}&7/&6{task13:amount} &7{task13:item}"
-    - "  &e{task14:progress}&7/&6{task14:amount} &7{task14:item}"
-    - "  &e{task15:progress}&7/&6{task15:amount} &7{task15:item}"
-    - "  &e{task16:progress}&7/&6{task16:amount} &7{task16:item}"
+    - "&7Quest Progress:"
+    - "&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s, &6{task01:progress} &7in your &2inventory"
+    - "&f⇨ &7{task02craft:present} &6{task02craft:togo} &b{task02craft:item}&7s, &6{task02:progress} &7in your &2inventory"
+    - "&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s, &6{task03:progress} &7in your &2inventory"
+    - "&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s, &6{task04:progress} &7in your &2inventory"
+    - "&f⇨ &7{task05craft:present} &6{task05craft:togo} &b{task05craft:item}&7s, &6{task05:progress} &7in your &2inventory"
+    - "&f⇨ &7{task06craft:present} &6{task06craft:togo} &b{task06craft:item}&7s, &6{task06:progress} &7in your &2inventory"
+    - "&f⇨ &7{task07craft:present} &6{task07craft:togo} &b{task07craft:item}&7s, &6{task07:progress} &7in your &2inventory"
+    - "&f⇨ &7{task08craft:present} &6{task08craft:togo} &b{task08craft:item}&7s, &6{task08:progress} &7in your &2inventory"
+    - "&f⇨ &7{task09craft:present} &6{task09craft:togo} &b{task09craft:item}&7s, &6{task09:progress} &7in your &2inventory"
+    - "&f⇨ &7{task10craft:present} &6{task10craft:togo} &b{task10craft:item}&7s, &6{task10:progress} &7in your &2inventory"
+    - "&f⇨ &7{task11craft:present} &6{task11craft:togo} &b{task11craft:item}&7s, &6{task11:progress} &7in your &2inventory"
+    - "&f⇨ &7{task12craft:present} &6{task12craft:togo} &b{task12craft:item}&7s, &6{task12:progress} &7in your &2inventory"
+    - "&f⇨ &7{task13craft:present} &6{task13craft:togo} &b{task13craft:item}&7s, &6{task13:progress} &7in your &2inventory"
+    - "&f⇨ &7{task14craft:present} &6{task14craft:togo} &b{task14craft:item}&7s, &6{task14:progress} &7in your &2inventory"
+    - "&f⇨ &7{task15craft:present} &6{task15craft:togo} &b{task15craft:item}&7s, &6{task15:progress} &7in your &2inventory"
+    - "&f⇨ &7{task16craft:present} &6{task16craft:togo} &b{task16craft:item}&7s, &6{task16:progress} &7in your &2inventory"
     - ""
     - "&7Rewards:"
-    - "&7 - &6Rewards Key"
-    - "&7 - &dvillager egg"
-    - "&7 - &8dirt"
-    - "&7 - &6$ boost for 2 hours"
+    - "&f⇨ &6Rewards Key"
+    - "&f⇨ &dvillager egg"
+    - "&f⇨ &8dirt"
 rewards:
   - "cc give p SkyBlock 4 {player}"
   - "give {player} villager_spawn_egg 1"

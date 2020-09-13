@@ -40,7 +40,7 @@ public final class Death extends TaskType {
         || mob instanceof Player) {
       return;
     }
-    processObject(event.getEntity().getType(), killer.getUniqueId(), 1);
+    processObject(event, event.getEntity().getType(), killer.getUniqueId(), 1);
   }
 
 }

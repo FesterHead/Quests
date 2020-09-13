@@ -17,6 +17,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
+import org.bukkit.event.Event;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.Listener;
 import org.bukkit.potion.PotionType;
 
@@ -34,8 +36,8 @@ public abstract class TaskType implements Listener {
   public static final String REVERSE_KEY = "reverse-progression";
   public static final String CONTINUE_EVALUATING_KEY = "continue-evaluating";
   public static final String WORLD_KEY = "world";
-
-  public final boolean foo = true;
+  public static final String COREPROTECT_KEY = "coreprotect";
+  public static final String COREPROTECT_SECONDS_KEY = "coreprotect_seconds";
 
   private final List<Quest> quests = new ArrayList<>();
   private final String type;
@@ -112,108 +114,116 @@ public abstract class TaskType implements Listener {
     // not implemented here
   }
 
-  public void processObject(Object incoming, UUID uuid, int increment) {
+  public void processObject(Event event, Object incoming, UUID uuid, int increment) {
 
     QPlayer player = QuestsAPI.getPlayerManager().getPlayer(uuid, true);
     QuestProgressFile progressFile = player.getQuestProgressFile();
 
-    for (Quest quest : this.getRegisteredQuests()) {
+    for (Quest quest : progressFile.getStartedQuests()) {
 
-      if (progressFile.hasStartedQuest(quest)) {
+      questLogger.debug("§4--------------------");
+      questLogger.debug("              Quest: §6" + quest.getId());
+      QuestProgress questProgress = progressFile.getQuestProgress(quest);
 
-        questLogger.debug("§4--------------------");
-        questLogger.debug("              Quest: §6" + quest.getId());
-        QuestProgress questProgress = progressFile.getQuestProgress(quest);
+      for (Task task : quest.getTasksOfType(this.getType())) {
 
-        for (Task task : quest.getTasksOfType(this.getType())) {
-
-          // Check if a world is configured for this task
-          if (Objects.nonNull(task.getConfigValue(WORLD_KEY))) {
-            World world = Bukkit.getWorld((String) task.getConfigValue(WORLD_KEY));
-            if (Objects.isNull(world)) {
-              questLogger.debug("                     §dNot in world "
-                  + (String) task.getConfigValue(WORLD_KEY) + "!");
-              return;
-            }
-            questLogger.debug("     Expected world: §8" + world);
-            questLogger.debug("        Exact world: §8" + Bukkit.getPlayer(uuid).getWorld());
-            if (Objects.equals(Bukkit.getPlayer(uuid).getWorld(), world)) {
-              questLogger.debug("                     §aMatch!");
-            } else {
-              questLogger.debug("                     §aNO match!");
-              continue;
-            }
+        // Check if a world is configured for this task
+        if (Objects.nonNull(task.getConfigValue(WORLD_KEY))) {
+          World world = Bukkit.getWorld((String) task.getConfigValue(WORLD_KEY));
+          if (Objects.isNull(world)) {
+            questLogger.debug("                     §dNot in world "
+                + (String) task.getConfigValue(WORLD_KEY) + "!");
+            return;
           }
-
-          // If the task is done, skip it
-          TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-          int taskProgressCounter =
-              (Objects.isNull(taskProgress.getProgress())) ? 0 : (int) taskProgress.getProgress();
-          if (taskProgress.isCompleted()) {
-            questLogger.debug("                §aTask complete!");
+          questLogger.debug("     Expected world: §8" + world);
+          questLogger.debug("        Exact world: §8" + Bukkit.getPlayer(uuid).getWorld());
+          if (Objects.equals(Bukkit.getPlayer(uuid).getWorld(), world)) {
+            questLogger.debug("                     §aMatch!");
+          } else {
+            questLogger.debug("                     §aNO match!");
             continue;
           }
+        }
 
-          taskPreprocess(incoming, player, quest, task);
+        // If the task is done, skip it
+        TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+        int taskProgressCounter =
+            (Objects.isNull(taskProgress.getProgress())) ? 0 : (int) taskProgress.getProgress();
+        if (taskProgress.isCompleted()) {
+          questLogger.debug("                §aTask complete!");
+          continue;
+        }
 
-          // Use specific item if configured for the task
-          Object expected = null;
-          if (Objects.nonNull(task.getConfigValue(ITEM_KEY))) {
-            if (incoming instanceof Material) {
-              expected =
-                  Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
-            } else if (incoming instanceof EntityType) {
-              expected =
-                  EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
-            } else if (incoming instanceof PotionType) {
-              expected =
-                  PotionType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+        // If break task and coreprotect is configured...
+        if (task.getType().startsWith("break") && (event instanceof BlockBreakEvent)
+            && QuestsAPI.getQuestsCoreProtectAPI().nonNull()
+            && Objects.nonNull(task.getConfigValue(COREPROTECT_KEY))
+            && (boolean) (task.getConfigValue(COREPROTECT_KEY))) {
+
+          BlockBreakEvent tempEvent = (BlockBreakEvent) event;
+          int seconds = Objects.nonNull(task.getConfigValue(COREPROTECT_SECONDS_KEY))
+              ? (int) task.getConfigValue(COREPROTECT_SECONDS_KEY)
+              : 3600;
+
+          if (QuestsAPI.getQuestsCoreProtectAPI().isPlayerBlock(tempEvent.getBlock(), seconds)) {
+            questLogger.debug("Block player placed. Skipping!");
+            continue;
+          }
+        }
+
+        // Use specific item if configured for the task
+        Object expected = null;
+        if (Objects.nonNull(task.getConfigValue(ITEM_KEY))) {
+          if (incoming instanceof Material) {
+            expected =
+                Material.getMaterial(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+          } else if (incoming instanceof EntityType) {
+            expected =
+                EntityType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+          } else if (incoming instanceof PotionType) {
+            expected =
+                PotionType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
+          }
+        }
+
+        // Helpful debug information to console
+        questLogger.debug("");
+        questLogger.debug("      Checking task: §8" + task.getId());
+        questLogger.debug("               Type: §8" + task.getType());
+        questLogger.debug("    Incoming object: §b" + incoming.toString());
+        questLogger.debug("    Expected object: §3"
+            + ((Objects.nonNull(expected)) ? expected.toString() : "n/a"));
+        questLogger.debug("           Progress: §d" + taskProgressCounter);
+        questLogger.debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
+        questLogger.debug("          Completed: §6" + taskProgress.isCompleted());
+
+        // If the expected object is null then this is a general task, all events count
+        // Otherwise the incoming object must match the expected object
+        if ((Objects.isNull(expected)) || (Objects.equals(incoming, expected))) {
+          questLogger.debug("                     §aMatch!");
+          questLogger.debug("          Increment: §2" + increment);
+
+          if (Objects.nonNull(task.getConfigValue(REVERSE_KEY))
+              && !(boolean) (task.getConfigValue(REVERSE_KEY))) {
+            questLogger.debug("                     §aReverse progression skipped!");
+          } else {
+            taskProgress.setProgress(taskProgressCounter + increment);
+            questLogger.debug("       New progress: §e" + taskProgress.getProgress().toString());
+            if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
+              taskProgress.setCompleted(true);
+              questLogger.debug("                     §6Completed!");
             }
           }
 
-          // Helpful debug information to console
-          questLogger.debug("");
-          questLogger.debug("      Checking task: §8" + task.getId());
-          questLogger.debug("               Type: §8" + task.getType());
-          questLogger.debug("    Incoming object: §b" + incoming.toString());
-          questLogger.debug("    Expected object: §3"
-              + ((Objects.nonNull(expected)) ? expected.toString() : "n/a"));
-          questLogger.debug("           Progress: §d" + taskProgressCounter);
-          questLogger.debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
-          questLogger.debug("          Completed: §6" + taskProgress.isCompleted());
-
-          // If the expected object is null then this is a general task, all events count
-          // Otherwise the incoming object must match the expected object
-          if ((Objects.isNull(expected)) || (Objects.equals(incoming, expected))) {
-            questLogger.debug("                     §aMatch!");
-            questLogger.debug("          Increment: §2" + increment);
-
-            if (Objects.nonNull(task.getConfigValue(REVERSE_KEY))
-                && !(boolean) (task.getConfigValue(REVERSE_KEY))) {
-              questLogger.debug("                     §aReverse progression skipped!");
-            } else {
-              taskProgress.setProgress(taskProgressCounter + increment);
-              questLogger.debug("       New progress: §e" + taskProgress.getProgress().toString());
-              if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
-                taskProgress.setCompleted(true);
-                questLogger.debug("                     §6Completed!");
-              }
-            }
-
-            if (Objects.nonNull(task.getConfigValue(CONTINUE_EVALUATING_KEY))
-                && (boolean) (task.getConfigValue(CONTINUE_EVALUATING_KEY))) {
-              questLogger.debug("                     §9Continue task evaluation!");
-              continue;
-            } else {
-              return;
-            }
+          if (Objects.nonNull(task.getConfigValue(CONTINUE_EVALUATING_KEY))
+              && (boolean) (task.getConfigValue(CONTINUE_EVALUATING_KEY))) {
+            questLogger.debug("                     §9Continue task evaluation!");
+            continue;
+          } else {
+            return;
           }
         }
       }
     }
-  }
-
-  public void taskPreprocess(Object object, QPlayer player, Quest quest, Task task) {
-    // not implemented here
   }
 }

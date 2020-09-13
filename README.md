@@ -14,6 +14,12 @@ I use it for my BentoBox SkyBlock server.
 - [Task types](https://github.com/FesterHead/Quests/wiki/Task-types)
 - [Use the Bukkit Enum Material list](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html).  Item material names can be UPPER or lower case.  
 
+## Minecraft version
+The following Minecraft versions are available in the release downloads:
+- 1.15.2 (default, this is the version I use)
+- 1.16.2
+- 1.16.3
+
 ## Support
 - None
 

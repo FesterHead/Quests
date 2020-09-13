@@ -1,0 +1,32 @@
+tasks:
+  task01:
+    type: "place"
+    amount: 10
+    item: "dirt"
+    present: "place"
+    past: "placed"
+    world: "world"
+display:
+  name: "Place"
+  type: "dirt"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&f⇨ &7{task01:present} &b{task01:item}"
+  lore-started:
+    - ""
+    - "&7Quest Progress:"
+    - "&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    - "&f⇨ &e{task01:progress}&7/&6{task01:amount} &b{task01:item} &7{task01:past}"
+rewards:
+  - "eco give {player} 1"
+  - "give {player} dirt 1"
+rewardstring:
+  - "Quest completed."
+options:
+  category: "examples"
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 2

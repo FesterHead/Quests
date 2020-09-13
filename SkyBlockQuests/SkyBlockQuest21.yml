@@ -10,17 +10,17 @@ display:
   type: "cactus"
   lore-normal:
     - ""
-    - "&7This quest requires you to trade in:"
-    - "&7 - &a{task01:item}"
+    - "&7This quest requires:"
+    - "&f⇨ &b{task01:item}"
     - ""
   lore-started:
     - ""
-    - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:item}"
+    - "&7Quest Progress:"
+    - "&f⇨ &6{task01:progress} &b{task01:item} &7in your &2inventory"
     - ""
     - "&7Rewards:"
-    - "&7 - &asugar cane"
-    - "&7 - &8dirt"
+    - "&f⇨ &asugar cane"
+    - "&f⇨ &8dirt"
 rewards:
   - "give {player} sugar_cane 2"
   - "give {player} dirt 4"

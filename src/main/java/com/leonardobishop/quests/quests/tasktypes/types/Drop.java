@@ -48,7 +48,7 @@ public final class Drop extends TaskType {
     for (Item item : event.getItems()) {
       Material incoming = item.getItemStack().getType();
       int count = item.getItemStack().getAmount();
-      processObject(incoming, event.getPlayer().getUniqueId(), count);
+      processObject(event, incoming, event.getPlayer().getUniqueId(), count);
     }
   }
 
@@ -58,6 +58,6 @@ public final class Drop extends TaskType {
       return;
     }
     Material incoming = event.getItemInHand().getType();
-    processObject(incoming, event.getPlayer().getUniqueId(), -1);
+    processObject(event, incoming, event.getPlayer().getUniqueId(), -1);
   }
 }

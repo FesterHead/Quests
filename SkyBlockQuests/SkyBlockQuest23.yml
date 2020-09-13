@@ -1,5 +1,11 @@
 tasks:
   task01:
+    type: "craft"
+    amount: 32
+    item: "paper"
+    present: "make"
+    past: "made"
+  task02:
     type: "inventory"
     amount: 32
     item: "paper"
@@ -10,17 +16,17 @@ display:
   type: "paper"
   lore-normal:
     - ""
-    - "&7This quest requires you to trade in:"
-    - "&7 - &a{task01:item}"
+    - "&7This quest requires:"
+    - "&f⇨ &7{task01:present} &b{task01:item}"
     - ""
   lore-started:
     - ""
-    - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:item}"
+    - "&7Quest Progress:"
+    - "&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}, &6{task02:progress} &7in your &2inventory"
     - ""
     - "&7Rewards:"
-    - "&7 - &akelp"
-    - "&7 - &8dirt"
+    - "&f⇨ &akelp"
+    - "&f⇨ &8dirt"
 rewards:
   - "give {player} kelp 2"
   - "give {player} dirt 4"

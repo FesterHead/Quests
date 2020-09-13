@@ -12,6 +12,8 @@ task:
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
   world: "<string>"              # Optional: World where this task is valid; default is any world
+  coreprotect: <boolean>         # Optional: CoreProtect checking.  If player placed block no credit!
+  coreprotect-seconds: <integer> # Optional: Number of seconds to look in CoreProtect log.  Default is 3600 seconds = 1 hour
 ```
 
 ```
@@ -24,6 +26,8 @@ task:
   present: "<string>"            # Optional: Present-tense action verb to be used in quest lore; default is none
   past: "<string>"               # Optional: Past-tense action verb to be used in quest lore; default is none
   world: "<string>"              # Optional: World where this task is valid; default is any world
+  coreprotect: <boolean>         # Optional: CoreProtect checking.  If player placed block no credit!
+  coreprotect-seconds: <integer> # Optional: Number of seconds to look in CoreProtect log.  Default is 3600 seconds = 1 hour
 
 This is a special break task where the event priority is elevated to HIGH.
 Useful for when another plugin cancels the BlockBreakEvent, such as the BentoBox AOneBlock addon.

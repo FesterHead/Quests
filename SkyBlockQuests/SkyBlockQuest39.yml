@@ -1,4 +1,10 @@
 tasks:
+  task01craft:
+    type: "craft"
+    amount: 64
+    item: "bookshelf"
+    present: "assemble"
+    past: "assembled"
   task01:
     type: "inventory"
     amount: 64
@@ -20,23 +26,21 @@ display:
   type: "bookshelf"
   lore-normal:
     - ""
-    - "&7This quest requires you to trade in:"
-    - "&7 - &a{task01:item}"
-    - ""
     - "&7This quest requires:"
-    - "&7 - &8{task03:present}"
-    - "&7 - &8{task04:present}"
+    - "&f⇨ &7{task01craft:present} &b{task01craft:item}&7s"
+    - "&f⇨ &7{task02:present}"
+    - "&f⇨ &7{task03:present}"
     - ""
   lore-started:
     - ""
-    - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:item}"
-    - "  &e{task02:progress}&7/&6{task02:amount} items &8{task02:past}"
-    - "  &e{task03:progress}&7/&6{task03:amount} items &8{task03:past}"
+    - "&7Quest Progress:"
+    - "&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s, &6{task01:progress} &7in your &2inventory"
+    - "&f⇨ &6{task02:progress} &bitems &7{task02:past}"
+    - "&f⇨ &6{task03:progress} &bitems &7{task03:past}"
     - ""
     - "&7Rewards:"
-    - "&7 - &6Rewards Key"
-    - "&7 - &8dirt"
+    - "&f⇨ &6Rewards Key"
+    - "&f⇨ &8dirt"
 rewards:
   - "cc give p SkyBlock 2 {player}"
   - "give {player} dirt 4"

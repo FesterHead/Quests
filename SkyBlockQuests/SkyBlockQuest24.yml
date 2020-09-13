@@ -1,5 +1,11 @@
 tasks:
   task01:
+    type: "craft"
+    amount: 32
+    item: "dried_kelp_block"
+    present: "make"
+    past: "made"
+  task02:
     type: "inventory"
     amount: 24
     item: "dried_kelp_block"
@@ -10,17 +16,17 @@ display:
   type: "dried_kelp_block"
   lore-normal:
     - ""
-    - "&7This quest requires you to trade in:"
-    - "&7 - &a{task01:item}"
+    - "&7This quest requires:"
+    - "&f⇨ &7{task01:present} &b{task01:item}&7s"
     - ""
   lore-started:
     - ""
-    - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:item}"
+    - "&7Quest Progress:"
+    - "&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}&7s, &6{task02:progress} &7in your &2inventory"
     - ""
     - "&7Rewards:"
-    - "&7 - &abamboo"
-    - "&7 - &8dirt"
+    - "&f⇨ &abamboo"
+    - "&f⇨ &8dirt"
 rewards:
   - "give {player} bamboo 2"
   - "give {player} dirt 4"

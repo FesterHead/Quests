@@ -4,7 +4,7 @@
 
   <groupId>com.leonardobishop</groupId>
   <artifactId>quests</artifactId>
-  <version>3.2.1</version>
+  <version>3.3.0</version>
   <name>Quests</name>
 
   <properties>
@@ -31,6 +31,12 @@
       <id>placeholderapi</id>
       <url>http://repo.extendedclip.com/content/repositories/placeholderapi/</url>
     </repository>
+
+    <!-- CoreProtect -->
+    <repository>
+      <id>coreprotect</id>
+      <url>https://maven.playpro.com/</url>
+    </repository>
   </repositories>
 
   <dependencies>
@@ -40,6 +46,7 @@
       <artifactId>spigot-api</artifactId>
       <version>1.15.2-R0.1-SNAPSHOT</version>
       <!--version>1.16.2-R0.1-SNAPSHOT</version-->
+      <!--version>1.16.3-R0.1-SNAPSHOT</version-->
       <scope>provided</scope>
     </dependency>
 
@@ -65,6 +72,12 @@
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
       <version>16.0.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.coreprotect</groupId>
+      <artifactId>coreprotect</artifactId>
+      <version>19.2</version>
     </dependency>
 
   </dependencies>

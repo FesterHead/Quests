@@ -1,0 +1,30 @@
+tasks:
+  task01:
+    type: "inventory"
+    amount: 12
+    item: "oak_stairs"
+    remove-items-when-complete: true
+    update-progress: true
+display:
+  name: "Inventory"
+  type: "oak_stairs"
+  lore-normal:
+    - ""
+    - "&7This quest requires:"
+    - "&f⇨ &b{task01:item}"
+  lore-started:
+    - ""
+    - "&7Quest Progress:"
+    - "&f⇨ &6{task01:togo} &b{task01:item} &7in your inventory"
+rewards:
+  - "eco give {player} 1"
+  - "give {player} dirt 1"
+rewardstring:
+  - "Quest completed."
+options:
+  category: "examples"
+  repeatable: true
+  cooldown:
+    enabled: false
+    time: 1440
+  sort-order: 4

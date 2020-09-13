@@ -1,11 +1,23 @@
 tasks:
   task01:
+    type: "craft"
+    amount: 12
+    item: "bread"
+    present: "bake"
+    past: "baked"
+  task02:
     type: "inventory"
     amount: 12
     item: "bread"
     remove-items-when-complete: true
     update-progress: true
-  task02:
+  task03:
+    type: "craft"
+    amount: 12
+    item: "hay_block"
+    present: "bale"
+    past: "baled"
+  task04:
     type: "inventory"
     amount: 12
     item: "hay_block"
@@ -16,19 +28,19 @@ display:
   type: "bread"
   lore-normal:
     - ""
-    - "&7This quest requires you to trade in:"
-    - "&7 - &a{task01:item}"
-    - "&7 - &a{task02:item}"
+    - "&7This quest requires:"
+    - "&f⇨ &7{task01:present} &b{task01:item}"
+    - "&f⇨ &7{task03:present} &b{task03:item}&7s"
     - ""
   lore-started:
     - ""
-    - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:item}"
-    - "  &e{task02:progress}&7/&6{task02:amount} &7{task02:item}"
+    - "&7Quest Progress:"
+    - "&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}, &6{task02:progress} &7in your &2inventory"
+    - "&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s, &6{task04:progress} &7in your &2inventory"
     - ""
     - "&7Rewards:"
-    - "&7 - &amelon seeds"
-    - "&7 - &8dirt"
+    - "&f⇨ &amelon seeds"
+    - "&f⇨ &8dirt"
 rewards:
   - "give {player} melon_seeds 2"
   - "give {player} dirt 4"

@@ -67,7 +67,7 @@ public final class Brew extends TaskType {
           PotionMeta potionMeta = (PotionMeta) event.getContents().getItem(1).getItemMeta();
           PotionType potionType = potionMeta.getBasePotionData().getType(); // e.g. STRENGTH
 
-          processObject(potionType, playerUUID, 1);
+          processObject(event, potionType, playerUUID, 1);
         }
       }, 1);
     }

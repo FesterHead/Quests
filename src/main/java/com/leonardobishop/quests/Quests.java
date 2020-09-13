@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
+import com.leonardobishop.quests.api.QuestsCoreProtectAPI;
 import com.leonardobishop.quests.api.QuestsPlaceholders;
 import com.leonardobishop.quests.commands.CommandQuests;
 import com.leonardobishop.quests.events.EventInventory;
@@ -63,12 +65,18 @@ public class Quests extends JavaPlugin {
   private QuestsConfigLoader questsConfigLoader;
   private QuestsLogger questsLogger;
 
+  private QuestsCoreProtectAPI questsCoreProtectAPI;
+
   private boolean brokenConfig = false;
   private BukkitTask questCompleterTask;
   private BukkitTask questAutosaveTask;
 
   public static Quests get() {
     return (Quests) Bukkit.getPluginManager().getPlugin("Quests");
+  }
+
+  public QuestsCoreProtectAPI getQuestsCoreProtectAPI() {
+    return questsCoreProtectAPI;
   }
 
   public QuestManager getQuestManager() {
@@ -127,6 +135,18 @@ public class Quests extends JavaPlugin {
 
     if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
       new QuestsPlaceholders(this).register();
+      this.getQuestsLogger().info("PlaceholderAPI enabled for Quests.");
+    } else {
+      this.getQuestsLogger().info("PlaceholderAPI disabled for Quests.");
+    }
+
+    if (Bukkit.getPluginManager().isPluginEnabled("CoreProtect")
+        && (Objects.nonNull(Bukkit.getPluginManager().getPlugin("CoreProtect")))) {
+      questsCoreProtectAPI = new QuestsCoreProtectAPI();
+      questsCoreProtectAPI.setupCoreProtect();
+      this.getQuestsLogger().info("CoreProtect enabled for Quests.");
+    } else {
+      this.getQuestsLogger().info("CoreProtect disabled for Quests.");
     }
 
     questsConfigLoader = new QuestsConfigLoader(this);
@@ -286,11 +306,10 @@ public class Quests extends JavaPlugin {
       questsDirectory.mkdir();
 
       ArrayList<String> examples = new ArrayList<>();
-      examples.add("Place1.yml");
-      examples.add("Place2.yml");
-      examples.add("Place3.yml");
-      examples.add("Breed1.yml");
-      examples.add("Breed2.yml");
+      examples.add("1.yml");
+      examples.add("2.yml");
+      examples.add("3.yml");
+      examples.add("4.yml");
 
       for (String name : examples) {
         File file =

@@ -93,7 +93,7 @@ display:
     - "&f⇨ &7{task02:present} &b{task02:item}&7s"
     - "&f⇨ &7{task03:present} &b{task03:item}&7s"
     - "&f⇨ &7{task04:present} &b{task04:item}&7s"
-    - "&f⇨ &7Craft &bstone tools"
+    - "&f⇨ &7Craft &bstone &7tools"
     - ""
     - "&5Notes:"
     - "&3 - Crafted materials must be in your inventory."

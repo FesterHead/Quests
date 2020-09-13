@@ -65,7 +65,7 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&f⇨ &7Craft &bwooden tools"
+    - "&f⇨ &7Craft &bwooden &7tools"
     - ""
     - "&5Notes:"
     - "&3 - Crafted materials must be in your inventory."

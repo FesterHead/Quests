@@ -94,110 +94,74 @@ public class QItemStack {
             String replacement = "";
             if (Objects
                 .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId()))) {
-              int tempProgress = 0;
-              int tempAmount = 0;
+
+              int tempProgress =
+                  (Objects.nonNull(questProgress.getTaskProgress(parts[0]).getProgress()))
+                      ? Integer.parseInt(
+                          String.valueOf(questProgress.getTaskProgress(parts[0]).getProgress()))
+                      : 0;
+
+              int tempAmount = (Objects
+                  .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                      .getConfigValue("amount")))
+                          ? Integer.parseInt(String.valueOf(
+                              quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                                  .getConfigValue("amount")))
+                          : 0;
+
+              String tempItem = (Objects
+                  .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                      .getConfigValue("item")))
+                          ? String.valueOf(
+                              quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                                  .getConfigValue("item"))
+                          : "---null---";
+
+              String tempPresent = (Objects
+                  .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                      .getConfigValue("present")))
+                          ? String.valueOf(
+                              quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                                  .getConfigValue("present"))
+                          : "---null---";
+
+              String tempPast = (Objects
+                  .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                      .getConfigValue("past")))
+                          ? String.valueOf(
+                              quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
+                                  .getConfigValue("past"))
+                          : "---null---";
+
               switch (parts[1]) {
                 case "progress":
-                  if (Objects.nonNull(questProgress.getTaskProgress(parts[0]).getProgress())) {
-                    try {
-                      tempProgress = Integer.parseInt(
-                          String.valueOf(questProgress.getTaskProgress(parts[0]).getProgress()));
-                    } catch (NumberFormatException ex) {
-                    }
-                  }
-                  if (Objects
-                      .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                          .getConfigValue("amount"))) {
-                    try {
-                      tempAmount = Integer.parseInt(String.valueOf(
-                          quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                              .getConfigValue("amount")));
-                    } catch (NumberFormatException ex) {
-                    }
-                  }
                   replacement =
                       String.valueOf((tempProgress > tempAmount) ? tempAmount : tempProgress);
                   break;
                 case "item":
-                  if (Objects
-                      .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                          .getConfigValue("item"))) {
-                    replacement = String
-                        .valueOf(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                            .getConfigValue("item"));
-                  } else {
-                    questLogger.severe("Unable to determine 'item' for task: "
-                        + questProgress.getTaskProgress(parts[0]).getTaskId());
-                    replacement = "---null---";
-                  }
+                  replacement = tempItem;
                   break;
                 case "amount":
-                  if (Objects
-                      .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                          .getConfigValue("amount"))) {
-                    replacement = String
-                        .valueOf(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                            .getConfigValue("amount"));
-                  } else {
-                    questLogger.severe("Unable to determine 'amount' for task: "
-                        + questProgress.getTaskProgress(parts[0]).getTaskId());
-                    replacement = "---null---";
-                  }
+                  replacement = String.valueOf(tempAmount);
                   break;
                 case "togo":
-                  if (Objects.nonNull(questProgress.getTaskProgress(parts[0]).getProgress())) {
-                    try {
-                      tempProgress = Integer.parseInt(
-                          String.valueOf(questProgress.getTaskProgress(parts[0]).getProgress()));
-                    } catch (NumberFormatException ex) {
-                    }
-                  }
-                  if (Objects
-                      .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                          .getConfigValue("amount"))) {
-                    try {
-                      tempAmount = Integer.parseInt(String.valueOf(
-                          quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                              .getConfigValue("amount")));
-                    } catch (NumberFormatException ex) {
-                    }
-                  }
                   int tempReplacement = tempAmount - tempProgress;
                   replacement = String.valueOf((tempReplacement < 0) ? 0 : tempReplacement);
                   break;
                 case "present":
-                  if (Objects.nonNull(
-                      quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId()))) {
-                    replacement = String
-                        .valueOf(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                            .getConfigValue("present"));
-                  } else {
-                    questLogger.severe("Unable to determine 'present' for task: "
-                        + questProgress.getTaskProgress(parts[0]).getTaskId());
-                    replacement = "---null---";
-                  }
+                  replacement = tempPresent;
                   break;
                 case "past":
-                  if (Objects
-                      .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                          .getConfigValue("past"))) {
-                    replacement = String
-                        .valueOf(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
-                            .getConfigValue("past"));
-                  } else {
-                    questLogger.severe("Unable to determine 'past' for task: "
-                        + questProgress.getTaskProgress(parts[0]).getTaskId());
-                    replacement = "---null---";
-                  }
+                  replacement = tempPast;
                   break;
                 case "complete":
-                  s = s.replace("{" + m.group(1) + "}",
-                      String.valueOf(questProgress.getTaskProgress(parts[0]).isCompleted()));
+                  replacement =
+                      String.valueOf(questProgress.getTaskProgress(parts[0]).isCompleted());
                   break;
               }
             } else {
-              questLogger.severe("Unable to find task id " + parts[0] + " in your quest "
-                  + quest.getId() + ".yml file!");
+              questLogger.severe("Unable to find task id " + parts[0] + " in quest " + quest.getId()
+                  + ".yml file!");
               replacement = "---null---";
             }
             s = s.replace("{" + m.group(1) + "}", replacement);

@@ -82,13 +82,14 @@ public class QItemStack {
 
       }
     }
-    if (questProgress != null) {
+    if (Objects.nonNull(questProgress)) {
       for (String s : tempLore) {
         Matcher m = Pattern.compile("\\{([^}]+)}").matcher(s);
+        boolean addLore = true;
         while (m.find()) {
           String[] parts = m.group(1).split(":");
           if (parts.length > 1) {
-            if (questProgress.getTaskProgress(parts[0]) == null) {
+            if (Objects.isNull(questProgress.getTaskProgress(parts[0]))) {
               continue;
             }
             String replacement = "";
@@ -154,9 +155,18 @@ public class QItemStack {
                 case "past":
                   replacement = tempPast;
                   break;
+                case "remove":
+                  if (questProgress.getTaskProgress(parts[0]).isCompleted()) {
+                    addLore = false;
+                  }
+                  replacement = "";
+                  break;
                 case "complete":
-                  replacement =
-                      String.valueOf(questProgress.getTaskProgress(parts[0]).isCompleted());
+                  if (questProgress.getTaskProgress(parts[0]).isCompleted()) {
+                    replacement = "§a✔";
+                  } else {
+                    replacement = "§f⇨";
+                  }
                   break;
               }
             } else {
@@ -167,7 +177,9 @@ public class QItemStack {
             s = s.replace("{" + m.group(1) + "}", replacement);
           }
         }
-        formattedLore.add(s);
+        if (addLore) {
+          formattedLore.add(s);
+        }
       }
     }
     ism.setLore(formattedLore);

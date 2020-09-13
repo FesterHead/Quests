@@ -121,11 +121,26 @@ public abstract class TaskType implements Listener {
 
     for (Quest quest : progressFile.getStartedQuests()) {
 
-      questLogger.debug("§4--------------------");
-      questLogger.debug("              Quest: §6" + quest.getId());
       QuestProgress questProgress = progressFile.getQuestProgress(quest);
 
       for (Task task : quest.getTasksOfType(this.getType())) {
+
+        // If the task is done, skip it
+        TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
+        int taskProgressCounter =
+            (Objects.isNull(taskProgress.getProgress())) ? 0 : (int) taskProgress.getProgress();
+        if (taskProgress.isCompleted()) {
+          // questLogger.debug(" §aTask complete!");
+          continue;
+        }
+
+        questLogger.debug("§4---------------------------------------------------------");
+        questLogger.debug("             Player: §6" + Bukkit.getPlayer(uuid).getName());
+        questLogger.debug("               UUID: §6" + uuid);
+        questLogger.debug("              Event: §6" + event.getEventName());
+        questLogger.debug("              Quest: §6" + quest.getId());
+        questLogger.debug("               Task: §8" + task.getId());
+        questLogger.debug("               Type: §8" + task.getType());
 
         // Check if a world is configured for this task
         if (Objects.nonNull(task.getConfigValue(WORLD_KEY))) {
@@ -145,14 +160,6 @@ public abstract class TaskType implements Listener {
           }
         }
 
-        // If the task is done, skip it
-        TaskProgress taskProgress = questProgress.getTaskProgress(task.getId());
-        int taskProgressCounter =
-            (Objects.isNull(taskProgress.getProgress())) ? 0 : (int) taskProgress.getProgress();
-        if (taskProgress.isCompleted()) {
-          questLogger.debug("                §aTask complete!");
-          continue;
-        }
 
         // If break task and coreprotect is configured...
         if (task.getType().startsWith("break") && (event instanceof BlockBreakEvent)
@@ -187,15 +194,9 @@ public abstract class TaskType implements Listener {
         }
 
         // Helpful debug information to console
-        questLogger.debug("");
-        questLogger.debug("      Checking task: §8" + task.getId());
-        questLogger.debug("               Type: §8" + task.getType());
         questLogger.debug("    Incoming object: §b" + incoming.toString());
         questLogger.debug("    Expected object: §3"
             + ((Objects.nonNull(expected)) ? expected.toString() : "n/a"));
-        questLogger.debug("           Progress: §d" + taskProgressCounter);
-        questLogger.debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
-        questLogger.debug("          Completed: §6" + taskProgress.isCompleted());
 
         // If the expected object is null then this is a general task, all events count
         // Otherwise the incoming object must match the expected object
@@ -208,7 +209,8 @@ public abstract class TaskType implements Listener {
             questLogger.debug("                     §aReverse progression skipped!");
           } else {
             taskProgress.setProgress(taskProgressCounter + increment);
-            questLogger.debug("       New progress: §e" + taskProgress.getProgress().toString());
+            questLogger.debug("           Progress: §d" + taskProgress.getProgress().toString());
+            questLogger.debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
             if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
               taskProgress.setCompleted(true);
               questLogger.debug("                     §6Completed!");
@@ -222,6 +224,8 @@ public abstract class TaskType implements Listener {
           } else {
             return;
           }
+        } else {
+          questLogger.debug("                     §aNO match!");
         }
       }
     }

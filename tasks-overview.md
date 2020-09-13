@@ -18,6 +18,9 @@ under that category will show up. Categories can be disabled.
 - While you can have overlapping active tasks I don't guarantee which will get the credit.
 - It's perfectly acceptable for a task to go into negative numbers.
 - You can now configure multiple tasks to get credit for one break, place, or drop event.
+- Many tasks can be optionally set to be valid for a world.  Location task requires a world.
+- Break tasks can use CoreProtect to prevent credit for player placed blocks.
+- Added `togo` option to use in lore. 
 
 # Item names
 [Use the Bukkit Enum Material list](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html).  Item material names can be UPPER or lower case.
@@ -27,19 +30,20 @@ under that category will show up. Categories can be disabled.
 tasks:
   task1:
     type: "breed"
-    amount: 2
+    amount: 20
     present: "breed"
     past: "bred"
 display:
   name: "Breed Any Animal"
   lore-normal:
     - ""
-    - "&7This quest requires you to:"
-    - "&7 - {task1:present} {task1:amount} animals"
+    - "&7This quest requires:"
+    - "&f⇨ &7{task01:present}&7 &banimals"
+    - ""
   lore-started:
     - ""
-    - "&7Status:"
-    - "&7 - {task1:progress}/{task1:amount} animals {task1:past}."
+    - "&7Quest Progress:"
+    - "&f⇨ &7{task01:present} &6{task01:togo} &banimals"
 ```
 
 ## Example task with a spcific material/entity:
@@ -55,12 +59,13 @@ display:
   name: "Place Specific Blocks"
   lore-normal:
     - ""
-    - "&7This quest requires you to:"
-    - "&7 - {task1:present} {task1:item}"
+    - "&7This quest requires:"
+    - "&f⇨ &7{task01:present} &b{task01:item}"
+    - ""
   lore-started:
     - ""
-    - "&7Status:"
-    - "&7 - {task1:progress}/{task1:amount} {task1:item} {task1:past}."
+    - "&7Quest Progress:"
+    - "&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
 ```
 
 ## continue-evaluating for place, break, and drop tasks:

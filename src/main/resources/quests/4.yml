@@ -11,11 +11,11 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&a⇨ &b{task01:item}"
+    - "&f⇨ &b{task01:item}"
   lore-started:
     - ""
-    - "&7Status:"
-    - "&a⇨ &6{task01:togo} &b{task01:item} inventoried"
+    - "&7Quest Progress:"
+    - "&f⇨ &6{task01:togo} &b{task01:item} &7in your inventory"
 rewards:
   - "eco give {player} 1"
   - "give {player} dirt 1"

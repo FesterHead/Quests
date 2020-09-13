@@ -1,28 +1,58 @@
 tasks:
+  task01craft:
+    type: "craft"
+    amount: 16
+    item: "coal_block"
+    present: "assemble"
+    past: "assembled"
   task01:
     type: "inventory"
     amount: 16
     item: "coal_block"
     remove-items-when-complete: true
     update-progress: true
+  task02craft:
+    type: "craft"
+    amount: 16
+    item: "iron_block"
+    present: "assemble"
+    past: "assembled"
   task02:
     type: "inventory"
     amount: 16
     item: "iron_block"
     remove-items-when-complete: true
     update-progress: true
+  task03craft:
+    type: "craft"
+    amount: 16
+    item: "gold_block"
+    present: "assemble"
+    past: "assembled"
   task03:
     type: "inventory"
     amount: 16
     item: "gold_block"
     remove-items-when-complete: true
     update-progress: true
+  task04craft:
+    type: "craft"
+    amount: 16
+    item: "lapis_block"
+    present: "assemble"
+    past: "assembled"
   task04:
     type: "inventory"
     amount: 16
     item: "lapis_block"
     remove-items-when-complete: true
     update-progress: true
+  task05craft:
+    type: "craft"
+    amount: 16
+    item: "redstone_block"
+    present: "assemble"
+    past: "assembled"
   task05:
     type: "inventory"
     amount: 16
@@ -34,25 +64,25 @@ display:
   type: "lapis_block"
   lore-normal:
     - ""
-    - "&7This quest requires you to trade in:"
-    - "&7 - &a{task01:item}"
-    - "&7 - &a{task02:item}"
-    - "&7 - &a{task03:item}"
-    - "&7 - &a{task04:item}"
-    - "&7 - &a{task05:item}"
+    - "&7This quest requires:"
+    - "&f⇨ &7{task01craft:present} &b{task01craft:item}&7s"
+    - "&f⇨ &7{task02craft:present} &b{task02craft:item}&7s"
+    - "&f⇨ &7{task03craft:present} &b{task03craft:item}&7s"
+    - "&f⇨ &7{task04craft:present} &b{task04craft:item}&7s"
+    - "&f⇨ &7{task05craft:present} &b{task05craft:item}&7s"
     - ""
   lore-started:
     - ""
-    - "&7Status:"
-    - "  &e{task01:progress}&7/&6{task01:amount} &7{task01:item}"
-    - "  &e{task02:progress}&7/&6{task02:amount} &7{task02:item}"
-    - "  &e{task03:progress}&7/&6{task03:amount} &7{task03:item}"
-    - "  &e{task04:progress}&7/&6{task04:amount} &7{task04:item}"
-    - "  &e{task05:progress}&7/&6{task05:amount} &7{task05:item}"
+    - "&7Quest Progress:"
+    - "&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s, &6{task01:progress} &7in your &2inventory"
+    - "&f⇨ &7{task02craft:present} &6{task02craft:togo} &b{task02craft:item}&7s, &6{task02:progress} &7in your &2inventory"
+    - "&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s, &6{task03:progress} &7in your &2inventory"
+    - "&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s, &6{task04:progress} &7in your &2inventory"
+    - "&f⇨ &7{task05craft:present} &6{task05craft:togo} &b{task05craft:item}&7s, &6{task05:progress} &7in your &2inventory"
     - ""
     - "&7Rewards:"
-    - "&7 - &6Rewards Key"
-    - "&7 - &8dirt"
+    - "&f⇨ &6Rewards Key"
+    - "&f⇨ &8dirt"
 rewards:
   - "cc give p SkyBlock 2 {player}"
   - "give {player} dirt 4"

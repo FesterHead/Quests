@@ -28,6 +28,7 @@ rewards:
   - "cc give p SkyBlock 4 {player}"
   - "luckperms user {player} permission set island.level.100"
   - "luckperms user {player} permission set commandpanel.panel.skyblock-spawners-store"
+  - "quests admin moddata start {player} SkyBlockQuest51"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

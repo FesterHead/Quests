@@ -26,6 +26,7 @@ rewards:
   - "give {player} bedrock 2"
   - "cc give p SkyBlock 5 {player}"
   - "luckperms user {player} permission set island.level.200"
+  - "quests admin moddata start {player} SkyBlockQuest52"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

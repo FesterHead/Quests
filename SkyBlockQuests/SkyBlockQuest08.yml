@@ -37,9 +37,10 @@ rewards:
   - "luckperms user {player} permission set headdb.allow.buy.*"
   - "luckperms user {player} permission set headdb.category.*"
   - "quests admin moddata start {player} SkyBlockQuest09"
-rewardstring:
-  - "&7Check &9PAGE TWO &7of the &aquest window &7to start the"
-  - "&6Level 5 &7quest.  You &cmust &7start them yourself!"
+  - "quests admin moddata start {player} SkyBlockQuest46"
+#rewardstring:
+#  - "&7Check &9PAGE TWO &7of the &aquest window &7to start the"
+#  - "&6Level 5 &7quest.  You &cmust &7start them yourself!"
 options:
   category: ""
   requires:

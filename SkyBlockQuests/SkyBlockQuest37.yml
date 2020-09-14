@@ -1,272 +1,272 @@
 tasks:
-  # task01:
-  #   type: "craft"
-  #   amount: 1
-  #   item: "iron_axe"
-  #   present: "craft"
-  #   past: "crafted"
-  task02:
-    type: "inventory"
+  task01:
+    type: "craft"
     amount: 1
     item: "iron_axe"
-    remove-items-when-complete: true
-    update-progress: true
-  # task03:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task02:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "iron_hoe"
-  #   present: "craft"
-  #   past: "crafted"
-  task04:
-    type: "inventory"
+  #   item: "iron_axe"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task03:
+    type: "craft"
     amount: 1
     item: "iron_hoe"
-    remove-items-when-complete: true
-    update-progress: true
-  # task05:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task04:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "iron_pickaxe"
-  #   present: "craft"
-  #   past: "crafted"
-  task06:
-    type: "inventory"
+  #   item: "iron_hoe"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task05:
+    type: "craft"
     amount: 1
     item: "iron_pickaxe"
-    remove-items-when-complete: true
-    update-progress: true
-  # task07:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task06:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "iron_shovel"
-  #   present: "craft"
-  #   past: "crafted"
-  task08:
-    type: "inventory"
+  #   item: "iron_pickaxe"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task07:
+    type: "craft"
     amount: 1
     item: "iron_shovel"
-    remove-items-when-complete: true
-    update-progress: true
-  # task09:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task08:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "iron_sword"
-  #   present: "craft"
-  #   past: "crafted"
-  task10:
-    type: "inventory"
+  #   item: "iron_shovel"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task09:
+    type: "craft"
     amount: 1
     item: "iron_sword"
-    remove-items-when-complete: true
-    update-progress: true
-  # task11:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task10:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "iron_helmet"
-  #   present: "craft"
-  #   past: "crafted"
-  task12:
-    type: "inventory"
+  #   item: "iron_sword"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task11:
+    type: "craft"
     amount: 1
     item: "iron_helmet"
-    remove-items-when-complete: true
-    update-progress: true
-  # task13:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task12:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "iron_chestplate"
-  #   present: "craft"
-  #   past: "crafted"
-  task14:
-    type: "inventory"
+  #   item: "iron_helmet"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task13:
+    type: "craft"
     amount: 1
     item: "iron_chestplate"
-    remove-items-when-complete: true
-    update-progress: true
-  # task15:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task14:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "iron_leggings"
-  #   present: "craft"
-  #   past: "crafted"
-  task16:
-    type: "inventory"
+  #   item: "iron_chestplate"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task15:
+    type: "craft"
     amount: 1
     item: "iron_leggings"
-    remove-items-when-complete: true
-    update-progress: true
-  # task17:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task16:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "iron_boots"
-  #   present: "craft"
-  #   past: "crafted"
-  task18:
-    type: "inventory"
+  #   item: "iron_leggings"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task17:
+    type: "craft"
     amount: 1
     item: "iron_boots"
-    remove-items-when-complete: true
-    update-progress: true
-  # task19:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task18:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "golden_axe"
-  #   present: "craft"
-  #   past: "crafted"
-  task20:
-    type: "inventory"
+  #   item: "iron_boots"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task19:
+    type: "craft"
     amount: 1
     item: "golden_axe"
-    remove-items-when-complete: true
-    update-progress: true
-  # task21:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task20:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "golden_hoe"
-  #   present: "craft"
-  #   past: "crafted"
-  task22:
-    type: "inventory"
+  #   item: "golden_axe"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task21:
+    type: "craft"
     amount: 1
     item: "golden_hoe"
-    remove-items-when-complete: true
-    update-progress: true
-  # task23:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task22:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "golden_pickaxe"
-  #   present: "craft"
-  #   past: "crafted"
-  task24:
-    type: "inventory"
+  #   item: "golden_hoe"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task23:
+    type: "craft"
     amount: 1
     item: "golden_pickaxe"
-    remove-items-when-complete: true
-    update-progress: true
-  # task25:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task24:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "golden_shovel"
-  #   present: "craft"
-  #   past: "crafted"
-  task26:
-    type: "inventory"
+  #   item: "golden_pickaxe"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task25:
+    type: "craft"
     amount: 1
     item: "golden_shovel"
-    remove-items-when-complete: true
-    update-progress: true
-  # task27:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task26:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "golden_sword"
-  #   present: "craft"
-  #   past: "crafted"
-  task28:
-    type: "inventory"
+  #   item: "golden_shovel"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task27:
+    type: "craft"
     amount: 1
     item: "golden_sword"
-    remove-items-when-complete: true
-    update-progress: true
-  # task29:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task28:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "golden_helmet"
-  #   present: "craft"
-  #   past: "crafted"
-  task30:
-    type: "inventory"
+  #   item: "golden_sword"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task29:
+    type: "craft"
     amount: 1
     item: "golden_helmet"
-    remove-items-when-complete: true
-    update-progress: true
-  # task31:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task30:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "golden_chestplate"
-  #   present: "craft"
-  #   past: "crafted"
-  task32:
-    type: "inventory"
+  #   item: "golden_helmet"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task31:
+    type: "craft"
     amount: 1
     item: "golden_chestplate"
-    remove-items-when-complete: true
-    update-progress: true
-  # task33:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task32:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "golden_leggings"
-  #   present: "craft"
-  #   past: "crafted"
-  task34:
-    type: "inventory"
+  #   item: "golden_chestplate"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task33:
+    type: "craft"
     amount: 1
     item: "golden_leggings"
-    remove-items-when-complete: true
-    update-progress: true
-  # task35:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task34:
+  #   type: "inventory"
   #   amount: 1
-  #   item: "golden_boots"
-  #   present: "craft"
-  #   past: "crafted"
-  task36:
-    type: "inventory"
+  #   item: "golden_leggings"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task35:
+    type: "craft"
     amount: 1
     item: "golden_boots"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "craft"
+    past: "crafted"
+  # task36:
+  #   type: "inventory"
+  #   amount: 1
+  #   item: "golden_boots"
+  #   remove-items-when-complete: true
+  #   update-progress: true
 display:
   name: "&aIron and gold gear"
   type: "gold_chestplate"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "&f⇨ &7Craft &biron &7and &bgold &7gear"
-    - ""
-    - "&5Notes:"
-    - "&3 - Crafted materials must be in your inventory."
-    - "&3 - Crafted items will be &cremoved &3for this quest."
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "&f⇨ &7Craft &biron &7and &bgold &7gear"
+  #   - ""
+  #   - "&5Notes:"
+  #   - "Crafted materials must be in your inventory."
+  #   - "Crafted items will be &cremoved &3for this quest."
   lore-started:
     - ""
     - "&7Quest Progress:"
-    # - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
-    # - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}"
-    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item} &7in your &2inventory"
-    # - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
-    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
-    # - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
-    - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item} &7in your &2inventory"
-    # - "{task09:remove}&f⇨ &7{task09:present} &6{task09:togo} &b{task09:item}"
-    - "{task10:remove}&f⇨ &6{task10:progress} &b{task10:item} &7in your &2inventory"
-    # - "{task11:remove}&f⇨ &7{task11:present} &6{task11:togo} &b{task11:item}"
-    - "{task12:remove}&f⇨ &6{task12:progress} &b{task11:item} &7in your &2inventory"
-    # - "{task13:remove}&f⇨ &7{task13:present} &6{task13:togo} &b{task13:item}"
-    - "{task14:remove}&f⇨ &6{task14:progress} &b{task14:item} &7in your &2inventory"
-    # - "{task15:remove}&f⇨ &7{task15:present} &6{task15:togo} &b{task15:item}"
-    - "{task16:remove}&f⇨ &6{task16:progress} &b{task16:item} &7in your &2inventory"
-    # - "{task17:remove}&f⇨ &7{task17:present} &6{task17:togo} &b{task17:item}"
-    - "{task18:remove}&f⇨ &6{task18:progress} &b{task18:item} &7in your &2inventory"
-    # - "{task19:remove}&f⇨ &7{task19:present} &6{task19:togo} &b{task19:item}"
-    - "{task20:remove}&f⇨ &6{task20:progress} &b{task20:item} &7in your &2inventory"
-    # - "{task21:remove}&f⇨ &7{task21:present} &6{task21:togo} &b{task21:item}"
-    - "{task22:remove}&f⇨ &6{task22:progress} &b{task22:item} &7in your &2inventory"
-    # - "{task23:remove}&f⇨ &7{task23:present} &6{task23:togo} &b{task23:item}"
-    - "{task24:remove}&f⇨ &6{task24:progress} &b{task24:item} &7in your &2inventory"
-    # - "{task25:remove}&f⇨ &7{task25:present} &6{task25:togo} &b{task25:item}"
-    - "{task26:remove}&f⇨ &6{task26:progress} &b{task26:item} &7in your &2inventory"
-    # - "{task27:remove}&f⇨ &7{task27:present} &6{task27:togo} &b{task27:item}"
-    - "{task28:remove}&f⇨ &6{task28:progress} &b{task28:item} &7in your &2inventory"
-    # - "{task29:remove}&f⇨ &7{task29:present} &6{task29:togo} &b{task29:item}"
-    - "{task30:remove}&f⇨ &6{task30:progress} &b{task30:item} &7in your &2inventory"
-    # - "{task31:remove}&f⇨ &7{task31:present} &6{task31:togo} &b{task31:item}"
-    - "{task32:remove}&f⇨ &6{task32:progress} &b{task32:item} &7in your &2inventory"
-    # - "{task33:remove}&f⇨ &7{task33:present} &6{task33:togo} &b{task33:item}"
-    - "{task34:remove}&f⇨ &6{task34:progress} &b{task34:item} &7in your &2inventory"
-    # - "{task35:remove}&f⇨ &7{task35:present} &6{task35:togo} &b{task35:item}"
-    - "{task36:remove}&f⇨ &6{task36:progress} &b{task36:item} &7in your &2inventory"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    # - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
+    - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}"
+    # - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item} &7in your &2inventory"
+    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
+    # - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
+    - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
+    # - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item} &7in your &2inventory"
+    - "{task09:remove}&f⇨ &7{task09:present} &6{task09:togo} &b{task09:item}"
+    # - "{task10:remove}&f⇨ &6{task10:progress} &b{task10:item} &7in your &2inventory"
+    - "{task11:remove}&f⇨ &7{task11:present} &6{task11:togo} &b{task11:item}"
+    # - "{task12:remove}&f⇨ &6{task12:progress} &b{task11:item} &7in your &2inventory"
+    - "{task13:remove}&f⇨ &7{task13:present} &6{task13:togo} &b{task13:item}"
+    # - "{task14:remove}&f⇨ &6{task14:progress} &b{task14:item} &7in your &2inventory"
+    - "{task15:remove}&f⇨ &7{task15:present} &6{task15:togo} &b{task15:item}"
+    # - "{task16:remove}&f⇨ &6{task16:progress} &b{task16:item} &7in your &2inventory"
+    - "{task17:remove}&f⇨ &7{task17:present} &6{task17:togo} &b{task17:item}"
+    # - "{task18:remove}&f⇨ &6{task18:progress} &b{task18:item} &7in your &2inventory"
+    - "{task19:remove}&f⇨ &7{task19:present} &6{task19:togo} &b{task19:item}"
+    # - "{task20:remove}&f⇨ &6{task20:progress} &b{task20:item} &7in your &2inventory"
+    - "{task21:remove}&f⇨ &7{task21:present} &6{task21:togo} &b{task21:item}"
+    # - "{task22:remove}&f⇨ &6{task22:progress} &b{task22:item} &7in your &2inventory"
+    - "{task23:remove}&f⇨ &7{task23:present} &6{task23:togo} &b{task23:item}"
+    # - "{task24:remove}&f⇨ &6{task24:progress} &b{task24:item} &7in your &2inventory"
+    - "{task25:remove}&f⇨ &7{task25:present} &6{task25:togo} &b{task25:item}"
+    # - "{task26:remove}&f⇨ &6{task26:progress} &b{task26:item} &7in your &2inventory"
+    - "{task27:remove}&f⇨ &7{task27:present} &6{task27:togo} &b{task27:item}"
+    # - "{task28:remove}&f⇨ &6{task28:progress} &b{task28:item} &7in your &2inventory"
+    - "{task29:remove}&f⇨ &7{task29:present} &6{task29:togo} &b{task29:item}"
+    # - "{task30:remove}&f⇨ &6{task30:progress} &b{task30:item} &7in your &2inventory"
+    - "{task31:remove}&f⇨ &7{task31:present} &6{task31:togo} &b{task31:item}"
+    # - "{task32:remove}&f⇨ &6{task32:progress} &b{task32:item} &7in your &2inventory"
+    - "{task33:remove}&f⇨ &7{task33:present} &6{task33:togo} &b{task33:item}"
+    # - "{task34:remove}&f⇨ &6{task34:progress} &b{task34:item} &7in your &2inventory"
+    - "{task35:remove}&f⇨ &7{task35:present} &6{task35:togo} &b{task35:item}"
+    # - "{task36:remove}&f⇨ &6{task36:progress} &b{task36:item} &7in your &2inventory"
     - ""
-    - "&5Note:  Gear in inventory must not be damaged to be counted!"
+    - "&5Gear in inventory must not be damaged to be counted!"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"
@@ -274,6 +274,7 @@ display:
 rewards:
   - "cc give p SkyBlock 2 {player}"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest38"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

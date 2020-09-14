@@ -1,74 +1,74 @@
 tasks:
-  # task01craft:
-  #   type: "craft"
-  #   amount: 64
-  #   item: "baked_potato"
-  #   present: "cook"
-  #   past: "cooked"
-  task01:
-    type: "inventory"
+  task01craft:
+    type: "craft"
     amount: 64
     item: "baked_potato"
-    remove-items-when-complete: true
-    update-progress: true
-  # task02craft:
-  #   type: "craft"
-  #   amount: 32
-  #   item: "golden_carrot"
-  #   present: "craft"
-  #   past: "crafted"
-  task02:
-    type: "inventory"
+    present: "cook"
+    past: "cooked"
+  # task01:
+  #   type: "inventory"
+  #   amount: 64
+  #   item: "baked_potato"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task02craft:
+    type: "craft"
     amount: 32
     item: "golden_carrot"
-    remove-items-when-complete: true
-    update-progress: true
-  # task03craft:
-  #   type: "craft"
+    present: "craft"
+    past: "crafted"
+  # task02:
+  #   type: "inventory"
   #   amount: 32
-  #   item: "golden_apple"
-  #   present: "craft"
-  #   past: "crafted"
-  task03:
-    type: "inventory"
+  #   item: "golden_carrot"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task03craft:
+    type: "craft"
     amount: 32
     item: "golden_apple"
-    remove-items-when-complete: true
-    update-progress: true
-  # task04craft:
-  #   type: "craft"
-  #   amount: 18
-  #   item: "beehrabbit_stewve"
-  #   present: "cook"
-  #   past: "cooked"
-  task04:
-    type: "inventory"
+    present: "craft"
+    past: "crafted"
+  # task03:
+  #   type: "inventory"
+  #   amount: 32
+  #   item: "golden_apple"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task04craft:
+    type: "craft"
     amount: 18
-    item: "rabbit_stew"
-    remove-items-when-complete: true
-    update-progress: true
+    item: "beehrabbit_stewve"
+    present: "cook"
+    past: "cooked"
+  # task04:
+  #   type: "inventory"
+  #   amount: 18
+  #   item: "rabbit_stew"
+  #   remove-items-when-complete: true
+  #   update-progress: true
 display:
   name: "&aMore food"
   type: "rabbit_stew"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &b{task01:item}&7s"
-    - "{task02:complete} &b{task02:item}&7s"
-    - "{task03:complete} &b{task03:item}&7s"
-    - "{task04:complete} &b{task04:item}"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &b{task01:item}&7s"
+  #   - "{task02:complete} &b{task02:item}&7s"
+  #   - "{task03:complete} &b{task03:item}&7s"
+  #   - "{task04:complete} &b{task04:item}"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    # - "{task01craft:remove}&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s"
-    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
-    # - "{task02craft:remove}&f⇨ &7{task02craft:present} &6{task02craft:togo} &b{task02craft:item}&7s"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item}&7s &7in your &2inventory"
-    # - "{task03craft:remove}&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s"
-    - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item}&7s &7in your &2inventory"
-    # - "{task04craft:remove}&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}"
-    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item} &7in your &2inventory"
+    - "{task01craft:remove}&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s"
+    # - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
+    - "{task02craft:remove}&f⇨ &7{task02craft:present} &6{task02craft:togo} &b{task02craft:item}&7s"
+    # - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item}&7s &7in your &2inventory"
+    - "{task03craft:remove}&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s"
+    # - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item}&7s &7in your &2inventory"
+    - "{task04craft:remove}&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}"
+    # - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item} &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"
@@ -76,6 +76,7 @@ display:
 rewards:
   - "cc give p SkyBlock 1 {player}"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest37"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

@@ -1,16 +1,16 @@
 tasks:
-  # task01craft:
-  #   type: "craft"
-  #   amount: 64
-  #   item: "bookshelf"
-  #   present: "assemble"
-  #   past: "assembled"
-  task01:
-    type: "inventory"
+  task01craft:
+    type: "craft"
     amount: 64
     item: "bookshelf"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "assemble"
+    past: "assembled"
+  # task01:
+  #   type: "inventory"
+  #   amount: 64
+  #   item: "bookshelf"
+  #   remove-items-when-complete: true
+  #   update-progress: true
   task02:
     type: "enchant"
     amount: 100
@@ -24,17 +24,17 @@ tasks:
 display:
   name: "&aEnchanting and brewing"
   type: "bookshelf"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &b{task01:item}&7s"
-    - "{task02:complete} &7{task02:present}"
-    - "{task03:complete} &7{task03:present}"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &b{task01:item}&7s"
+  #   - "{task02:complete} &7{task02:present}"
+  #   - "{task03:complete} &7{task03:present}"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
+    - "{task01craft:remove}&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s"
     - "{task02:remove}&f⇨ &6{task02:progress} &bitems &7{task02:past}"
     - "{task03:remove}&f⇨ &6{task03:progress} &bitems &7{task03:past}"
     - ""
@@ -44,6 +44,7 @@ display:
 rewards:
   - "cc give p SkyBlock 2 {player}"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest40"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

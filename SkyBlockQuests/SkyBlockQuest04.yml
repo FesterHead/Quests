@@ -23,46 +23,45 @@ tasks:
     item: "oak_fence"
     present: "place"
     past: "placed"
-  # task05:
-  #   type: "craft"
-  #   amount: 12
-  #   item: "oak_slab"
-  #   present: "construct"
-  #   past: "constructed"
-  task06:
-    type: "inventory"
+  task05:
+    type: "craft"
     amount: 12
     item: "oak_slab"
-    remove-items-when-complete: true
-    update-progress: true
-  # task07:
-  #   type: "craft"
+    present: "construct"
+    past: "constructed"
+  # task06:
+  #   type: "inventory"
   #   amount: 12
-  #   item: "oak_stairs"
-  #   present: "construct"
-  #   past: "constructed"
-  task08:
-    type: "inventory"
+  #   item: "oak_slab"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task07:
+    type: "craft"
     amount: 12
     item: "oak_stairs"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "construct"
+    past: "constructed"
+  # task08:
+  #   type: "inventory"
+  #   amount: 12
+  #   item: "oak_stairs"
+  #   remove-items-when-complete: true
+  #   update-progress: true
 display:
   name: "&aMore placing and crafting"
   type: "oak_stairs"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &7{task01:present} &b{task01:item}"
-    - "{task02:complete} &7{task02:present} &b{task02:item}"
-    - "{task03:complete} &7{task03:present} &b{task03:item}&7s"
-    - "{task04:complete} &7{task04:present} &b{task04:item}&7s"
-    - "{task06:complete} &7{task06:present} &b{task06:item}&7s"
-    - "{task08:complete} &7{task08:present} &b{task08:item}"
-    - ""
-    - "&5Notes:"
-    - "&3 - Slabs and stairs must be in your inventory."
-    - "&3 - They will be &cremoved &3for this quest."
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &7{task01:present} &b{task01:item}"
+  #   - "{task02:complete} &7{task02:present} &b{task02:item}"
+  #   - "{task03:complete} &7{task03:present} &b{task03:item}&7s"
+  #   - "{task04:complete} &7{task04:present} &b{task04:item}&7s"
+  #   - "{task06:complete} &7{task06:present} &b{task06:item}&7s"
+  #   - "{task08:complete} &7{task08:present} &b{task08:item}"
+  #   - ""
+  #   - "&3Slabs and stairs must be in your inventory."
+  #   - "&3They will be &cremoved &3for this quest."
   lore-started:
     - ""
     - "&7Quest Progress:"
@@ -70,10 +69,10 @@ display:
     - "{task02:remove}&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}"
     - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s"
     - "{task04:remove}&f⇨ &7{task04:present} &6{task04:togo} &b{task04:item}&7s"
-    # - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}&7s"
-    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
-    # - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
-    - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item} &7in your &2inventory"
+    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}&7s"
+    # - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
+    - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
+    # - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item} &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &8dirt"

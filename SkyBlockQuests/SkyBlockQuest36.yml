@@ -34,12 +34,14 @@ display:
   type: "lapis_ore"
   lore-normal:
     - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &7{task01:present} &b{task01:item}"
-    - "{task02:complete} &7{task02:present} &b{task02:item}"
-    - "{task03:complete} &7{task03:present} &b{task03:item}"
-    - "{task04:complete} &7{task04:present} &b{task04:item}"
-    - "{task05:complete} &7{task05:present} &b{task05:item}"
+    # - "&7This quest requires:"
+    # - "{task01:complete} &7{task01:present} &b{task01:item}"
+    # - "{task02:complete} &7{task02:present} &b{task02:item}"
+    # - "{task03:complete} &7{task03:present} &b{task03:item}"
+    # - "{task04:complete} &7{task04:present} &b{task04:item}"
+    # - "{task05:complete} &7{task05:present} &b{task05:item}"
+    # - ""
+    - "&7This quest is &frepeatable &7with &dno &7cooldown."
     - ""
   lore-started:
     - ""
@@ -61,7 +63,7 @@ rewards:
 options:
   category: ""
   requires:
-    - "SkyBlockQuest35"
+    - "SkyBlockQuest34"
   repeatable: true
   cooldown:
     enabled: true

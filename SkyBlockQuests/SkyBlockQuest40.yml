@@ -1,158 +1,158 @@
 tasks:
-  # task01craft:
-  #   type: "craft"
-  #   amount: 16
-  #   item: "comparator"
-  #   present: "assemble"
-  #   past: "assembled"
-  task01:
-    type: "inventory"
+  task01craft:
+    type: "craft"
     amount: 16
     item: "comparator"
-    remove-items-when-complete: true
-    update-progress: true
-  # task02craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task01:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "daylight_detector"
-  #   present: "assemble"
-  #   past: "assembled"
-  task02:
-    type: "inventory"
+  #   item: "comparator"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task02craft:
+    type: "craft"
     amount: 16
     item: "daylight_detector"
-    remove-items-when-complete: true
-    update-progress: true
-  # task03craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task02:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "dispenser"
-  #   present: "assemble"
-  #   past: "assembled"
-  task03:
-    type: "inventory"
+  #   item: "daylight_detector"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task03craft:
+    type: "craft"
     amount: 16
     item: "dispenser"
-    remove-items-when-complete: true
-    update-progress: true
-  # task04craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task03:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "dropper"
-  #   present: "assemble"
-  #   past: "assembled"
-  task04:
-    type: "inventory"
+  #   item: "dispenser"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task04craft:
+    type: "craft"
     amount: 16
     item: "dropper"
-    remove-items-when-complete: true
-    update-progress: true
-  # task05craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task04:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "hopper"
-  #   present: "assemble"
-  #   past: "assembled"
-  task05:
-    type: "inventory"
+  #   item: "dropper"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task05craft:
+    type: "craft"
     amount: 16
     item: "hopper"
-    remove-items-when-complete: true
-    update-progress: true
-  # task06craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task05:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "observer"
-  #   present: "assemble"
-  #   past: "assembled"
-  task06:
-    type: "inventory"
+  #   item: "hopper"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task06craft:
+    type: "craft"
     amount: 16
     item: "observer"
-    remove-items-when-complete: true
-    update-progress: true
-  # task07craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task06:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "piston"
-  #   present: "assemble"
-  #   past: "assembled"
-  task07:
-    type: "inventory"
+  #   item: "observer"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task07craft:
+    type: "craft"
     amount: 16
     item: "piston"
-    remove-items-when-complete: true
-    update-progress: true
-  # task08craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task07:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "redstone_lamp"
-  #   present: "assemble"
-  #   past: "assembled"
-  task08:
-    type: "inventory"
+  #   item: "piston"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task08craft:
+    type: "craft"
     amount: 16
     item: "redstone_lamp"
-    remove-items-when-complete: true
-    update-progress: true
-  # task09craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task08:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "repeater"
-  #   present: "assemble"
-  #   past: "assembled"
-  task09:
-    type: "inventory"
+  #   item: "redstone_lamp"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task09craft:
+    type: "craft"
     amount: 16
     item: "repeater"
-    remove-items-when-complete: true
-    update-progress: true
-  # task10craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task09:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "sticky_piston"
-  #   present: "assemble"
-  #   past: "assembled"
-  task10:
-    type: "inventory"
+  #   item: "repeater"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task10craft:
+    type: "craft"
     amount: 16
     item: "sticky_piston"
-    remove-items-when-complete: true
-    update-progress: true
-  # task11craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task10:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "tripwire_hook"
-  #   present: "assemble"
-  #   past: "assembled"
-  task11:
-    type: "inventory"
+  #   item: "sticky_piston"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task11craft:
+    type: "craft"
     amount: 16
     item: "tripwire_hook"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "assemble"
+    past: "assembled"
+  # task11:
+  #   type: "inventory"
+  #   amount: 16
+  #   item: "tripwire_hook"
+  #   remove-items-when-complete: true
+  #   update-progress: true
 display:
   name: "&aEngineering components"
   type: "dispenser"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "&f⇨ &7Craft &bengineering &7components"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "&f⇨ &7Craft &bengineering &7components"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item}&7s &7in your &2inventory"
-    - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item}&7s &7in your &2inventory"
-    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
-    - "{task05:remove}&f⇨ &6{task05:progress} &b{task05:item}&7s &7in your &2inventory"
-    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item}&7s &7in your &2inventory"
-    - "{task07:remove}&f⇨ &6{task07:progress} &b{task07:item}&7s &7in your &2inventory"
-    - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item}&7s &7in your &2inventory"
-    - "{task09:remove}&f⇨ &6{task09:progress} &b{task09:item}&7s &7in your &2inventory"
-    - "{task10:remove}&f⇨ &6{task10:progress} &b{task10:item}&7s &7in your &2inventory"
-    - "{task11:remove}&f⇨ &6{task11:progress} &b{task11:item}&7s &7in your &2inventory"
+    - "{task01craft:remove}&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s"
+    - "{task02craft:remove}&f⇨ &7{task02craft:present} &6{task02craft:togo} &b{task02craft:item}&7s"
+    - "{task03craft:remove}&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s"
+    - "{task04craft:remove}&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s"
+    - "{task05craft:remove}&f⇨ &7{task05craft:present} &6{task05craft:togo} &b{task05craft:item}&7s"
+    - "{task06craft:remove}&f⇨ &7{task06craft:present} &6{task06craft:togo} &b{task06craft:item}&7s"
+    - "{task07craft:remove}&f⇨ &7{task07craft:present} &6{task07craft:togo} &b{task07craft:item}&7s"
+    - "{task08craft:remove}&f⇨ &7{task08craft:present} &6{task08craft:togo} &b{task08craft:item}&7s"
+    - "{task09craft:remove}&f⇨ &7{task09craft:present} &6{task09craft:togo} &b{task09craft:item}&7s"
+    - "{task10craft:remove}&f⇨ &7{task10craft:present} &6{task10craft:togo} &b{task10craft:item}&7s"
+    - "{task11craft:remove}&f⇨ &7{task11craft:present} &6{task11craft:togo} &b{task11craft:item}&7s"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"
@@ -160,6 +160,7 @@ display:
 rewards:
   - "cc give p SkyBlock 3 {player}"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest41"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

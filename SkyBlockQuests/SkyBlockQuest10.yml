@@ -26,6 +26,7 @@ display:
 rewards:
   - "give {player} dirt 4"
   - "give {player} wheat_seeds 2"
+  - "quests admin moddata start {player} SkyBlockQuest13"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

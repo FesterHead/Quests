@@ -8,15 +8,15 @@ tasks:
 display:
   name: "&aPrickly pear"
   type: "cactus"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &b{task01:item}"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &b{task01:item}"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item} &7in your &2inventory"
+    - "{task01:remove}&f⇨ &6{task01:progress}&7/&9{task01:amount} &b{task01:item}&7s &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &asugar cane"
@@ -24,6 +24,7 @@ display:
 rewards:
   - "give {player} sugar_cane 2"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest22"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

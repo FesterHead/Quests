@@ -5,36 +5,36 @@ tasks:
     item: "salmon"
     present: "catch"
     past: "caught"
-  # task02:
-  #   type: "furnace"
-  #   amount: 64
-  #   item: "cooked_salmon"
-  #   present: "bake"
-  #   past: "baked"
-  task03:
-    type: "inventory"
+  task02:
+    type: "furnace"
     amount: 64
     item: "cooked_salmon"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "bake"
+    past: "baked"
+  # task03:
+  #   type: "inventory"
+  #   amount: 64
+  #   item: "cooked_salmon"
+  #   remove-items-when-complete: true
+  #   update-progress: true
   task04:
     type: "fish"
     amount: 100
     item: "cod"
     present: "catch"
     past: "caught"
-  # task05:
-  #   type: "furnace"
-  #   amount: 64
-  #   item: "cooked_cod"
-  #   present: "bake"
-  #   past: "baked"
-  task06:
-    type: "inventory"
+  task05:
+    type: "furnace"
     amount: 64
     item: "cooked_cod"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "bake"
+    past: "baked"
+  # task06:
+  #   type: "inventory"
+  #   amount: 64
+  #   item: "cooked_cod"
+  #   remove-items-when-complete: true
+  #   update-progress: true
   task07:
     type: "fish"
     amount: 100
@@ -50,25 +50,25 @@ tasks:
 display:
   name: "&aFishing"
   type: "salmon"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &7{task01:present} &b{task01:item}"
-    - "{task03:complete} &b{task03:item}"
-    - "{task04:complete} &7{task04:present} &b{task04:item}"
-    - "{task06:complete} &b{task06:item}"
-    - "{task07:complete} &7{task07:present} &b{task07:item}"
-    - "{task08:complete} &7{task08:present} &b{task08:item}"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &7{task01:present} &b{task01:item}"
+  #   - "{task03:complete} &b{task03:item}"
+  #   - "{task04:complete} &7{task04:present} &b{task04:item}"
+  #   - "{task06:complete} &b{task06:item}"
+  #   - "{task07:complete} &7{task07:present} &b{task07:item}"
+  #   - "{task08:complete} &7{task08:present} &b{task08:item}"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
     - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
-    # - "{task02:remove}&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}"
-    - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item} &7in your &2inventory"
+    - "{task02:remove}&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}"
+    # - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item} &7in your &2inventory"
     - "{task04:remove}&f⇨ &7{task04:present} &6{task04:togo} &b{task04:item}"
-    # - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
-    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
+    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
+    # - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
     - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
     - "{task08:remove}&f⇨ &7{task08:present} &6{task08:togo} &b{task08:item}"
     - ""
@@ -78,6 +78,7 @@ display:
 rewards:
   - "cc give p SkyBlock 1 {player}"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest33"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

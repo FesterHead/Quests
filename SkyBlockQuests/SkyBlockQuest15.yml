@@ -14,12 +14,12 @@ tasks:
 display:
   name: "&aMelon farming"
   type: "melon_slice"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &7{task01:present} &b{task01:item}&7s"
-    - "{task02:complete} &7{task02:present} &b{task02:item}&7s"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &7{task01:present} &b{task01:item}&7s"
+  #   - "{task02:complete} &7{task02:present} &b{task02:item}&7s"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
@@ -30,6 +30,7 @@ display:
     - "&f⇨ &8dirt"
 rewards:
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest16"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

@@ -1,30 +1,30 @@
 tasks:
-  # task01:
-  #   type: "craft"
-  #   amount: 18
-  #   item: "suspicious_stew"
-  #   present: "cook"
-  #   past: "cooked"
-  task02:
-    type: "inventory"
+  task01:
+    type: "craft"
     amount: 18
     item: "suspicious_stew"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "cook"
+    past: "cooked"
+  # task02:
+  #   type: "inventory"
+  #   amount: 18
+  #   item: "suspicious_stew"
+  #   remove-items-when-complete: true
+  #   update-progress: true
 display:
   name: "&aSoup kitchen III"
   type: "suspicious_stew"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    # - "{task01:complete} &7{task01:present} &b{task01:item}"
-    - "{task02:complete} &b{task02:item}"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   # - "{task01:complete} &7{task01:present} &b{task01:item}"
+  #   - "{task02:complete} &b{task02:item}"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    # - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    # - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &acactus"
@@ -32,6 +32,7 @@ display:
 rewards:
   - "give {player} cactus 2"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest21"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

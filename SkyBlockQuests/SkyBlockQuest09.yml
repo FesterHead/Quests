@@ -1,52 +1,52 @@
 tasks:
-  # task01:
-  #   type: "craft"
-  #   amount: 64
-  #   item: "stone_bricks"
-  #   present: "construct"
-  #   past: "constructed"
-  task02:
-    type: "inventory"
+  task01:
+    type: "craft"
     amount: 64
     item: "stone_bricks"
-    remove-items-when-complete: true
-    update-progress: true
-  # task03:
-  #   type: "furnace"
+    present: "construct"
+    past: "constructed"
+  # task02:
+  #   type: "inventory"
   #   amount: 64
-  #   item: "smooth_stone"
-  #   present: "smelt"
-  #   past: "smelted"
-  task04:
-    type: "inventory"
+  #   item: "stone_bricks"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task03:
+    type: "furnace"
     amount: 64
     item: "smooth_stone"
-    remove-items-when-complete: true
-    update-progress: true
-  # task05:
-  #   type: "furnace"
+    present: "smelt"
+    past: "smelted"
+  # task04:
+  #   type: "inventory"
   #   amount: 64
-  #   item: "cracked_stone_bricks"
-  #   present: "smelt"
-  #   past: "smelted"
-  task06:
-    type: "inventory"
+  #   item: "smooth_stone"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task05:
+    type: "furnace"
     amount: 64
     item: "cracked_stone_bricks"
-    remove-items-when-complete: true
-    update-progress: true
-  # task07:
-  #   type: "craft"
+    present: "smelt"
+    past: "smelted"
+  # task06:
+  #   type: "inventory"
   #   amount: 64
-  #   item: "chiseled_stone_bricks"
-  #   present: "construct"
-  #   past: "constructed"
-  task08:
-    type: "inventory"
+  #   item: "cracked_stone_bricks"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task07:
+    type: "craft"
     amount: 64
     item: "chiseled_stone_bricks"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "construct"
+    past: "constructed"
+  # task08:
+  #   type: "inventory"
+  #   amount: 64
+  #   item: "chiseled_stone_bricks"
+  #   remove-items-when-complete: true
+  #   update-progress: true
   task09:
     type: "break"
     amount: 300
@@ -56,38 +56,38 @@ tasks:
 display:
   name: "&aFour types of stone blocks"
   type: "stone_bricks"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task02:complete} &b{task02:item}"
-    - "{task04:complete} &b{task04:item}&7s"
-    - "{task06:complete} &b{task06:item}"
-    - "{task08:complete} &b{task08:item}"
-    - "{task09:complete} &7{task09:present} &b{task09:item}"
-    - ""
-    - "&bNote:"
-    - "&7After this quest is complete use"
-    - "&3/quest &7to activate a quest."
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task02:complete} &b{task02:item}"
+  #   - "{task04:complete} &b{task04:item}&7s"
+  #   - "{task06:complete} &b{task06:item}"
+  #   - "{task08:complete} &b{task08:item}"
+  #   - "{task09:complete} &7{task09:present} &b{task09:item}"
+  #   - ""
+  #   - "&bNote:"
+  #   - "&7After this quest is complete use"
+  #   - "&3/quest &7to activate the next quest."
   lore-started:
     - ""
     - "&7Quest Progress:"
-    # - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
-    # - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s"
-    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
-    # - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
-    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
-    # - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
-    - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item} &7in your &2inventory"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    # - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
+    - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s"
+    # - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
+    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
+    # - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
+    - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
+    # - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item} &7in your &2inventory"
     - "{task09:remove}&f⇨ &7{task09:present} &6{task09:togo} &b{task09:item}&7s"
     - ""
     - "&7Rewards:"
     - "&f⇨ &bmagic iron tools"
     - "&f⇨ &8dirt"
-    - ""
-    - "&bNote:"
-    - "&7After this quest is complete use"
-    - "&3/quest &7to activate a quest."
+    # - ""
+    # - "&bNote:"
+    # - "&7After this quest is complete use"
+    # - "&3/quest &7to activate a quest."
 rewards:
   - "give {player} dirt 2"
   - "give {player} iron_pickaxe 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:fortune,lvl:3},{id:efficiency,lvl:3}]}"
@@ -95,9 +95,10 @@ rewards:
   - "give {player} iron_shovel 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:efficiency,lvl:3}]}"
   - "give {player} iron_sword 1 0 {Enchantments:[{id:unbreaking,lvl:3},{id:looting,lvl:3},{id:sharpness,lvl:3},{id:sweeping,lvl:3}]}"
   - "luckperms user {player} permission set tg.user"
+  - "quests admin moddata start {player} SkyBlockQuest10"
 rewardstring:
   - "&7With &3iron &7and &bdiamond &2axes &7you can &9sneak &7to &achop &7down the &6entire tree&7."
-  - "&7Remember to use &3/quest &7to activate new quests!"
+  # - "&7Remember to use &3/quest &7to activate new quests!"
 options:
   category: ""
   requires:

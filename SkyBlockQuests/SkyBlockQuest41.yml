@@ -1,184 +1,184 @@
 tasks:
-  # task01craft:
-  #   type: "craft"
-  #   amount: 8
-  #   item: "barrel"
-  #   present: "assemble"
-  #   past: "assembled"
-  task01:
-    type: "inventory"
+  task01craft:
+    type: "craft"
     amount: 8
     item: "barrel"
-    remove-items-when-complete: true
-    update-progress: true
-  # task02craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task01:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "blast_furnace"
-  #   present: "assemble"
-  #   past: "assembled"
-  task02:
-    type: "inventory"
+  #   item: "barrel"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task02craft:
+    type: "craft"
     amount: 8
     item: "blast_furnace"
-    remove-items-when-complete: true
-    update-progress: true
-  # task03craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task02:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "brewing_stand"
-  #   present: "assemble"
-  #   past: "assembled"
-  task03:
-    type: "inventory"
+  #   item: "blast_furnace"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task03craft:
+    type: "craft"
     amount: 8
     item: "brewing_stand"
-    remove-items-when-complete: true
-    update-progress: true
-  # task04craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task03:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "cartography_table"
-  #   present: "assemble"
-  #   past: "assembled"
-  task04:
-    type: "inventory"
+  #   item: "brewing_stand"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task04craft:
+    type: "craft"
     amount: 8
     item: "cartography_table"
-    remove-items-when-complete: true
-    update-progress: true
-  # task05craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task04:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "cauldron"
-  #   present: "assemble"
-  #   past: "assembled"
-  task05:
-    type: "inventory"
+  #   item: "cartography_table"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task05craft:
+    type: "craft"
     amount: 8
     item: "cauldron"
-    remove-items-when-complete: true
-    update-progress: true
-  # task06craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task05:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "composter"
-  #   present: "assemble"
-  #   past: "assembled"
-  task06:
-    type: "inventory"
+  #   item: "cauldron"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task06craft:
+    type: "craft"
     amount: 8
     item: "composter"
-    remove-items-when-complete: true
-    update-progress: true
-  # task07craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task06:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "fletching_table"
-  #   present: "assemble"
-  #   past: "assembled"
-  task07:
-    type: "inventory"
+  #   item: "composter"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task07craft:
+    type: "craft"
     amount: 8
     item: "fletching_table"
-    remove-items-when-complete: true
-    update-progress: true
-  # task08craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task07:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "grindstone"
-  #   present: "assemble"
-  #   past: "assembled"
-  task08:
-    type: "inventory"
+  #   item: "fletching_table"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task08craft:
+    type: "craft"
     amount: 8
     item: "grindstone"
-    remove-items-when-complete: true
-    update-progress: true
-  # task09craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task08:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "lectern"
-  #   present: "assemble"
-  #   past: "assembled"
-  task09:
-    type: "inventory"
+  #   item: "grindstone"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task09craft:
+    type: "craft"
     amount: 8
     item: "lectern"
-    remove-items-when-complete: true
-    update-progress: true
-  # task10craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task09:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "loom"
-  #   present: "assemble"
-  #   past: "assembled"
-  task10:
-    type: "inventory"
+  #   item: "lectern"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task10craft:
+    type: "craft"
     amount: 8
     item: "loom"
-    remove-items-when-complete: true
-    update-progress: true
-  # task11craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task10:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "smithing_table"
-  #   present: "assemble"
-  #   past: "assembled"
-  task11:
-    type: "inventory"
+  #   item: "loom"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task11craft:
+    type: "craft"
     amount: 8
     item: "smithing_table"
-    remove-items-when-complete: true
-    update-progress: true
-  # task12craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task11:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "smoker"
-  #   present: "assemble"
-  #   past: "assembled"
-  task12:
-    type: "inventory"
+  #   item: "smithing_table"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task12craft:
+    type: "craft"
     amount: 8
     item: "smoker"
-    remove-items-when-complete: true
-    update-progress: true
-  # task13craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task12:
+  #   type: "inventory"
   #   amount: 8
-  #   item: "stonecutter"
-  #   present: "assemble"
-  #   past: "assembled"
-  task13:
-    type: "inventory"
+  #   item: "smoker"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task13craft:
+    type: "craft"
     amount: 8
     item: "stonecutter"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "assemble"
+    past: "assembled"
+  # task13:
+  #   type: "inventory"
+  #   amount: 8
+  #   item: "stonecutter"
+  #   remove-items-when-complete: true
+  #   update-progress: true
 display:
   name: "&aVillage professions"
   type: "dispenser"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "&f⇨ &7Craft &bvillager profession &7items"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "&f⇨ &7Craft &bvillager profession &7items"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item}&7s &7in your &2inventory"
-    - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item}&7s &7in your &2inventory"
-    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
-    - "{task05:remove}&f⇨ &6{task05:progress} &b{task05:item}&7s &7in your &2inventory"
-    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item}&7s &7in your &2inventory"
-    - "{task07:remove}&f⇨ &6{task07:progress} &b{task07:item}&7s &7in your &2inventory"
-    - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item}&7s &7in your &2inventory"
-    - "{task09:remove}&f⇨ &6{task09:progress} &b{task09:item}&7s &7in your &2inventory"
-    - "{task10:remove}&f⇨ &6{task10:progress} &b{task10:item}&7s &7in your &2inventory"
-    - "{task11:remove}&f⇨ &6{task11:progress} &b{task11:item}&7s &7in your &2inventory"
-    - "{task12:remove}&f⇨ &6{task12:progress} &b{task12:item}&7s &7in your &2inventory"
-    - "{task13:remove}&f⇨ &6{task13:progress} &b{task13:item}&7s &7in your &2inventory"
+    - "{task01craft:remove}&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s"
+    - "{task02craft:remove}&f⇨ &7{task02craft:present} &6{task02craft:togo} &b{task02craft:item}&7s"
+    - "{task03craft:remove}&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s"
+    - "{task04craft:remove}&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s"
+    - "{task05craft:remove}&f⇨ &7{task05craft:present} &6{task05craft:togo} &b{task05craft:item}&7s"
+    - "{task06craft:remove}&f⇨ &7{task06craft:present} &6{task06craft:togo} &b{task06craft:item}&7s"
+    - "{task07craft:remove}&f⇨ &7{task07craft:present} &6{task07craft:togo} &b{task07craft:item}&7s"
+    - "{task08craft:remove}&f⇨ &7{task08craft:present} &6{task08craft:togo} &b{task08craft:item}&7s"
+    - "{task09craft:remove}&f⇨ &7{task09craft:present} &6{task09craft:togo} &b{task09craft:item}&7s"
+    - "{task10craft:remove}&f⇨ &7{task10craft:present} &6{task10craft:togo} &b{task10craft:item}&7s"
+    - "{task11craft:remove}&f⇨ &7{task11craft:present} &6{task11craft:togo} &b{task11craft:item}&7s"
+    - "{task12craft:remove}&f⇨ &7{task12craft:present} &6{task12craft:togo} &b{task12craft:item}&7s"
+    - "{task13craft:remove}&f⇨ &7{task13craft:present} &6{task13craft:togo} &b{task13craft:item}&7s"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"

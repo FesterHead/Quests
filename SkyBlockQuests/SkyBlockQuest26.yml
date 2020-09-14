@@ -14,17 +14,17 @@ tasks:
 display:
   name: "&aMore tree types"
   type: "birch_sapling"
-  lore-normal:
-    - ""
-    - "&7This quest requires you to trade in:"
-    - "{task01:complete} &b{task01:item}&7s"
-    - "{task02:complete} &b{task02:item}&7s"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires you to trade in:"
+  #   - "{task01:complete} &b{task01:item}&7s"
+  #   - "{task02:complete} &b{task02:item}&7s"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item}&7s &7in your &2inventory"
+    - "{task01:remove}&f⇨ &6{task01:progress}&7/&9{task01:amount} &b{task01:item}&7s &7in your &2inventory"
+    - "{task02:remove}&f⇨ &6{task02:progress}&7/&9{task02:amount} &b{task02:item}&7s &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &esaplings"
@@ -36,6 +36,7 @@ rewards:
   - "give {player} dark_oak_sapling 4"
   - "give {player} jungle_sapling 4"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest28"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

@@ -26,14 +26,14 @@ tasks:
 display:
   name: "&aWheat farming"
   type: "wheat"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &7{task01:present} &b{task01:item}"
-    - "{task02:complete} &7{task02:present} &b{task02:item}"
-    - "{task03:complete} &7{task03:present} &b{task03:item}"
-    - "{task04:complete} &7{task04:present} &b{task04:item}"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &7{task01:present} &b{task01:item}"
+  #   - "{task02:complete} &7{task02:present} &b{task02:item}"
+  #   - "{task03:complete} &7{task03:present} &b{task03:item}"
+  #   - "{task04:complete} &7{task04:present} &b{task04:item}"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
@@ -48,6 +48,7 @@ display:
 rewards:
   - "give {player} vine 2"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest14"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

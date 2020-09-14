@@ -17,24 +17,30 @@ tasks:
     item: "skeleton"
     present: "crush"
     past: "crushed"
-  # task04craft:
-  #   type: "craft"
-  #   amount: 16
-  #   item: "bone_block"
-  #   present: "assemble"
-  #   past: "assembled"
-  task04:
-    type: "inventory"
+  task04craft:
+    type: "craft"
     amount: 16
     item: "bone_block"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "assemble"
+    past: "assembled"
+  # task04:
+  #   type: "inventory"
+  #   amount: 16
+  #   item: "bone_block"
+  #   remove-items-when-complete: true
+  #   update-progress: true
   task05:
     type: "death"
     amount: 100
     item: "creeper"
     present: "explode"
     past: "exploded"
+  task06craft:
+    type: "craft"
+    amount: 16
+    item: "tnt"
+    present: "assemble"
+    past: "assembled"
   task06:
     type: "inventory"
     amount: 16
@@ -50,28 +56,29 @@ tasks:
 display:
   name: "&aMob hunter"
   type: "rotten_flesh"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &7{task01:present} &b{task01:item}&7s"
-    - "{task02:complete} &b{task02:item}"
-    - "{task03:complete} &7{task03:present} &b{task03:item}&7s"
-    - "{task04:complete} &b{task04:item}"
-    # - "{task04craft:complete} &7{task04craft:present} &b{task04craft:item}&7s"
-    - "{task05:complete} &7{task05:present} &b{task05:item}&7s"
-    - "{task06:complete} &b{task06:item}"
-    - "{task07:complete} &7{task07:present} &b{task07:item}&7es"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &7{task01:present} &b{task01:item}&7s"
+  #   - "{task02:complete} &b{task02:item}"
+  #   - "{task03:complete} &7{task03:present} &b{task03:item}&7s"
+  #   - "{task04:complete} &b{task04:item}"
+  #   # - "{task04craft:complete} &7{task04craft:present} &b{task04craft:item}&7s"
+  #   - "{task05:complete} &7{task05:present} &b{task05:item}&7s"
+  #   - "{task06:complete} &b{task06:item}"
+  #   - "{task07:complete} &7{task07:present} &b{task07:item}&7es"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
     - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}&7s"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item}&7s &7in your &2inventory"
+    - "{task02:remove}&f⇨ &6{task02:progress}&7/&9{task02:amount} &b{task02:item} &7in your &2inventory"
     - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s"
-    # - "{task04craft:remove}&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s"
-    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
+    - "{task04craft:remove}&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s"
+    # - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
     - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}&7s"
-    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item}&7s &7in your &2inventory"
+    - "{task06craft:remove}&f⇨ &7{task06craft:present} &6{task06craft:togo} &b{task06craft:item}&7s"
+    # - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item}&7s &7in your &2inventory"
     - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}&7es"
     - ""
     - "&7Rewards:"
@@ -80,6 +87,7 @@ display:
 rewards:
   - "cc give p SkyBlock 1 {player}"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest30"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

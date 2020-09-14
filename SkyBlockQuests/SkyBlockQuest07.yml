@@ -56,17 +56,17 @@ tasks:
 display:
   name: "&aSmelting and cooking"
   type: "furnace"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &7{task01:present} &b{task01:item}"
-    - "{task02:complete} &7{task02:present} &b{task02:item}"
-    - "{task03:complete} &7{task03:present} &b{task03:item}"
-    - "{task04:complete} &7{task04:present} &b{task04:item}&7es"
-    - "{task05:complete} &7{task05:present} &b{task05:item}&7es"
-    - "{task06:complete} &7{task06:present} &b{task06:item}"
-    - "{task07:complete} &7{task07:present} &b{task07:item}"
-    - "{task08:complete} &7{task08:present}"
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &7{task01:present} &b{task01:item}"
+  #   - "{task02:complete} &7{task02:present} &b{task02:item}"
+  #   - "{task03:complete} &7{task03:present} &b{task03:item}"
+  #   - "{task04:complete} &7{task04:present} &b{task04:item}&7es"
+  #   - "{task05:complete} &7{task05:present} &b{task05:item}&7es"
+  #   - "{task06:complete} &7{task06:present} &b{task06:item}"
+  #   - "{task07:complete} &7{task07:present} &b{task07:item}"
+  #   - "{task08:complete} &7{task08:present}"
   lore-started:
     - ""
     - "&7Quest Progress:"

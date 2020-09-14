@@ -1,84 +1,84 @@
 tasks:
-  # task01craft:
-  #   type: "craft"
-  #   amount: 16
-  #   item: "coal_block"
-  #   present: "assemble"
-  #   past: "assembled"
-  task01:
-    type: "inventory"
+  task01craft:
+    type: "craft"
     amount: 16
     item: "coal_block"
-    remove-items-when-complete: true
-    update-progress: true
-  # task02craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task01:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "iron_block"
-  #   present: "assemble"
-  #   past: "assembled"
-  task02:
-    type: "inventory"
+  #   item: "coal_block"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task02craft:
+    type: "craft"
     amount: 16
     item: "iron_block"
-    remove-items-when-complete: true
-    update-progress: true
-  # task03craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task02:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "gold_block"
-  #   present: "assemble"
-  #   past: "assembled"
-  task03:
-    type: "inventory"
+  #   item: "iron_block"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task03craft:
+    type: "craft"
     amount: 16
     item: "gold_block"
-    remove-items-when-complete: true
-    update-progress: true
-  # task04craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task03:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "lapis_block"
-  #   present: "assemble"
-  #   past: "assembled"
-  task04:
-    type: "inventory"
+  #   item: "gold_block"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task04craft:
+    type: "craft"
     amount: 16
     item: "lapis_block"
-    remove-items-when-complete: true
-    update-progress: true
-  # task05craft:
-  #   type: "craft"
+    present: "assemble"
+    past: "assembled"
+  # task04:
+  #   type: "inventory"
   #   amount: 16
-  #   item: "redstone_block"
-  #   present: "assemble"
-  #   past: "assembled"
-  task05:
-    type: "inventory"
+  #   item: "lapis_block"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task05craft:
+    type: "craft"
     amount: 16
     item: "redstone_block"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "assemble"
+    past: "assembled"
+  # task05:
+  #   type: "inventory"
+  #   amount: 16
+  #   item: "redstone_block"
+  #   remove-items-when-complete: true
+  #   update-progress: true
 display:
   name: "&aOre blocks"
   type: "lapis_block"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &7{task01:item}&7s"
-    - "{task02:complete} &7{task02:item}&7s"
-    - "{task03:complete} &7{task03:item}&7s"
-    - "{task04:complete} &7{task04:item}&7s"
-    - "{task05:complete} &7{task05:item}&7s"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task01:complete} &7{task01:item}&7s"
+  #   - "{task02:complete} &7{task02:item}&7s"
+  #   - "{task03:complete} &7{task03:item}&7s"
+  #   - "{task04:complete} &7{task04:item}&7s"
+  #   - "{task05:complete} &7{task05:item}&7s"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item}&7s &7in your &2inventory"
-    - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item}&7s &7in your &2inventory"
-    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
-    - "{task05:remove}&f⇨ &6{task05:progress} &b{task05:item}&7s &7in your &2inventory"
+    - "{task01craft:remove}&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s"
+    - "{task02craft:remove}&f⇨ &7{task02craft:present} &6{task02craft:togo} &b{task02craft:item}&7s"
+    - "{task03craft:remove}&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s"
+    - "{task04craft:remove}&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s"
+    - "{task05craft:remove}&f⇨ &7{task05craft:present} &6{task05craft:togo} &b{task05craft:item}&7s"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"
@@ -86,6 +86,7 @@ display:
 rewards:
   - "cc give p SkyBlock 2 {player}"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest39"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

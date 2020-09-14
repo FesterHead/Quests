@@ -1,48 +1,97 @@
 tasks:
   task01:
-    type: "inventory"
-    amount: 128
+    type: "break"
+    amount: 200
     item: "mossy_cobblestone"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "mine"
+    past: "mined"
   task02:
-    type: "inventory"
-    amount: 128
+    type: "break"
+    amount: 200
     item: "granite"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "mine"
+    past: "mined"
   task03:
-    type: "inventory"
-    amount: 128
+    type: "break"
+    amount: 200
     item: "andesite"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "mine"
+    past: "mined"
   task04:
-    type: "inventory"
-    amount: 128
+    type: "break"
+    amount: 200
     item: "diorite"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "mine"
+    past: "mined"
+  task05:
+    type: "break"
+    amount: 50
+    item: "stone_bricks"
+    present: "mine"
+    past: "mined"
+  task06:
+    type: "break"
+    amount: 50
+    item: "cracked_stone_bricks"
+    present: "mine"
+    past: "mined"
+  task07:
+    type: "break"
+    amount: 50
+    item: "mossy_stone_bricks"
+    present: "mine"
+    past: "mined"
+  task08:
+    type: "break"
+    amount: 50
+    item: "chiseled_stone_bricks"
+    present: "mine"
+    past: "mined"
+  task09:
+    type: "break"
+    amount: 50
+    item: "bricks"
+    present: "mine"
+    past: "mined"
+  task10:
+    type: "break"
+    amount: 25
+    item: "prismarine"
+    present: "mine"
+    past: "mined"
+  task11:
+    type: "break"
+    amount: 25
+    item: "dark_prismarine"
+    present: "mine"
+    past: "mined"
 display:
-  name: "&aOther stone blocks"
-  type: "mossy_cobblestone"
+  name: "&aOther blocks"
+  type: "chiseled_stone_bricks"
   lore-normal:
     - ""
-    - "&7This quest requires:"
-    - "{task01:complete} &b{task01:item}&7s"
-    - "{task02:complete} &b{task02:item}"
-    - "{task03:complete} &b{task03:item}"
-    - "{task04:complete} &b{task04:item}"
-    - ""
+    # - "&7This quest requires:"
+    # - "{task01:complete} &b{task01:item}&7s"
+    # - "{task02:complete} &b{task02:item}"
+    # - "{task03:complete} &b{task03:item}"
+    # - "{task04:complete} &b{task04:item}"
+    # - ""
     - "&7This quest is &frepeatable &7with &dno &7cooldown."
     - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
-    - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item} &7in your &2inventory"
-    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item} &7in your &2inventory"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    - "{task02:remove}&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}"
+    - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}"
+    - "{task04:remove}&f⇨ &7{task04:present} &6{task04:togo} &b{task04:item}"
+    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
+    - "{task06:remove}&f⇨ &7{task06:present} &6{task06:togo} &b{task06:item}"
+    - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
+    - "{task08:remove}&f⇨ &7{task08:present} &6{task08:togo} &b{task08:item}"
+    - "{task09:remove}&f⇨ &7{task09:present} &6{task09:togo} &b{task09:item}"
+    - "{task10:remove}&f⇨ &7{task10:present} &6{task10:togo} &b{task10:item}"
+    - "{task11:remove}&f⇨ &7{task11:present} &6{task11:togo} &b{task11:item}"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"

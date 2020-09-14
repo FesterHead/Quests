@@ -6,7 +6,7 @@ tasks:
     remove-items-when-complete: true
     update-progress: true
 display:
-  name: "&aOak logs to dirt and sand"
+  name: "&aOak logs to sand, gravel, and dirt"
   type: "oak_log"
   lore-normal:
     - ""
@@ -17,17 +17,16 @@ display:
     - ""
     - "&7Rewards:"
     - "&f⇨ &esand"
+    - "&f⇨ &egravel"
     - "&f⇨ &8dirt"
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
+    - "{task01:remove}&f⇨ &6{task01:progress}&7/&9{task01:amount} &b{task01:item}&7s &7in your &2inventory"
     - ""
-    - "&7Rewards:"
-    - "&f⇨ &esand"
-    - "&f⇨ &8dirt"
 rewards:
-  - "give {player} sand 4"
+  - "give {player} sand 2"
+  - "give {player} gravel 2"
   - "give {player} dirt 4"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

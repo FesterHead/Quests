@@ -1,44 +1,44 @@
 tasks:
-  # task01:
-  #   type: "craft"
-  #   amount: 12
-  #   item: "bread"
-  #   present: "bake"
-  #   past: "baked"
-  task02:
-    type: "inventory"
+  task01:
+    type: "craft"
     amount: 12
     item: "bread"
-    remove-items-when-complete: true
-    update-progress: true
-  # task03:
-  #   type: "craft"
+    present: "bake"
+    past: "baked"
+  # task02:
+  #   type: "inventory"
   #   amount: 12
-  #   item: "hay_block"
-  #   present: "bale"
-  #   past: "baled"
-  task04:
-    type: "inventory"
+  #   item: "bread"
+  #   remove-items-when-complete: true
+  #   update-progress: true
+  task03:
+    type: "craft"
     amount: 12
     item: "hay_block"
-    remove-items-when-complete: true
-    update-progress: true
+    present: "bale"
+    past: "baled"
+  # task04:
+  #   type: "inventory"
+  #   amount: 12
+  #   item: "hay_block"
+  #   remove-items-when-complete: true
+  #   update-progress: true
 display:
   name: "&aBread and hay"
   type: "bread"
-  lore-normal:
-    - ""
-    - "&7This quest requires:"
-    - "{task02:complete} &b{task02:item}"
-    - "{task04:complete} &b{task04:item}&7s"
-    - ""
+  # lore-normal:
+  #   - ""
+  #   - "&7This quest requires:"
+  #   - "{task02:complete} &b{task02:item}"
+  #   - "{task04:complete} &b{task04:item}&7s"
+  #   - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    # - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
-    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
-    # - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s"
-    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    # - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
+    - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s"
+    # - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &amelon seeds"
@@ -46,6 +46,7 @@ display:
 rewards:
   - "give {player} melon_seeds 2"
   - "give {player} dirt 4"
+  - "quests admin moddata start {player} SkyBlockQuest15"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"
 options:

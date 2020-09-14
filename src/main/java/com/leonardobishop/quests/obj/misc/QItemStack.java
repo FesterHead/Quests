@@ -140,7 +140,7 @@ public class QItemStack {
                       String.valueOf((tempProgress > tempAmount) ? tempAmount : tempProgress);
                   break;
                 case "item":
-                  replacement = tempItem;
+                  replacement = tempItem.replaceAll("_", " ");
                   break;
                 case "amount":
                   replacement = String.valueOf(tempAmount);

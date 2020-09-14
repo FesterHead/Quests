@@ -18,7 +18,7 @@ display:
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "&f⇨ &6{task09:togo} &bminutes &7remaining"
+    - "{task01:remove}&f⇨ &6{task01:togo} &bminutes &7remaining"
     - ""
     - "&7Rewards:"
     - "&f⇨ &8dirt"

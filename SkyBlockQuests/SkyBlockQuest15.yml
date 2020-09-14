@@ -17,14 +17,14 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&f⇨ &7{task01:present} &b{task01:item}&7s"
-    - "&f⇨ &7{task02:present} &b{task02:item}&7s"
+    - "{task01:complete} &7{task01:present} &b{task01:item}&7s"
+    - "{task02:complete} &7{task02:present} &b{task02:item}&7s"
     - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}&7s"
-    - "&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}&7s"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}&7s"
+    - "{task02:remove}&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}&7s"
     - ""
     - "&7Rewards:"
     - "&f⇨ &8dirt"

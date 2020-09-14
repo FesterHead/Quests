@@ -11,12 +11,12 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&f⇨ &b{task01:item}"
+    - "{task01:complete} &b{task01:item}"
     - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "&f⇨ &6{task01:progress} &b{task01:item} &7in your &2inventory"
+    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item} &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &asugar cane"

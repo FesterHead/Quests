@@ -9,48 +9,48 @@ tasks:
     amount: 100
     present: "milk cows"
     past: "cows milked"
-  task03craft:
-    type: "craft"
-    amount: 18
-    item: "bed"
-    present: "construct"
-    past: "constructed"
+  # task03craft:
+  #   type: "craft"
+  #   amount: 18
+  #   item: "bed"
+  #   present: "construct"
+  #   past: "constructed"
   task03:
     type: "inventory"
     amount: 18
     item: "bed"
     remove-items-when-complete: true
     update-progress: true
-  task04craft:
-    type: "craft"
-    amount: 64
-    item: "painting"
-    present: "paint"
-    past: "painted"
+  # task04craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "painting"
+  #   present: "paint"
+  #   past: "painted"
   task04:
     type: "inventory"
     amount: 64
     item: "painting"
     remove-items-when-complete: true
     update-progress: true
-  task05craft:
-    type: "craft"
-    amount: 18
-    item: "banner"
-    present: "craft"
-    past: "crafted"
+  # task05craft:
+  #   type: "craft"
+  #   amount: 18
+  #   item: "banner"
+  #   present: "craft"
+  #   past: "crafted"
   task05:
     type: "inventory"
     amount: 18
     item: "banner"
     remove-items-when-complete: true
     update-progress: true
-  task06craft:
-    type: "craft"
-    amount: 64
-    item: "pumpkin_pie"
-    present: "bake"
-    past: "baked"
+  # task06craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "pumpkin_pie"
+  #   present: "bake"
+  #   past: "baked"
   task06:
     type: "inventory"
     amount: 64
@@ -63,22 +63,26 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&f⇨ &7{task01:present}"
-    - "&f⇨ &b{task02:present}"
-    - "&f⇨ &7{task03craft:present} &b{task03craft:item}&7s"
-    - "&f⇨ &7{task04craft:present} &b{task04craft:item}&7s"
-    - "&f⇨ &7{task05craft:present} &b{task05craft:item}&7s"
-    - "&f⇨ &7{task06craft:present} &b{task06craft:item}&7s"
+    - "{task01:complete} &7{task01:present}"
+    - "{task02:complete} &b{task02:present}"
+    - "{task03:complete} &b{task03:item}&7s"
+    - "{task04:complete} &b{task04:item}&7s"
+    - "{task05:complete} &b{task05:item}&7s"
+    - "{task06:complete} &b{task06:item}&7s"
     - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "&f⇨ &6{task01:togo} &7{task01:present}"
-    - "&f⇨ &6{task02:togo} &7{task02:present}"
-    - "&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s, &6{task03:progress} &7in your &2inventory"
-    - "&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s, &6{task04:progress} &7in your &2inventory"
-    - "&f⇨ &7{task05craft:present} &6{task05craft:togo} &b{task05craft:item}&7s, &6{task05:progress} &7in your &2inventory"
-    - "&f⇨ &7{task06craft:present} &6{task06craft:togo} &b{task06craft:item}&7s, &6{task06:progress} &7in your &2inventory"
+    - "{task01:remove}&f⇨ &6{task01:togo} &7{task01:present}"
+    - "{task02:remove}&f⇨ &6{task02:togo} &7{task02:present}"
+    # - "{task03craft:remove}&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s"
+    - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item}&7s &7in your &2inventory"
+    # - "{task04craft:remove}&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s"
+    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
+    # - "{task05craft:remove}&f⇨ &7{task05craft:present} &6{task05craft:togo} &b{task05craft:item}&7s"
+    - "{task05:remove}&f⇨ &6{task05:progress} &b{task05:item}&7s &7in your &2inventory"
+    # - "{task06craft:remove}&f⇨ &7{task06craft:present} &6{task06craft:togo} &b{task06craft:item}&7s"
+    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item}&7 &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"

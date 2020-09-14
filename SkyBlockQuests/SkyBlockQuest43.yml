@@ -1,190 +1,190 @@
 tasks:
-  task01craft:
-    type: "craft"
-    amount: 64
-    item: "black_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task01craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "black_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task01:
     type: "inventory"
     amount: 64
     item: "black_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task02craft:
-    type: "craft"
-    amount: 64
-    item: "blue_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task02craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "blue_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task02:
     type: "inventory"
     amount: 64
     item: "blue_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task03craft:
-    type: "craft"
-    amount: 64
-    item: "brown_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task03craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "brown_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task03:
     type: "inventory"
     amount: 64
     item: "brown_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task04craft:
-    type: "craft"
-    amount: 64
-    item: "cyan_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task04craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "cyan_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task04:
     type: "inventory"
     amount: 64
     item: "cyan_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task05craft:
-    type: "craft"
-    amount: 64
-    item: "gray_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task05craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "gray_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task05:
     type: "inventory"
     amount: 64
     item: "gray_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task06craft:
-    type: "craft"
-    amount: 64
-    item: "green_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task06craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "green_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task06:
     type: "inventory"
     amount: 64
     item: "green_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task07craft:
-    type: "craft"
-    amount: 64
-    item: "light_blue_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task07craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "light_blue_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task07:
     type: "inventory"
     amount: 64
     item: "light_blue_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task08craft:
-    type: "craft"
-    amount: 64
-    item: "light_gray_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task08craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "light_gray_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task08:
     type: "inventory"
     amount: 64
     item: "light_gray_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task09craft:
-    type: "craft"
-    amount: 64
-    item: "lime_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task09craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "lime_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task09:
     type: "inventory"
     amount: 64
     item: "lime_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task10craft:
-    type: "craft"
-    amount: 64
-    item: "magenta_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task10craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "magenta_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task10:
     type: "inventory"
     amount: 64
     item: "magenta_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task11craft:
-    type: "craft"
-    amount: 64
-    item: "orange_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task11craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "orange_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task11:
     type: "inventory"
     amount: 64
     item: "orange_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task12craft:
-    type: "craft"
-    amount: 64
-    item: "pink_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task12craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "pink_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task12:
     type: "inventory"
     amount: 64
     item: "pink_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task13craft:
-    type: "craft"
-    amount: 64
-    item: "purple_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task13craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "purple_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task13:
     type: "inventory"
     amount: 64
     item: "purple_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task14craft:
-    type: "craft"
-    amount: 64
-    item: "red_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task14craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "red_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task14:
     type: "inventory"
     amount: 64
     item: "red_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task15craft:
-    type: "craft"
-    amount: 64
-    item: "white_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task15craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "white_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task15:
     type: "inventory"
     amount: 64
     item: "white_stained_glass"
     remove-items-when-complete: true
     update-progress: true
-  task16craft:
-    type: "craft"
-    amount: 64
-    item: "yellow_stained_glass"
-    present: "craft"
-    past: "crafted"
+  # task16craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "yellow_stained_glass"
+  #   present: "craft"
+  #   past: "crafted"
   task16:
     type: "inventory"
     amount: 64
@@ -197,27 +197,27 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires you to trade in:"
-    - "&f⇨ &7Craft &bstained glass"
+    - "&f⇨ &7Stain &bglass"
     - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s, &6{task01:progress} &7in your &2inventory"
-    - "&f⇨ &7{task02craft:present} &6{task02craft:togo} &b{task02craft:item}&7s, &6{task02:progress} &7in your &2inventory"
-    - "&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s, &6{task03:progress} &7in your &2inventory"
-    - "&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s, &6{task04:progress} &7in your &2inventory"
-    - "&f⇨ &7{task05craft:present} &6{task05craft:togo} &b{task05craft:item}&7s, &6{task05:progress} &7in your &2inventory"
-    - "&f⇨ &7{task06craft:present} &6{task06craft:togo} &b{task06craft:item}&7s, &6{task06:progress} &7in your &2inventory"
-    - "&f⇨ &7{task07craft:present} &6{task07craft:togo} &b{task07craft:item}&7s, &6{task07:progress} &7in your &2inventory"
-    - "&f⇨ &7{task08craft:present} &6{task08craft:togo} &b{task08craft:item}&7s, &6{task08:progress} &7in your &2inventory"
-    - "&f⇨ &7{task09craft:present} &6{task09craft:togo} &b{task09craft:item}&7s, &6{task09:progress} &7in your &2inventory"
-    - "&f⇨ &7{task10craft:present} &6{task10craft:togo} &b{task10craft:item}&7s, &6{task10:progress} &7in your &2inventory"
-    - "&f⇨ &7{task11craft:present} &6{task11craft:togo} &b{task11craft:item}&7s, &6{task11:progress} &7in your &2inventory"
-    - "&f⇨ &7{task12craft:present} &6{task12craft:togo} &b{task12craft:item}&7s, &6{task12:progress} &7in your &2inventory"
-    - "&f⇨ &7{task13craft:present} &6{task13craft:togo} &b{task13craft:item}&7s, &6{task13:progress} &7in your &2inventory"
-    - "&f⇨ &7{task14craft:present} &6{task14craft:togo} &b{task14craft:item}&7s, &6{task14:progress} &7in your &2inventory"
-    - "&f⇨ &7{task15craft:present} &6{task15craft:togo} &b{task15craft:item}&7s, &6{task15:progress} &7in your &2inventory"
-    - "&f⇨ &7{task16craft:present} &6{task16craft:togo} &b{task16craft:item}&7s, &6{task16:progress} &7in your &2inventory"
+    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item} &7in your &2inventory"
+    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
+    - "{task03:remove}&f⇨ &6{task03:progress} &b{task03:item} &7in your &2inventory"
+    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item} &7in your &2inventory"
+    - "{task05:remove}&f⇨ &6{task05:progress} &b{task05:item} &7in your &2inventory"
+    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
+    - "{task07:remove}&f⇨ &6{task07:progress} &b{task07:item} &7in your &2inventory"
+    - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item} &7in your &2inventory"
+    - "{task09:remove}&f⇨ &6{task09:progress} &b{task09:item} &7in your &2inventory"
+    - "{task10:remove}&f⇨ &6{task10:progress} &b{task10:item} &7in your &2inventory"
+    - "{task11:remove}&f⇨ &6{task11:progress} &b{task11:item} &7in your &2inventory"
+    - "{task12:remove}&f⇨ &6{task12:progress} &b{task12:item} &7in your &2inventory"
+    - "{task13:remove}&f⇨ &6{task13:progress} &b{task13:item} &7in your &2inventory"
+    - "{task14:remove}&f⇨ &6{task14:progress} &b{task14:item} &7in your &2inventory"
+    - "{task15:remove}&f⇨ &6{task15:progress} &b{task15:item} &7in your &2inventory"
+    - "{task16:remove}&f⇨ &6{task16:progress} &b{task16:item} &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"

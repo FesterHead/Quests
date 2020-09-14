@@ -1,10 +1,10 @@
 tasks:
-  task01craft:
-    type: "craft"
-    amount: 64
-    item: "bookshelf"
-    present: "assemble"
-    past: "assembled"
+  # task01craft:
+  #   type: "craft"
+  #   amount: 64
+  #   item: "bookshelf"
+  #   present: "assemble"
+  #   past: "assembled"
   task01:
     type: "inventory"
     amount: 64
@@ -27,16 +27,16 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&f⇨ &7{task01craft:present} &b{task01craft:item}&7s"
-    - "&f⇨ &7{task02:present}"
-    - "&f⇨ &7{task03:present}"
+    - "{task01:complete} &b{task01:item}&7s"
+    - "{task02:complete} &7{task02:present}"
+    - "{task03:complete} &7{task03:present}"
     - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "&f⇨ &7{task01craft:present} &6{task01craft:togo} &b{task01craft:item}&7s, &6{task01:progress} &7in your &2inventory"
-    - "&f⇨ &6{task02:progress} &bitems &7{task02:past}"
-    - "&f⇨ &6{task03:progress} &bitems &7{task03:past}"
+    - "{task01:remove}&f⇨ &6{task01:progress} &b{task01:item}&7s &7in your &2inventory"
+    - "{task02:remove}&f⇨ &6{task02:progress} &bitems &7{task02:past}"
+    - "{task03:remove}&f⇨ &6{task03:progress} &bitems &7{task03:past}"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"

@@ -1,22 +1,22 @@
 tasks:
-  task01:
-    type: "craft"
-    amount: 12
-    item: "bread"
-    present: "bake"
-    past: "baked"
+  # task01:
+  #   type: "craft"
+  #   amount: 12
+  #   item: "bread"
+  #   present: "bake"
+  #   past: "baked"
   task02:
     type: "inventory"
     amount: 12
     item: "bread"
     remove-items-when-complete: true
     update-progress: true
-  task03:
-    type: "craft"
-    amount: 12
-    item: "hay_block"
-    present: "bale"
-    past: "baled"
+  # task03:
+  #   type: "craft"
+  #   amount: 12
+  #   item: "hay_block"
+  #   present: "bale"
+  #   past: "baled"
   task04:
     type: "inventory"
     amount: 12
@@ -29,14 +29,16 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&f⇨ &7{task01:present} &b{task01:item}"
-    - "&f⇨ &7{task03:present} &b{task03:item}&7s"
+    - "{task02:complete} &b{task02:item}"
+    - "{task04:complete} &b{task04:item}&7s"
     - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}, &6{task02:progress} &7in your &2inventory"
-    - "&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s, &6{task04:progress} &7in your &2inventory"
+    # - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
+    # - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s"
+    - "{task04:remove}&f⇨ &6{task04:progress} &b{task04:item}&7s &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &amelon seeds"

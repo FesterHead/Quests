@@ -11,12 +11,12 @@ tasks:
     item: "cow"
     present: "kill"
     past: "slaughtered"
-  task03:
-    type: "furnace"
-    amount: 64
-    item: "cooked_beef"
-    present: "roast"
-    past: "roasted"
+  # task03:
+  #   type: "furnace"
+  #   amount: 64
+  #   item: "cooked_beef"
+  #   present: "roast"
+  #   past: "roasted"
   task04:
     type: "inventory"
     amount: 64
@@ -35,12 +35,12 @@ tasks:
     item: "sheep"
     present: "kill"
     past: "slaughtered"
-  task07:
-    type: "furnace"
-    amount: 64
-    item: "cooked_mutton"
-    present: "braise"
-    past: "braised"
+  # task07:
+  #   type: "furnace"
+  #   amount: 64
+  #   item: "cooked_mutton"
+  #   present: "braise"
+  #   past: "braised"
   task08:
     type: "inventory"
     amount: 64
@@ -59,12 +59,12 @@ tasks:
     item: "pig"
     present: "kill"
     past: "slaughtered"
-  task11:
-    type: "furnace"
-    amount: 64
-    item: "cooked_porkchop"
-    present: "barbeque"
-    past: "barbequed"
+  # task11:
+  #   type: "furnace"
+  #   amount: 64
+  #   item: "cooked_porkchop"
+  #   present: "barbeque"
+  #   past: "barbequed"
   task12:
     type: "inventory"
     amount: 64
@@ -83,12 +83,12 @@ tasks:
     item: "chicken"
     present: "kill"
     past: "slaughtered"
-  task15:
-    type: "furnace"
-    amount: 64
-    item: "cooked_chicken"
-    present: "rotisserie"
-    past: "rotisseried"
+  # task15:
+  #   type: "furnace"
+  #   amount: 64
+  #   item: "cooked_chicken"
+  #   present: "rotisserie"
+  #   past: "rotisseried"
   task16:
     type: "inventory"
     amount: 64
@@ -101,26 +101,38 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&f⇨ &7{task01:present}&7, &7{task02:present}&7, &7{task03:present} &b{task01:item}&7s"
-    - "&f⇨ &7{task05:present}&7, &7{task06:present}&7, &7{task07:present} &b{task05:item}"
-    - "&f⇨ &7{task09:present}&7, &7{task10:present}&7, &7{task11:present} &b{task09:item}&7s"
-    - "&f⇨ &7{task13:present}&7, &7{task14:present}&7, &7{task15:present} &b{task13:item}&7s"
+    - "{task01:complete} &7{task01:present}&7 &b{task01:item}&7s"
+    - "{task02:complete} &7{task02:present}&7 &b{task02:item}&7s"
+    - "{task04:complete} &b{task04:item}"
+    - "{task05:complete} &7{task05:present}&7 &b{task05:item}"
+    - "{task06:complete} &7{task06:present}&7 &b{task06:item}"
+    - "{task08:complete} &b{task08:item}"
+    - "{task09:complete} &7{task09:present}&7 &b{task09:item}&7s"
+    - "{task10:complete} &7{task10:present}&7 &b{task10:item}&7s"
+    - "{task12:complete} &b{task12:item}&7s"
+    - "{task13:complete} &7{task13:present}&7 &b{task13:item}&7s"
+    - "{task14:complete} &7{task14:present}&7 &b{task14:item}&7s"
+    - "{task16:complete} &b{task16:item}&7s"
     - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}&7s"
-    - "&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}&7s"
-    - "&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}, &6{task04:progress} &7in your &2inventory"
-    - "&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
-    - "&f⇨ &7{task06:present} &6{task06:togo} &b{task06:item}"
-    - "&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}, &6{task08:progress} &7in your &2inventory"
-    - "&f⇨ &7{task09:present} &6{task09:togo} &b{task09:item}&7s"
-    - "&f⇨ &7{task10:present} &6{task10:togo} &b{task10:item}&7s"
-    - "&f⇨ &7{task11:present} &6{task11:togo} &b{task11:item}&7s, &6{task12:progress} &7in your &2inventory"
-    - "&f⇨ &7{task13:present} &6{task13:togo} &b{task13:item}&7s"
-    - "&f⇨ &7{task14:present} &6{task14:togo} &b{task14:item}&7s"
-    - "&f⇨ &7{task15:present} &6{task15:togo} &b{task15:item}, &6{task16:progress} &7in your &2inventory"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}&7s"
+    - "{task02:remove}&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}&7s"
+    # - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}"
+    - "{task04:remove}&f⇨ &6{task04:progress} &7in your &2inventory"
+    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
+    - "{task06:remove}&f⇨ &7{task06:present} &6{task06:togo} &b{task06:item}"
+    # - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
+    - "{task08:remove}&f⇨ &6{task08:progress} &7in your &2inventory"
+    - "{task09:remove}&f⇨ &7{task09:present} &6{task09:togo} &b{task09:item}&7s"
+    - "{task10:remove}&f⇨ &7{task10:present} &6{task10:togo} &b{task10:item}&7s"
+    # - "{task11:remove}&f⇨ &7{task11:present} &6{task11:togo} &b{task11:item}&7s"
+    - "{task12:remove}&f⇨ &6{task12:progress} &7in your &2inventory"
+    - "{task13:remove}&f⇨ &7{task13:present} &6{task13:togo} &b{task13:item}&7s"
+    - "{task14:remove}&f⇨ &7{task14:present} &6{task14:togo} &b{task14:item}&7s"
+    # - "{task15:remove}&f⇨ &7{task15:present} &6{task15:togo} &b{task15:item}"
+    - "{task16:remove}&f⇨ &6{task16:progress} &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &6Rewards Key"

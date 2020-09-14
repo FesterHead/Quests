@@ -1,10 +1,10 @@
 tasks:
-  task01:
-    type: "craft"
-    amount: 18
-    item: "suspicious_stew"
-    present: "cook"
-    past: "cooked"
+  # task01:
+  #   type: "craft"
+  #   amount: 18
+  #   item: "suspicious_stew"
+  #   present: "cook"
+  #   past: "cooked"
   task02:
     type: "inventory"
     amount: 18
@@ -17,12 +17,14 @@ display:
   lore-normal:
     - ""
     - "&7This quest requires:"
-    - "&f⇨ &7{task01:present} &b{task01:item}"
+    # - "{task01:complete} &7{task01:present} &b{task01:item}"
+    - "{task02:complete} &b{task02:item}"
     - ""
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}, &6{task02:progress} &7in your &2inventory"
+    # - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
     - ""
     - "&7Rewards:"
     - "&f⇨ &acactus"

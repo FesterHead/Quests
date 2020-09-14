@@ -23,9 +23,11 @@ display:
     - "&7Rewards:"
     - "&f⇨ &8dirt"
     - "&f⇨ &awheat seeds"
+    - "&f⇨ &6Rewards Key"
 rewards:
   - "give {player} dirt 4"
   - "give {player} wheat_seeds 2"
+  - "cc give p SkyBlock 2 {player}"
   - "quests admin moddata start {player} SkyBlockQuest13"
 #rewardstring:
 #  - "&7Check your inventory for the rewards!"

@@ -11,15 +11,27 @@ tasks:
     item: "cobblestone"
     present: "place"
     past: "placed"
+  task03craft:
+    type: "craft"
+    amount: 6
+    item: "cobblestone_slab"
+    present: "craft"
+    past: "crafted"
   task03:
     type: "place"
-    amount: 12
+    amount: 6
     item: "cobblestone_slab"
     present: "place"
     past: "placed"
+  task04craft:
+    type: "craft"
+    amount: 6
+    item: "cobblestone_wall"
+    present: "craft"
+    past: "crafted"
   task04:
     type: "place"
-    amount: 12
+    amount: 6
     item: "cobblestone_wall"
     present: "place"
     past: "placed"
@@ -103,8 +115,10 @@ display:
     - "&7Quest Progress:"
     - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}&7s"
     - "{task02:remove}&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}&7s"
+    - "{task03craft:remove}&f⇨ &7{task03craft:present} &6{task03craft:togo} &b{task03craft:item}&7s"
     - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s"
-    # - "{task04:remove}&f⇨ &7{task04:present} &6{task04:togo} &b{task04:item}&7s"
+    - "{task04craft:remove}&f⇨ &7{task04craft:present} &6{task04craft:togo} &b{task04craft:item}&7s"
+    - "{task04:remove}&f⇨ &7{task04:present} &6{task04:togo} &b{task04:item}&7s"
     - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}&7s"
     # - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item}&7s &7in your &2inventory"
     - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}&7s"

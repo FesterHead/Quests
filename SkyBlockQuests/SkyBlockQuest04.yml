@@ -25,7 +25,7 @@ tasks:
     past: "placed"
   task05:
     type: "craft"
-    amount: 12
+    amount: 6
     item: "oak_slab"
     present: "construct"
     past: "constructed"
@@ -37,7 +37,7 @@ tasks:
   #   update-progress: true
   task07:
     type: "craft"
-    amount: 12
+    amount: 4
     item: "oak_stairs"
     present: "construct"
     past: "constructed"

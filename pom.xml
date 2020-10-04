@@ -11,6 +11,7 @@
     <release.version>${project.version}</release.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.jar.outputDirectory>target</maven.jar.outputDirectory>
+    <maven.compiler.release>8</maven.compiler.release>
   </properties>
 
   <repositories>

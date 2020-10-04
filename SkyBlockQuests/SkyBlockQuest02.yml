@@ -60,9 +60,9 @@ rewardstring:
 options:
   category: ""
   requires:
-    - ""
+    - "SkyBlockQuest01"
   repeatable: false
   cooldown:
     enabled: true
     time: 1440
-  sort-order: 1
+  sort-order: 2

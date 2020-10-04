@@ -72,7 +72,7 @@ rewards:
 options:
   category: ""
   requires:
-    - "SkyBlockQuest01"
+    - "SkyBlockQuest02"
   repeatable: false
   cooldown:
     enabled: true

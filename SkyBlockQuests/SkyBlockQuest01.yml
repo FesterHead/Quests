@@ -6,7 +6,7 @@ tasks:
     present: "place"
     past: "placed"
 display:
-  name: "&aDirt"
+  name: "&aDirt &7- Enter &c/q &7to view"
   type: "dirt"
   lore-normal:
     - ""
@@ -21,7 +21,7 @@ display:
     - "&7blocks, &9crafting &7items, &2taming&7, &3shearing&7, &4fishing&7,"
     - "&5baking&7, &6eating&7, &8smelting&7, &9enchanting&7, &fmilking&7,"
     - "&9reparing&7, &abreeding&7, &cbrewing &7, ..."
-    - "&7These actions make up your SkyBlock level which goes from &90 &&to &6100&7."
+    - "&7These actions make up your SkyBlock level which goes from &91 &7to &6100&7."
   lore-started:
     - ""
     - "&7Quest Progress:"

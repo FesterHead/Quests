@@ -2,70 +2,40 @@ tasks:
   task01:
     type: "place"
     amount: 1
-    item: "oak_sapling"
-    present: "plant"
-    past: "planted"
-  task02:
-    type: "break"
-    amount: 1
-    item: "oak_log"
-    present: "chop"
-    past: "chopped"
-  task03:
-    type: "craft"
-    amount: 4
-    item: "oak_planks"
-    present: "construct"
-    past: "constructed"
-  task04:
-    type: "craft"
-    amount: 1
-    item: "crafting_table"
-    present: "craft"
-    past: "crafted"
-  task05:
-    type: "place"
-    amount: 1
-    item: "crafting_table"
+    item: "dirt"
     present: "place"
     past: "placed"
 display:
-  name: "&aCrafting Table"
-  type: "crafting_table"
+  name: "&aDirt"
+  type: "dirt"
   lore-normal:
-    - ""
-    - "&bNeed an &aoak sapling&b?  Do quest #2."
     - ""
     - "&7If you &cdo not &7want to quest then go to the"
     - "&9control panel &7-> &9commands panel &cNOW &7and use"
     - "&7the &aQuest Mode &7option to &cDISABLE &7it."
-    - "&3Otherwise, keep on reading..."
     - ""
-    - "&7Plant and chop down &atree &7to get &2wood"
-    - "&7and then construct &64 &3oak planks&7."
-    - "&7Finally, craft and place a &8crafting table&7."
+    - "&7Place &6one &adirt &7to get started!"
     - ""
     - "&7On this server, you will earn &6$1 &7for just about"
     - "&7every 'action' you take such as &8breaking &7or &aplacing"
     - "&7blocks, &9crafting &7items, &2taming&7, &3shearing&7, &4fishing&7,"
     - "&5baking&7, &6eating&7, &8smelting&7, &9enchanting&7, &fmilking&7,"
     - "&9reparing&7, &abreeding&7, &cbrewing &7, ..."
+    - "&7These actions make up your SkyBlock level which goes from &90 &&to &6100&7."
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}s"
-    - "{task02:remove}&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}s"
-    - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}"
-    - "{task04:remove}&f⇨ &7{task04:present} &6{task04:togo} &b{task04:item}"
-    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
     - ""
     - "&7Rewards:"
-    - "&f⇨ &8dirt"
+    - "&f⇨ &aoak saplings"
+    - "&f⇨ &etorches"
 rewards:
   - "luckperms user {player} permission set quest.mode.decided"
   - "luckperms user {player} permission set quest.mode.on"
-  - "quests admin moddata start {player} SkyBlockQuest03"
-  - "give {player} dirt 2"
+  - "quests admin moddata start {player} SkyBlockQuest02"
+  - "give {player} oak_sapling 4"
+  - "give {player} torch 2"
 rewardstring:
   - "&6Congratulations!  &7Have fun playing SkyBlock!"
 options:

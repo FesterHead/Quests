@@ -1,90 +1,87 @@
 tasks:
   task01:
     type: "craft"
-    amount: 2
+    amount: 1
     item: "wooden_axe"
     present: "craft"
     past: "crafted"
-  # task02:
-  #   type: "inventory"
-  #   amount: 2
-  #   item: "wooden_axe"
-  #   remove-items-when-complete: true
-  #   update-progress: true
+  task02:
+    type: "inventory"
+    amount: 1
+    item: "wooden_axe"
+    remove-items-when-complete: true
+    update-progress: true
   task03:
     type: "craft"
-    amount: 2
+    amount: 1
     item: "wooden_hoe"
     present: "craft"
     past: "crafted"
-  # task04:
-  #   type: "inventory"
-  #   amount: 2
-  #   item: "wooden_hoe"
-  #   remove-items-when-complete: true
-  #   update-progress: true
+  task04:
+    type: "inventory"
+    amount: 1
+    item: "wooden_hoe"
+    remove-items-when-complete: true
+    update-progress: true
   task05:
     type: "craft"
-    amount: 2
+    amount: 1
     item: "wooden_pickaxe"
     present: "craft"
     past: "crafted"
-  # task06:
-  #   type: "inventory"
-  #   amount: 2
-  #   item: "wooden_pickaxe"
-  #   remove-items-when-complete: true
-  #   update-progress: true
+  task06:
+    type: "inventory"
+    amount: 1
+    item: "wooden_pickaxe"
+    remove-items-when-complete: true
+    update-progress: true
   task07:
     type: "craft"
-    amount: 2
+    amount: 1
     item: "wooden_shovel"
     present: "craft"
     past: "crafted"
-  # task08:
-  #   type: "inventory"
-  #   amount: 2
-  #   item: "wooden_shovel"
-  #   remove-items-when-complete: true
-  #   update-progress: true
+  task08:
+    type: "inventory"
+    amount: 1
+    item: "wooden_shovel"
+    remove-items-when-complete: true
+    update-progress: true
   task09:
     type: "craft"
-    amount: 2
+    amount: 1
     item: "wooden_sword"
     present: "craft"
     past: "crafted"
-  # task10:
-  #   type: "inventory"
-  #   amount: 2
-  #   item: "wooden_sword"
-  #   remove-items-when-complete: true
-  #   update-progress: true
+  task10:
+    type: "inventory"
+    amount: 1
+    item: "wooden_sword"
+    remove-items-when-complete: true
+    update-progress: true
 display:
   name: "&aFurnish a tool shed"
   type: "wooden_pickaxe"
-  # lore-normal:
-  #   - ""
-  #   - "&7This quest requires:"
-  #   - "&f⇨ &7Craft &bwooden &7tools"
-  #   - ""
-  #   - "&5Notes:"
-  #   - "&3Crafted materials must be in your inventory."
-  #   - "&3Crafted items will be &cremoved &3for this quest."
+  lore-normal:
+    - ""
+    - "&5Note:"
+    - "&3Crafted materials must be in your inventory."
+    - "&3Crafted items will be &cremoved &3for this quest."
   lore-started:
     - ""
     - "&7Quest Progress:"
-    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}&7s"
-    # - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item}&7s &7in your &2inventory"
-    - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}&7s"
-    # - "{task04:remove}&f⇨ &6{task04:progress} &b{task03:item}&7s &7in your &2inventory"
-    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}&7s"
-    # - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item}&7s &7in your &2inventory"
-    - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}&7s"
-    # - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item}&7s &7in your &2inventory"
-    - "{task09:remove}&f⇨ &7{task09:present} &6{task09:togo} &b{task09:item}&7s"
-    # - "{task10:remove}&f⇨ &6{task10:progress} &b{task10:item}&7s &7in your &2inventory"
-    # - ""
-    # - "&5Tools must not be damaged to be counted!"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}"
+    - "{task02:remove}&f⇨ &6{task02:progress} &b{task02:item} &7in your &2inventory"
+    - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}"
+    - "{task04:remove}&f⇨ &6{task04:progress} &b{task03:item} &7in your &2inventory"
+    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
+    - "{task06:remove}&f⇨ &6{task06:progress} &b{task06:item} &7in your &2inventory"
+    - "{task07:remove}&f⇨ &7{task07:present} &6{task07:togo} &b{task07:item}"
+    - "{task08:remove}&f⇨ &6{task08:progress} &b{task08:item} &7in your &2inventory"
+    - "{task09:remove}&f⇨ &7{task09:present} &6{task09:togo} &b{task09:item}"
+    - "{task10:remove}&f⇨ &6{task10:progress} &b{task10:item} &7in your &2inventory"
+    - ""
+    - "&5Tools must not be damaged to be counted!"
     - ""
     - "&7Rewards:"
     - "&f⇨ &9ice blocks"

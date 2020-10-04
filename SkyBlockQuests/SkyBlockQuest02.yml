@@ -1,33 +1,62 @@
 tasks:
   task01:
-    type: "inventory"
+    type: "place"
     amount: 1
-    item: "dirt"
-    remove-items-when-complete: true
-    update-progress: true
+    item: "oak_sapling"
+    present: "plant"
+    past: "planted"
+  task02:
+    type: "break"
+    amount: 1
+    item: "oak_log"
+    present: "chop"
+    past: "chopped"
+  task03:
+    type: "craft"
+    amount: 4
+    item: "oak_planks"
+    present: "construct"
+    past: "constructed"
+  task04:
+    type: "craft"
+    amount: 1
+    item: "crafting_table"
+    present: "craft"
+    past: "crafted"
+  task05:
+    type: "place"
+    amount: 1
+    item: "crafting_table"
+    present: "place"
+    past: "placed"
 display:
-  name: "&aOak Sapling"
-  type: "oak_sapling"
+  name: "&aCrafting Table"
+  type: "crafting_table"
   lore-normal:
     - ""
-    - "&7Need &2oak sapling&7s?"
-    - "&7Trade in &6one &8dirt &7for &6two &2oak sapling&7s."
+    - "&7Your island level is based on the number of blocks/items."
+    - "&7Each block/item counts as &6one &7point.  The number of points"
+    - "&7per level is a an upward geometric progression - meaning you will"
+    - "&7need more blocks/items as your island level increases."
     - ""
-    - "&bNote on trade-in quests:"
-    - "&7Items moved from a chest to inventory"
-    - "&7may not immediately register. Try"
-    - "&bmoving &7a stack to a different slot"
-    - "&7to trigger the inventory check."
+    - "&7The more you place and build, the higher your island level will be"
+    - "&7which will open up stores to spend your money."
+  lore-started:
     - ""
-    - "&bHINT - &7After planting a &asapling&7,"
-    - "&7press the &eLEFT SHIFT &7key to &dtwerk"
-    - "&7and make &asapling&7s grow faster!"
+    - "&7Quest Progress:"
+    - "{task01:remove}&f⇨ &7{task01:present} &6{task01:togo} &b{task01:item}s"
+    - "{task02:remove}&f⇨ &7{task02:present} &6{task02:togo} &b{task02:item}s"
+    - "{task03:remove}&f⇨ &7{task03:present} &6{task03:togo} &b{task03:item}"
+    - "{task04:remove}&f⇨ &7{task04:present} &6{task04:togo} &b{task04:item}"
+    - "{task05:remove}&f⇨ &7{task05:present} &6{task05:togo} &b{task05:item}"
+    - ""
+    - "&7Rewards:"
+    - "&f⇨ &8dirt"
 rewards:
-  - "give {player} oak_sapling 2"
-  - "luckperms user {player} permission set quest.mode.decided"
-  - "luckperms user {player} permission set quest.mode.on"
+  - "quests admin moddata start {player} SkyBlockQuest03"
+  - "give {player} dirt 2"
 rewardstring:
-  - "&7Every day is &2Arbor Day&7.  Go plant a &atree&7!"
+  - "&6Congratulations!  &7Have fun playing SkyBlock!"
 options:
   category: ""
   requires:
@@ -35,5 +64,5 @@ options:
   repeatable: false
   cooldown:
     enabled: true
-    time: 15
-  sort-order: 2
+    time: 1440
+  sort-order: 1

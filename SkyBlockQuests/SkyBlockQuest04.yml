@@ -1,13 +1,13 @@
 tasks:
   task01:
     type: "craft"
-    amount: 4
+    amount: 36
     item: "oak_planks"
     present: "construct"
     past: "constructed"
   task02:
     type: "place"
-    amount: 4
+    amount: 12
     item: "oak_planks"
     present: "place"
     past: "placed"

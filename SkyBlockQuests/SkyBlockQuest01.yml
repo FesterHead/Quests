@@ -6,7 +6,7 @@ tasks:
     present: "place"
     past: "placed"
 display:
-  name: "&aDirt &7- Enter &c/q &7to view"
+  name: "&aDirt"
   type: "dirt"
   lore-normal:
     - ""
@@ -14,7 +14,7 @@ display:
     - "&9control panel &7-> &9commands panel &cNOW &7and use"
     - "&7the &aQuest Mode &7option to &cDISABLE &7it."
     - ""
-    - "&7Place &6one &adirt &7to get started!"
+    - "&7Place your &6one &adirt block &7to get started!"
     - ""
     - "&7On this server, you will earn &6$1 &7for just about"
     - "&7every 'action' you take such as &8breaking &7or &aplacing"

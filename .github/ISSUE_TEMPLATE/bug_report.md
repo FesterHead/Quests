@@ -5,20 +5,21 @@ about: Create a bug report
 ---
 
 **Description of Error**
-[please provide what is going on and what it should be doing if applicable]
+[Provide a description of the error along with expected and actual behavior]
 
 **To Reproduce**
-[please provide what you were doing when the error showed]
+[Provide steps to reproduce the error]
 
 **Screenshots**
-[if you have any screenshots, show them here]
+[Paste screenshot(s) here]
 
-**Server (please complete the following information):**
- - Minecraft Version: [e.g. 1.12.1]
- - Mod Name: [e.g. Spigot]
+**Server details:**
+ - Minecraft Version: [e.g. 1.15.2]
+ - Mod Name: [e.g. Spigot, Paper, ...]
+ - Plugins: [output from `/plugins`]
 
-**Plugin (please complete the following information):**
- - Version: [e.g. 2.0.8-beta]
+**Quests Plugin version:**
+ - Version: [e.g. 3.4.0-1.16.3]
 
 **Stacktrace**
-[please see your console if there is a long error when the bug occours, if there is one present, please paste it here]
+[Paste stacktrace error message from server console here]

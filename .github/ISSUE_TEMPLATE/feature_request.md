@@ -1,14 +1,13 @@
 ---
 name: Feature request
-about: Suggest an idea for Quests
+about: Suggest new features or capabilities for Quests
 
 ---
 
-**Description of Feature**
-[please describe what you would like to be added]
+**Description**
+[Describe what you would like to be added]
+[Example: Add CoreProtect block protection]
 
-**Alternative Methods**
-[if applicable, please describe any alternative methods you have tried to achieve the above feature]
-
-**Additional Information**
-[anything not listed above, such as screenshots etc.]
+**User story**
+[Who will this enhancement benefit and what will they get out of it?]
+[Example:  As a Quest admin, I want the ability to prevent users from getting `break` task credit for player placed blocks so only naturally generated blocks can be used]

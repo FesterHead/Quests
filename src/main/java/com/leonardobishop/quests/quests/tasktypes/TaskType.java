@@ -163,7 +163,7 @@ public abstract class TaskType implements Listener {
 
         // If break task and coreprotect is configured...
         if (task.getType().startsWith("break") && (event instanceof BlockBreakEvent)
-            && QuestsAPI.getQuestsCoreProtectAPI().nonNull()
+            && Objects.nonNull(QuestsAPI.getQuestsCoreProtectAPI())
             && Objects.nonNull(task.getConfigValue(COREPROTECT_KEY))
             && (boolean) (task.getConfigValue(COREPROTECT_KEY))) {
 

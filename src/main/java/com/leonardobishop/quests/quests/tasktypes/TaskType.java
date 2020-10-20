@@ -146,20 +146,19 @@ public abstract class TaskType implements Listener {
         if (Objects.nonNull(task.getConfigValue(WORLD_KEY))) {
           World world = Bukkit.getWorld((String) task.getConfigValue(WORLD_KEY));
           if (Objects.isNull(world)) {
-            questLogger.debug("                     §dNot in world "
-                + (String) task.getConfigValue(WORLD_KEY) + "!");
+            questLogger.debug(
+                "                     §dNot in world " + (String) task.getConfigValue(WORLD_KEY));
             return;
           }
           questLogger.debug("     Expected world: §8" + world);
           questLogger.debug("        Exact world: §8" + Bukkit.getPlayer(uuid).getWorld());
           if (Objects.equals(Bukkit.getPlayer(uuid).getWorld(), world)) {
-            questLogger.debug("                     §aMatch!");
+            questLogger.debug("                     §aMatch");
           } else {
-            questLogger.debug("                     §aNO match!");
+            questLogger.debug("                     §aNO match");
             continue;
           }
         }
-
 
         // If break task and coreprotect is configured...
         if (task.getType().startsWith("break") && (event instanceof BlockBreakEvent)
@@ -173,9 +172,11 @@ public abstract class TaskType implements Listener {
               : 3600;
 
           if (QuestsAPI.getQuestsCoreProtectAPI().isPlayerBlock(tempEvent.getBlock(), seconds)) {
-            questLogger.debug("Block player placed. Skipping!");
+            questLogger.debug("  CoreProtect check: §cFAIL");
+            questLogger.debug("Broken block was placed by a player");
             continue;
           }
+          questLogger.debug("  CoreProtect check: §aPASS");
         }
 
         // Use specific item if configured for the task
@@ -192,8 +193,6 @@ public abstract class TaskType implements Listener {
                 PotionType.valueOf(String.valueOf(task.getConfigValue(ITEM_KEY)).toUpperCase());
           }
         }
-
-        // Helpful debug information to console
         questLogger.debug("    Incoming object: §b" + incoming.toString());
         questLogger.debug("    Expected object: §3"
             + ((Objects.nonNull(expected)) ? expected.toString() : "n/a"));
@@ -201,31 +200,32 @@ public abstract class TaskType implements Listener {
         // If the expected object is null then this is a general task, all events count
         // Otherwise the incoming object must match the expected object
         if ((Objects.isNull(expected)) || (Objects.equals(incoming, expected))) {
-          questLogger.debug("                     §aMatch!");
+          questLogger.debug("                     §aMatch");
           questLogger.debug("          Increment: §2" + increment);
 
+          // If reverse is false and incrememnt is less than 0 then skip the increment
           if (Objects.nonNull(task.getConfigValue(REVERSE_KEY))
-              && !(boolean) (task.getConfigValue(REVERSE_KEY))) {
-            questLogger.debug("                     §aReverse progression skipped!");
+              && !(boolean) (task.getConfigValue(REVERSE_KEY)) && increment < 0) {
+            questLogger.debug("                     §aReverse progression skipped");
           } else {
             taskProgress.setProgress(taskProgressCounter + increment);
             questLogger.debug("           Progress: §d" + taskProgress.getProgress().toString());
             questLogger.debug("               Need: §5" + (int) task.getConfigValue(AMOUNT_KEY));
             if (((int) taskProgress.getProgress()) >= (int) task.getConfigValue(AMOUNT_KEY)) {
               taskProgress.setCompleted(true);
-              questLogger.debug("                     §6Completed!");
+              questLogger.debug("                     §6Completed");
             }
           }
 
           if (Objects.nonNull(task.getConfigValue(CONTINUE_EVALUATING_KEY))
               && (boolean) (task.getConfigValue(CONTINUE_EVALUATING_KEY))) {
-            questLogger.debug("                     §9Continue task evaluation!");
+            questLogger.debug("                     §9Continue task evaluation");
             continue;
           } else {
             return;
           }
         } else {
-          questLogger.debug("                     §aNO match!");
+          questLogger.debug("                     §aNO match");
         }
       }
     }

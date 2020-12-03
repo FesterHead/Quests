@@ -4,7 +4,7 @@
 
   <groupId>com.leonardobishop</groupId>
   <artifactId>quests</artifactId>
-  <version>3.4.3</version>
+  <version>3.4.4</version>
   <name>Quests</name>
 
   <properties>
@@ -46,8 +46,7 @@
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
       <version>1.15.2-R0.1-SNAPSHOT</version>
-      <!--version>1.16.2-R0.1-SNAPSHOT</version-->
-      <!--version>1.16.3-R0.1-SNAPSHOT</version-->
+      <!--version>1.16.4-R0.1-SNAPSHOT</version-->
       <scope>provided</scope>
     </dependency>
 
@@ -55,7 +54,7 @@
     <dependency>
       <groupId>world.bentobox</groupId>
       <artifactId>bentobox</artifactId>
-      <version>1.14.0</version>
+      <version>1.15.2</version>
       <scope>provided</scope>
     </dependency>
 
@@ -78,7 +77,7 @@
     <dependency>
       <groupId>net.coreprotect</groupId>
       <artifactId>coreprotect</artifactId>
-      <version>19.2</version>
+      <version>19.3</version>
     </dependency>
 
   </dependencies>

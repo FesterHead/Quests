@@ -17,8 +17,7 @@ I use it for my BentoBox SkyBlock server.
 ## Minecraft version
 The following Minecraft versions are available in the release downloads:
 - 1.15.2 (default, this is the version I use)
-- 1.16.2
-- 1.16.3
+- 1.16.4 (as of 3.4.4)
 
 ## Support
 - None

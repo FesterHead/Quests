@@ -97,18 +97,20 @@ public class QItemStack {
                 .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId()))) {
 
               int tempProgress =
-                  (Objects.nonNull(questProgress.getTaskProgress(parts[0]).getProgress()))
-                      ? Integer.parseInt(
+                  (Objects.nonNull(questProgress.getTaskProgress(parts[0]).getProgress())) ? Double
+                      .valueOf(
                           String.valueOf(questProgress.getTaskProgress(parts[0]).getProgress()))
-                      : 0;
+                      .intValue() : 0;
 
               int tempAmount = (Objects
                   .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
                       .getConfigValue("amount")))
-                          ? Integer.parseInt(String.valueOf(
+                          ? Double.valueOf(String.valueOf(
                               quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())
                                   .getConfigValue("amount")))
+                              .intValue()
                           : 0;
+
 
               String tempItem = (Objects
                   .nonNull(quest.getTask(questProgress.getTaskProgress(parts[0]).getTaskId())

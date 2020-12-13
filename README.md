@@ -1,3 +1,6 @@
+# NOTICE - 2020-12-01
+I am taking a break from Spigot-based Minecraft and playing single-player Forge centered around MineColonies.
+
 ## About Quests
 This plugin is a fork from:
 - https://www.spigotmc.org/resources/23696/ 
